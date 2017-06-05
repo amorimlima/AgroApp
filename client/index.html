@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AgroApp</title>
+
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.css" />
+
+</head>
+<body>
+    <!-- Shell -->
+    <div class="app-shell" ng-controller="TestController">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo" ng-cloak>{{appName}}</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Libs -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/materialize-css/dist/js/materialize.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+
+    <!-- App -->
+    <script src="scripts/main.js"></script>
+
+    <!-- Controllers -->
+    <script src="scripts/src/controllers/test.controller.js"></script>
+</body>
+</html>

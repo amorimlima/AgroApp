@@ -1,5 +1,8 @@
 angular
-    .module('app', []);
+    .module('app', [
+        'ngRoute',
+        'ngMaterial'
+    ]);
 
 angular
     .module('app')

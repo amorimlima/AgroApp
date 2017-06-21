@@ -16,6 +16,8 @@
     <meta name="msapplication-TileColor" content="#e74c3c" />
 
     <link rel="stylesheet" href="node_modules/angular-material/angular-material.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet" />
     <style>
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
             display: none !important;
@@ -28,21 +30,29 @@
 </head>
 <body>
     <!-- Shell -->
-    <md-content 
-        layout="column" 
-        class="md-no-flicker md-no-momentum" 
-        ng-controller="TestController">
-
+    <div class="app-shell" ng-cloak>
         <md-toolbar 
             layout="row" 
             class="md-toolbar-tools"
             md-scroll-shrink="true">
+
+            <md-button 
+                aria-label="button-label" 
+                class="md-icon-button"
+                ng-click="sidenav.toggle()">
+            <md-icon md-svg-src=""></md-icon>
+            </md-button>
             
-            <h1 class="md-title" md-truncate flex>{{appName}}</h1>
+            <h1 class="md-title" md-truncate flex>{{view.name}}</h1>
         </md-toolbar>
 
-        <div flex layout="row"></div>
-    </md-content>
+        <md-sidenav ng-show="sidenav.visible">
+
+            <p>Hello world!</p>
+        </md-sidenav>
+
+        <ng-view></ng-view>
+    </div>
 
     <!-- Libs -->
     <script src="node_modules/angular/angular.js"></script>
@@ -52,9 +62,12 @@
     <script src="node_modules/angular-material/angular-material.js"></script>
 
     <!-- App -->
-    <script src="scripts/main.js"></script>
+    <script src="scripts/app.js"></script>
+
+    <!-- Config -->
+    <script src="scripts/src/config/route.config.js"></script>
 
     <!-- Controllers -->
-    <script src="scripts/src/controllers/test.controller.js"></script>
+    <script src="scripts/src/controllers/cover.controller.js"></script>
 </body>
 </html>

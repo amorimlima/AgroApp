@@ -1,73 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt" ng-app="app">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AgroApp</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AgroApp</title>
 
-    <!-- Safari -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="AgroApp" />
+  <!-- Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="AgroApp" />
 
-    <!-- Broswers on Windows Phone -->
-    <meta name="msapplication-TileImage" content="images/icon-128x128.png" />
-    <meta name="msapplication-TileColor" content="#e74c3c" />
+  <!-- Broswers on Windows Phone -->
+  <meta name="msapplication-TileImage" content="images/icon-128x128.png" />
+  <meta name="msapplication-TileColor" content="#e74c3c" />
 
-    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet" />
-    <style>
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-            display: none !important;
-        }
+  <link rel="stylesheet" href="node_modules/angular-material/angular-material.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet" />
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
 
-        .toolbar-title {
-            font-size: 21px;
-        }
-    </style>
+    .toolbar-title {
+      font-size: 21px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Shell -->
-    <div class="app-shell" ng-cloak>
-        <md-toolbar 
-            layout="row" 
-            class="md-toolbar-tools"
-            md-scroll-shrink="true">
+  <!-- Shell -->
+  <div class="app-shell" ng-cloak>
 
-            <md-button 
-                aria-label="button-label" 
-                class="md-icon-button"
-                ng-click="sidenav.toggle()">
-            <md-icon md-svg-src=""></md-icon>
-            </md-button>
-            
-            <h1 class="md-title" md-truncate flex>{{view.name}}</h1>
-        </md-toolbar>
+    <!-- Toolbar -->
+    <ng-include 
+      src="'partials/toolbar.html'"
+      onload="initToolbar()">
+    </ng-include>
 
-        <md-sidenav ng-show="sidenav.visible">
+    <!-- Sidenav -->
+    <ng-include 
+      src="'partials/sidenav.html'"
+      onload="initSidenav()">
+    </ng-include>
 
-            <p>Hello world!</p>
-        </md-sidenav>
+    <!-- View -->
+    <ng-view></ng-view>
+  </div>
 
-        <ng-view></ng-view>
-    </div>
+  <!-- Libs -->
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-route/angular-route.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.js"></script>
+  <script src="node_modules/angular-aria/angular-aria.js"></script>
+  <script src="node_modules/angular-material/angular-material.js"></script>
 
-    <!-- Libs -->
-    <script src="node_modules/angular/angular.js"></script>
-    <script src="node_modules/angular-route/angular-route.js"></script>
-    <script src="node_modules/angular-animate/angular-animate.js"></script>
-    <script src="node_modules/angular-aria/angular-aria.js"></script>
-    <script src="node_modules/angular-material/angular-material.js"></script>
+  <!-- App -->
+  <script src="scripts/app.module.js"></script>
 
-    <!-- App -->
-    <script src="scripts/app.js"></script>
+  <!-- Run -->
+  <script src="scripts/src/app.run.js"></script>
 
-    <!-- Config -->
-    <script src="scripts/src/config/route.config.js"></script>
+  <!-- Config -->
+  <script src="scripts/src/config/route.config.js"></script>
 
-    <!-- Controllers -->
-    <script src="scripts/src/controllers/cover.controller.js"></script>
+  <!-- Controllers -->
+  <script src="scripts/src/controllers/login.controller.js"></script>
 </body>
 </html>

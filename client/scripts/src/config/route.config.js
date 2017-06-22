@@ -3,7 +3,10 @@
     .module('app')
     .config(routeConfig);
 
-  routeConfig.$inject = ['$routeProvider', '$locationProvider'];
+  routeConfig.$inject = [
+    '$routeProvider',
+    '$locationProvider'
+  ];
 
   function routeConfig($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
@@ -11,9 +14,9 @@
 
     $routeProvider
       .when('/', {
-        templateUrl: 'views/cover.html',
-        controller: 'CoverController'
+        templateUrl: 'views/login.html',
+        controller: 'LoginController'
       })
-      .otherwise({redirectTo: '/contatos'});
+      .otherwise({redirectTo: '/'});
   }
 })();

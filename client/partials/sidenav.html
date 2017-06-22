@@ -1,0 +1,14 @@
+<md-sidenav 
+  md-is-open="sidenav.visible"
+  md-component-id="main_menu">
+
+  <md-list>
+    <md-list-item ng-repeat="menuItem in sidenav.items">
+      <span>
+        <md-icon md-font-set="material-icons">{{menuItem.icon}}</md-icon>
+        {{menuItem.name}}
+      </span>
+      <md-divider></md-divider>
+    </md-list-item>
+  </md-list>
+</md-sidenav>

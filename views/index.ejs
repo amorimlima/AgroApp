@@ -33,16 +33,10 @@
   <div class="app-shell" ng-cloak>
 
     <!-- Toolbar -->
-    <ng-include 
-      src="'partials/toolbar.html'"
-      onload="initToolbar()">
-    </ng-include>
+    <%- include('partials/toolbar.html'); %>
 
     <!-- Sidenav -->
-    <ng-include 
-      src="'partials/sidenav.html'"
-      onload="initSidenav()">
-    </ng-include>
+    <%- include('partials/sidenav.html'); %>
 
     <!-- View -->
     <ng-view></ng-view>

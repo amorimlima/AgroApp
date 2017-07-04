@@ -1,0 +1,28 @@
+appRun.$inject = [
+  '$rootScope',
+  '$mdSidenav'
+];
+
+function appRun($rootScope, $mdSidenav) {
+  $rootScope.view = {
+    name: 'Home',
+    fullscreen: false
+  };
+
+  $rootScope.sidenav = {
+    visible: false,
+    toggle: function () {
+      $mdSidenav('main_menu').toggle();
+    },
+    items: [
+      {name: 'Pagina Inicial', icon: 'home'},
+      {name: 'Produtos', icon: 'shopping_basket'},
+      {name: 'Editar Perfil', icon: 'person'},
+      {name: 'Contatos', icon: 'contacts'}
+    ]
+  };
+
+  $rootScope.toolbar = {};
+}
+
+module.exports = appRun;

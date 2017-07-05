@@ -1,19 +1,24 @@
 {
   "name": "agro-app",
   "version": "1.0.0",
-  "description": "AgroApp's client-side application.",
+  "description": "AgroApp's application.",
   "main": "scripts/main.js",
   "scripts": {
     "start": "pm2 start bin/www",
-    "start-dev": "npm run build:client && nodemon bin/www",
-    "build:scripts": "browserify --debug static/scripts/src/index.js -o static/scripts/dist/bundle.js -d",
-    "build:styles": "npm-sass static/styles/src/style.scss > static/styles/dist/style.css",
+    "start:dev": "npm run build:client && nodemon bin/www",
+    "build:scripts": "browserify --debug static/scripts/src/index.js -o static/scripts/bundle.js -d",
+    "build:styles": "npm-sass static/styles/src/style.scss > static/styles/style.css",
     "build:client": "npm run build:scripts && npm run build:styles",
+    "test:unit": "mocha test/unit/**/*.spec.js || true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Murano Design <contato@muranodesign.com.br>",
+  "contributors": [
+    "Lucas Tavares <lucastavaresdarocha@gmail.com>"
+  ],
   "license": "ISC",
   "devDependencies": {
+    "angular-mocks": "^1.6.5",
     "browserify": "^14.4.0",
     "chai": "^4.0.2",
     "karma": "^1.7.0",
@@ -21,6 +26,7 @@
     "nodemon": "^1.11.0",
     "npm-sass": "^2.2.1",
     "supertest": "^3.0.0",
+    "testdouble": "^3.2.2",
     "watchify": "^3.9.0"
   },
   "dependencies": {

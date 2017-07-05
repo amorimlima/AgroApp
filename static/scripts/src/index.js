@@ -1,6 +1,6 @@
 var angular = require('angular');
 var ngRoute = require('angular-route');
-var ngMaterial = require('angular-material')
+var ngMaterial = require('angular-material');
 
 var config = require('./config');
 var run = require('./run');

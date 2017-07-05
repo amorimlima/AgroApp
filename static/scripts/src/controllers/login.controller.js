@@ -1,10 +1,14 @@
 LoginController.$inject = [
-  '$scope',
-  '$rootScope'
+  '$rootScope',
+  '$location'
 ];
 
-function LoginController($scope, $rootScope) {
+function LoginController($rootScope, $location) {
   $rootScope.view.name = 'Login';
+  
+  this.login = function () {
+    $location.url('/search');
+  };
 }
 
 module.exports = LoginController;

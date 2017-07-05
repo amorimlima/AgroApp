@@ -10,7 +10,13 @@ function routeConfig($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
       templateUrl: '/assets/views/login.html',
-      controller: 'LoginController'
+      controller: 'LoginController',
+      controllerAs: 'loginCtrl'
+    })
+    .when('/search', {
+      templateUrl: '/assets/views/search.html',
+      controller: 'SearchController',
+      controllerAs: 'searchCtrl'
     })
     .otherwise({redirectTo: '/'});
 }

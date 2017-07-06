@@ -2,3 +2,6 @@ node_modules
 static/**/dist
 npm-debug.log
 **/build
+**/bundle.js
+**/style.css
+.idea

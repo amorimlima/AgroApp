@@ -6,7 +6,9 @@
   "scripts": {
     "start": "pm2 start bin/www",
     "start:dev": "npm run build:client && nodemon bin/www",
-    "build:scripts": "browserify --debug static/scripts/src/index.js -o static/scripts/bundle.js -d",
+    "build:scripts": "npm run build:scripts:pretty && npm run build:scripts:ugly",
+    "build:scripts:pretty": "browserify --debug static/scripts/src/index.js -o static/scripts/bundle.js -d",
+    "build:scripts:ugly": "browserify static/scripts/src/index.js | uglifyjs > static/scripts/bundle.js",
     "build:styles": "npm-sass static/styles/src/style.scss > static/styles/style.css",
     "build:client": "npm run build:scripts && npm run build:styles",
     "test:unit": "mocha test/unit/**/*.spec.js || true",
@@ -27,6 +29,7 @@
     "npm-sass": "^2.2.1",
     "supertest": "^3.0.0",
     "testdouble": "^3.2.2",
+    "uglify-js": "^1.3.5",
     "watchify": "^3.9.0"
   },
   "dependencies": {

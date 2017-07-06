@@ -5,7 +5,7 @@ routeConfig.$inject = [
 
 function routeConfig($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix('');
-  $locationProvider.html5Mode({ enabled: true, requireBase: false });
+  $locationProvider.html5Mode({ enabled: false });
 
   $routeProvider
     .when('/', {
@@ -18,7 +18,7 @@ function routeConfig($routeProvider, $locationProvider) {
       controller: 'SearchController',
       controllerAs: 'searchCtrl'
     })
-    .otherwise({redirectTo: '/'});
+    .otherwise({ redirectTo: '/' });
 }
 
 module.exports = routeConfig;

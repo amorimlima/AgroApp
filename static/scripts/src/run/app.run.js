@@ -1,9 +1,11 @@
 appRun.$inject = [
   '$rootScope',
-  '$mdSidenav'
+  '$mdSidenav',
+  'strings'
 ];
 
-function appRun($rootScope, $mdSidenav) {
+function appRun($rootScope, $mdSidenav, strings) {
+  $rootScope.strings = strings;
   $rootScope.view = {
     name: 'Home',
     fullscreen: false

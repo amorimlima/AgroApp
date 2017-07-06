@@ -4,10 +4,8 @@
 
 var routeConfig = require('./route.config');
 
-function config(angular, moduleName) {
-  angular
-    .module(moduleName)
-    .config(routeConfig);
+function config(appModule) {
+  appModule.config(routeConfig);
 }
 
 module.exports = config;

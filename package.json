@@ -5,7 +5,7 @@
   "main": "scripts/main.js",
   "scripts": {
     "start": "pm2 start bin/www",
-    "start:dev": "npm run build:client && NODE_ENV=dev nodemon bin/www",
+    "start:dev": "nodemon bin/www",
     "build:scripts": "npm run build:scripts:pretty && npm run build:scripts:ugly",
     "build:scripts:pretty": "browserify --debug static/scripts/src/index.js -o static/scripts/bundle_dev.js -d",
     "build:scripts:ugly": "browserify static/scripts/src/index.js | uglifyjs > static/scripts/bundle_prod.js",

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Frutas"
+  },
+  {
+    "id": 2,
+    "name": "Verduras"
+  },
+  {
+    "id": 3,
+    "name": "Legumes"
+  },
+  {
+    "id": 4,
+    "name": "Temperos" 
+  },
+  {
+    "id": 5,
+    "name": "Ovos" 
+  },
+  {
+    "id": 6,
+    "name": "Laticínios" 
+  },
+  {
+    "id": 7,
+    "name": "Flores" 
+  },
+  {
+    "id": 8,
+    "name": "Mel" 
+  },
+  {
+    "id": 9,
+    "name": "Diversos" 
+  }
+]

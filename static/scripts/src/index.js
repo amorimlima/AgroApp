@@ -5,6 +5,7 @@ var ngMaterial = require('angular-material');
 var commons = require('./commons');
 var config = require('./config');
 var run = require('./run');
+var services = require('./services');
 var controllers = require('./controllers');
 
 var appModule = angular
@@ -14,6 +15,7 @@ var appModule = angular
   ]);
 
 commons(appModule);
-config(appModule);
-run(appModule);
+services(appModule);
 controllers(appModule);
+run(appModule);
+config(appModule);

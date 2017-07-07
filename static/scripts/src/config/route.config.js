@@ -16,7 +16,18 @@ function routeConfig($routeProvider, $locationProvider) {
     .when('/search', {
       templateUrl: '/assets/views/search.html',
       controller: 'SearchController',
-      controllerAs: 'searchCtrl'
+      controllerAs: 'searchCtrl',
+      resolve: {
+        categories: function (CategoriesService) {
+          return CategoriesService.getAll();
+        },
+        handlings: function (HandlingsService) {
+          return HandlingsService.getAll();
+        },
+        products: function (ProductsService) {
+          return ProductsService.getAll();
+        }
+      }
     })
     .otherwise({ redirectTo: '/' });
 }

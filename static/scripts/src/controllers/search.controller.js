@@ -21,7 +21,25 @@ function SearchController($rootScope) {
     { name: 'Convencional' },
     { name: 'Agroecológico' },
     { name: 'Orgânico' }
-  ]
+  ];
+
+  this.hasAlreadySearched = false;
+  this.query = '';
+  this.searchText = 'Churros';
+  this.searchItems = [
+    { name: 'Resultado 1' },
+    { name: 'Resultado 2' },
+    { name: 'Resultado 3' },
+    { name: 'Resultado 4' },
+    { name: 'Resultado 5' },
+    { name: 'Resultado 6' },
+    { name: 'Resultado 7' },
+    { name: 'Resultado 8' }
+  ];
+
+  this.setSearched = function () {
+    this.hasAlreadySearched = true;
+  };
 }
 
 module.exports = SearchController;

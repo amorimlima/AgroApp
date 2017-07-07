@@ -15,7 +15,7 @@ app.set('views', 'views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res, next) {
-    res.render('index');
+    res.render('index', { environment: process.env.NODE_ENV || 'prod' });
 });
 
 module.exports = app;

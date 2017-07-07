@@ -36,8 +36,6 @@
         class="md-primary md-raised"
         md-ripple-size="full"
         ng-disabled="loginForm.$invalid"
-        ng-click="loginCtrl.login()">
-
-        {{strings.ACCESS}}
-    </md-button>
+        ng-click="loginCtrl.login()"
+        ng-bind="strings.ACCESS"></md-button>
 </md-content>

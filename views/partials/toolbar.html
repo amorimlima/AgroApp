@@ -1,7 +1,6 @@
 <md-toolbar
   layout="row" 
-  class="md-toolbar-tools"
-  md-scroll-shrink="true">
+  class="md-toolbar-tools">
 
   <md-button 
       aria-label="button-label" 
@@ -11,5 +10,9 @@
       <md-icon nmd-font-set="material-icons">menu</md-icon>
     </md-button>
     
-  <h1 class="md-title" md-truncate flex>{{view.name}}</h1>
+  <h1
+      class="md-title"
+      flex
+      ng-bind="view.name"
+      md-truncate></h1>
 </md-toolbar>

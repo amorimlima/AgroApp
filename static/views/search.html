@@ -1,5 +1,21 @@
-<md-toolbar layout-padding>
-    <input type="search">
+<md-toolbar
+    class="md-toolbar-tools"
+    layout="column"
+    layout-align="center stretch"
+    md-ripple-size="full"
+    md-scroll-shrink="true">
+
+    <md-autocomplete
+        placeholder="{{strings.WHAT_ARE_YOU_LOOKING_FOR}}"
+        md-no-cache="true"
+        md-search-text="searchCtrl.searchText"
+        md-items="item in searchCtrl.searchItems | filter:searchCtrl.searchText"
+        md-clear-button="true">
+
+        <md-item-template>{{item.name}}</md-item-template>
+
+        <md-not-found ng-bind="strings.RESULT_NOT_FOUND"></md-not-found>
+    </md-autocomplete>
 </md-toolbar>
 
 <md-content
@@ -7,54 +23,65 @@
     class="md-no-flicker md-no-momentum"
     layout-padding>
 
-    <h2 ng-bind="strings.CATEGORIES"></h2>
+    <section
+        class="search-filters-content"
+        layout="column">
 
-    <md-grid-list
-        md-cols="3"
-        md-gutter="10px"
-        md-row-height="2:1">
+        <md-subheader ng-bind="strings.CATEGORIES"></md-subheader>
 
-        <md-grid-tile ng-repeat="category in searchCtrl.categories">
-            {{category.name}}
-        </md-grid-tile>
-    </md-grid-list>
+        <md-grid-list
+            md-cols="3"
+            md-gutter="10px"
+            md-row-height="2:1">
 
-    <h2 ng-bind="strings.HANDLING"></h2>
+            <md-grid-tile ng-repeat="category in searchCtrl.categories">
+                {{category.name}}
+            </md-grid-tile>
+        </md-grid-list>
 
-    <md-grid-list
-        md-cols="3"
-        md-gutter="10px"
-        md-row-height="2:1">
+        <md-subheader ng-bind="strings.HANDLING"></md-subheader>
 
-        <md-grid-tile ng-repeat="handling in searchCtrl.handlings">
-            {{handling.name}}
-        </md-grid-tile>
-    </md-grid-list>
+        <md-grid-list
+            md-cols="3"
+            md-gutter="10px"
+            md-row-height="2:1">
 
-    <h2 ng-bind="strings.LOCALE"></h2>
+            <md-grid-tile ng-repeat="handling in searchCtrl.handlings">
+                {{handling.name}}
+            </md-grid-tile>
+        </md-grid-list>
 
-    <md-input-container>
-        <label
-            for="uf_select"
-            ng-bind="strings.UF"></label>
+        <md-subheader ng-bind="strings.LOCALE"></md-subheader>
 
-        <md-select
-            id="uf_select"
-            ng-model="searchCtrl.uf"></md-select>
-    </md-input-container>
+        <section layout="row">
+            <md-input-container>
+                <label
+                    for="uf_select"
+                    ng-bind="strings.UF"></label>
 
-    <md-input-container>
-        <label
-            for="city_select"
-            ng-bind="strings.CITY"></label>
+                <md-select
+                    id="uf_select"
+                    ng-change="searchCtrl.setSearched()"
+                    ng-model="searchCtrl.uf"></md-select>
+            </md-input-container>
 
-        <md-select
-            id="city_select"
-            ng-model="searchCtrl.city"></md-select>
-    </md-input-container>
+            <md-input-container>
+                <label
+                    for="city_select"
+                    ng-bind="strings.CITY"></label>
 
-    <md-button
-        md-ripple-size="full"
-        ng-click="churros"
-        ng-bind="string.DO_SEARCH"></md-button>
+                <md-select
+                    id="city_select"
+                    ng-change="searchCtrl.setSearched()"
+                    ng-model="searchCtrl.city"></md-select>
+            </md-input-container>
+        </section>
+
+        <md-button
+            aria-label="{{strings.DO_SEARCH}}"
+            md-ripple-size="full"
+            ng-click="churros"
+            ng-bind="string.DO_SEARCH"
+            ng-hide="hasAlreadySearched"></md-button>
+    </section>
 </md-content>

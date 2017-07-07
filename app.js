@@ -21,7 +21,7 @@ app.use('/handlings', routes.handlings(express.Router()));
 app.set('views', 'views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(req, res, next) {
+app.get('/', function(req, res) {
     res.render('index', { environment: environment });
 });
 

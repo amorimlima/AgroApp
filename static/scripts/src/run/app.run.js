@@ -17,14 +17,17 @@ function appRun($rootScope, $mdSidenav, strings) {
       $mdSidenav('main_menu').toggle();
     },
     items: [
-      {name: 'Pagina Inicial', icon: 'home'},
-      {name: 'Produtos', icon: 'shopping_basket'},
-      {name: 'Editar Perfil', icon: 'person'},
-      {name: 'Contatos', icon: 'contacts'}
+      { name: 'Pagina Inicial', icon: 'home' },
+      { name: 'Produtos', icon: 'shopping_basket' },
+      { name: 'Editar Perfil', icon: 'person' },
+      { name: 'Contatos', icon: 'contacts' }
     ]
   };
 
   $rootScope.toolbar = {};
+  $rootScope.logHello = function () {
+    console.log('Hello world!');
+  };
 }
 
 module.exports = appRun;

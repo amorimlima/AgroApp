@@ -9,7 +9,9 @@ var strings = {
   CITY: 'Cidade',
   DO_SEARCH: 'Buscar',
   WHAT_ARE_YOU_LOOKING_FOR: 'O que está buscando?',
-  RESULT_NOT_FOUND: 'Nenhum item foi encontrado.'
+  RESULT_NOT_FOUND: 'Nenhum item foi encontrado.',
+  LIST: 'Lista',
+  MAP: 'Mapa'
 };
 
 module.exports = strings;

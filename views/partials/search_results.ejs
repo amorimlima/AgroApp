@@ -1,0 +1,31 @@
+<md-tabs
+    class="md-primary"
+    ng-show="searchCtrl.viewState == 'result'"
+    md-stretch-tabs="always">
+
+    <md-tab
+        label="<%= strings.LIST %>"
+        ng-click="searchCtrl.setResultViewState('list')"></md-tab>
+
+    <md-tab
+        label="<%= strings.MAP %>"
+        ng-click="searchCtrl.setResultViewState('map')"></md-tab>
+</md-tabs>
+
+<md-content
+    layout="column"
+    class="md-no-flicker md-no-momentum"
+    ng-show="searchCtrl.viewState == 'result'">
+
+    <section ng-show="searchCtrl.resultViewState == 'list'">
+        <h2>
+            <%= strings.LIST %>
+        </h2>
+    </section>
+
+    <section ng-show="searchCtrl.resultViewState == 'map'">
+        <h2>
+            <%= strings.MAP %>
+        </h2>
+    </section>
+</md-content>

@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 1,
+    "product": 4
+  }
+]

@@ -1,0 +1,78 @@
+<md-content
+    class="md-no-flicker md-no-momentum"
+    flex
+    layout="column"
+    ng-show="searchCtrl.viewState === 'filter'">
+
+    <section>
+        <md-list>
+        <md-subheader>
+            <%= strings.CATEGORIES %>
+        </md-subheader>
+            <md-list-item ng-repeat="category in searchCtrl.categories">
+                <md-checkbox ng-model="searchCtrl.category"></md-checkbox>
+
+                {{category.name}}
+            </md-list-item>
+        </md-list>
+    </section>
+
+    <md-divider></md-divider>
+
+    <section>
+        <md-list>
+            <md-subheader>
+                <%= strings.HANDLING %>
+            </md-subheader>
+
+            <md-list-item ng-repeat="handling in searchCtrl.handlings">
+                <md-checkbox ng-model="searchCtrl.handling"></md-checkbox>
+                
+                {{handling.name}}
+            </md-list-item>
+        </md-list>
+    </section>
+
+    <md-divider></md-divider>
+
+    <section>
+        <md-subheader>
+            <%= strings.LOCALE %>
+        </md-subheader>
+
+        <div
+            layout="row"
+            layout-padding>
+
+            <md-input-container>
+                <label for="uf_select">
+                    <%= strings.UF %>
+                </label>
+
+                <md-select
+                    id="uf_select"
+                    ng-change="searchCtrl.setSearched()"
+                    ng-model="searchCtrl.uf"></md-select>
+            </md-input-container>
+
+            <md-input-container>
+                <label for="city_select">
+                    <%= strings.CITY %>
+                </label>
+
+                <md-select
+                    id="city_select"
+                    ng-change="searchCtrl.setSearched()"
+                    ng-model="searchCtrl.city"></md-select>
+            </md-input-container>
+        </div>
+    </section>
+        <md-button
+            class="md-primary md-raised"
+            aria-label="<%= strings.DO_SEARCH %>"
+            md-ripple-size="full"
+            ng-click="searchCtrl.setViewState('result')">
+
+            <%= strings.DO_SEARCH %>
+        </md-button>
+</md-content>

@@ -8,9 +8,9 @@
         name="loginForm">
 
         <md-input-container>
-            <label
-                for="username_field"
-                ng-bind="strings.EMAIL"></label>
+            <label for="username_field">
+                <%= strings.EMAIL %>
+            </label>
 
             <input
                 id="username_field"
@@ -20,9 +20,9 @@
         </md-input-container>
 
         <md-input-container>
-            <label
-                for="password_field"
-                ng-bind="strings.PASSWORD"></label>
+            <label for="password_field">
+                <%= strings.PASSWORD %>
+            </label>
 
             <input
                 id="password_field"
@@ -36,6 +36,8 @@
         class="md-primary md-raised"
         md-ripple-size="full"
         ng-disabled="loginForm.$invalid"
-        ng-click="loginCtrl.login()"
-        ng-bind="strings.ACCESS"></md-button>
+        ng-click="loginCtrl.login()">
+
+        <%= strings.ACCESS %>
+    </md-button>
 </md-content>

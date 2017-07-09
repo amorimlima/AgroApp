@@ -1,38 +1,17 @@
 [
   {
     "id": 1,
-    "name": "Frutas"
+    "name": "Legumes e Verduras",
+    "icon": "vegetables_category.png"
   },
   {
     "id": 2,
-    "name": "Verduras"
+    "name": "Ervas Frescas",
+    "icon": "herbs_category.png"
   },
   {
     "id": 3,
-    "name": "Legumes"
-  },
-  {
-    "id": 4,
-    "name": "Temperos" 
-  },
-  {
-    "id": 5,
-    "name": "Ovos" 
-  },
-  {
-    "id": 6,
-    "name": "Laticínios" 
-  },
-  {
-    "id": 7,
-    "name": "Flores" 
-  },
-  {
-    "id": 8,
-    "name": "Mel" 
-  },
-  {
-    "id": 9,
-    "name": "Diversos" 
+    "name": "Frutas",
+    "icon": "fruits_category.png"
   }
 ]

@@ -1,0 +1,36 @@
+<md-toolbar
+    class="md-toolbar-tools"
+    layout="row"
+    md-ripple-size="full"
+    md-scroll-shrink="true">
+
+    <md-autocomplete
+        placeholder="<%= strings.WHAT_ARE_YOU_LOOKING_FOR %>"
+        flex="grow"
+        md-no-cache="true"
+        md-search-text="searchCtrl.searchText"
+        md-items="item in searchCtrl.products | filter:searchCtrl.searchText"
+        md-clear-button="true">
+
+        <md-item-template>
+            {{item.name}}
+        </md-item-template>
+
+        <md-not-found>
+            <%= strings.RESULT_NOT_FOUND %>
+        </md-not-found>
+    </md-autocomplete>
+
+    <md-button
+        aria-label="Open filters button"
+        class="md-icon-button"
+        ng-show="searchCtrl.viewState === 'result'"
+        ng-click="searchCtrl.setViewState('filter')">
+
+        <md-icon>filter_list</md-icon>
+    </md-button>
+</md-toolbar>
+
+<%- include('./partials/search_filters.ejs'); %>
+
+<%- include('./partials/search_results.ejs'); %>

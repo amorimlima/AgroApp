@@ -1,14 +1,17 @@
 [
   {
     "id": 1,
-    "name": "Convencional" 
+    "name": "Convencional",
+    "icon": "conventional_handling.png"
   },
   {
     "id": 2,
-    "name": "Agroecológico" 
+    "name": "Agroecológico",
+    "icon": "agroecologic_handling.png"
   },
   {
     "id": 3,
-    "name": "Orgânico" 
+    "name": "Orgânico",
+    "icon": "organic_handling.png"
   }
 ]

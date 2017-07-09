@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>AgroApp</title>
+  <title><%= strings.APP_NAME %></title>
 
   <!-- Safari -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -22,21 +22,22 @@
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
       display: none !important;
     }
-
-    .toolbar-title {
-      font-size: 21px;
+    .app-shell {
+        max-height: 100%;
     }
   </style>
 </head>
 <body>
   <!-- Shell -->
-  <div class="app-shell ng-cloak">
+  <div
+      layout-fill
+      class="app-shell ng-cloak">
 
     <!-- Toolbar -->
-    <%- include('partials/toolbar.html'); %>
+    <%- include('partials/toolbar.ejs'); %>
 
     <!-- Sidenav -->
-    <%- include('partials/sidenav.html'); %>
+    <%- include('partials/sidenav.ejs'); %>
 
     <!-- View -->
     <ng-view></ng-view>

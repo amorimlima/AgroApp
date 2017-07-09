@@ -11,11 +11,15 @@ function SearchController($rootScope, categories, handlings, products) {
   this.categories = categories.data;
   this.handlings = handlings.data;
   this.products = products.data;
-  this.hasAlreadySearched = false;
-  this.searchText = '';
+  this.viewState = 'filter';
+  this.resultViewState = 'list';
 
-  this.setSearched = function () {
-    this.hasAlreadySearched = true;
+  this.setViewState = function (state) {
+    this.viewState = state;
+  };
+
+  this.setResultViewState = function (state) {
+    this.resultViewState = state;
   };
 }
 

@@ -9,12 +9,12 @@ function routeConfig($routeProvider, $locationProvider) {
 
   $routeProvider
     .when('/', {
-      templateUrl: '/assets/views/login.html',
+      templateUrl: '/views/login',
       controller: 'LoginController',
       controllerAs: 'loginCtrl'
     })
     .when('/search', {
-      templateUrl: '/assets/views/search.html',
+      templateUrl: '/views/search',
       controller: 'SearchController',
       controllerAs: 'searchCtrl',
       resolve: {

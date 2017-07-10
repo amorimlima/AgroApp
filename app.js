@@ -20,6 +20,7 @@ app.use('/categories', routes.categories(express.Router(), app));
 app.use('/products', routes.products(express.Router(), app));
 app.use('/handlings', routes.handlings(express.Router(), app));
 app.use('/views', routes.views(express.Router(), app));
+app.use('/offers', routes.offers(express.Router(), app));
 
 app.set('views', 'views');
 app.set('view engine', 'ejs');

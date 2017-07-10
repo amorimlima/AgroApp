@@ -6,6 +6,627 @@
     "amount": "88778",
     "unit": "kg",
     "producer": 1,
-    "product": 4
+    "product": 51
+  },
+  {
+    "id": 2,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 2,
+    "product": 51
+  },
+  {
+    "id": 3,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 3,
+    "product": 51
+  },
+  {
+    "id": 4,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 4,
+    "product": 51
+  },
+  {
+    "id": 5,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 5,
+    "product": 51
+  },
+  {
+    "id": 6,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 6,
+    "product": 51
+  },
+  {
+    "id": 7,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 7,
+    "product": 51
+  },
+  {
+    "id": 8,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 8,
+    "product": 51
+  },
+  {
+    "id": 9,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 9,
+    "product": 51
+  },
+  {
+    "id": 10,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 10,
+    "product": 54
+  },
+  {
+    "id": 11,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 1,
+    "product": 54
+  },
+  {
+    "id": 12,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 2,
+    "product": 54
+  },
+  {
+    "id": 13,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 3,
+    "product": 54
+  },
+  {
+    "id": 14,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 4,
+    "product": 54
+  },
+  {
+    "id": 15,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 5,
+    "product": 54
+  },
+  {
+    "id": 16,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 6,
+    "product": 54
+  },
+  {
+    "id": 17,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 7,
+    "product": 54
+  },
+  {
+    "id": 18,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 8,
+    "product": 54
+  },
+  {
+    "id": 19,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 9,
+    "product": 54
+  },
+  {
+    "id": 20,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 10,
+    "product": 54
+  },
+  {
+    "id": 21,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 1,
+    "product": 145
+  },
+  {
+    "id": 22,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 2,
+    "product": 145
+  },
+  {
+    "id": 23,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 3,
+    "product": 145
+  },
+  {
+    "id": 24,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 4,
+    "product": 145
+  },
+  {
+    "id": 25,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 5,
+    "product": 145
+  },
+  {
+    "id": 26,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 6,
+    "product": 145
+  },
+  {
+    "id": 27,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 7,
+    "product": 145
+  },
+  {
+    "id": 28,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 8,
+    "product": 145
+  },
+  {
+    "id": 29,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 9,
+    "product": 145
+  },
+  {
+    "id": 30,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 10,
+    "product": 145
+  },
+  {
+    "id": 31,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 1,
+    "product": 76
+  },
+  {
+    "id": 32,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 2,
+    "product": 76
+  },
+  {
+    "id": 33,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 3,
+    "product": 76
+  },
+  {
+    "id": 34,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 4,
+    "product": 76
+  },
+  {
+    "id": 35,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 5,
+    "product": 76
+  },
+  {
+    "id": 36,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 6,
+    "product": 76
+  },
+  {
+    "id": 37,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 7,
+    "product": 76
+  },
+  {
+    "id": 38,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 8,
+    "product": 76
+  },
+  {
+    "id": 39,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 9,
+    "product": 76
+  },
+  {
+    "id": 40,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 10,
+    "product": 76
+  },
+  {
+    "id": 41,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 1,
+    "product": 65
+  },
+  {
+    "id": 42,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 2,
+    "product": 65
+  },
+  {
+    "id": 43,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 3,
+    "product": 65
+  },
+  {
+    "id": 44,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 4,
+    "product": 65
+  },
+  {
+    "id": 45,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 5,
+    "product": 65
+  },
+  {
+    "id": 46,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 6,
+    "product": 65
+  },
+  {
+    "id": 47,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 7,
+    "product": 65
+  },
+  {
+    "id": 48,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 8,
+    "product": 65
+  },
+  {
+    "id": 49,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 9,
+    "product": 65
+  },
+  {
+    "id": 50,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 10,
+    "product": 65
+  },
+  {
+    "id": 51,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 1,
+    "product": 37
+  },
+  {
+    "id": 52,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 2,
+    "product": 37
+  },
+  {
+    "id": 53,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 3,
+    "product": 37
+  },
+  {
+    "id": 54,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 4,
+    "product": 37
+  },
+  {
+    "id": 55,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 5,
+    "product": 37
+  },
+  {
+    "id": 56,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 6,
+    "product": 37
+  },
+  {
+    "id": 57,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 7,
+    "product": 37
+  },
+  {
+    "id": 58,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 8,
+    "product": 37
+  },
+  {
+    "id": 59,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 9,
+    "product": 37
+  },
+  {
+    "id": 60,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 10,
+    "product": 37
+  },
+  {
+    "id": 61,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 1,
+    "product": 17
+  },
+  {
+    "id": 62,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 2,
+    "product": 17
+  },
+  {
+    "id": 63,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 3,
+    "product": 17
+  },
+  {
+    "id": 64,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 4,
+    "product": 17
+  },
+  {
+    "id": 65,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 5,
+    "product": 17
+  },
+  {
+    "id": 66,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 6,
+    "product": 160
+  },
+  {
+    "id": 67,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 7,
+    "product": 160
+  },
+  {
+    "id": 68,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 8,
+    "product": 160
+  },
+  {
+    "id": 69,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 9,
+    "product": 15
+  },
+  {
+    "id": 70,
+    "starts_at": "2017-04-21",
+    "ends_at": "2018-04-18",
+    "amount": "88778",
+    "unit": "kg",
+    "producer": 10,
+    "product": 15
   }
 ]

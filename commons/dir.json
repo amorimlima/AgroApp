@@ -1,0 +1,14 @@
+{
+  "models": "models",
+  "controllers": "controllers",
+  "routes": "routes",
+  "configs": "configs",
+  "commons": "commons",
+  "static": {
+    "scripts": "static/scripts",
+    "styles": "static/styles"
+  },
+  "test": "test",
+  "utils": "utils",
+  "views": "views"
+}

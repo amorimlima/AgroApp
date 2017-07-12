@@ -6,8 +6,7 @@ function modelsConfig(app) {
   var configuredModels = [];
   
   models.forEach(function (modelTemplate) {
-    var model = modelTemplate(app);
-
+    var model = modelTemplate(configuredModels);
     configuredModels[model.name] = sequelize.import(model.name, model.constructor);
   });
 

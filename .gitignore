@@ -1,7 +1,7 @@
 node_modules
 static/**/dist
 npm-debug.log
-src/**/build
-src/**/bundle_*.js
-src/**/style_*.css
+static/scripts/bundle_dev.js
+static/scripts/bundle_prod.js
+static/styles/style.css
 .idea

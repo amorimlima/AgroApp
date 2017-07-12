@@ -1,4 +1,5 @@
 var MODEL_NAME = 'PessoaFisica';
+var Usuario = null;
 
 function pessoaFisicaModel(sequelize, DataType) {
   var constructor = {
@@ -15,8 +16,14 @@ function pessoaFisicaModel(sequelize, DataType) {
   };
   var configs = { tableName: 'pessoa_fisica' };
   var PessoaFisica = sequelize.define(MODEL_NAME, constructor, configs);
+
+  PessoaFisica.hasMany(Usuario);
+
+  return PessoaFisica;
 }
 
-module.exports = function (app) {
+module.exports = function (models) {
+  Usuario = models.Usuario;
+
   return { name: MODEL_NAME, constructor: pessoaFisicaModel };
 };

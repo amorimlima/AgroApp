@@ -24,7 +24,7 @@ function datasourceConfig(app) {
     Sequelize: Sequelize,
   };
 
-  sequelize.sync().done(function() { 
+  sequelize.sync({ force: true }).done(function() { 
     return database 
   });
 

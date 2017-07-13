@@ -10,7 +10,7 @@ function perfilModel(sequelize, DataType) {
   var configs = { tableName: 'perfil' };
   var Perfil  = sequelize.define(MODEL_NAME, constructor, configs);
 
-  Perfil.hasMany(Usuario);
+  Perfil.hasMany(Usuario, { foreignKey: 'perfil' });
   
   return Perfil;
 };

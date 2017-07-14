@@ -25,15 +25,13 @@ function pessoaFisicaModel(sequelize, DataType) {
       validate: { notEmpty: true }
     },
     data_nascimento: {
-      type: DataType.DATE,
+      type: DataType.DATEONLY,
       allowNull: false,
       validate: { notEmpty: true }
     }
   };
   var configs = { tableName: 'pessoa_fisica' };
   var PessoaFisica = sequelize.define(MODEL_NAME, constructor, configs);
-
-  PessoaFisica.hasOne(Pessoa, { foreignKey: 'pessoa_fisica' });
 
   return PessoaFisica;
 }

@@ -1,4 +1,5 @@
 var MODEL_NAME = 'TipoTelefone';
+var Telefone = null;
 
 function tipoTelefoneModel(sequelize, DataType) {
   var constructor = {
@@ -16,9 +17,13 @@ function tipoTelefoneModel(sequelize, DataType) {
   var configs = { tableName: 'tipo_telefone' };
   var TipoTelefone = sequelize.define(MODEL_NAME, constructor, configs);
 
+  TipoTelefone.hasMany(Telefone, { foreignKey: 'tipo' });
+
   return TipoTelefone;
 }
 
 module.exports = function (models) {
+  Telefone = models.Telefone;
+
   return { name: MODEL_NAME, constructor: tipoTelefoneModel };
 };

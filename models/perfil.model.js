@@ -3,8 +3,16 @@ var Usuario = null;
 
 function perfilModel(sequelize, DataType) {
   var constructor = {
-    id:   { type: DataType.INTEGER, primaryKey: true, autoIncrement: true },
-    nome: { type: DataType.STRING(45), allowNull: false, validate: { notEmpty: true } }
+    id:   {
+      type: DataType.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    nome: {
+      type: DataType.STRING(45),
+      allowNull: false,
+      validate: { notEmpty: true }
+    }
 
   };
   var configs = { tableName: 'perfil' };
@@ -14,7 +22,6 @@ function perfilModel(sequelize, DataType) {
   
   return Perfil;
 };
-
 
 module.exports = function (models) {
   Usuario = models.Usuario;

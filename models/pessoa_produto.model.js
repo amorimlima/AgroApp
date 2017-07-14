@@ -9,11 +9,6 @@ function pessoaProdutoModel(sequelize, DataType) {
       primaryKey: true,
       autoIncrement: true
     },
-    pessoa: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: { model: Pessoa }
-    },
     produto: {
       type: DataType.INTEGER,
       allowNull: false,

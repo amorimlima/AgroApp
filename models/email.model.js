@@ -9,11 +9,6 @@ function emailModel(sequelize, DataType) {
       primaryKey: true,
       autoIncrement: true
     },
-    pessoa: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: { model: Pessoa }
-    },
     email: { 
       type: DataType.STRING(100),
       allowNull: false,

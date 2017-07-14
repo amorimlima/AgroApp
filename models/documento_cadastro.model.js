@@ -9,11 +9,6 @@ function documentoCadastroModel(sequelize, DataType) {
       primaryKey: true,
       autoIncrement: true
     },
-    pessoa: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: { model: Pessoa }
-    },
     descricao: { 
       type: DataType.STRING(200),
       allowNull: false,

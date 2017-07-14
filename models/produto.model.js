@@ -8,11 +8,6 @@ function produtoModel(sequelize, DataType) {
       primaryKey: true,
       autoIncrement: true
     },
-    categoria_produto: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: { model: CategoriaProduto }
-    },
     nome: {
       type: DataType.STRING(100),
       allowNull: false,

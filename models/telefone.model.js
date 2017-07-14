@@ -9,11 +9,6 @@ function telefoneModel(sequelize, DataType) {
       primaryKey: true,
       autoIncrement: true
     },
-    pessoa: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: { model: Pessoa }
-    },
     tipo: {
       type: DataType.INTEGER,
       allowNull: false,

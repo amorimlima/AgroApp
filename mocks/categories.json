@@ -1,11 +1,14 @@
 [
   {
+    "id": 1,
     "nome": "Legumes e Verduras"
   },
   {
+    "id": 2,
     "nome": "Ervas Frescas"
   },
   {
+    "id": 3,
     "nome": "Frutas"
   }
 ]

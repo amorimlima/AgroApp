@@ -9,11 +9,6 @@ function enderecoModel(sequelize, DataType) {
       primaryKey: true,
       autoIncrement: true,
     },
-    pessoa: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: { model: Pessoa }
-    },
     cep: {
       type: DataType.STRING(9),
       validate: { notEmpty: true }

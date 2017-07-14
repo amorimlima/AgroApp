@@ -1,8 +1,9 @@
 var chai = require('chai');
 var supertest = require('supertest');
 var td = require('testdouble');
+var dotenv = require('dotenv');
 
-var app = require('../app');
+dotenv.config();
 
 module.exports = {
   request: supertest(app),

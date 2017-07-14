@@ -1,927 +1,742 @@
 [
   {
-    "id": 1, 
-    "name": "Abóbora", 
-    "category": 1
+    "nome": "Abóbora", 
+    "categoria_produto": 1
   },
   {
-    "id": 2, 
-    "name": "Abobrinha", 
-    "category": 1
+    "nome": "Abobrinha", 
+    "categoria_produto": 1
   },
   {
-    "id": 3, 
-    "name": "Acelga", 
-    "category": 1
+    "nome": "Acelga", 
+    "categoria_produto": 1
   },
   {
-    "id": 4, 
-    "name": "Alcachofra", 
-    "category": 1
+    "nome": "Alcachofra", 
+    "categoria_produto": 1
   },
   {
-    "id": 5, 
-    "name": "Alface americana", 
-    "category": 1
+    "nome": "Alface americana", 
+    "categoria_produto": 1
   },
   {
-    "id": 6, 
-    "name": "Alface crespa", 
-    "category": 1
+    "nome": "Alface crespa", 
+    "categoria_produto": 1
   },
   {
-    "id": 7, 
-    "name": "Alface lisa", 
-    "category": 1
+    "nome": "Alface lisa", 
+    "categoria_produto": 1
   },
   {
-    "id": 8, 
-    "name": "Alface roxa", 
-    "category": 1
+    "nome": "Alface roxa", 
+    "categoria_produto": 1
   },
   {
-    "id": 9, 
-    "name": "Alfafa", 
-    "category": 1
+    "nome": "Alfafa", 
+    "categoria_produto": 1
   },
   {
-    "id": 10, 
-    "name": "Alho", 
-    "category": 1
+    "nome": "Alho", 
+    "categoria_produto": 1
   },
   {
-    "id": 11, 
-    "name": "Alho poró", 
-    "category": 1
+    "nome": "Alho poró", 
+    "categoria_produto": 1
   },
   {
-    "id": 12, 
-    "name": "Almeirão", 
-    "category": 1
+    "nome": "Almeirão", 
+    "categoria_produto": 1
   },
   {
-    "id": 13, 
-    "name": "Aspargos", 
-    "category": 1
+    "nome": "Aspargos", 
+    "categoria_produto": 1
   },
   {
-    "id": 14, 
-    "name": "Azedinha", 
-    "category": 1
+    "nome": "Azedinha", 
+    "categoria_produto": 1
   },
   {
-    "id": 15, 
-    "name": "Batata", 
-    "category": 1
+    "nome": "Batata", 
+    "categoria_produto": 1
   },
   {
-    "id": 16, 
-    "name": "Batata doce", 
-    "category": 1
+    "nome": "Batata doce", 
+    "categoria_produto": 1
   },
   {
-    "id": 17, 
-    "name": "Berinjela", 
-    "category": 1
+    "nome": "Berinjela", 
+    "categoria_produto": 1
   },
   {
-    "id": 18, 
-    "name": "Beterraba", 
-    "category": 1
+    "nome": "Beterraba", 
+    "categoria_produto": 1
   },
   {
-    "id": 19, 
-    "name": "Brócolis", 
-    "category": 1
+    "nome": "Brócolis", 
+    "categoria_produto": 1
   },
   {
-    "id": 20, 
-    "name": "Broto de alfafa", 
-    "category": 1
+    "nome": "Broto de alfafa", 
+    "categoria_produto": 1
   },
   {
-    "id": 21, 
-    "name": "Broto de feijão", 
-    "category": 1
+    "nome": "Broto de feijão", 
+    "categoria_produto": 1
   },
   {
-    "id": 22, 
-    "name": "Broto de trevo", 
-    "category": 1
+    "nome": "Broto de trevo", 
+    "categoria_produto": 1
   },
   {
-    "id": 23, 
-    "name": "Cará", 
-    "category": 1
+    "nome": "Cará", 
+    "categoria_produto": 1
   },
   {
-    "id": 24, 
-    "name": "Catalonha", 
-    "category": 1
+    "nome": "Catalonha", 
+    "categoria_produto": 1
   },
   {
-    "id": 25, 
-    "name": "Cebola", 
-    "category": 1
+    "nome": "Cebola", 
+    "categoria_produto": 1
   },
   {
-    "id": 26, 
-    "name": "Cebola roxa", 
-    "category": 1
+    "nome": "Cebola roxa", 
+    "categoria_produto": 1
   },
   {
-    "id": 27, 
-    "name": "Cebolete", 
-    "category": 1
+    "nome": "Cebolete", 
+    "categoria_produto": 1
   },
   {
-    "id": 28, 
-    "name": "Cebolinha", 
-    "category": 1
+    "nome": "Cebolinha", 
+    "categoria_produto": 1
   },
   {
-    "id": 29, 
-    "name": "Cenoura", 
-    "category": 1
+    "nome": "Cenoura", 
+    "categoria_produto": 1
   },
   {
-    "id": 30, 
-    "name": "Chicória", 
-    "category": 1
+    "nome": "Chicória", 
+    "categoria_produto": 1
   },
   {
-    "id": 31, 
-    "name": "Chuchu", 
-    "category": 1
+    "nome": "Chuchu", 
+    "categoria_produto": 1
   },
   {
-    "id": 32, 
-    "name": "Cogumelo paris", 
-    "category": 1
+    "nome": "Cogumelo paris", 
+    "categoria_produto": 1
   },
   {
-    "id": 33, 
-    "name": "Cogumelo shimeji", 
-    "category": 1
+    "nome": "Cogumelo shimeji", 
+    "categoria_produto": 1
   },
   {
-    "id": 34, 
-    "name": "Cogumelo shitake", 
-    "category": 1
+    "nome": "Cogumelo shitake", 
+    "categoria_produto": 1
   },
   {
-    "id": 35, 
-    "name": "Couve", 
-    "category": 1
+    "nome": "Couve", 
+    "categoria_produto": 1
   },
   {
-    "id": 36, 
-    "name": "Couve-de-bruxelas", 
-    "category": 1
+    "nome": "Couve-de-bruxelas", 
+    "categoria_produto": 1
   },
   {
-    "id": 37, 
-    "name": "Couve-flor", 
-    "category": 1
+    "nome": "Couve-flor", 
+    "categoria_produto": 1
   },
   {
-    "id": 38, 
-    "name": "Echalota", 
-    "category": 1
+    "nome": "Echalota", 
+    "categoria_produto": 1
   },
   {
-    "id": 39, 
-    "name": "Endívia", 
-    "category": 1
+    "nome": "Endívia", 
+    "categoria_produto": 1
   },
   {
-    "id": 40, 
-    "name": "Erva-doce (Funcho)", 
-    "category": 1
+    "nome": "Erva-doce (Funcho)", 
+    "categoria_produto": 1
   },
   {
-    "id": 41, 
-    "name": "Ervilha japonesa", 
-    "category": 1
+    "nome": "Ervilha japonesa", 
+    "categoria_produto": 1
   },
   {
-    "id": 42, 
-    "name": "Ervilha torta", 
-    "category": 1
+    "nome": "Ervilha torta", 
+    "categoria_produto": 1
   },
   {
-    "id": 43, 
-    "name": "Escarola", 
-    "category": 1
+    "nome": "Escarola", 
+    "categoria_produto": 1
   },
   {
-    "id": 44, 
-    "name": "Espinafre", 
-    "category": 1
+    "nome": "Espinafre", 
+    "categoria_produto": 1
   },
   {
-    "id": 45, 
-    "name": "Fava", 
-    "category": 1
+    "nome": "Fava", 
+    "categoria_produto": 1
   },
   {
-    "id": 46, 
-    "name": "Gengibre", 
-    "category": 1
+    "nome": "Gengibre", 
+    "categoria_produto": 1
   },
   {
-    "id": 47, 
-    "name": "Inhame", 
-    "category": 1
+    "nome": "Inhame", 
+    "categoria_produto": 1
   },
   {
-    "id": 48, 
-    "name": "Jalapeño", 
-    "category": 1
+    "nome": "Jalapeño", 
+    "categoria_produto": 1
   },
   {
-    "id": 49, 
-    "name": "Jiló", 
-    "category": 1
+    "nome": "Jiló", 
+    "categoria_produto": 1
   },
   {
-    "id": 50, 
-    "name": "Mandioca", 
-    "category": 1
+    "nome": "Mandioca", 
+    "categoria_produto": 1
   },
   {
-    "id": 51, 
-    "name": "Mandioquinha (Batata-baroa)", 
-    "category": 1
+    "nome": "Mandioquinha (Batata-baroa)", 
+    "categoria_produto": 1
   },
   {
-    "id": 52, 
-    "name": "Milho", 
-    "category": 1
+    "nome": "Milho", 
+    "categoria_produto": 1
   },
   {
-    "id": 53, 
-    "name": "Mostarda", 
-    "category": 1
+    "nome": "Mostarda", 
+    "categoria_produto": 1
   },
   {
-    "id": 54, 
-    "name": "Nabo", 
-    "category": 1
+    "nome": "Nabo", 
+    "categoria_produto": 1
   },
   {
-    "id": 55, 
-    "name": "Pepino comum", 
-    "category": 1
+    "nome": "Pepino comum", 
+    "categoria_produto": 1
   },
   {
-    "id": 56, 
-    "name": "Pepino japonês", 
-    "category": 1
+    "nome": "Pepino japonês", 
+    "categoria_produto": 1
   },
   {
-    "id": 57, 
-    "name": "Pimentão", 
-    "category": 1
+    "nome": "Pimentão", 
+    "categoria_produto": 1
   },
   {
-    "id": 58, 
-    "name": "Pinhão", 
-    "category": 1
+    "nome": "Pinhão", 
+    "categoria_produto": 1
   },
   {
-    "id": 59, 
-    "name": "Quiabo", 
-    "category": 1
+    "nome": "Quiabo", 
+    "categoria_produto": 1
   },
   {
-    "id": 60, 
-    "name": "Rabanete", 
-    "category": 1
+    "nome": "Rabanete", 
+    "categoria_produto": 1
   },
   {
-    "id": 61, 
-    "name": "Radicchio", 
-    "category": 1
+    "nome": "Radicchio", 
+    "categoria_produto": 1
   },
   {
-    "id": 62, 
-    "name": "Repolho", 
-    "category": 1
+    "nome": "Repolho", 
+    "categoria_produto": 1
   },
   {
-    "id": 63, 
-    "name": "Rúcula", 
-    "category": 1
+    "nome": "Rúcula", 
+    "categoria_produto": 1
   },
   {
-    "id": 64, 
-    "name": "Salsão", 
-    "category": 1
+    "nome": "Salsão", 
+    "categoria_produto": 1
   },
   {
-    "id": 65, 
-    "name": "Tomate caqui", 
-    "category": 1
+    "nome": "Tomate caqui", 
+    "categoria_produto": 1
   },
   {
-    "id": 66, 
-    "name": "Tomate carmen", 
-    "category": 1
+    "nome": "Tomate carmen", 
+    "categoria_produto": 1
   },
   {
-    "id": 67, 
-    "name": "Tomate cereja", 
-    "category": 1
+    "nome": "Tomate cereja", 
+    "categoria_produto": 1
   },
   {
-    "id": 68, 
-    "name": "Tomate debora", 
-    "category": 1
+    "nome": "Tomate debora", 
+    "categoria_produto": 1
   },
   {
-    "id": 69, 
-    "name": "Tomate italiano", 
-    "category": 1
+    "nome": "Tomate italiano", 
+    "categoria_produto": 1
   },
   {
-    "id": 70, 
-    "name": "Tomate pêra", 
-    "category": 1
+    "nome": "Tomate pêra", 
+    "categoria_produto": 1
   },
   {
-    "id": 71, 
-    "name": "Vagem holandesa", 
-    "category": 1
+    "nome": "Vagem holandesa", 
+    "categoria_produto": 1
   },
   {
-    "id": 72, 
-    "name": "Vagem macarrão", 
-    "category": 1
+    "nome": "Vagem macarrão", 
+    "categoria_produto": 1
   },
   {
-    "id": 73, 
-    "name": "Vagem manteiga", 
-    "category": 1
+    "nome": "Vagem manteiga", 
+    "categoria_produto": 1
   },
   {
-    "id": 74, 
-    "name": "Alecrim", 
-    "category": 2
+    "nome": "Alecrim", 
+    "categoria_produto": 2
   },
   {
-    "id": 75, 
-    "name": "Cebolinha", 
-    "category": 2
+    "nome": "Cebolinha", 
+    "categoria_produto": 2
   },
   {
-    "id": 76, 
-    "name": "Coentro", 
-    "category": 2
+    "nome": "Coentro", 
+    "categoria_produto": 2
   },
   {
-    "id": 77, 
-    "name": "Dill", 
-    "category": 2
+    "nome": "Dill", 
+    "categoria_produto": 2
   },
   {
-    "id": 78, 
-    "name": "Estragão", 
-    "category": 2
+    "nome": "Estragão", 
+    "categoria_produto": 2
   },
   {
-    "id": 79, 
-    "name": "Hortelã", 
-    "category": 2
+    "nome": "Hortelã", 
+    "categoria_produto": 2
   },
   {
-    "id": 80, 
-    "name": "Louro", 
-    "category": 2
+    "nome": "Louro", 
+    "categoria_produto": 2
   },
   {
-    "id": 81, 
-    "name": "Manjericão", 
-    "category": 2
+    "nome": "Manjericão", 
+    "categoria_produto": 2
   },
   {
-    "id": 82, 
-    "name": "Manjerona", 
-    "category": 2
+    "nome": "Manjerona", 
+    "categoria_produto": 2
   },
   {
-    "id": 83, 
-    "name": "Orégano", 
-    "category": 2
+    "nome": "Orégano", 
+    "categoria_produto": 2
   },
   {
-    "id": 84, 
-    "name": "Salsinha", 
-    "category": 2
+    "nome": "Salsinha", 
+    "categoria_produto": 2
   },
   {
-    "id": 85, 
-    "name": "Sálvia", 
-    "category": 2
+    "nome": "Sálvia", 
+    "categoria_produto": 2
   },
   {
-    "id": 86, 
-    "name": "Tomilho", 
-    "category": 2
+    "nome": "Tomilho", 
+    "categoria_produto": 2
   },
   {
-    "id": 87, 
-    "name": "Abacate", 
-    "category": 3
+    "nome": "Abacate", 
+    "categoria_produto": 3
   },
   {
-    "id": 88, 
-    "name": "Abacaxi havai", 
-    "category": 3
+    "nome": "Abacaxi havai", 
+    "categoria_produto": 3
   },
   {
-    "id": 89, 
-    "name": "Abacaxi pérola", 
-    "category": 3
+    "nome": "Abacaxi pérola", 
+    "categoria_produto": 3
   },
   {
-    "id": 90, 
-    "name": "Ameixa preta", 
-    "category": 3
+    "nome": "Ameixa preta", 
+    "categoria_produto": 3
   },
   {
-    "id": 91, 
-    "name": "Ameixa rosada", 
-    "category": 3
+    "nome": "Ameixa rosada", 
+    "categoria_produto": 3
   },
   {
-    "id": 92, 
-    "name": "Atemóia", 
-    "category": 3
+    "nome": "Atemóia", 
+    "categoria_produto": 3
   },
   {
-    "id": 93, 
-    "name": "Avocado", 
-    "category": 3
+    "nome": "Avocado", 
+    "categoria_produto": 3
   },
   {
-    "id": 94, 
-    "name": "Banana baby", 
-    "category": 3
+    "nome": "Banana baby", 
+    "categoria_produto": 3
   },
   {
-    "id": 95, 
-    "name": "Banana da terra", 
-    "category": 3
+    "nome": "Banana da terra", 
+    "categoria_produto": 3
   },
   {
-    "id": 96, 
-    "name": "Banana maçã", 
-    "category": 3
+    "nome": "Banana maçã", 
+    "categoria_produto": 3
   },
   {
-    "id": 97, 
-    "name": "Banana nanica", 
-    "category": 3
+    "nome": "Banana nanica", 
+    "categoria_produto": 3
   },
   {
-    "id": 98, 
-    "name": "Banana ouro", 
-    "category": 3
+    "nome": "Banana ouro", 
+    "categoria_produto": 3
   },
   {
-    "id": 99, 
-    "name": "Banana prata", 
-    "category": 3
+    "nome": "Banana prata", 
+    "categoria_produto": 3
   },
   {
-    "id": 100, 
-    "name": "Cajú", 
-    "category": 3
+    "nome": "Cajú", 
+    "categoria_produto": 3
   },
   {
-    "id": 101, 
-    "name": "Caqui chocolate", 
-    "category": 3
+    "nome": "Caqui chocolate", 
+    "categoria_produto": 3
   },
   {
-    "id": 102, 
-    "name": "Caqui taubaté", 
-    "category": 3
+    "nome": "Caqui taubaté", 
+    "categoria_produto": 3
   },
   {
-    "id": 103, 
-    "name": "Carambola", 
-    "category": 3
+    "nome": "Carambola", 
+    "categoria_produto": 3
   },
   {
-    "id": 104, 
-    "name": "Cereja", 
-    "category": 3
+    "nome": "Cereja", 
+    "categoria_produto": 3
   },
   {
-    "id": 105, 
-    "name": "Coco", 
-    "category": 3
+    "nome": "Coco", 
+    "categoria_produto": 3
   },
   {
-    "id": 106, 
-    "name": "Damasco", 
-    "category": 3
+    "nome": "Damasco", 
+    "categoria_produto": 3
   },
   {
-    "id": 107, 
-    "name": "Figo", 
-    "category": 3
+    "nome": "Figo", 
+    "categoria_produto": 3
   },
   {
-    "id": 108, 
-    "name": "Fruta do conde", 
-    "category": 3
+    "nome": "Fruta do conde", 
+    "categoria_produto": 3
   },
   {
-    "id": 109, 
-    "name": "Goiaba branca", 
-    "category": 3
+    "nome": "Goiaba branca", 
+    "categoria_produto": 3
   },
   {
-    "id": 110, 
-    "name": "Goiaba vermelha", 
-    "category": 3
+    "nome": "Goiaba vermelha", 
+    "categoria_produto": 3
   },
   {
-    "id": 111, 
-    "name": "Granadilla", 
-    "category": 3
+    "nome": "Granadilla", 
+    "categoria_produto": 3
   },
   {
-    "id": 112, 
-    "name": "Grapefruit", 
-    "category": 3
+    "nome": "Grapefruit", 
+    "categoria_produto": 3
   },
   {
-    "id": 113, 
-    "name": "Jabuticaba", 
-    "category": 3
+    "nome": "Jabuticaba", 
+    "categoria_produto": 3
   },
   {
-    "id": 114, 
-    "name": "Jaca", 
-    "category": 3
+    "nome": "Jaca", 
+    "categoria_produto": 3
   },
   {
-    "id": 115, 
-    "name": "Jatobá", 
-    "category": 3
+    "nome": "Jatobá", 
+    "categoria_produto": 3
   },
   {
-    "id": 116, 
-    "name": "Kinkan", 
-    "category": 3
+    "nome": "Kinkan", 
+    "categoria_produto": 3
   },
   {
-    "id": 117, 
-    "name": "Kiwi", 
-    "category": 3
+    "nome": "Kiwi", 
+    "categoria_produto": 3
   },
   {
-    "id": 118, 
-    "name": "Laranja da terra", 
-    "category": 3
+    "nome": "Laranja da terra", 
+    "categoria_produto": 3
   },
   {
-    "id": 119, 
-    "name": "Laranja lima", 
-    "category": 3
+    "nome": "Laranja lima", 
+    "categoria_produto": 3
   },
   {
-    "id": 120, 
-    "name": "Laranja pera", 
-    "category": 3
+    "nome": "Laranja pera", 
+    "categoria_produto": 3
   },
   {
-    "id": 121, 
-    "name": "Lima da Pérsia", 
-    "category": 3
+    "nome": "Lima da Pérsia", 
+    "categoria_produto": 3
   },
   {
-    "id": 122, 
-    "name": "Limão siciliano", 
-    "category": 3
+    "nome": "Limão siciliano", 
+    "categoria_produto": 3
   },
   {
-    "id": 123, 
-    "name": "Limão Taiti", 
-    "category": 3
+    "nome": "Limão Taiti", 
+    "categoria_produto": 3
   },
   {
-    "id": 124, 
-    "name": "Maçã Fuji", 
-    "category": 3
+    "nome": "Maçã Fuji", 
+    "categoria_produto": 3
   },
   {
-    "id": 125, 
-    "name": "Maçã gala", 
-    "category": 3
+    "nome": "Maçã gala", 
+    "categoria_produto": 3
   },
   {
-    "id": 126, 
-    "name": "Maçã Ganny Smith", 
-    "category": 3
+    "nome": "Maçã Ganny Smith", 
+    "categoria_produto": 3
   },
   {
-    "id": 127, 
-    "name": "Maçã pink lady", 
-    "category": 3
+    "nome": "Maçã pink lady", 
+    "categoria_produto": 3
   },
   {
-    "id": 128, 
-    "name": "Maçã verde", 
-    "category": 3
+    "nome": "Maçã verde", 
+    "categoria_produto": 3
   },
   {
-    "id": 129, 
-    "name": "Macadâmia", 
-    "category": 3
+    "nome": "Macadâmia", 
+    "categoria_produto": 3
   },
   {
-    "id": 130, 
-    "name": "Mamão formosa", 
-    "category": 3
+    "nome": "Mamão formosa", 
+    "categoria_produto": 3
   },
   {
-    "id": 131, 
-    "name": "Mamão golden", 
-    "category": 3
+    "nome": "Mamão golden", 
+    "categoria_produto": 3
   },
   {
-    "id": 132, 
-    "name": "Mamão papaya", 
-    "category": 3
+    "nome": "Mamão papaya", 
+    "categoria_produto": 3
   },
   {
-    "id": 133, 
-    "name": "Manga bourbon", 
-    "category": 3
+    "nome": "Manga bourbon", 
+    "categoria_produto": 3
   },
   {
-    "id": 134, 
-    "name": "Manga haden", 
-    "category": 3
+    "nome": "Manga haden", 
+    "categoria_produto": 3
   },
   {
-    "id": 135, 
-    "name": "Manga keit", 
-    "category": 3
+    "nome": "Manga keit", 
+    "categoria_produto": 3
   },
   {
-    "id": 136, 
-    "name": "Manga palmer", 
-    "category": 3
+    "nome": "Manga palmer", 
+    "categoria_produto": 3
   },
   {
-    "id": 137, 
-    "name": "Manga rosa", 
-    "category": 3
+    "nome": "Manga rosa", 
+    "categoria_produto": 3
   },
   {
-    "id": 138, 
-    "name": "Manga Tommy", 
-    "category": 3
+    "nome": "Manga Tommy", 
+    "categoria_produto": 3
   },
   {
-    "id": 139, 
-    "name": "Manga Vandayke", 
-    "category": 3
+    "nome": "Manga Vandayke", 
+    "categoria_produto": 3
   },
   {
-    "id": 140, 
-    "name": "Mangostin", 
-    "category": 3
+    "nome": "Mangostin", 
+    "categoria_produto": 3
   },
   {
-    "id": 141, 
-    "name": "Maracujá azedo", 
-    "category": 3
+    "nome": "Maracujá azedo", 
+    "categoria_produto": 3
   },
   {
-    "id": 142, 
-    "name": "Maracujá doce", 
-    "category": 3
+    "nome": "Maracujá doce", 
+    "categoria_produto": 3
   },
   {
-    "id": 143, 
-    "name": "Marmelo", 
-    "category": 3
+    "nome": "Marmelo", 
+    "categoria_produto": 3
   },
   {
-    "id": 144, 
-    "name": "Melancia", 
-    "category": 3
+    "nome": "Melancia", 
+    "categoria_produto": 3
   },
   {
-    "id": 145, 
-    "name": "Melancia baby", 
-    "category": 3
+    "nome": "Melancia baby", 
+    "categoria_produto": 3
   },
   {
-    "id": 146, 
-    "name": "Melão amarelo", 
-    "category": 3
+    "nome": "Melão amarelo", 
+    "categoria_produto": 3
   },
   {
-    "id": 147, 
-    "name": "Melão doce", 
-    "category": 3
+    "nome": "Melão doce", 
+    "categoria_produto": 3
   },
   {
-    "id": 148, 
-    "name": "Melão espanhol", 
-    "category": 3
+    "nome": "Melão espanhol", 
+    "categoria_produto": 3
   },
   {
-    "id": 149, 
-    "name": "Melão Galia", 
-    "category": 3
+    "nome": "Melão Galia", 
+    "categoria_produto": 3
   },
   {
-    "id": 150, 
-    "name": "Melão nectamelon", 
-    "category": 3
+    "nome": "Melão nectamelon", 
+    "categoria_produto": 3
   },
   {
-    "id": 151, 
-    "name": "Melão orange", 
-    "category": 3
+    "nome": "Melão orange", 
+    "categoria_produto": 3
   },
   {
-    "id": 152, 
-    "name": "Melão ouro", 
-    "category": 3
+    "nome": "Melão ouro", 
+    "categoria_produto": 3
   },
   {
-    "id": 153, 
-    "name": "Melão verde", 
-    "category": 3
+    "nome": "Melão verde", 
+    "categoria_produto": 3
   },
   {
-    "id": 154, 
-    "name": "Mexerica cravo", 
-    "category": 3
+    "nome": "Mexerica cravo", 
+    "categoria_produto": 3
   },
   {
-    "id": 155, 
-    "name": "Mexerica ponkan", 
-    "category": 3
+    "nome": "Mexerica ponkan", 
+    "categoria_produto": 3
   },
   {
-    "id": 156, 
-    "name": "Mexerica Clemenville", 
-    "category": 3
+    "nome": "Mexerica Clemenville", 
+    "categoria_produto": 3
   },
   {
-    "id": 157, 
-    "name": "Mexerica decopon", 
-    "category": 3
+    "nome": "Mexerica decopon", 
+    "categoria_produto": 3
   },
   {
-    "id": 158, 
-    "name": "Mexerica do rio", 
-    "category": 3
+    "nome": "Mexerica do rio", 
+    "categoria_produto": 3
   },
   {
-    "id": 159, 
-    "name": "Mexerica murkot", 
-    "category": 3
+    "nome": "Mexerica murkot", 
+    "categoria_produto": 3
   },
   {
-    "id": 160, 
-    "name": "Morango", 
-    "category": 3
+    "nome": "Morango", 
+    "categoria_produto": 3
   },
   {
-    "id": 161, 
-    "name": "Nectarina", 
-    "category": 3
+    "nome": "Nectarina", 
+    "categoria_produto": 3
   },
   {
-    "id": 162, 
-    "name": "Pera abate fetel", 
-    "category": 3
+    "nome": "Pera abate fetel", 
+    "categoria_produto": 3
   },
   {
-    "id": 163, 
-    "name": "Pera asiática", 
-    "category": 3
+    "nome": "Pera asiática", 
+    "categoria_produto": 3
   },
   {
-    "id": 164, 
-    "name": "Pera bosc", 
-    "category": 3
+    "nome": "Pera bosc", 
+    "categoria_produto": 3
   },
   {
-    "id": 165, 
-    "name": "Pera concord", 
-    "category": 3
+    "nome": "Pera concord", 
+    "categoria_produto": 3
   },
   {
-    "id": 166, 
-    "name": "Pera d'anjou", 
-    "category": 3
+    "nome": "Pera d'anjou", 
+    "categoria_produto": 3
   },
   {
-    "id": 167, 
-    "name": "Pera packans", 
-    "category": 3
+    "nome": "Pera packans", 
+    "categoria_produto": 3
   },
   {
-    "id": 168, 
-    "name": "Pera portuguesa", 
-    "category": 3
+    "nome": "Pera portuguesa", 
+    "categoria_produto": 3
   },
   {
-    "id": 169, 
-    "name": "Pera red", 
-    "category": 3
+    "nome": "Pera red", 
+    "categoria_produto": 3
   },
   {
-    "id": 170, 
-    "name": "Pera williams", 
-    "category": 3
+    "nome": "Pera williams", 
+    "categoria_produto": 3
   },
   {
-    "id": 171, 
-    "name": "Pêssego", 
-    "category": 3
+    "nome": "Pêssego", 
+    "categoria_produto": 3
   },
   {
-    "id": 172, 
-    "name": "Romã", 
-    "category": 3
+    "nome": "Romã", 
+    "categoria_produto": 3
   },
   {
-    "id": 173, 
-    "name": "Sapoti", 
-    "category": 3
+    "nome": "Sapoti", 
+    "categoria_produto": 3
   },
   {
-    "id": 174, 
-    "name": "Tamarindo", 
-    "category": 3
+    "nome": "Tamarindo", 
+    "categoria_produto": 3
   },
   {
-    "id": 175, 
-    "name": "Uva benitaka", 
-    "category": 3
+    "nome": "Uva benitaka", 
+    "categoria_produto": 3
   },
   {
-    "id": 176, 
-    "name": "Uva Brasil", 
-    "category": 3
+    "nome": "Uva Brasil", 
+    "categoria_produto": 3
   },
   {
-    "id": 177, 
-    "name": "Uva crismon", 
-    "category": 3
+    "nome": "Uva crismon", 
+    "categoria_produto": 3
   },
   {
-    "id": 178, 
-    "name": "Uva cristima rosé", 
-    "category": 3
+    "nome": "Uva cristima rosé", 
+    "categoria_produto": 3
   },
   {
-    "id": 179, 
-    "name": "Uva Itália", 
-    "category": 3
+    "nome": "Uva Itália", 
+    "categoria_produto": 3
   },
   {
-    "id": 180, 
-    "name": "Uva nacional sugraone", 
-    "category": 3
+    "nome": "Uva nacional sugraone", 
+    "categoria_produto": 3
   },
   {
-    "id": 181, 
-    "name": "Uva red globe", 
-    "category": 3
+    "nome": "Uva red globe", 
+    "categoria_produto": 3
   },
   {
-    "id": 182, 
-    "name": "Uva red mary", 
-    "category": 3
+    "nome": "Uva red mary", 
+    "categoria_produto": 3
   },
   {
-    "id": 183, 
-    "name": "Uva rosada", 
-    "category": 3
+    "nome": "Uva rosada", 
+    "categoria_produto": 3
   },
   {
-    "id": 184, 
-    "name": "Uva rubi", 
-    "category": 3
+    "nome": "Uva rubi", 
+    "categoria_produto": 3
   },
   {
-    "id": 185, 
-    "name": "Uva thompson", 
-    "category": 3
+    "nome": "Uva thompson", 
+    "categoria_produto": 3
   }
 ]

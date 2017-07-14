@@ -1,17 +1,11 @@
 [
   {
-    "id": 1,
-    "name": "Legumes e Verduras",
-    "icon": "vegetables_category.png"
+    "nome": "Legumes e Verduras"
   },
   {
-    "id": 2,
-    "name": "Ervas Frescas",
-    "icon": "herbs_category.png"
+    "nome": "Ervas Frescas"
   },
   {
-    "id": 3,
-    "name": "Frutas",
-    "icon": "fruits_category.png"
+    "nome": "Frutas"
   }
 ]

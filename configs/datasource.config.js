@@ -11,9 +11,11 @@ function datasourceConfig(app) {
     return database;
   }
 
+  var forceSync = process.env.NODE_ENV === 'test';
+  var dbNameSuffix = process.env.NODE_ENV ? '_' + process.env.NODE_ENV : '';
   var config = app.get('configs');
   var sequelize = new Sequelize(
-    config.database.name,
+    config.database.name + dbNameSuffix,
     config.database.username,
     config.database.password,
     config.database.options
@@ -24,7 +26,7 @@ function datasourceConfig(app) {
     Sequelize: Sequelize,
   };
 
-  sequelize.sync({ force: true }).done(function() { 
+  sequelize.sync({ force: forceSync }).done(function() {
     return database 
   });
 

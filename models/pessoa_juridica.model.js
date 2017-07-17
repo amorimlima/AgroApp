@@ -1,7 +1,7 @@
 var MODEL_NAME = 'PessoaJuridica';
-var Pessoa = null;
+var tableName = 'pessoa_juridica';
 
-function pessoaJuridicaModel(sequelize, DataType) {
+function constructModel(sequelize, DataType) {
   var constructor = {
     cnpj: {
       type: DataType.INTEGER(16),
@@ -25,14 +25,12 @@ function pessoaJuridicaModel(sequelize, DataType) {
       allowNull: false
     }
   };
-  var configs = { tableName: 'pessoa_juridica' };
+  var configs = { tableName: tableName };
   var PessoaJuridica = sequelize.define(MODEL_NAME, constructor, configs);
 
   return PessoaJuridica;
 }
 
 module.exports = function (models) {
-  Pessoa = models.Pessoa;
-
-  return { name: MODEL_NAME, constructor: pessoaJuridicaModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 };

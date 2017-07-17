@@ -1,18 +1,12 @@
-var MODEL_NAME = 'PessoaProduto';
-var Pessoa = null;
-var Produto = null;
+var MODEL_NAME = 'UsuarioProduto';
+var tableName = 'usuario_produto';
 
-function pessoaProdutoModel(sequelize, DataType) {
+function constructModel(sequelize, DataType) {
   var constructor = {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    produto: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: { model: Produto }
     },
     unidade: {
       type: DataType.STRING,
@@ -39,15 +33,12 @@ function pessoaProdutoModel(sequelize, DataType) {
       defaultValue: true
     }
   };
-  var configs = { tableName: 'pessoa_produto' };
-  var PessoaProduto = sequelize.define(MODEL_NAME, constructor, configs);
+  var configs = { tableName: tableName };
+  var Model = sequelize.define(MODEL_NAME, constructor, configs);
 
-  return PessoaProduto;
+  return Model;
 }
 
 module.exports = function (models) {
-  Pessoa = models.Pessoa;
-  Produto = models.Produto;
-
-  return { name: MODEL_NAME, constructor: pessoaProdutoModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 };

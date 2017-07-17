@@ -1,9 +1,9 @@
 var GenericDAO = require('./generic.dao');
 
-class PessoaDAO extends GenericDAO {
+class UsuarioDAO extends GenericDAO {
   constructor(model) {
     super(model);
   }
 };
 
-module.exports = PessoaDAO;
+module.exports = UsuarioDAO;

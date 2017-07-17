@@ -1,29 +1,25 @@
 var MODEL_NAME = 'Favorito';
-var Pessoa = null;
+var tableName = 'favorito';
 
-function favoritoModel(sequelize, DataType) {
+function constructModel(sequelize, DataType) {
   var constructor = {
-    pessoa: { 
+    usuario: { 
       type: DataType.INTEGER,
       primaryKey: true,
       allowNull: false,
-      references: { model: Pessoa }
     },
     favoritado: {
       type: DataType.INTEGER,
       primaryKey: true,
       allowNull: false,
-      references: { model: Pessoa }
     }
   };
-  var configs = { tableName: 'favorito' };
-  var Favorito = sequelize.define(MODEL_NAME, constructor, configs);
+  var configs = { tableName: tableName };
+  var Model = sequelize.define(MODEL_NAME, constructor, configs);
   
-  return Favorito;
+  return Model;
 }
 
 module.exports = function (models) {
-  Pessoa = models.Pessoa;
-
-  return { name: MODEL_NAME, constructor: favoritoModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 };

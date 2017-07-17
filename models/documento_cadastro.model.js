@@ -1,7 +1,7 @@
 var MODEL_NAME = 'DocumentoCadastro';
-var Pessoa = null;
+var tableName = 'documento_cadastro';
 
-function documentoCadastroModel(sequelize, DataType) {
+function constructModel(sequelize, DataType) {
   var constructor = {
     id: {
       type: DataType.INTEGER,
@@ -20,14 +20,12 @@ function documentoCadastroModel(sequelize, DataType) {
       validate: { notEmptY: true }
     }
   };
-  var configs = { tableName: 'documento_cadastro' };
-  var DocumentoCadastro = sequelize.define(MODEL_NAME, constructor, configs);
+  var configs = { tableName: tableName };
+  var Model = sequelize.define(MODEL_NAME, constructor, configs);
 
-  return DocumentoCadastro;
+  return Model;
 }
 
 module.exports = function (models) {
-  Pessoa = models.Pessoa;
-
-  return { name: MODEL_NAME, constructor: documentoCadastroModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 }

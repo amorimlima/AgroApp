@@ -1,7 +1,7 @@
 var MODEL_NAME = 'Email';
-var Pessoa = null;
+var tableName = 'email';
 
-function emailModel(sequelize, DataType) {
+function constructModel(sequelize, DataType) {
   var constructor = {
     id: {
       type: DataType.INTEGER,
@@ -15,14 +15,12 @@ function emailModel(sequelize, DataType) {
       validate: { notEmptY: true }
     }
   };
-  var configs = { tableName: 'email' };
-  var Email = sequelize.define(MODEL_NAME, constructor, configs);
+  var configs = { tableName: tableName };
+  var Model = sequelize.define(MODEL_NAME, constructor, configs);
 
-  return Email;
+  return Model;
 }
 
 module.exports = function (models) {
-  Pessoa = models.Pessoa;
-
-  return { name: MODEL_NAME, constructor: emailModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 }

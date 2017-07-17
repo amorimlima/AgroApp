@@ -1,8 +1,9 @@
 var MODEL_NAME = 'Telefone';
-var Pessoa = null;
+var tableName = 'telefone';
+
 var TipoTelefone = null;
 
-function telefoneModel(sequelize, DataType) {
+function constructModel(sequelize, DataType) {
   var constructor = {
     id: {
       type: DataType.INTEGER,
@@ -25,16 +26,14 @@ function telefoneModel(sequelize, DataType) {
       validate: { is: /(\d{8}|\d{9})/ }
     }
   };
-  var configs = { tableName: 'telefone' };
-  var Telefone = sequelize.define(MODEL_NAME, constructor, configs);
+  var configs = { tableName: tableName };
+  var Model = sequelize.define(MODEL_NAME, constructor, configs);
 
-  return Telefone;
+  return Model;
 }
 
 module.exports = function (models) {
-  Pessoa = models.Pessoa;
   TipoTelefone = models.TipoTelefone;
 
-
-  return { name: MODEL_NAME, constructor: telefoneModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 };

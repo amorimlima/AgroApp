@@ -1,7 +1,7 @@
 var MODEL_NAME = 'Endereco';
-var Pessoa = null;
+var tableName = 'endereco';
 
-function enderecoModel(sequelize, DataType) {
+function constructModel(sequelize, DataType) {
   var constructor = {
     id: {
       type: DataType.INTEGER,
@@ -39,13 +39,12 @@ function enderecoModel(sequelize, DataType) {
       validate: { notEmpty: true }
     }
   };
-  var configs = { tableName: 'endereco' };
-  var Endereco = sequelize.define(MODEL_NAME, constructor, configs);
+  var configs = { tableName: tableName };
+  var Model = sequelize.define(MODEL_NAME, constructor, configs);
 
-  return Endereco;
+  return Model;
 }
 
 module.exports = function (models) {
-  Pessoa = models.Pessoa;
-  return { name: MODEL_NAME, constructor: enderecoModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 };

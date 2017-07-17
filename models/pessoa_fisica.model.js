@@ -1,7 +1,7 @@
 var MODEL_NAME = 'PessoaFisica';
-var Pessoa = null;
+var tableName = 'pessoa_fisica';
 
-function pessoaFisicaModel(sequelize, DataType) {
+function constructModel(sequelize, DataType) {
   var constructor = {
     cpf: {
       type: DataType.INTEGER(11), 
@@ -30,14 +30,12 @@ function pessoaFisicaModel(sequelize, DataType) {
       validate: { notEmpty: true }
     }
   };
-  var configs = { tableName: 'pessoa_fisica' };
-  var PessoaFisica = sequelize.define(MODEL_NAME, constructor, configs);
+  var configs = { tableName: tableName };
+  var Model = sequelize.define(MODEL_NAME, constructor, configs);
 
-  return PessoaFisica;
+  return Model;
 }
 
 module.exports = function (models) {
-  Pessoa = models.Pessoa;
-
-  return { name: MODEL_NAME, constructor: pessoaFisicaModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 };

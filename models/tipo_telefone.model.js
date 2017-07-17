@@ -1,7 +1,9 @@
 var MODEL_NAME = 'TipoTelefone';
+var tableName = 'tipo_telefone';
+
 var Telefone = null;
 
-function tipoTelefoneModel(sequelize, DataType) {
+function constructModel(sequelize, DataType) {
   var constructor = {
     id: {
       type: DataType.INTEGER,
@@ -14,16 +16,16 @@ function tipoTelefoneModel(sequelize, DataType) {
       validate: { notEmpty: true }
     }
   };
-  var configs = { tableName: 'tipo_telefone' };
-  var TipoTelefone = sequelize.define(MODEL_NAME, constructor, configs);
+  var configs = { tableName: tableName };
+  var Model = sequelize.define(MODEL_NAME, constructor, configs);
 
-  TipoTelefone.hasMany(Telefone, { foreignKey: 'tipo' });
+  Model.hasMany(Telefone, { foreignKey: 'tipo' });
 
-  return TipoTelefone;
+  return Model;
 }
 
 module.exports = function (models) {
   Telefone = models.Telefone;
 
-  return { name: MODEL_NAME, constructor: tipoTelefoneModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 };

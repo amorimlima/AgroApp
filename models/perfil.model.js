@@ -1,7 +1,9 @@
 var MODEL_NAME = 'Perfil';
-var Usuario = null;
+var tableName = 'perfil';
 
-function perfilModel(sequelize, DataType) {
+var Credencial = null;
+
+function constructModel(sequelize, DataType) {
   var constructor = {
     id:   {
       type: DataType.INTEGER,
@@ -15,16 +17,16 @@ function perfilModel(sequelize, DataType) {
     }
 
   };
-  var configs = { tableName: 'perfil' };
-  var Perfil  = sequelize.define(MODEL_NAME, constructor, configs);
+  var configs = { tableName: tableName };
+  var Model  = sequelize.define(MODEL_NAME, constructor, configs);
 
-  Perfil.hasMany(Usuario, { foreignKey: 'perfil' });
+  Model.hasMany(Credencial, { foreignKey: tableName });
   
-  return Perfil;
+  return Model;
 };
 
 module.exports = function (models) {
-  Usuario = models.Usuario;
+  Credencial = models.Credencial;
 
-  return { name: MODEL_NAME, constructor: perfilModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 };

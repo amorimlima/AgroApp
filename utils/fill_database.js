@@ -7,41 +7,32 @@ Promise.promisifyAll(fs);
 var modelList = {};
 
 function fillCategoria() {
-  fs.readFileAsync(path.join(__dirname, '../mocks/categories.json'))
-    .then(function (json) {
-      JSON.parse(json)
-        .forEach(function (categoria) {
-          modelList.CategoriaProduto.findOrCreate({ where: categoria, defaults: categoria })
-            .then(function (created) {
-              fillProduto();
-            });
-        });
-    });
+  const json = fs.readFileSync(path.join(__dirname, '../mocks/categories.json'));
+  const categories = JSON.parse(json);
+  
+  categories.forEach((category) => {
+    modelList.CategoriaProduto.findOrCreate({ where: category, defaults: category });
+  });
+  fillProduto();
 }
 
 function fillProduto() {
-  fs.readFileAsync(path.join(__dirname, '../mocks/products.json'))
-    .then(function (json) {
-      JSON.parse(json)
-        .forEach(function (produto) {
-          modelList.Produto.findOrCreate({ where: produto, defaults: produto })
-            .then(function (created) {
-              fillPerfil()
-            });
-        });
-    });
+  const json = fs.readFileSync(path.join(__dirname, '../mocks/products.json'))
+  const products = JSON.parse(json);
+
+  products.forEach((product) => {
+    modelList.Produto.findOrCreate({ where: product, defaults: product });
+  });
+  fillPerfil();
 }
 
 function fillPerfil() {
-  fs.readFileAsync(path.join(__dirname, '../mocks/profiles.json'))
-    .then(function (json) {
-      JSON.parse(json)
-        .forEach(function (perfil) {
-          modelList.Perfil.findOrCreate({ where: perfil, defaults: perfil })
-            .then(function (created) {
-            });
-        });
-    });
+  const json = fs.readFileSync(path.join(__dirname, '../mocks/profiles.json'));
+  const profiles = JSON.parse(json);
+
+  profiles.forEach((profile) => {
+    modelList.Perfil.findOrCreate({ where: profile, defaults: profile });
+  });
 }
 
 module.exports = function (models) {

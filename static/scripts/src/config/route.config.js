@@ -13,6 +13,11 @@ function routeConfig($routeProvider, $locationProvider) {
       controller: 'LoginController',
       controllerAs: 'loginCtrl'
     })
+    .when('/register', {
+      templateUrl: '/views/register',
+      controller: 'RegisterController',
+      controllerAs: 'registerCtrl'
+    })
     .when('/search', {
       templateUrl: '/views/search',
       controller: 'SearchController',

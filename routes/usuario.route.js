@@ -1,48 +1,42 @@
 const usuarioRoute = (router, app) => {
-  const Email      = app.get('models').Email;
-  const Usuario    = app.get('models').Usuario;
-  const Credencial = app.get('models').Credencial;
-
-  const EmailDAO      = app.get('dao').EmailDAO;
-  const UsuarioDAO    = app.get('dao').UsuarioDAO;
+  const EmailDAO = app.get('dao').EmailDAO;
+  const UsuarioDAO = app.get('dao').UsuarioDAO;
   const CredencialDAO = app.get('dao').CredencialDAO;
 
-  router.post('/', (req, res) => {
-    const emailDAO = new EmailDAO(Email);
-    const usuarioDAO = new UsuarioDAO(Usuario);
-    const credencialDAO = new CredencialDAO(Credencial);
-
-    const payload = req.body;
+  router.post('/register', (req, res) => {
+    const emailDAO      = new EmailDAO(app.get('models').Email);
+    const usuarioDAO    = new UsuarioDAO(app.get('models').Usuario);
+    const credencialDAO = new CredencialDAO(app.get('models').Credencial);
     
+    let statusCode = null;
     let response = {};
-    let idUsuario = null;
-    let tipoPessoa = null;
 
     usuarioDAO
-      .create(payload.usuario)
+      .create(req.body.usuario)
       .then((usuario) => {
-        const emailPayload = Object.create(payload.email);
-
-        response = Object.create(usuario.data);
-        emailPayload.usuario = idUsuario;
-        idUsuario = usuario.data.id;
-        tipoPessoa = usuario.data.tipo;
+        const emailPayload = Object.assign({}, req.body.email);
         
+        response = Object.assign({}, usuario.data.get({ plain: true }));
+        statusCode = usuario.statusCode;
+        emailPayload.usuario = response.id;
+
         emailDAO
           .create(emailPayload)
           .then((email) => {
-            const credencialPayload = Object.create(payload.endereco);
+            const credencialPayload = Object.assign({}, req.body.credencial);
 
-            credencialPayload.usuario = idUsuario;
-            credencialPayload.email = email.data.id;
-            response.email = Object.create(email.data);
+            response.email = Object.assign({}, email.data.get({ plain: true }));
+            statusCode = email.statusCode;
+            credencialPayload.usuario = response.id;
+            credencialPayload.email = response.email.id;
 
             credencialDAO
               .create(credencialPayload)
               .then((credencial) => {
-                response.credencial = Object.create(credencial.data);
+                response.credencial = Object.assign({}, credencial.data.get({ plain: true }));
+                statusCode = credencial.statusCode;
 
-                res.statusCode = credencial.statusCode;
+                res.status(statusCode);
                 res.json(response);
               });
           });

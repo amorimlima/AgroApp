@@ -1,20 +1,19 @@
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-var Sequelize = require('sequelize');
-var models = require('../models');
+const Sequelize = require('sequelize');
+const models = require('../models');
 
-var database = null;
+let database = null;
 
-function datasourceConfig(app) {
+const datasourceConfig = (app) => {
   if (database) {
     return database;
   }
-  var env = process.env.NODE_ENV.trim();
-  var forceSync = env === 'test';
-  var dbNameSuffix = env ? '_' + env : '';
-  var config = app.get('configs');
-  var sequelize = new Sequelize(
+  const env = process.env.NODE_ENV.trim();
+  const dbNameSuffix = env ? '_' + env : '';
+  const config = app.get('configs');
+  const sequelize = new Sequelize(
     config.database.name + dbNameSuffix,
     config.database.username,
     config.database.password,
@@ -26,7 +25,7 @@ function datasourceConfig(app) {
     Sequelize: Sequelize,
   };
 
-  sequelize.sync({ force: forceSync }).done(function() {
+  sequelize.sync().done(function() {
     return database;
   });
 

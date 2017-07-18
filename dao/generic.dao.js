@@ -11,7 +11,10 @@ class GenericDAO {
     return this.model
       .create(payload)
       .then(model => responses.generic(model, HttpStatus.CREATED))
-      .catch(() => responses.error('Ocorreu um erro ao criar o registro'));
+      .catch((error) => {
+        console.log(error)
+        return responses.error('Ocorreu um erro ao criar o registro')
+      });
   }
 
   getById(id) {

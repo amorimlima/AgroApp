@@ -12,7 +12,7 @@ function constructModel(sequelize, DataType) {
     email: { 
       type: DataType.STRING(100),
       allowNull: false,
-      validate: { notEmptY: true }
+      validate: { notEmpty: true }
     }
   };
   var configs = { tableName: tableName };

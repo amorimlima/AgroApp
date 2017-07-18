@@ -10,7 +10,7 @@ const dao = require('./dao');
 const routes = require('./routes');
 
 const app = express();
-const environment = app.get('env') === 'development' ? 'dev' : 'prod';
+const environment = process.env.NODE_ENV || 'prod';
 const strings = JSON.parse(fs.readFileSync(path.join(__dirname, './commons/strings.json')));
 
 // Middlewares
@@ -28,11 +28,15 @@ app.set('models', configs.models(app));
 app.set('dao', dao);
 
 // Routes
-app.use('/usuario', routes.usuario(express.Router(), app));
+app.use('/usuario', routes.usuarioRoute(express.Router(), app));
+app.use('/views', routes.viewsRoute(express.Router(), app));
 
 // Views
 app.set('views', 'views');
 app.set('view engine', 'ejs');
+
+// Common
+app.set('strings', strings);
 
 app.get('/', (req, res) => {
   res.render('index', {

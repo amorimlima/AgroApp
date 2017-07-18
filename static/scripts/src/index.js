@@ -1,21 +1,28 @@
-var angular = require('angular');
-var ngRoute = require('angular-route');
-var ngMaterial = require('angular-material');
+const angular = require('angular');
+const ngRoute = require('angular-route');
+const ngMaterial = require('angular-material');
 
-var commons = require('./commons');
-var config = require('./config');
-var run = require('./run');
-var services = require('./services');
-var controllers = require('./controllers');
+const commons = require('./commons');
+const config = require('./config');
+const run = require('./run');
+const services = require('./services');
+const controllers = require('./controllers');
 
-var appModule = angular
+const appModule = angular
   .module('app', [
     'ngRoute',
     'ngMaterial'
   ]);
 
 commons(appModule);
-services(appModule);
-controllers(appModule);
+
+// Services
+appModule.service('UsuarioService', services.UsuarioService);
+
+// Controllers
+appModule.controller('LoginController', controllers.LoginController);
+appModule.controller('SearchController', controllers.SearchController);
+appModule.controller('RegisterController', controllers.RegisterController);
+
 run(appModule);
 config(appModule);

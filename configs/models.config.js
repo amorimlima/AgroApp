@@ -11,10 +11,8 @@ function modelsConfig(app) {
     var model = modelTemplate(configuredModels);
     configuredModels[model.name] = sequelize.import(model.name, model.constructor);
   });
-  
-  // utils.fillDatabase(configuredModels);
 
-  if (process.env.NODE_ENV === 'test') {
+  if (process.env.NODE_ENV === 'dev') {
     fillDatabase = utils.fillDatabase(configuredModels);
   }
 

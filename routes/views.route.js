@@ -7,6 +7,10 @@ function viewsRoute(router, app) {
     res.render('search', { strings: app.get('strings') });
   });
 
+  router.get('/register', function(req, res) {
+    res.render('register', { strings: app.get('strings') });
+  })
+
   return router;
 }
 

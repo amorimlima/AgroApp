@@ -3,11 +3,19 @@ class UsuarioService {
     this.request = $http;
   }
 
-  register(usuario, email, credencial) {
+  registerCredentials(usuario, email, credencial) {
     const payload = { usuario, email, credencial };
 
     return this.request
-      .post('/usuario/register', payload)
+      .post('/usuario/registro/credencial', payload)
+      .then(response => response.data);
+  }
+
+  registerPersonalData(usuario, telefone, pessoa_fisica, pessoa_juridica) {
+    const payload = { usuario, telefone, pessoa_fisica, pessoa_juridica };
+
+    return this.request
+      .post('/usuario/registro/dados-pessoais', payload)
       .then(response => response.data);
   }
 }

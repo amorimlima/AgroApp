@@ -33,6 +33,16 @@ function fillPerfil() {
   profiles.forEach((profile) => {
     modelList.Perfil.findOrCreate({ where: profile, defaults: profile });
   });
+  fillTipoTelefone();
+}
+
+function fillTipoTelefone() {
+  const json = fs.readFileSync(path.join(__dirname, '../mocks/type_tel.json'));
+  const types = JSON.parse(json);
+
+  types.forEach((type) => {
+    modelList.TipoTelefone.findOrCreate({ where: type, defaults: type });
+  });
 }
 
 module.exports = function (models) {

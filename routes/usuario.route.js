@@ -2,8 +2,11 @@ const usuarioRoute = (router, app) => {
   const EmailDAO = app.get('dao').EmailDAO;
   const UsuarioDAO = app.get('dao').UsuarioDAO;
   const CredencialDAO = app.get('dao').CredencialDAO;
+  const PessoaFisicaDAO = app.get('dao').PessoaFisicaDAO;
+  const PessoaJuridicaDAO = app.get('dao').PessoaJuridicaDAO;
+  const TelefoneDAO = app.get('dao').TelefoneDAO;
 
-  router.post('/register', (req, res) => {
+  router.post('/registro/credencial', (req, res) => {
     const emailDAO      = new EmailDAO(app.get('models').Email);
     const usuarioDAO    = new UsuarioDAO(app.get('models').Usuario);
     const credencialDAO = new CredencialDAO(app.get('models').Credencial);
@@ -40,6 +43,41 @@ const usuarioRoute = (router, app) => {
                 res.json(response);
               });
           });
+      });
+  });
+
+  router.post('/registro/dados-pessoais', (req, res) => {
+    const pessoaFisicaDAO = new PessoaFisicaDAO(app.get('models').PessoaFisica);
+    const pessoaJuridicaDAO = new PessoaJuridicaDAO(app.get('models').PessoaJuridica);
+    const telefoneDAO = new TelefoneDAO(app.get('models').Telefone);
+    
+    let response = {};
+
+    telefoneDAO
+      .create(req.body.telefone)
+      .then((telefone) => {
+        response.telefone = Object.assign({}, telefone.data.get({ plain: true }));
+
+        if (req.body.usuario.tipo_pessoa === 'PF') {
+          pessoaFisicaDAO
+            .create(req.body.pessoa_fisica)
+            .then((pf) => {
+              response.pessoa_fisica = Object.assign({}, pf.data.get({ plain: true }));
+              
+              res.status(pf.statusCode);
+              res.json(response);
+            });
+        }
+        else {
+          pessoaJuridicaDAO
+            .create(req.body.pessoa_juridica)
+            .then((pj) => {
+              response.pessoa_juridica = Object.assign({}, pj.data.get({ plain: true }));
+
+              res.status(pj.statusCode);
+              res.json(response);
+            });
+        }
       });
   });
 

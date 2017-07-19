@@ -31,6 +31,7 @@ app.set('dao', dao);
 app.use('/views', routes.viewsRoute(express.Router(), app));
 app.use('/usuario', routes.usuarioRoute(express.Router(), app));
 app.use('/perfil', routes.perfilRoute(express.Router(), app));
+app.use('/categoria', routes.categoriaProdutoRoute(express.Router(), app));
 
 // Views
 app.set('views', 'views');

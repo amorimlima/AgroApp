@@ -4,7 +4,7 @@ var tableName = 'pessoa_fisica';
 function constructModel(sequelize, DataType) {
   var constructor = {
     cpf: {
-      type: DataType.INTEGER(11), 
+      type: DataType.BIGINT(11), 
       primaryKey: true, 
       allowNull: false, 
       validate: { is: /\d{11}/ } 
@@ -12,7 +12,7 @@ function constructModel(sequelize, DataType) {
     rg: {
       type: DataType.STRING(9),
       allowNull: false,
-      validate: { notEmtpy: true }
+      validate: { notEmpty: true }
     },
     nome: {
       type: DataType.STRING(100),

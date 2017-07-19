@@ -1,40 +1,22 @@
-routeConfig.$inject = [
-  '$routeProvider',
-  '$locationProvider'
-];
-
-function routeConfig($routeProvider, $locationProvider) {
+const routeConfig = ($routeProvider, $locationProvider) => {
   $locationProvider.hashPrefix('');
   $locationProvider.html5Mode({ enabled: false });
 
   $routeProvider
-    .when('/', {
-      templateUrl: '/views/login',
-      controller: 'LoginController',
-      controllerAs: 'loginCtrl'
-    })
     .when('/register', {
       templateUrl: '/views/register',
       controller: 'RegisterController',
-      controllerAs: 'registerCtrl'
-    })
-    .when('/search', {
-      templateUrl: '/views/search',
-      controller: 'SearchController',
-      controllerAs: 'searchCtrl',
+      controllerAs: 'registerCtrl',
       resolve: {
-        categories: function (CategoriesService) {
-          return CategoriesService.getAll();
-        },
-        handlings: function (HandlingsService) {
-          return HandlingsService.getAll();
-        },
-        products: function (ProductsService) {
-          return ProductsService.getAll();
-        }
+        perfis: PerfilService => PerfilService.getAvailable()
       }
     })
-    .otherwise({ redirectTo: '/' });
-}
+    .otherwise({ redirectTo: '/register' });
+};
+
+routeConfig.$inject = [
+  '$routeProvider',
+  '$locationProvider'
+];
 
 module.exports = routeConfig;

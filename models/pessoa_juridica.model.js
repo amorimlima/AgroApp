@@ -4,7 +4,7 @@ var tableName = 'pessoa_juridica';
 function constructModel(sequelize, DataType) {
   var constructor = {
     cnpj: {
-      type: DataType.INTEGER(16),
+      type: DataType.BIGINT(16),
       allowNull: false,
       primaryKey: true,
       unique: true,

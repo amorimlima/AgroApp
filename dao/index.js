@@ -8,6 +8,7 @@ const EnderecoDAO = require('./endereco.dao');
 const EmailDAO = require('./email.dao');
 const TipoTelefoneDAO = require('./tipo_telefone.dao');
 const TelefoneDAO = require('./telefone.dao');
+const CategoriaProdutoDAO = require('./categoria_produto.dao');
 
 module.exports = {
   GenericDAO,
@@ -19,5 +20,6 @@ module.exports = {
   EnderecoDAO,
   EmailDAO,
   TipoTelefoneDAO,
-  TelefoneDAO
+  TelefoneDAO,
+  CategoriaProdutoDAO
 };

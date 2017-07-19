@@ -1,10 +1,13 @@
 class RegisterController {
-  constructor(UsuarioService) {
+  constructor($rootScope, UsuarioService) {
+    this.$rootScope = $rootScope;
     this.usuarioService = UsuarioService;
 
     this.usuario = {};
     this.email = {};
     this.credencial = {};
+
+    this.$rootScope.view.name = 'Cadastro';
   }
 
   registerStepOne() {
@@ -19,6 +22,9 @@ class RegisterController {
   }
 }
 
-RegisterController.$inject = ['UsuarioService'];
+RegisterController.$inject = [
+  '$rootScope',
+  'UsuarioService'
+];
 
 module.exports = RegisterController;

@@ -28,8 +28,9 @@ app.set('models', configs.models(app));
 app.set('dao', dao);
 
 // Routes
-app.use('/usuario', routes.usuarioRoute(express.Router(), app));
 app.use('/views', routes.viewsRoute(express.Router(), app));
+app.use('/usuario', routes.usuarioRoute(express.Router(), app));
+app.use('/perfil', routes.perfilRoute(express.Router(), app));
 
 // Views
 app.set('views', 'views');

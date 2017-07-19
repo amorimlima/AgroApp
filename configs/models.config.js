@@ -1,14 +1,14 @@
-var models = require('../models');
-var utils = require('../utils');
+const models = require('../models');
+const utils = require('../utils');
 
-function modelsConfig(app) {
-  var sequelize = app.get('datasource').sequelize;
-  var Sequelize = app.get('datasource').Sequelize;
-  var configuredModels = [];
-  var fillDatabase = null;
+const modelsConfig = (app) => {
+  const sequelize = app.get('datasource').sequelize;
+  const Sequelize = app.get('datasource').Sequelize;
+  const configuredModels = [];
+  let fillDatabase = null;
   
-  models.forEach(function (modelTemplate) {
-    var model = modelTemplate(configuredModels);
+  models.forEach((modelTemplate) => {
+    const model = modelTemplate(configuredModels);
     configuredModels[model.name] = sequelize.import(model.name, model.constructor);
   });
 

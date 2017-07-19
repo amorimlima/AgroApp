@@ -5,3 +5,5 @@ class PerfilDAO extends GenericDAO {
     super(Perfil);
   }
 }
+
+module.exports = PerfilDAO;

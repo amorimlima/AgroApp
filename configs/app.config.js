@@ -1,11 +1,10 @@
-var fs = require('fs');
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-function appConfig(app) {
-  var database = JSON.parse(fs.readFileSync(path.join(__dirname, '../commons/database.json')));
-  var config = { database: database };
+const appConfig = (app) => {
+  const database = JSON.parse(fs.readFileSync(path.join(__dirname, '../commons/database.json')));;
 
-  return config;
+  return { database };
 }
 
 module.exports = appConfig;

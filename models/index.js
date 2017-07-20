@@ -1,17 +1,17 @@
-var PessoaFisica = require('./pessoa_fisica.model');
-var PessoaJuridica = require('./pessoa_juridica.model');
-var Endereco = require('./endereco.model');
-var Credencial = require('./credencial.model');
-var UsuarioProduto = require('./usuario_produto.model');
-var Telefone = require('./telefone.model');
-var Email = require('./email.model');
-var DocumentoCadastro = require('./documento_cadastro.model');
-var Favorito = require('./favorito.model');
-var Produto = require('./produto.model');
-var Perfil = require('./perfil.model');
-var CategoriaProduto = require('./categoria_produto.model');
-var TipoTelefone = require('./tipo_telefone.model');
-var Usuario = require('./usuario.model');
+const PessoaFisica = require('./pessoa_fisica.model');
+const PessoaJuridica = require('./pessoa_juridica.model');
+const Endereco = require('./endereco.model');
+const Credencial = require('./credencial.model');
+const UsuarioProduto = require('./usuario_produto.model');
+const Telefone = require('./telefone.model');
+const Email = require('./email.model');
+const DocumentoCadastro = require('./documento_cadastro.model');
+const Favorito = require('./favorito.model');
+const Produto = require('./produto.model');
+const Perfil = require('./perfil.model');
+const CategoriaProduto = require('./categoria_produto.model');
+const TipoTelefone = require('./tipo_telefone.model');
+const Usuario = require('./usuario.model');
 
 module.exports = [
   Favorito,

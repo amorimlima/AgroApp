@@ -10,7 +10,10 @@ const datasourceConfig = (app) => {
   if (database) {
     return database;
   }
-  const env = process.env.NODE_ENV.trim();
+  const env = process.env.NODE_ENV
+    ? process.env.NODE_ENV.trim()
+    : 'test';
+
   const dbNameSuffix = env ? '_' + env : '';
   const config = app.get('configs');
   const sequelize = new Sequelize(

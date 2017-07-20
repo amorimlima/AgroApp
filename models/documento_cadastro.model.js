@@ -1,8 +1,8 @@
-var MODEL_NAME = 'DocumentoCadastro';
-var tableName = 'documento_cadastro';
+const MODEL_NAME = 'DocumentoCadastro';
+const tableName = 'documento_cadastro';
 
-function constructModel(sequelize, DataType) {
-  var constructor = {
+const constructModel = (sequelize, DataType) => {
+  const constructor = {
     id: {
       type: DataType.INTEGER,
       allowNull: false,
@@ -20,12 +20,9 @@ function constructModel(sequelize, DataType) {
       validate: { notEmptY: true }
     }
   };
-  var configs = { tableName: tableName };
-  var Model = sequelize.define(MODEL_NAME, constructor, configs);
+  const configs = { tableName };
 
-  return Model;
+  return sequelize.define(MODEL_NAME, constructor, configs);;
 }
 
-module.exports = function (models) {
-  return { name: MODEL_NAME, constructor: constructModel };
-}
+module.exports = models => ({ name: MODEL_NAME, constructor: constructModel });

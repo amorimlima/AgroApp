@@ -1,8 +1,8 @@
-var MODEL_NAME = 'Favorito';
-var tableName = 'favorito';
+const MODEL_NAME = 'Favorito';
+const tableName = 'favorito';
 
-function constructModel(sequelize, DataType) {
-  var constructor = {
+const constructModel = (sequelize, DataType) => {
+  const constructor = {
     usuario: { 
       type: DataType.INTEGER,
       primaryKey: true,
@@ -14,12 +14,9 @@ function constructModel(sequelize, DataType) {
       allowNull: false,
     }
   };
-  var configs = { tableName: tableName };
-  var Model = sequelize.define(MODEL_NAME, constructor, configs);
+  const configs = { tableName };
   
-  return Model;
+  return sequelize.define(MODEL_NAME, constructor, configs);
 }
 
-module.exports = function (models) {
-  return { name: MODEL_NAME, constructor: constructModel };
-};
+module.exports = models => ({ name: MODEL_NAME, constructor: constructModel });

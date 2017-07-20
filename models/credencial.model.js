@@ -1,12 +1,11 @@
-var bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt-nodejs');
 
-var MODEL_NAME = 'Credencial';
-var tableName = 'credencial';
+const MODEL_NAME = 'Credencial';
+const tableName = 'credencial';
+let Email = null;
 
-var Email = null;
-
-function constructModel(sequelize, DataType) {
-  var constructor = {
+const constructModel = (sequelize, DataType) => {
+  const constructor = {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
@@ -23,21 +22,20 @@ function constructModel(sequelize, DataType) {
       validate: { notEmpty: true }
     }
   };
-  var configs = {
-    tableName: tableName,
+  const configs = {
+    tableName,
     hooks: {
       beforeCreate: function (usuario) {
-        var salt = bcrypt.genSaltSync();
+        const salt = bcrypt.genSaltSync();
         usuario.set('senha', bcrypt.hashSync(usuario.senha, salt));
       }
     }
   };
-  var Model = sequelize.define(MODEL_NAME, constructor, configs);
-
-  return Model;
+  
+  return sequelize.define(MODEL_NAME, constructor, configs);;
 }
 
-module.exports = function (models) {
+module.exports = (models) => {
   Email = models.Email;
 
   return { name: MODEL_NAME, constructor: constructModel };

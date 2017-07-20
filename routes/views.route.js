@@ -1,4 +1,4 @@
-function viewsRoute(router, app) {
+const viewsRoute = (router, app) => {
   router.get('/login', function(req, res) {
     res.render('login', { strings: app.get('strings') });
   });

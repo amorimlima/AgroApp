@@ -131,5 +131,7 @@ describe('RegisterController', () => {
         expect(registerController.pessoa_fisica.data_nascimento).to.be.eql(expectedResponse.pessoa_fisica.data_nascimento);
         done();
       });
-  })
+  });
+
+  it('#registerStepThree deveria finalizar o cadastro e autenticar o usuário');
 });

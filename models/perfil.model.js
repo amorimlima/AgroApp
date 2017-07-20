@@ -1,10 +1,10 @@
-var MODEL_NAME = 'Perfil';
-var tableName = 'perfil';
+const MODEL_NAME = 'Perfil';
+const tableName = 'perfil';
 
-var Credencial = null;
+let Credencial = null;
 
-function constructModel(sequelize, DataType) {
-  var constructor = {
+const constructModel = (sequelize, DataType) => {
+  const constructor = {
     id:   {
       type: DataType.INTEGER,
       primaryKey: true,
@@ -17,15 +17,15 @@ function constructModel(sequelize, DataType) {
     }
 
   };
-  var configs = { tableName: tableName };
-  var Model  = sequelize.define(MODEL_NAME, constructor, configs);
+  const configs = { tableName };
+  const Model  = sequelize.define(MODEL_NAME, constructor, configs);
 
   Model.hasMany(Credencial, { foreignKey: tableName });
   
   return Model;
 };
 
-module.exports = function (models) {
+module.exports = (models) => {
   Credencial = models.Credencial;
 
   return { name: MODEL_NAME, constructor: constructModel };

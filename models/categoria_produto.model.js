@@ -1,8 +1,9 @@
-var MODEL_NAME = 'CategoriaProduto';
-var Produto = null;
+const MODEL_NAME = 'CategoriaProduto';
+const tableName = 'categoria_produto';
+let Produto = null;
 
-function pessoaModel(sequelize, DataType) {
-  var constructor = {
+const constructModel = (sequelize, DataType) =>  {
+  const constructor = {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
@@ -14,16 +15,16 @@ function pessoaModel(sequelize, DataType) {
       validate: { notEmpty: true }
     }
   };
-  var configs = { tableName: 'categoria_produto' }
-  var CategoriaProduto = sequelize.define(MODEL_NAME, constructor, configs);
+  const configs = { tableName };
+  const CategoriaProduto = sequelize.define(MODEL_NAME, constructor, configs);
 
   CategoriaProduto.hasMany(Produto, { foreignKey: 'categoria' });
 
   return CategoriaProduto;
 }
 
-module.exports = function (models) {
+module.exports = (models) => {
   Produto = models.Produto;
 
-  return { name: MODEL_NAME, constructor: pessoaModel };
+  return { name: MODEL_NAME, constructor: constructModel };
 };

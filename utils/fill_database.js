@@ -1,10 +1,7 @@
-var fs = require('fs');
-var path = require('path');
-var Promise = require('bluebird')
+const fs = require('fs');
+const path = require('path');
 
-Promise.promisifyAll(fs);
-
-var modelList = {};
+let modelList = {};
 
 function fillCategoria() {
   const json = fs.readFileSync(path.join(__dirname, '../mocks/categories.json'));
@@ -45,7 +42,7 @@ function fillTipoTelefone() {
   });
 }
 
-module.exports = function (models) {
+module.exports = (models) => {
   modelList = models;
   fillCategoria();
 };

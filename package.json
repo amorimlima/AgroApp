@@ -10,8 +10,8 @@
     "build:scripts:pretty": "browserify --debug static/scripts/src/index.js -o static/scripts/bundle_dev.js -t [ babelify --presets [ env ] ] || true",
     "build:styles": "npm-sass static/styles/src/style.scss > static/styles/style.css",
     "build:client": "npm run build:scripts && npm run build:styles",
-    "test:unit": "set NODE_ENV=test && mocha --require test/unit/options.js test/unit/**/*.spec.js || true",
-    "test:integration": "set NODE_ENV=test && mocha --require test/integration/options.js test/integration/*.spec.js || true",
+    "test:unit": "mocha --require test/unit/options.js test/unit/**/*.spec.js || true",
+    "test:integration": "mocha --require test/integration/options.js test/integration/*.spec.js || true",
     "test": "npm run test:unit && npm run test:integration"
   },
   "author": "Murano Design <contato@muranodesign.com.br>",

@@ -42,7 +42,7 @@ app.set('strings', strings);
 
 app.get('/', (req, res) => {
   res.render('index', {
-    environment: environment,
+    environment,
     strings: app.get('strings')
   });
 });

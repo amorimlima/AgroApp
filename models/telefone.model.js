@@ -1,19 +1,12 @@
-var MODEL_NAME = 'Telefone';
-var tableName = 'telefone';
+const MODEL_NAME = 'Telefone';
+const tableName = 'telefone';
 
-var TipoTelefone = null;
-
-function constructModel(sequelize, DataType) {
-  var constructor = {
+const constructModel = (sequelize, DataType) => {
+  const constructor = {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    tipo: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: { model: TipoTelefone }
     },
     ddd: {
       type: DataType.INTEGER(2),
@@ -26,14 +19,9 @@ function constructModel(sequelize, DataType) {
       validate: { is: /(\d{8}|\d{9})/ }
     }
   };
-  var configs = { tableName: tableName };
-  var Model = sequelize.define(MODEL_NAME, constructor, configs);
+  const configs = { tableName };
 
-  return Model;
+  return sequelize.define(MODEL_NAME, constructor, configs);
 }
 
-module.exports = function (models) {
-  TipoTelefone = models.TipoTelefone;
-
-  return { name: MODEL_NAME, constructor: constructModel };
-};
+module.exports = models => ({ name: MODEL_NAME, constructor: constructModel });

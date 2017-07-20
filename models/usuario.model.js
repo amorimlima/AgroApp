@@ -1,18 +1,18 @@
-var MODEL_NAME = 'Usuario';
-var tableName  = 'usuario';
+const MODEL_NAME = 'Usuario';
+const tableName  = 'usuario';
 
-var Email      = null;
-var Telefone   = null;
-var Endereco   = null;
-var Favorito   = null;
-var Credencial = null;
-var UsuarioProduto    = null
-var PessoaFisica      = null;
-var PessoaJuridica    = null;
-var DocumentoCadastro = null;
+let Email      = null;
+let Telefone   = null;
+let Endereco   = null;
+let Favorito   = null;
+let Credencial = null;
+let UsuarioProduto    = null
+let PessoaFisica      = null;
+let PessoaJuridica    = null;
+let DocumentoCadastro = null;
 
-function constructModel(sequelize, DataType) {
-  var constructor = {
+const constructModel = (sequelize, DataType) => {
+  const constructor = {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
@@ -24,8 +24,8 @@ function constructModel(sequelize, DataType) {
       validate: { notEmpty: true }
     }
   };
-  var configs = { tableName: tableName };
-  var Model = sequelize.define(MODEL_NAME, constructor, configs);
+  const configs = { tableName };
+  const Model = sequelize.define(MODEL_NAME, constructor, configs);
 
   Model.hasOne(PessoaFisica,      { foreignKey: tableName });
   Model.hasOne(PessoaJuridica,    { foreignKey: tableName });
@@ -42,7 +42,7 @@ function constructModel(sequelize, DataType) {
   return Model;
 }
 
-module.exports = function (models) {
+module.exports = (models) => {
   Email      = models.Email;
   Telefone   = models.Telefone;
   Endereco   = models.Endereco;

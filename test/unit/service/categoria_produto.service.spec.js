@@ -27,5 +27,5 @@ describe('CategoriaProdutoService', () => {
         expect(categorias[0].nome).to.be.eql(defaultCategoriaProduto.nome);
         done();
       });
-  })
+  });
 });

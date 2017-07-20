@@ -1,8 +1,8 @@
-var MODEL_NAME = 'PessoaFisica';
-var tableName = 'pessoa_fisica';
+const MODEL_NAME = 'PessoaFisica';
+const tableName = 'pessoa_fisica';
 
-function constructModel(sequelize, DataType) {
-  var constructor = {
+const constructModel = (sequelize, DataType) => {
+  const constructor = {
     cpf: {
       type: DataType.BIGINT(11), 
       primaryKey: true, 
@@ -30,12 +30,9 @@ function constructModel(sequelize, DataType) {
       validate: { notEmpty: true }
     }
   };
-  var configs = { tableName: tableName };
-  var Model = sequelize.define(MODEL_NAME, constructor, configs);
+  const configs = { tableName };
 
-  return Model;
+  return sequelize.define(MODEL_NAME, constructor, configs);
 }
 
-module.exports = function (models) {
-  return { name: MODEL_NAME, constructor: constructModel };
-};
+module.exports = models => ({ name: MODEL_NAME, constructor: constructModel });

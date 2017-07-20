@@ -7,7 +7,7 @@ const usuarioRoute = (router, app) => {
   const TelefoneDAO = app.get('dao').TelefoneDAO;
 
   router.post('/registro/credencial', (req, res) => {
-    const emailDAO      = new EmailDAO(app.get('models').Email);
+    const emailDAO      = new EmailDAO(app.get('models'));
     const usuarioDAO    = new UsuarioDAO(app.get('models').Usuario);
     const credencialDAO = new CredencialDAO(app.get('models').Credencial);
     

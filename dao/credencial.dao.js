@@ -6,11 +6,6 @@ class CredencialDAO extends GenericDAO {
     this.Email = Email;
     this.Perfil = Perfil;
   }
-
-  getToAuth(payload) {
-    return this.model
-      .
-  }
 }
 
 module.exports = CredencialDAO;

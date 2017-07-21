@@ -17,6 +17,7 @@ const appModule = angular
 commons(appModule);
 
 // Services
+appModule.service('AutenticacaoService', services.AutenticacaoService);
 appModule.service('UsuarioService', services.UsuarioService);
 
 // Controllers

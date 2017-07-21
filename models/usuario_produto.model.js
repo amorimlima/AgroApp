@@ -18,12 +18,12 @@ const constructModel = (sequelize, DataType) => {
       allowNull: false
     },
     data_inicio: {
-      type: DataType.DATE,
+      type: DataType.DATEONLY,
       allowNull: false,
       validate: { notEmpty: true }
     },
     data_fim: {
-      type: DataType.DATE,
+      type: DataType.DATEONLY,
       allowNull: false,
       validate: { notEmpty: true }
     },

@@ -23,9 +23,13 @@ app.use('/assets', express.static(path.join(__dirname, './static')));
 app.set('configs', configs.app(app))
 app.set('datasource', configs.datasource(app));
 app.set('models', configs.models(app));
+app.set('auth', configs.auth(app));
 
 // DAO
 app.set('dao', dao);
+
+// Authenticatoin
+app.use(app.get('auth').initialize());
 
 // Routes
 app.use('/views', routes.viewsRoute(express.Router(), app));
@@ -33,6 +37,7 @@ app.use('/usuario', routes.usuarioRoute(express.Router(), app));
 app.use('/perfil', routes.perfilRoute(express.Router(), app));
 app.use('/categoria', routes.categoriaProdutoRoute(express.Router(), app));
 app.use('/email', routes.emailRoute(express.Router(), app));
+app.use('/produto', routes.produtoRoute(express.Router(), app));
 
 // Views
 app.set('views', 'views');

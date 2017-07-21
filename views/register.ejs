@@ -1,0 +1,36 @@
+<md-content
+  layout="column" 
+  class="md-no-flicker md-no-momentum"
+  layout-padding="true">
+
+
+  <md-subheader>Eu sou</md-subheader>
+  <div>
+    <md-grid-list
+      md-cols="2"
+      md-gutter="10px"
+      md-row-height="1:1">
+      
+      <md-grid-tile>
+        <img ng-src="/assets/images/produtor.png">
+      </md-grid-tile>
+      <md-grid-tile>
+        <img ng-src="/assets/images/comprador.png">
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+  <div ng-show="registerCtrl.usuario.tipo">
+    <md-grid-list
+      md-cols="2"
+      md-gutter="10px"
+      md-row-height="1:1">
+      
+      <md-grid-tile>
+        <img ng-src="/assets/images/pessoa_fisica.png">
+      </md-grid-tile>
+      <md-grid-tile>
+        <img ng-src="/assets/images/pessoa_juridica.png">
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+</md-content>

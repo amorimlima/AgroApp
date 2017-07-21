@@ -1,7 +1,9 @@
 class RegisterController {
-  constructor($rootScope, UsuarioService, perfis) {
+  constructor($rootScope, $location, UsuarioService, AutenticacaoService, perfis) {
     this.$rootScope = $rootScope;
+    this.$location = $location;
     this.usuarioService = UsuarioService;
+    this.autenticacaoService = AutenticacaoService;
 
     this.perfis = perfis;
     this.step = 1; // 1: credenciais, 2: dados pessoais, 3: termos de uso
@@ -36,11 +38,21 @@ class RegisterController {
         this.step = 3;
       });
   }
+  
+  registerStepThree() {
+    return this.autenticacaoService
+      .authenticate(this.email.email, this.credencial.senha)
+      .then((response) => {
+          this.$location.url('/meus-produtos')
+      });
+  }
 }
 
 RegisterController.$inject = [
   '$rootScope',
-  'UsuarioService'
+  '$location',
+  'UsuarioService',
+  'AutenticacaoService'
 ];
 
 module.exports = RegisterController;

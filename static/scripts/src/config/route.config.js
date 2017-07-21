@@ -3,15 +3,22 @@ const routeConfig = ($routeProvider, $locationProvider) => {
   $locationProvider.html5Mode({ enabled: false });
 
   $routeProvider
+    .when('/login', {
+      templateUrl: '/views/login',
+      controller: 'LoginController',
+      controllerAs: 'loginCtrl'
+    })
     .when('/register', {
       templateUrl: '/views/register',
       controller: 'RegisterController',
       controllerAs: 'registerCtrl',
       resolve: {
-        perfis: PerfilService => PerfilService.getAvailable()
+        perfis: function() {
+          return PerfilService => PerfilService.getAvailable()
+        }
       }
     })
-    .otherwise({ redirectTo: '/register' });
+    .otherwise({ redirectTo: '/login' });
 };
 
 routeConfig.$inject = [

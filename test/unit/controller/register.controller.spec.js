@@ -27,18 +27,23 @@ describe('RegisterController', () => {
     telefone: { id: 1, tipo: 1, ddd: 11, numero: 22334455 }
   };
   const $rootScope = { view: {} };
+  const $location = { url: td.function() };
   const perfis = [ { id: 2, nome: 'Produtor' } ];
   const usuarioService = {
     registerCredentials: td.function(),
     registerPersonalData: td.function()
   };
+  const autenticacaoService = { authenticate: td.function() };
+  const token = { token: 'abc' };
   let idUsuario = null;
   let registerController = null;
 
   beforeEach(() => {
     registerController = new RegisterController(
       $rootScope,
+      $location,
       usuarioService,
+      autenticacaoService,
       perfis
     );
   });
@@ -133,5 +138,19 @@ describe('RegisterController', () => {
       });
   });
 
-  it('#registerStepThree deveria finalizar o cadastro e autenticar o usuário');
+  it('#registerStepThree deveria finalizar o cadastro e autenticar o usuário', (done) => {
+    td.when(autenticacaoService.authenticate(
+      registerController.email.email,
+      registerController.credencial.senha
+    )).thenResolve({ token });
+    td.when($location.url('/meus-produtos')).thenReturn('/meus-produtos');
+    td.when($location.url()).thenReturn('/meus-produtos');
+
+    registerController
+      .registerStepThree()
+      .then(() => {
+        expect(registerController.$location.url()).to.be.eql('/meus-produtos');
+        done();
+      })
+  });
 });

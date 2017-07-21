@@ -6,7 +6,7 @@ class CategoriaProdutoService {
   getAll() {
     return this.request
       .get('/categoria')
-      .then((response) => response.data);
+      .then(response => response.data);
   }
 }
 

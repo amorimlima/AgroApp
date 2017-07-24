@@ -1,0 +1,63 @@
+<md-content
+  layout="column" 
+  class="md-no-flicker md-no-momentum"
+  layout-padding="true"
+  ng-show="registerCtrl.step === 2 && registerCtrl.tipoPessoa === 'PJ' && !registerCtrl.isOnContact">
+
+  <p class="md-title">Dados empresariais</p>
+
+  <form 
+    name="dados_empresariais_form"
+    layout="column">
+    <md-input-container class="md-block">
+      <label for="cnpj">CNPJ</label>
+      <input
+        id="cnpj" 
+        type="number"
+        maxlength="16"
+        max="9999999999999999"
+        ng-model="registerCtrl.pessoa_juridica.cnpj"
+        ng-required="true" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="razao_social">Razão Social</label>
+      <input
+        id="razao_social"
+        type="text"
+        maxlength="200"
+        ng-model="registerCtrl.pessoa_juridica.razao_social"
+        ng-required="true" />
+
+    </md-input-container>
+
+    <md-input-container>
+      <label for="responsavel">Responsável</label>
+      <input
+        id="responsavel" 
+        type="text"
+        maxlength="200"
+        ng-model="registerCtrl.pessoa_juridica.responsavel"
+        ng-required="true" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="responsavel">Data de fundação</label>
+      <input
+        id="responsavel" 
+        type="date"
+        ng-model="registerCtrl.pessoa_juridica.data_fundacao"
+        ng-required="true" />
+    </md-input-container>
+  </form>
+
+  <md-button
+    class="md-primary md-raised"
+    md-ripple-size="full"
+    ng-show="registerCtrl.tipoPessoa"
+    ng-disabled="dados_empresariais_form.$invalid"
+    ng-click="registerCtrl.showContactForm()">
+
+    Continuar
+  </md-button>
+</md-content>

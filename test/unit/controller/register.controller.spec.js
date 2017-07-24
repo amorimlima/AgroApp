@@ -29,6 +29,7 @@ describe('RegisterController', () => {
   const $rootScope = { view: {} };
   const $location = { url: td.function() };
   const perfis = [ { id: 2, nome: 'Produtor' } ];
+  const estados = [];
   const usuarioService = {
     registerCredentials: td.function(),
     registerPersonalData: td.function()
@@ -44,7 +45,8 @@ describe('RegisterController', () => {
       $location,
       usuarioService,
       autenticacaoService,
-      perfis
+      perfis,
+      estados
     );
   });
 

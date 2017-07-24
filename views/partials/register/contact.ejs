@@ -1,0 +1,128 @@
+<md-content 
+  layout="column" 
+  class="md-no-flicker md-no-momentum"
+  layout-padding="true"
+  ng-show="registerCtrl.step === 2 && registerCtrl.isOnContact">
+
+  <p class="md-title">Endereço</p>
+
+  <form
+    name="address_form"
+    layout="column">
+
+    <md-input-container>
+      <label for="estado">UF</label>
+      <md-select
+        id="estado"
+        ng-model="registerCtrl.endereco.estado"
+        ng-required="true">
+
+        <md-option
+          ng-repeat="estado in registerCtrl.estados"
+          ng-value="estado.sigla"
+          ng-bind="estado.nome"></md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-input-container>
+      <label for="cidade">Cidade</label>
+      <input
+        id="cidade" 
+        type="text"
+        maxlength="45"
+        ng-model="registerCtrl.endereco.cidade"
+        ng-required="true" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="street">Logradouro</label>
+      <input
+        id="street" 
+        type="text"
+        maxlength="45"
+        ng-model="registerCtrl.endereco.logradouro"
+        ng-required="true" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="addr_num">Número</label>
+      <input
+        id="addr_num" 
+        type="number"
+        maxlength="45"
+        ng-model="registerCtrl.endereco.numero"
+        ng-required="true" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="complement">Complemento</label>
+      <input
+        id="complement" 
+        type="text"
+        maxlength="45"
+        ng-model="registerCtrl.endereco.complemento"
+        ng-required="true" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="cep">CEP</label>
+      <input
+        id="cep" 
+        type="number"
+        maxlength="8"
+        ng-model="registerCtrl.endereco.cep"
+        ng-required="true" />
+    </md-input-container>
+  </form>
+
+  <p class="md-title">Telefone</p>
+  <form
+    name="telephone_form"
+    layout="column">
+
+    <md-input-container>
+      <label for="type">Tipo</label>
+      <md-select
+        id="type"
+        ng-model="registerCtrl.telefone.tipo"
+        ng-required="true">
+
+        <md-option ng-value="1">Fixo</md-option>
+        <md-option ng-value="2">Comercial</md-option>
+        <md-option ng-value="3">Celular</md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-input-container>
+      <label for="ddd">DDD</label>
+      <input
+        id="ddd" 
+        type="number"
+        maxlength="2"
+        max="99"
+        ng-model="registerCtrl.telefone.ddd"
+        ng-required="true" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="number">Número</label>
+      <input
+        id="number" 
+        type="number"
+        maxlength="9"
+        max="999999999"
+        ng-model="registerCtrl.telefone.numero"
+        ng-required="true" />
+    </md-input-container>
+  </form>
+
+  <md-button
+    class="md-primary md-raised"
+    md-ripple-size="full"
+    ng-show="registerCtrl.tipoPessoa"
+    ng-disabled="address_form.$invalid || telephone_form.$invalid"
+    ng-click="registerCtrl.registerStepTwo()">
+
+    Continuar
+  </md-button>
+</md-content>

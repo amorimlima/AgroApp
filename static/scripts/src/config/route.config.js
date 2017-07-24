@@ -13,8 +13,11 @@ const routeConfig = ($routeProvider, $locationProvider) => {
       controller: 'RegisterController',
       controllerAs: 'registerCtrl',
       resolve: {
-        perfis: function() {
+        perfis: function () {
           return PerfilService => PerfilService.getAvailable()
+        },
+        estados: function () {
+          return CidadeEstadoService => CidadeEstadoService.getStates()
         }
       }
     })

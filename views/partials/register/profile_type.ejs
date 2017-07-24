@@ -1,0 +1,100 @@
+<md-content
+  layout="column" 
+  class="md-no-flicker md-no-momentum"
+  layout-padding="true"
+  ng-show="registerCtrl.step === 1 && registerCtrl.credentialStep === 1">
+
+  <p class="md-title">Eu sou</p>
+  <div>
+    <md-grid-list
+      md-cols="2"
+      md-gutter="10px"
+      md-row-height="1:1">
+      
+      <md-grid-tile ng-click="registerCtrl.perfil = 2">
+        <img 
+          ng-src="/assets/images/produtor.png"
+          ng-show="registerCtrl.perfil !== 2" />
+
+        <img 
+          ng-src="/assets/images/produtor_active.png"
+          ng-show="registerCtrl.perfil === 2" />
+
+        <md-grid-tile-footer
+          style="background: none; color: #333" 
+          layout-align="center center">
+
+          <p class="md-subhead">Produtor</p>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+
+      <md-grid-tile ng-click="registerCtrl.perfil = 3">
+        <img
+          ng-src="/assets/images/comprador.png"
+          ng-show="registerCtrl.perfil !== 3" />
+
+        <img
+          ng-src="/assets/images/comprador_active.png"
+          ng-show="registerCtrl.perfil === 3" />
+
+        <md-grid-tile-footer
+          style="background: none; color: #333" 
+          layout-align="center center">
+
+          <p class="md-subhead">Comprador</p>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+
+  <div ng-show="registerCtrl.perfil">
+    <md-grid-list
+      md-cols="2"
+      md-gutter="10px"
+      md-row-height="1:1">
+      
+      <md-grid-tile ng-click="registerCtrl.tipoPessoa = 'PF'">
+        <img
+          ng-src="/assets/images/pessoa_fisica.png"
+          ng-show="registerCtrl.tipoPessoa !== 'PF'" />
+
+        <img
+          ng-src="/assets/images/pessoa_fisica_active.png"
+          ng-show="registerCtrl.tipoPessoa === 'PF'" />
+
+        <md-grid-tile-footer
+          style="background: none; color: #333" 
+          layout-align="center center">
+
+          <p class="md-subhead">Pessoa Física</p>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+
+      <md-grid-tile ng-click="registerCtrl.tipoPessoa = 'PJ'">
+        <img
+          ng-src="/assets/images/pessoa_juridica.png"
+          ng-show="registerCtrl.tipoPessoa !== 'PJ'" />
+
+        <img
+          ng-src="/assets/images/pessoa_juridica_active.png"
+          ng-show="registerCtrl.tipoPessoa === 'PJ'" />
+
+        <md-grid-tile-footer
+          style="background: none; color: #333" 
+          layout-align="center center">
+
+          <p class="md-subhead">Pessoa Jurídica</p>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+
+  <md-button 
+    class="md-primary md-raised"
+    md-ripple-size="full"
+    ng-show="registerCtrl.tipoPessoa"
+    ng-click="registerCtrl.showCredentialsInputs()">
+
+    Continuar
+  </md-button>
+</md-content>

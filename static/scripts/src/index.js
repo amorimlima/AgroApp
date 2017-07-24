@@ -18,6 +18,7 @@ commons(appModule);
 
 // Services
 appModule.service('AutenticacaoService', services.AutenticacaoService);
+appModule.service('CidadeEstadoService', services.CidadeEstadoService);
 appModule.service('UsuarioService', services.UsuarioService);
 
 // Controllers

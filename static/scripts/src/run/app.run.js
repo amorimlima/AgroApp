@@ -1,10 +1,4 @@
-appRun.$inject = [
-  '$rootScope',
-  '$mdSidenav',
-  'strings'
-];
-
-function appRun($rootScope, $mdSidenav, strings) {
+function appRun($rootScope, $mdSidenav, $mdToast, $mdDialog, strings) {
   $rootScope.strings = strings;
   $rootScope.view = {
     name: 'Home',
@@ -25,9 +19,27 @@ function appRun($rootScope, $mdSidenav, strings) {
   };
 
   $rootScope.toolbar = {};
-  $rootScope.logHello = function () {
-    console.log('Hello world!');
+
+  $rootScope.showToast = (message) => {
+    return $mdToast
+      .show({
+        template: `
+          <md-toast>
+            <div class="md-toast-content">
+              ${message}
+            </div>
+          </md-toast>`,
+        hideDelay: 3000,
+        parent: document.getElementsByTagName('body')[0]
+      });
   };
 }
+
+appRun.$inject = [
+  '$rootScope',
+  '$mdSidenav',
+  '$mdToast',
+  'strings'
+];
 
 module.exports = appRun;

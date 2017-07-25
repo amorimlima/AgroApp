@@ -58,7 +58,7 @@ const usuarioRoute = (router, app) => {
       .then((telefone) => {
         response.telefone = Object.assign({}, telefone.data.get({ plain: true }));
 
-        if (req.body.usuario.tipo_pessoa === 'PF') {
+        if (req.body.usuario.tipo === 'PF') {
           pessoaFisicaDAO
             .create(req.body.pessoa_fisica)
             .then((pf) => {

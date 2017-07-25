@@ -1,5 +1,6 @@
 const angular = require('angular');
 const ngRoute = require('angular-route');
+const ngCookies = require('angular-cookies');
 const ngMaterial = require('angular-material');
 
 const commons = require('./commons');
@@ -11,6 +12,7 @@ const controllers = require('./controllers');
 const appModule = angular
   .module('app', [
     'ngRoute',
+    'ngCookies',
     'ngMaterial'
   ]);
 

@@ -2,7 +2,7 @@
   layout="column" 
   class="md-no-flicker md-no-momentum"
   layout-padding="true"
-  ng-show="registerCtrl.step === 2 && registerCtrl.isOnContact">
+  ng-show="(registerCtrl.step === 2 || registerCtrl.step === 3) && registerCtrl.isOnContact">
 
   <p class="md-title">Endereço</p>
 
@@ -15,7 +15,8 @@
       <md-select
         id="estado"
         ng-model="registerCtrl.endereco.estado"
-        ng-required="true">
+        ng-required="true"
+        ng-disabled="registerCtrl.step === 3">
 
         <md-option
           ng-repeat="estado in registerCtrl.estados"
@@ -31,7 +32,8 @@
         type="text"
         maxlength="45"
         ng-model="registerCtrl.endereco.cidade"
-        ng-required="true" />
+        ng-required="true"
+        ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -41,7 +43,8 @@
         type="text"
         maxlength="45"
         ng-model="registerCtrl.endereco.logradouro"
-        ng-required="true" />
+        ng-required="true"
+        ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -51,7 +54,8 @@
         type="number"
         maxlength="45"
         ng-model="registerCtrl.endereco.numero"
-        ng-required="true" />
+        ng-required="true"
+        ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -61,7 +65,7 @@
         type="text"
         maxlength="45"
         ng-model="registerCtrl.endereco.complemento"
-        ng-required="true" />
+        ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -71,7 +75,9 @@
         type="number"
         maxlength="8"
         ng-model="registerCtrl.endereco.cep"
-        ng-required="true" />
+        ng-pattern="registerCtrl.cepPattern"
+        ng-required="true"
+        ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
   </form>
 
@@ -85,7 +91,8 @@
       <md-select
         id="type"
         ng-model="registerCtrl.telefone.tipo"
-        ng-required="true">
+        ng-required="true"
+        ng-disabled="registerCtrl.step === 3">
 
         <md-option ng-value="1">Fixo</md-option>
         <md-option ng-value="2">Comercial</md-option>
@@ -101,7 +108,9 @@
         maxlength="2"
         max="99"
         ng-model="registerCtrl.telefone.ddd"
-        ng-required="true" />
+        ng-pattern="registerCtrl.dddPattern"
+        ng-required="true"
+        ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -112,7 +121,9 @@
         maxlength="9"
         max="999999999"
         ng-model="registerCtrl.telefone.numero"
-        ng-required="true" />
+        ng-pattern="registerCtrl.telPattern"
+        ng-required="true"
+        ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
   </form>
 
@@ -125,4 +136,5 @@
 
     Continuar
   </md-button>
+
 </md-content>

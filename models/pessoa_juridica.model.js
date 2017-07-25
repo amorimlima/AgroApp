@@ -8,7 +8,7 @@ const constructModel = (sequelize, DataType) => {
       allowNull: false,
       primaryKey: true,
       unique: true,
-      validate: { is: /\d{16}/ }
+      validate: { is: /\d{14}/ }
     },
     razao_social: {
       type: DataType.STRING(200),

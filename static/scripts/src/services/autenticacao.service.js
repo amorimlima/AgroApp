@@ -1,6 +1,7 @@
 class AutenticacaoService {
-  constructor($http) {
+  constructor($http, $cookies) {
     this.request = $http;
+    this.cookies = $cookies;
   }
 
   authenticate(email, senha) {
@@ -8,8 +9,15 @@ class AutenticacaoService {
       .post('/email/autenticacao', { email, senha })
       .then(response => response.data);
   }
+
+  saveToken(token) {
+    return Promise.resolve($cookies.set('sesstoken', token));
+  }
 }
 
-AutenticacaoService.$inject = ['$http'];
+AutenticacaoService.$inject = [
+  '$http',
+  '$cookies'
+];
 
 module.exports = AutenticacaoService

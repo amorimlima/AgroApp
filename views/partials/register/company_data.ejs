@@ -17,7 +17,9 @@
         maxlength="16"
         max="9999999999999999"
         ng-model="registerCtrl.pessoa_juridica.cnpj"
+        ng-pattern="registerCtrl.cnpjPattern"
         ng-required="true" />
+
     </md-input-container>
 
     <md-input-container>
@@ -39,6 +41,7 @@
         maxlength="200"
         ng-model="registerCtrl.pessoa_juridica.responsavel"
         ng-required="true" />
+
     </md-input-container>
 
     <md-input-container>
@@ -48,6 +51,7 @@
         type="date"
         ng-model="registerCtrl.pessoa_juridica.data_fundacao"
         ng-required="true" />
+        
     </md-input-container>
   </form>
 

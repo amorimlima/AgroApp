@@ -9,7 +9,7 @@ const viewsRoute = (router, app) => {
 
   router.get('/register', function(req, res) {
     res.render('register', { strings: app.get('strings') });
-  })
+  });
 
   return router;
 }

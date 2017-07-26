@@ -22,19 +22,11 @@
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
       display: none !important;
     }
-    .app-shell {
-        max-height: 100%;
-    }
   </style>
 </head>
 <body>
   <!-- Shell -->
-  <div
-      layout-fill
-      class="app-shell ng-cloak">
-
-    <!-- Toolbar -->
-    <%- include('partials/toolbar.ejs'); %>
+  <div class="app-shell ng-cloak">
 
     <!-- Sidenav -->
     <%- include('partials/sidenav.ejs'); %>

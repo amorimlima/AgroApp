@@ -1,11 +1,12 @@
-<%- include('partials/register/profile_type.ejs'); %>
-
-<%- include('partials/register/email_password.ejs'); %>
-
-<%- include('partials/register/personal_data.ejs'); %>
-
-<%- include('partials/register/company_data.ejs'); %>
-
-<%- include('partials/register/contact.ejs'); %>
-
-<%- include('partials/register/terms_of_use.ejs'); %>
+<% if (step === 'profile') { %>
+  <%- include('partials/register/profile_type.ejs'); %>
+<% } else if (step === 'credential') { %>
+  <%- include('partials/register/email_password.ejs'); %>
+<% } else if (step === 'personal-data') { %>
+  <%- include('partials/register/personal_data.ejs'); %>
+<% } else if (step === 'company-data') { %>
+  <%- include('partials/register/company_data.ejs'); %>
+<% } else if (step === 'contact') { %>
+  <%- include('partials/register/contact.ejs'); %>
+  <%- include('partials/register/terms_of_use.ejs'); %>
+<% } %>

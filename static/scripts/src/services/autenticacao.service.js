@@ -9,10 +9,6 @@ class AutenticacaoService {
       .post('/email/autenticacao', { email, senha })
       .then(response => response.data);
   }
-
-  saveToken(token) {
-    return Promise.resolve($cookies.set('sesstoken', token));
-  }
 }
 
 AutenticacaoService.$inject = [

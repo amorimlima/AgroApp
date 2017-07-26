@@ -1,10 +1,27 @@
+<md-toolbar
+  layout="row" 
+  class="md-toolbar-tools">
+
+  <md-button 
+    aria-label="button-label" 
+    class="md-icon-button"
+    ng-click="registerCtrl.goBack()">
+    
+    <md-icon md-font-set="material-icons">arrow_back</md-icon>
+  </md-button>
+    
+  <h1
+    class="md-title"
+    flex
+    md-truncate>Cadastro</h1>
+</md-toolbar>
+  
 <md-content
   layout="column" 
   class="md-no-flicker md-no-momentum"
-  layout-padding="true"
-  ng-show="registerCtrl.step === 2 && registerCtrl.tipoPessoa === 'PF' && !registerCtrl.isOnContact">
+  layout-padding="true">
 
-    <p class="md-title">Dados pessoais</p>
+  <p class="md-title">Dados pessoais</p>
 
   <form 
     name="dados_pessoais_form"
@@ -16,7 +33,7 @@
         type="number"
         maxlength="11"
         max="99999999999"
-        ng-model="registerCtrl.pessoa_fisica.cpf"
+        ng-model="registerCtrl.cpf"
         ng-pattern="registerCtrl.cpfPattern"
         ng-required="true" />
     </md-input-container>
@@ -25,10 +42,9 @@
       <label for="rg">RG</label>
       <input
         id="rg" 
-        type="number"
+        type="text"
         maxlength="9"
-        max="999999999"
-        ng-model="registerCtrl.pessoa_fisica.rg"
+        ng-model="registerCtrl.rg"
         ng-pattern="registerCtrl.rgPattern"
         ng-required="true" />
     </md-input-container>
@@ -39,7 +55,7 @@
         id="nome"
         type="text"
         maxlength="100"
-        ng-model="registerCtrl.pessoa_fisica.nome"
+        ng-model="registerCtrl.nome"
         ng-required="true" />
 
     </md-input-container>
@@ -50,16 +66,16 @@
         id="sobrenome" 
         type="text"
         maxlength="100"
-        ng-model="registerCtrl.pessoa_fisica.sobrenome"
+        ng-model="registerCtrl.sobrenome"
         ng-required="true" />
     </md-input-container>
 
     <md-input-container>
-      <label for="data_fundacao">Data de fundação</label>
+      <label for="data_nascimento">Data de nascimento</label>
       <input
-        id="data_fundacao" 
+        id="data_nascimento" 
         type="date"
-        ng-model="registerCtrl.pessoa_fisica.data_fundacao"
+        ng-model="registerCtrl.data_nascimento"
         ng-required="true" />
     </md-input-container>
   </form>
@@ -67,9 +83,8 @@
   <md-button
     class="md-primary md-raised"
     md-ripple-size="full"
-    ng-show="registerCtrl.tipoPessoa"
     ng-disabled="dados_pessoais_form.$invalid"
-    ng-click="registerCtrl.showContactForm()">
+    ng-click="registerCtrl.goToContact()">
 
     Continuar
   </md-button>

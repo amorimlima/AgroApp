@@ -22,11 +22,19 @@ commons(appModule);
 appModule.service('AutenticacaoService', services.AutenticacaoService);
 appModule.service('CidadeEstadoService', services.CidadeEstadoService);
 appModule.service('UsuarioService', services.UsuarioService);
+appModule.service('LocalPersistanceService', services.LocalPersistanceService);
 
 // Controllers
 appModule.controller('LoginController', controllers.LoginController);
 appModule.controller('SearchController', controllers.SearchController);
-appModule.controller('RegisterController', controllers.RegisterController);
+appModule.controller('PerfilRegisterController', controllers.PerfilRegisterController);
+appModule.controller('CredentialRegisterController', controllers.CredentialRegisterController);
+appModule.controller('PersonalDataRegisterController', controllers.PersonalDataRegisterController);
+appModule.controller('CompanyDataRegisterController', controllers.CompanyDataRegisterController);
+appModule.controller('ContactRegisterController', controllers.ContactRegisterController);
 
+run(appModule);
+run(appModule);
+run(appModule);
 run(appModule);
 config(appModule);

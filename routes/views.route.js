@@ -7,8 +7,8 @@ const viewsRoute = (router, app) => {
     res.render('search', { strings: app.get('strings') });
   });
 
-  router.get('/register', function(req, res) {
-    res.render('register', { strings: app.get('strings') });
+  router.get('/register/:step', function(req, res) {
+    res.render('register', { strings: app.get('strings'), step: req.params.step });
   });
 
   return router;

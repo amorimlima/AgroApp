@@ -1,8 +1,26 @@
+<md-toolbar
+  layout="row" 
+  class="md-toolbar-tools">
+
+  <md-button 
+    aria-label="button-label" 
+    class="md-icon-button"
+    ng-click="registerCtrl.goBack()">
+    
+    <md-icon md-font-set="material-icons">close</md-icon>
+  </md-button>
+    
+  <h1
+    class="md-title"
+    flex
+    md-truncate>Cadastro</h1>
+</md-toolbar>
+  
 <md-content
   layout="column" 
   class="md-no-flicker md-no-momentum"
-  layout-padding="true"
-  ng-show="registerCtrl.step === 1 && registerCtrl.credentialStep === 1">
+  layout-padding="true">
+
 
   <p class="md-title">Eu sou</p>
   <div>
@@ -51,14 +69,14 @@
       md-gutter="10px"
       md-row-height="1:1">
       
-      <md-grid-tile ng-click="registerCtrl.tipoPessoa = 'PF'">
+      <md-grid-tile ng-click="registerCtrl.tipo = 'PF'">
         <img
           ng-src="/assets/images/pessoa_fisica.png"
-          ng-show="registerCtrl.tipoPessoa !== 'PF'" />
+          ng-show="registerCtrl.tipo !== 'PF'" />
 
         <img
           ng-src="/assets/images/pessoa_fisica_active.png"
-          ng-show="registerCtrl.tipoPessoa === 'PF'" />
+          ng-show="registerCtrl.tipo === 'PF'" />
 
         <md-grid-tile-footer
           layout-align="center center">
@@ -67,14 +85,14 @@
         </md-grid-tile-footer>
       </md-grid-tile>
 
-      <md-grid-tile ng-click="registerCtrl.tipoPessoa = 'PJ'">
+      <md-grid-tile ng-click="registerCtrl.tipo = 'PJ'">
         <img
           ng-src="/assets/images/pessoa_juridica.png"
-          ng-show="registerCtrl.tipoPessoa !== 'PJ'" />
+          ng-show="registerCtrl.tipo !== 'PJ'" />
 
         <img
           ng-src="/assets/images/pessoa_juridica_active.png"
-          ng-show="registerCtrl.tipoPessoa === 'PJ'" />
+          ng-show="registerCtrl.tipo === 'PJ'" />
 
         <md-grid-tile-footer
           layout-align="center center">
@@ -88,8 +106,8 @@
   <md-button 
     class="md-primary md-raised"
     md-ripple-size="full"
-    ng-show="registerCtrl.tipoPessoa"
-    ng-click="registerCtrl.showCredentialsInputs()">
+    ng-show="registerCtrl.tipo"
+    ng-click="registerCtrl.goToCredential()">
 
     Continuar
   </md-button>

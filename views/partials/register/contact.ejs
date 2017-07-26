@@ -1,8 +1,25 @@
+<md-toolbar
+  layout="row" 
+  class="md-toolbar-tools">
+
+  <md-button 
+    aria-label="button-label" 
+    class="md-icon-button"
+    ng-click="registerCtrl.goBack()">
+    
+    <md-icon md-font-set="material-icons">arrow_back</md-icon>
+  </md-button>
+    
+  <h1
+    class="md-title"
+    flex
+    md-truncate>Cadastro</h1>
+</md-toolbar>
+
 <md-content 
   layout="column" 
   class="md-no-flicker md-no-momentum"
-  layout-padding="true"
-  ng-show="(registerCtrl.step === 2 || registerCtrl.step === 3) && registerCtrl.isOnContact">
+  layout-padding="true">
 
   <p class="md-title">Endereço</p>
 

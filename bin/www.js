@@ -6,6 +6,4 @@ var app = require('../app.js');
 
 var server = http.createServer(app);
 
-server.listen(app.get('port') || 3000, function() {
-  console.log('Server is listening on port ' + (app.get('port') || 3000));
-});
+server.listen(process.env.PORT || 3000, () => console.log(`Listening: ${process.env.PORT || 3000}`));

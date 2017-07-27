@@ -3,6 +3,14 @@ class UsuarioService {
     this.request = $http;
   }
 
+  register(usuario, email, credencial, pf, pj, endereco, telefone) {
+    const payload = { usuario, email, credencial, pf, pj, endereco, telefone };
+
+    return this.request
+      .post('/usuario/novo', payload)
+      .then(response => response.data);
+  }
+
   registerCredentials(usuario, email, credencial) {
     const payload = { usuario, email, credencial };
 

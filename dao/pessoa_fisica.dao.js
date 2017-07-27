@@ -1,8 +1,8 @@
 const GenericDAO = require('./generic.dao');
 
 class PessoaFisicaDAO extends GenericDAO {
-  constructor(PessoaFisica) {
-    super(PessoaFisica);
+  constructor(models) {
+    super(models.PessoaFisica);
   }
 }
 

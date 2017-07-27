@@ -1,8 +1,8 @@
 var GenericDAO = require('./generic.dao');
 
 class UsuarioDAO extends GenericDAO {
-  constructor(model) {
-    super(model);
+  constructor(models) {
+    super(models.Usuario);
   }
 };
 

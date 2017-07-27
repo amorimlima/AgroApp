@@ -4,7 +4,7 @@ const tableName = 'pessoa_juridica';
 const constructModel = (sequelize, DataType) => {
   const constructor = {
     cnpj: {
-      type: DataType.BIGINT(16),
+      type: DataType.STRING(16),
       allowNull: false,
       primaryKey: true,
       unique: true,

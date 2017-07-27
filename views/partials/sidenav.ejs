@@ -3,7 +3,10 @@
   md-component-id="main_menu">
 
   <md-list>
-    <md-list-item ng-repeat="menuItem in sidenav.items">
+    <md-list-item 
+      ng-repeat="menuItem in sidenav.items"
+      ng-href="{{menuItem.href}}">
+
       <span>
         <md-icon md-font-set="material-icons">{{menuItem.icon}}</md-icon>
         {{menuItem.name}}

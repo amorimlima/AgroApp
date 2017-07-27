@@ -12,6 +12,7 @@ const constructModel = (sequelize, DataType) => {
     email: { 
       type: DataType.STRING(100),
       allowNull: false,
+      unique: true,
       validate: { notEmpty: true }
     }
   };

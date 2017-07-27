@@ -22,17 +22,18 @@
     [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
       display: none !important;
     }
+    html, body { width: 100%; height: 100%}
   </style>
 </head>
 <body>
   <!-- Shell -->
-  <div class="app-shell ng-cloak">
+  <div class="app-shell ng-cloak" layout-fill>
 
     <!-- Sidenav -->
     <%- include('partials/sidenav.ejs'); %>
 
     <!-- View -->
-    <ng-view></ng-view>
+    <ng-view layout-fill></ng-view>
   </div>
 
   <script src="/assets/scripts/bundle_<%= environment %>.js"></script>

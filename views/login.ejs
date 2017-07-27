@@ -1,52 +1,58 @@
 <md-content 
-    layout="column" 
-    class="md-no-flicker md-no-momentum"
-    layout-padding="true">
+  class="md-no-flicker md-no-momentum"
+  layout="column"
+  layout-fill
+  layout-align="center stretch"
+  layout-padding="true">
+  
+  <div align="center">
+    <img src="/assets/images/logo.png" />
+  </div>
 
-    <form
-        layout="column"
-        name="loginForm">
+  <form
+    layout="column"
+    name="loginForm">
 
-        <md-input-container>
-            <label for="username_field">
-                <%= strings.EMAIL %>
-            </label>
+    <md-input-container>
+      <label for="username_field">
+        <%= strings.EMAIL %>
+      </label>
 
-            <input
-                id="username_field"
-                type="text"
-                ng-model="loginCtrl.username"
-                ng-required="true" />
-        </md-input-container>
+      <input
+        id="username_field"
+        type="text"
+        ng-model="loginCtrl.email"
+        ng-required="true" />
+    </md-input-container>
 
-        <md-input-container>
-            <label for="password_field">
-                <%= strings.PASSWORD %>
-            </label>
+    <md-input-container>
+      <label for="password_field">
+        <%= strings.PASSWORD %>
+      </label>
 
-            <input
-                id="password_field"
-                type="text"
-                ng-model="loginCtrl.password"
-                ng-required="true" />
-        </md-input-container>
-    </form>
+      <input
+        id="password_field"
+        type="password"
+        ng-model="loginCtrl.senha"
+        ng-required="true" />
+    </md-input-container>
+  </form>
 
-    <md-button 
-        class="md-primary md-raised"
-        md-ripple-size="full"
-        ng-disabled="loginForm.$invalid"
-        ng-click="loginCtrl.login()">
+  <md-button 
+    class="md-primary md-raised"
+    md-ripple-size="full"
+    ng-disabled="loginForm.$invalid"
+    ng-click="loginCtrl.login()">
 
-        <%= strings.ACCESS %>
-    </md-button>
+    <%= strings.ACCESS %>
+  </md-button>
 
-    <md-button
-        class="md-primary"
-        href="#/registro/perfil"
-        md-ripple-size="full">
+  <md-button
+    class="md-primary"
+    href="#/registro/perfil"
+    md-ripple-size="full">
 
-        Cadastre-se
-    </md-button>
-        
+    Cadastre-se
+  </md-button>
+    
 </md-content>

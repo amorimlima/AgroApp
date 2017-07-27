@@ -43,6 +43,11 @@ const routeConfig = ($routeProvider, $locationProvider) => {
       controller: 'ContactRegisterController',
       controllerAs: 'registerCtrl'
     })
+    .when('/meus-produtos', {
+      templateUrl: '/views/my-products',
+      controller: 'MyProductsController',
+      controllerAs: 'myProductsCtrl'
+    })
     .otherwise({ redirectTo: '/' });
 };
 

@@ -4,9 +4,10 @@ const tableName = 'pessoa_fisica';
 const constructModel = (sequelize, DataType) => {
   const constructor = {
     cpf: {
-      type: DataType.BIGINT(11), 
-      primaryKey: true, 
-      allowNull: false, 
+      type: DataType.STRING(11), 
+      primaryKey: true,
+      allowNull: false,
+      unique: true,
       validate: { is: /\d{11}/ } 
     },
     rg: {

@@ -31,7 +31,7 @@
       <label for="estado">UF</label>
       <md-select
         id="estado"
-        ng-model="registerCtrl.endereco.estado"
+        ng-model="registerCtrl.estado"
         ng-required="true"
         ng-disabled="registerCtrl.step === 3">
 
@@ -48,7 +48,18 @@
         id="cidade" 
         type="text"
         maxlength="45"
-        ng-model="registerCtrl.endereco.cidade"
+        ng-model="registerCtrl.cidade"
+        ng-required="true"
+        ng-disabled="registerCtrl.step === 3" />
+    </md-input-container>
+
+    <md-input-container>
+      <label for="bairro">Bairro</label>
+      <input
+        id="bairro" 
+        type="text"
+        maxlength="45"
+        ng-model="registerCtrl.bairro"
         ng-required="true"
         ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
@@ -59,7 +70,7 @@
         id="street" 
         type="text"
         maxlength="45"
-        ng-model="registerCtrl.endereco.logradouro"
+        ng-model="registerCtrl.logradouro"
         ng-required="true"
         ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
@@ -69,8 +80,7 @@
       <input
         id="addr_num" 
         type="number"
-        maxlength="45"
-        ng-model="registerCtrl.endereco.numero"
+        ng-model="registerCtrl.numero"
         ng-required="true"
         ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
@@ -81,7 +91,7 @@
         id="complement" 
         type="text"
         maxlength="45"
-        ng-model="registerCtrl.endereco.complemento"
+        ng-model="registerCtrl.complemento"
         ng-disabled="registerCtrl.step === 3" />
     </md-input-container>
 
@@ -89,9 +99,9 @@
       <label for="cep">CEP</label>
       <input
         id="cep" 
-        type="number"
+        type="text"
         maxlength="8"
-        ng-model="registerCtrl.endereco.cep"
+        ng-model="registerCtrl.cep"
         ng-pattern="registerCtrl.cepPattern"
         ng-required="true"
         ng-disabled="registerCtrl.step === 3" />
@@ -107,13 +117,12 @@
       <label for="type">Tipo</label>
       <md-select
         id="type"
-        ng-model="registerCtrl.telefone.tipo"
+        ng-model="registerCtrl.tipo_telefone"
         ng-required="true"
         ng-disabled="registerCtrl.step === 3">
 
         <md-option ng-value="1">Fixo</md-option>
-        <md-option ng-value="2">Comercial</md-option>
-        <md-option ng-value="3">Celular</md-option>
+        <md-option ng-value="2">Celular</md-option>
       </md-select>
     </md-input-container>
 
@@ -124,7 +133,7 @@
         type="number"
         maxlength="2"
         max="99"
-        ng-model="registerCtrl.telefone.ddd"
+        ng-model="registerCtrl.ddd"
         ng-pattern="registerCtrl.dddPattern"
         ng-required="true"
         ng-disabled="registerCtrl.step === 3" />
@@ -137,7 +146,7 @@
         type="number"
         maxlength="9"
         max="999999999"
-        ng-model="registerCtrl.telefone.numero"
+        ng-model="registerCtrl.numero_telefone"
         ng-pattern="registerCtrl.telPattern"
         ng-required="true"
         ng-disabled="registerCtrl.step === 3" />
@@ -147,9 +156,8 @@
   <md-button
     class="md-primary md-raised"
     md-ripple-size="full"
-    ng-show="registerCtrl.tipoPessoa"
     ng-disabled="address_form.$invalid || telephone_form.$invalid"
-    ng-click="registerCtrl.registerStepTwo()">
+    ng-click="registerCtrl.goToTermsOfUse()">
 
     Continuar
   </md-button>

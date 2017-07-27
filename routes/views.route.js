@@ -11,6 +11,10 @@ const viewsRoute = (router, app) => {
     res.render('register', { strings: app.get('strings'), step: req.params.step });
   });
 
+  router.get('/my-products', function(req, res) {
+    res.render('my-products', { strings: app.get('strings') });
+  });
+
   return router;
 }
 

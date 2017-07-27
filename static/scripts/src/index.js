@@ -32,6 +32,7 @@ appModule.controller('CredentialRegisterController', controllers.CredentialRegis
 appModule.controller('PersonalDataRegisterController', controllers.PersonalDataRegisterController);
 appModule.controller('CompanyDataRegisterController', controllers.CompanyDataRegisterController);
 appModule.controller('ContactRegisterController', controllers.ContactRegisterController);
+appModule.controller('MyProductsController', controllers.MyProductsController);
 
 run(appModule);
 run(appModule);

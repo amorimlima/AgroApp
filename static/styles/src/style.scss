@@ -1,1 +1,9 @@
 @import '../../../node_modules/angular-material/angular-material.scss';
+
+.fixed-fab {
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: fixed;
+}

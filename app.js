@@ -10,7 +10,9 @@ const dao = require('./dao');
 const routes = require('./routes');
 
 const app = express();
-const environment = process.env.NODE_ENV || 'prod';
+const environment = process.env.NODE_ENV === 'dev'
+                    ? 'dev'
+                    : 'prod';
 const strings = JSON.parse(fs.readFileSync(path.join(__dirname, './commons/strings.json')));
 
 // Middlewares

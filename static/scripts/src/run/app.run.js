@@ -11,10 +11,7 @@ function appRun($rootScope, $mdSidenav, $mdToast, $mdDialog, strings) {
       $mdSidenav('main_menu').toggle();
     },
     items: [
-      { name: 'Pagina Inicial', icon: 'home' },
-      { name: 'Produtos', icon: 'shopping_basket' },
-      { name: 'Editar Perfil', icon: 'person' },
-      { name: 'Contatos', icon: 'contacts' }
+      { name: 'Produtos', icon: 'shopping_basket', href: '#/meus-produtos' }
     ]
   };
 

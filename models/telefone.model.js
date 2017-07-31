@@ -1,7 +1,4 @@
-const MODEL_NAME = 'Telefone';
-const tableName = 'telefone';
-
-const constructModel = (sequelize, DataType) => {
+module.exports = (sequelize, DataType) => {
   const constructor = {
     id: {
       type: DataType.INTEGER,
@@ -19,9 +16,13 @@ const constructModel = (sequelize, DataType) => {
       validate: { is: /(\d{8}|\d{9})/ }
     }
   };
-  const configs = { tableName };
+  const configs = { tableName: 'telefone' };
+  const Model = sequelize.define('Telefone', constructor, configs);
 
-  return sequelize.define(MODEL_NAME, constructor, configs);
-}
+  Model.associate = (models) => {
+    Model.belongsTo(models.Usuario);
+    Model.belongsTo(models.TipoTelefone, { as: 'Tipo' });
+  };
 
-module.exports = models => ({ name: MODEL_NAME, constructor: constructModel });
+  return Model;
+};

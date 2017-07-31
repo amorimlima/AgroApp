@@ -1,9 +1,4 @@
-const MODEL_NAME = 'Perfil';
-const tableName = 'perfil';
-
-let Credencial = null;
-
-const constructModel = (sequelize, DataType) => {
+module.exports = (sequelize, DataType) => {
   const constructor = {
     id:   {
       type: DataType.INTEGER,
@@ -17,16 +12,12 @@ const constructModel = (sequelize, DataType) => {
     }
 
   };
-  const configs = { tableName };
-  const Model  = sequelize.define(MODEL_NAME, constructor, configs);
+  const configs = { tableName: 'perfil' };
+  const Model = sequelize.define('Perfil', constructor, configs);
 
-  Model.hasMany(Credencial, { foreignKey: tableName });
-  
+  Model.associate = (models) => {
+    Model.hasMany(models.Credencial, { as: 'Credenciais' });
+  };
+
   return Model;
-};
-
-module.exports = (models) => {
-  Credencial = models.Credencial;
-
-  return { name: MODEL_NAME, constructor: constructModel };
 };

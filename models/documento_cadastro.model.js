@@ -1,7 +1,4 @@
-const MODEL_NAME = 'DocumentoCadastro';
-const tableName = 'documento_cadastro';
-
-const constructModel = (sequelize, DataType) => {
+module.exports = (sequelize, DataType) => {
   const constructor = {
     id: {
       type: DataType.INTEGER,
@@ -20,9 +17,13 @@ const constructModel = (sequelize, DataType) => {
       validate: { notEmptY: true }
     }
   };
-  const configs = { tableName };
+  const configs = { tableName: 'documento_cadastro' };
 
-  return sequelize.define(MODEL_NAME, constructor, configs);;
+  const Model = sequelize.define('DocumentoCadastro', constructor, configs);
+
+  Model.associate = (models) => {
+    Model.belongsTo(models.Usuario);
+  }
+
+  return Model;
 }
-
-module.exports = models => ({ name: MODEL_NAME, constructor: constructModel });

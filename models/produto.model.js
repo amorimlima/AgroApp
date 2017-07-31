@@ -1,9 +1,6 @@
-const MODEL_NAME = 'Produto';
-const tableName = 'produto';
-
-let UsuarioProduto = null;
-
-const constructModel = (sequelize, DataType) => {
+module.exports = (sequelize, DataType) => {
+  const MODEL_NAME = 'Produto';
+  const tableName = 'produto';
   const constructor = {
     id: {
       type: DataType.INTEGER,
@@ -19,13 +16,10 @@ const constructModel = (sequelize, DataType) => {
   const options = { tableName };
   const Model = sequelize.define(MODEL_NAME, constructor, options);
 
-  Model.hasMany(UsuarioProduto, { foreignKey: tableName });
+  Model.associate = (models) => {
+    Model.belongsTo(models.CategoriaProduto, { as: 'Categoria' });
+    Model.hasMany(models.UsuarioProduto);
+  };
 
   return Model;
-}
-
-module.exports = (models) => {
-  UsuarioProduto = models.UsuarioProduto;
-
-  return { name: MODEL_NAME, constructor: constructModel };
 };

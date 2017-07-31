@@ -1,17 +1,4 @@
-const MODEL_NAME = 'Usuario';
-const tableName  = 'usuario';
-
-let Email      = null;
-let Telefone   = null;
-let Endereco   = null;
-let Favorito   = null;
-let Credencial = null;
-let UsuarioProduto    = null
-let PessoaFisica      = null;
-let PessoaJuridica    = null;
-let DocumentoCadastro = null;
-
-const constructModel = (sequelize, DataType) => {
+module.exports = (sequelize, DataType) => {
   const constructor = {
     id: {
       type: DataType.INTEGER,
@@ -24,35 +11,22 @@ const constructModel = (sequelize, DataType) => {
       validate: { notEmpty: true }
     }
   };
-  const configs = { tableName };
-  const Model = sequelize.define(MODEL_NAME, constructor, configs);
+  const configs = { tableName: 'usuario' };
+  const Model = sequelize.define('Usuario', constructor, configs);
 
-  Model.hasOne(PessoaFisica,      { foreignKey: tableName });
-  Model.hasOne(PessoaJuridica,    { foreignKey: tableName });
-  Model.hasOne(Credencial,        { foreignKey: tableName });
-  Model.hasOne(DocumentoCadastro, { foreignKey: tableName });
+  Model.associate = (models) => {
+    Model.hasOne(models.PessoaFisica,      { as: 'PessoaFisica' });
+    Model.hasOne(models.PessoaJuridica,    { as: 'PessoaJuridica' });
+    Model.hasOne(models.Credencial,        { as: 'Credencial' });
+    Model.hasOne(models.DocumentoCadastro, { as: 'DocumentoCadastro' });
 
-  Model.hasMany(Telefone,       { foreignKey: tableName });
-  Model.hasMany(Endereco,       { foreignKey: tableName });
-  Model.hasMany(Email,          { foreignKey: tableName });
-  Model.hasMany(UsuarioProduto, { foreignKey: tableName });
-  Model.hasMany(Favorito,       { foreignKey: tableName });
-  Model.hasMany(Favorito,       { foreignKey: 'favoritado' });
-
-  return Model;
-}
-
-module.exports = (models) => {
-  Email      = models.Email;
-  Telefone   = models.Telefone;
-  Endereco   = models.Endereco;
-  Usuario    = models.Usuario;
-  Favorito   = models.Favorito;
-  Credencial = models.Credencial;
-  UsuarioProduto    = models.UsuarioProduto;
-  PessoaFisica      = models.PessoaFisica;
-  PessoaJuridica    = models.PessoaJuridica;
-  DocumentoCadastro = models.DocumentoCadastro;
+    Model.hasMany(models.Telefone,       { as: 'Telefones' });
+    Model.hasMany(models.Endereco,       { as: 'Enderecos' });
+    Model.hasMany(models.Email,          { as: 'Emails' });
+    Model.hasMany(models.UsuarioProduto, { as: 'Produtos' });
+    Model.hasMany(models.Favorito,       { as: 'Pessoas' });
+    Model.hasMany(models.Favorito,       { foreignKey: 'Favorito', as: 'Favoritos' });
+  };
   
-  return { name: MODEL_NAME, constructor: constructModel };
+  return Model;
 };

@@ -1,22 +1,34 @@
-const models = require('../models');
+// const models = require('../models');
+const fs = require('fs');
+const path = require('path');
 const utils = require('../utils');
 
 const modelsConfig = (app) => {
   const sequelize = app.get('datasource').sequelize;
   const Sequelize = app.get('datasource').Sequelize;
-  const configuredModels = [];
+  const modelsDir = path.join(__dirname, '../models');
+  const models = [];
+  let count = 0;
   let fillDatabase = null;
+
+  fs.readdirSync(modelsDir)
+    .filter(file => (file.indexOf('.') !== 0))
+    .forEach((file) => {
+      const model = sequelize.import(path.join(modelsDir, file));
+      models[model.name] = model;
+    })
   
-  models.forEach((modelTemplate) => {
-    const model = modelTemplate(configuredModels);
-    configuredModels[model.name] = sequelize.import(model.name, model.constructor);
+  Object.keys(models).forEach((modelName) => {
+    if ('associate' in models[modelName]) {
+      models[modelName].associate(models);
+    }
   });
 
   if (process.env.NODE_ENV === 'dev') {
-    fillDatabase = utils.fillDatabase(configuredModels);
+    //fillDatabase = utils.fillDatabase(models);
   }
 
-  return configuredModels;
+  return models;
 }
 
 module.exports = modelsConfig;

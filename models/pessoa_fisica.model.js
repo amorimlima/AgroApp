@@ -1,7 +1,4 @@
-const MODEL_NAME = 'PessoaFisica';
-const tableName = 'pessoa_fisica';
-
-const constructModel = (sequelize, DataType) => {
+module.exports = (sequelize, DataType) => {
   const constructor = {
     cpf: {
       type: DataType.STRING(11), 
@@ -31,9 +28,12 @@ const constructModel = (sequelize, DataType) => {
       validate: { notEmpty: true }
     }
   };
-  const configs = { tableName };
+  const configs = { tableName: 'pessoa_fisica' };
+  const Model = sequelize.define('PessoaFisica', constructor, configs);
 
-  return sequelize.define(MODEL_NAME, constructor, configs);
-}
+  Model.associate = (models) => {
+    Model.belongsTo(models.Usuario);
+  };
 
-module.exports = models => ({ name: MODEL_NAME, constructor: constructModel });
+  return Model;
+};

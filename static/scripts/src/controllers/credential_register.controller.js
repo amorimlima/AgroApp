@@ -7,6 +7,15 @@ class CredentialRegisterController {
     this.tipo = this.storage.getSessionItem('tipo');
     this.email = this.storage.getSessionItem('email') || '';
     this.senha = this.storage.getSessionItem('senha') || '';
+
+    this.credencial = JSON.parse(this.storage.getSessionItem('credencial'))
+                      || this.$location.url('/registro/perfil');
+
+    this.email = JSON.parse(this.storage.getSessionItem('email'))
+                  || this.$location.url('/registro/perfil');
+
+    this.usuario = JSON.parse(this.storage.getSessionItem('usuario'))
+                    || this.$location.url('/registro/perfil');
   }
 
   goBack() {

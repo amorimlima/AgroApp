@@ -1,7 +1,4 @@
-const MODEL_NAME = 'PessoaJuridica';
-const tableName = 'pessoa_juridica';
-
-const constructModel = (sequelize, DataType) => {
+module.exports = (sequelize, DataType) => {
   const constructor = {
     cnpj: {
       type: DataType.STRING(16),
@@ -25,9 +22,12 @@ const constructModel = (sequelize, DataType) => {
       allowNull: false
     }
   };
-  const configs = { tableName };
+  const configs = { tableName: 'pessoa_juridica' };
+  const Model = sequelize.define('PessoaJuridica', constructor, configs);
+  
+  Model.associate = (models) => {
+    Model.belongsTo(models.Usuario);
+  };
 
-  return sequelize.define(MODEL_NAME, constructor, configs);
-}
-
-module.exports = models => ({ name: MODEL_NAME, constructor: constructModel });
+  return Model;
+};

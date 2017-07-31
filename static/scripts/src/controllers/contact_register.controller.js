@@ -103,7 +103,7 @@ class ContactRegisterController {
 
     return this.usuarioService
       .register(usuario, email, credencial, pf, pj, endereco, telefone)
-      .then(user => this.auth.authenticate(this.storage.getSessionItem('email'), this.storage.getSessionItem('senha')))
+      .then(user => this.auth.authenticate(email.email, credencial.senha))
       .then((token) => {
         this.storage.setPreference('token', token);
         this.goToMyProducts();

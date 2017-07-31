@@ -16,6 +16,7 @@ class LoginController {
         this.storage.setPreference('token', token);
         this.$location.url('/meus-produtos');
       })
+      .catch(() => console.log('Erro ao logar'));
   }
 }
 

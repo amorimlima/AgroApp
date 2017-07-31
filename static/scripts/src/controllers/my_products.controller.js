@@ -1,8 +1,8 @@
 class MyProductsController {
-  constructor($rootScope) {
+  constructor($rootScope, CategoriaProdutoService) {
     this.$rootScope = $rootScope;
     this.offer = {};
-    this.ofertas = [{
+    this.ofertass = [{
       id: 1,
       unidade: 'kg',
       quantidade: 800,
@@ -83,6 +83,7 @@ class MyProductsController {
 
 MyProductsController.$inject = [
   '$rootScope',
+  'CategoriaProdutoService'
 ];
 
 module.exports = MyProductsController;

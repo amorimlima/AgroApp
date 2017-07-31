@@ -34,12 +34,14 @@ app.set('dao', dao);
 app.use(app.get('auth').initialize());
 
 // Routes
+app.use('/auth', routes.authRoute(express.Router(), app));
 app.use('/views', routes.viewsRoute(express.Router(), app));
 app.use('/usuario', routes.usuarioRoute(express.Router(), app));
 app.use('/perfil', routes.perfilRoute(express.Router(), app));
 app.use('/categoria', routes.categoriaProdutoRoute(express.Router(), app));
 app.use('/email', routes.emailRoute(express.Router(), app));
 app.use('/produto', routes.produtoRoute(express.Router(), app));
+app.use('/tests', routes.testsRoute(express.Router(), app));
 
 // Views
 app.set('views', 'views');

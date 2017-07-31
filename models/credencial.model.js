@@ -1,20 +1,10 @@
-const bcrypt = require('bcrypt-nodejs');
-
-const MODEL_NAME = 'Credencial';
-const tableName = 'credencial';
-let Email = null;
-
-const constructModel = (sequelize, DataType) => {
+module.exports = (sequelize, DataType) => {
+  const bcrypt = require('bcrypt-nodejs');
   const constructor = {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true
-    },
-    email: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: { model: Email }
     },
     senha: {
       type: DataType.STRING(100),
@@ -23,7 +13,7 @@ const constructModel = (sequelize, DataType) => {
     }
   };
   const configs = {
-    tableName,
+    tableName: 'credencial',
     hooks: {
       beforeCreate: function (usuario) {
         const salt = bcrypt.genSaltSync();
@@ -31,12 +21,13 @@ const constructModel = (sequelize, DataType) => {
       }
     }
   };
+  const Model = sequelize.define('Credencial', constructor, configs);
+
+  Model.associate = (models) => {
+    Model.belongsTo(models.Usuario);
+    Model.belongsTo(models.Email);
+    Model.belongsTo(models.Perfil);
+  }
   
-  return sequelize.define(MODEL_NAME, constructor, configs);;
+  return Model;
 }
-
-module.exports = (models) => {
-  Email = models.Email;
-
-  return { name: MODEL_NAME, constructor: constructModel };
-};

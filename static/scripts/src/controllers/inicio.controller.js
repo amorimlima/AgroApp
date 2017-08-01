@@ -1,9 +1,9 @@
 class LoginController {
-  constructor($rootScope, $location, AutenticacaoService, LocalPersistanceService) {
+  constructor($rootScope, $location, AutenticacaoService, PersistenceService) {
     this.$rootScope = $rootScope;
     this.$location = $location;
     this.auth = AutenticacaoService;
-    this.storage = LocalPersistanceService;
+    this.storage = PersistenceService;
 
     this.email = '';
     this.senha = '';
@@ -24,7 +24,7 @@ LoginController.$inject = [
   '$rootScope',
   '$location',
   'AutenticacaoService',
-  'LocalPersistanceService'
+  'PersistenceService'
 ];
 
 

@@ -4,7 +4,7 @@ const CategoriaProdutoService = require('./categoria_produto.service');
 const UsuarioProdutoService = require('./usuario_produto.service');
 const AutenticacaoService = require('./autenticacao.service');
 const CidadeEstadoService = require('./cidade_estado.service');
-const LocalPersistanceService = require('./local_persistance.service');
+const PersistenceService = require('./persistence.service');
 
 module.exports = {
   UsuarioService,
@@ -13,5 +13,5 @@ module.exports = {
   UsuarioProdutoService,
   AutenticacaoService,
   CidadeEstadoService,
-  LocalPersistanceService
+  PersistenceService
 };

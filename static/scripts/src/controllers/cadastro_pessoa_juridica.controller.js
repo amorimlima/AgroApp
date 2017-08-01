@@ -1,8 +1,8 @@
 class CompanyDataRegisterController {
-  constructor($rootScope, $location, LocalPersistanceService) {
+  constructor($rootScope, $location, LocalPersistenceService) {
     this.$rootScope = $rootScope;
     this.$location = $location;
-    this.storage = LocalPersistanceService;
+    this.storage = LocalPersistenceService;
 
     this.cnpj = parseInt(this.storage.getSessionItem('cnpj')) || null;
     this.razao_social = this.storage.getSessionItem('razao_social') || '';
@@ -28,7 +28,7 @@ class CompanyDataRegisterController {
 CompanyDataRegisterController.$inject = [
   '$rootScope',
   '$location',
-  'LocalPersistanceService'
+  'LocalPersistenceService'
 ];
 
 module.exports = CompanyDataRegisterController;

@@ -1,19 +1,10 @@
-const LoginController = require('./login.controller');
-const SearchController = require('./search.controller');
-const PerfilRegisterController = require('./perfil_register.controller');
-const MyProductsController = require('./my_products.controller');
-const CredentialRegisterController = require('./credential_register.controller');
-const PersonalDataRegisterController = require('./personal_data_register.controller');
-const CompanyDataRegisterController = require('./company_data_register.controller');
-const ContactRegisterController = require('./contact_register.controller');
-
 module.exports = {
-  LoginController,
-  SearchController,
-  PerfilRegisterController,
-  MyProductsController,
-  CredentialRegisterController,
-  PersonalDataRegisterController,
-  CompanyDataRegisterController,
-  ContactRegisterController
+  Inicio: require('./inicio.controller'),
+  CadastroPerfil: require('./cadastro_perfil.controller'),
+  CadastroCredencial: require('./cadastro_credencial.controller'),
+  CadastroPessoaFisica: require('./cadastro_pessoa_fisica.controller'),
+  CadastroPessoaJuridica: require('./cadastro_pessoa_juridica.controller'),
+  CadastroContato: require('./cadastro_contato.controller'),
+  MeusProdutos: require('./meus_produtos.controller'),
+  Busca: require('./busca.controller')
 };

@@ -1,4 +1,4 @@
-class LocalPersistanceService {
+class PersistenceService {
   constructor($cookies) {
     this.$cookies = $cookies;
   }
@@ -47,8 +47,8 @@ class LocalPersistanceService {
   }
 }
 
-LocalPersistanceService.$inject = [
+PersistenceService.$inject = [
   '$cookies'
 ];
 
-module.exports = LocalPersistanceService;
+module.exports = PersistenceService;

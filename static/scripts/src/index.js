@@ -22,20 +22,17 @@ commons(appModule);
 appModule.service('AutenticacaoService', services.AutenticacaoService);
 appModule.service('CidadeEstadoService', services.CidadeEstadoService);
 appModule.service('UsuarioService', services.UsuarioService);
-appModule.service('LocalPersistanceService', services.LocalPersistanceService);
+appModule.service('PersistenceService', services.PersistenceService);
 
 // Controllers
-appModule.controller('LoginController', controllers.LoginController);
-appModule.controller('SearchController', controllers.SearchController);
-appModule.controller('PerfilRegisterController', controllers.PerfilRegisterController);
-appModule.controller('CredentialRegisterController', controllers.CredentialRegisterController);
-appModule.controller('PersonalDataRegisterController', controllers.PersonalDataRegisterController);
-appModule.controller('CompanyDataRegisterController', controllers.CompanyDataRegisterController);
-appModule.controller('ContactRegisterController', controllers.ContactRegisterController);
-appModule.controller('MyProductsController', controllers.MyProductsController);
+appModule.controller('InicioController', controllers.Inicio);
+appModule.controller('CadastroPerfilController', controllers.CadastroPerfil);
+appModule.controller('CadastroCredencialController', controllers.CadastroCredencial);
+appModule.controller('CadastroPessoaFisicaController', controllers.CadastroPessoaFisica);
+appModule.controller('CadastroPessoaJuridicaController', controllers.CadastroPessoaJuridica);
+appModule.controller('CadastroContatoController', controllers.CadastroContato);
+appModule.controller('MeusProdutosController', controllers.MeusProdutos);
+appModule.controller('BuscaController', controllers.Busca);
 
-run(appModule);
-run(appModule);
-run(appModule);
 run(appModule);
 config(appModule);

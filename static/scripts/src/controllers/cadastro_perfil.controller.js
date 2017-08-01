@@ -1,31 +1,36 @@
-function CadastroPerfilController(
-  $rootScope,
-  $location,
-  PersistenceService,
-  usuario,
-  credencial) {
+(function() {
+  angular
+    .module('app')
+    .controller('CadastroPerfilController', CadastroPerfilController);
 
-  // Models
-  this.usuario = usuario || { tipo: '' };
-  this.credencial = credencial || { perfil: null, senha: '' };
-  
-  this.voltar = () => {
-    PersistenceService.clearSessionItems();
-    return $location.url('/');  
-  };
+  CadastroPerfilController.$inject = [
+    '$rootScope',
+    '$location',
+    'PersistenceService'
+  ];
 
-  this.avancar = () => {
-    PersistenceService.setSessionItem('usuario', JSON.stringify(this.usuario));
-    PersistenceService.setSessionItem('credencial', JSON.stringify(this.credencial));
+  function CadastroPerfilController(
+    $rootScope,
+    $location,
+    PersistenceService
+  ) {
+    // Models
+    this.usuario = PersistenceService
+      .getSessionItem('usuario') || { tipo: '' };
+    this.credencial = PersistenceService
+      .getSessionItem('usuario') || { perfil: null, senha: '' };
+    
+    // Métodos
+    this.voltar = function () {
+      PersistenceService.clearSessionItems();
+      return $location.url('/');  
+    };
 
-    return $location.url('/registro/credencial');
-  };
-}
+    this.avancar = function () {
+      PersistenceService.setSessionItem('usuario', JSON.stringify(this.usuario));
+      PersistenceService.setSessionItem('credencial', JSON.stringify(this.credencial));
 
-CadastroPerfilController.$inject = [
-  '$rootScope',
-  '$location',
-  'PersistenceService'
-];
-
-module.exports = CadastroPerfilController;
+      return $location.url('/registro/credencial');
+    };
+  }
+})();

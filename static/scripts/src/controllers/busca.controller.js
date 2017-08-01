@@ -1,26 +1,30 @@
-SearchController.$inject = [
-  '$rootScope',
-  'categories',
-  'handlings',
-  'products'
-];
+(function () {
+  angular
+    .module('app')
+    .controller('SearchController', SearchController);
 
-function SearchController($rootScope, categories, handlings, products) {
-  $rootScope.view.name = 'Busca';
+  SearchController.$inject = [
+    '$rootScope',
+    'categories',
+    'handlings',
+    'products'
+  ];
 
-  this.categories = categories.data;
-  this.handlings = handlings.data;
-  this.products = products.data;
-  this.viewState = 'filter';
-  this.resultViewState = 'list';
+  function SearchController($rootScope, categories, handlings, products) {
+    $rootScope.view.name = 'Busca';
 
-  this.setViewState = function (state) {
-    this.viewState = state;
-  };
+    this.categories = categories.data;
+    this.handlings = handlings.data;
+    this.products = products.data;
+    this.viewState = 'filter';
+    this.resultViewState = 'list';
 
-  this.setResultViewState = function (state) {
-    this.resultViewState = state;
-  };
-}
+    this.setViewState = function (state) {
+      this.viewState = state;
+    };
 
-module.exports = SearchController;
+    this.setResultViewState = function (state) {
+      this.resultViewState = state;
+    };
+  }
+})();

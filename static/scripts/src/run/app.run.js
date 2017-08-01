@@ -1,42 +1,41 @@
-function appRun($rootScope, $mdSidenav, $mdToast, $mdDialog, strings) {
-  $rootScope.strings = strings;
-  $rootScope.view = {
-    name: 'Home',
-    fullscreen: false
-  };
+(function () {
+  angular
+    .module('app')
+    .run(appRun);
 
-  $rootScope.sidenav = {
-    visible: false,
-    toggle: function () {
-      $mdSidenav('main_menu').toggle();
-    },
-    items: [
-      { name: 'Produtos', icon: 'shopping_basket', href: '#/meus-produtos' }
-    ]
-  };
+  appRun.$inject = [
+    '$rootScope',
+    '$mdSidenav',
+    '$mdToast',
+    'strings'
+  ];
 
-  $rootScope.toolbar = {};
+  function appRun($rootScope, $mdSidenav, $mdToast, $mdDialog, strings) {
+    $rootScope.strings = strings;
+    $rootScope.view = {
+      name: 'Home',
+      fullscreen: false
+    };
 
-  $rootScope.showToast = (message) => {
-    return $mdToast
-      .show({
-        template: `
-          <md-toast>
-            <div class="md-toast-content">
-              ${message}
-            </div>
-          </md-toast>`,
-        hideDelay: 3000,
-        parent: document.getElementsByTagName('body')[0]
-      });
-  };
-}
+    $rootScope.sidenav = {
+      visible: false,
+      toggle: function () {
+        $mdSidenav('main_menu').toggle();
+      },
+      items: [
+        { name: 'Produtos', icon: 'shopping_basket', href: '#/meus-produtos' }
+      ]
+    };
 
-appRun.$inject = [
-  '$rootScope',
-  '$mdSidenav',
-  '$mdToast',
-  'strings'
-];
+    $rootScope.toolbar = {};
 
-module.exports = appRun;
+    $rootScope.showToast = function (message) {
+      return $mdToast
+        .show({
+          template: '<md-toast><div class="md-toast-content">' + message + '</div></md-toast>',
+          hideDelay: 3000,
+          parent: document.getElementsByTagName('body')[0]
+        });
+    };
+  }
+})();

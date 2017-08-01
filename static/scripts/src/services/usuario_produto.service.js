@@ -1,15 +1,17 @@
-class UsuarioProdutoService {
-  constructor($http) {
-    this.request = $http;
+(function() {
+  function UsuarioProdutoService($http) {
+    this.createOffer = (offer) => {
+      return $http
+        .post('/produto/oferta', offer)
+        .then(response => response.data);
+    }
   }
 
-  createOffer(offer) {
-    return this.request
-      .post('/produto/oferta', offer)
-      .then(response => response.data);
-  }
-}
+  UsuarioProdutoService.$inject = [
+    '$http'
+  ];
 
-UsuarioProdutoService.$inject = ['$http'];
-
-module.exports = UsuarioProdutoService;
+  angular
+    .module('app')
+    .service('UsuarioProdutoService', UsuarioProdutoService);
+})();

@@ -1,19 +1,18 @@
-class AutenticacaoService {
-  constructor($http, $cookies) {
-    this.request = $http;
-    this.cookies = $cookies;
+(function() {
+  angular
+    .module('app')
+    .service('AutenticacaoService', AutenticacaoService);
+
+    AutenticacaoService.$inject = [
+      '$http',
+      '$cookies'
+    ];
+
+  function AutenticacaoService($http, $cookies) {
+    this.authenticate = function (email, senha) {
+      return $http
+        .post('/email/autenticacao', { email, senha })
+        .then(response => response.data);
+    }
   }
-
-  authenticate(email, senha) {
-    return this.request
-      .post('/email/autenticacao', { email, senha })
-      .then(response => response.data);
-  }
-}
-
-AutenticacaoService.$inject = [
-  '$http',
-  '$cookies'
-];
-
-module.exports = AutenticacaoService
+})();

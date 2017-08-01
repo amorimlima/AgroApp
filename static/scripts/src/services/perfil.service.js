@@ -1,13 +1,17 @@
-class PerfilService {
-  constructor($http) {
-    this.request = $http;
-  }
-  
-  getAvailable() {
-    return this.request
-      .get('/perfil/disponivel')
-      .then(response => response.data);
-  }
-}
+(function() {
+  angular
+    .module('app')
+    .service('PerfilService', PerfilService);
 
-module.exports = PerfilService;
+  PerfilService.$inject = [
+    '$http'
+  ];
+
+  function PerfilService($http) {
+    this.getAvailable = function () {
+      return $http
+        .get('/perfil/disponivel')
+        .then(response => response.data);
+    }
+  }
+})();

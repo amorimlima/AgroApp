@@ -1,54 +1,54 @@
-class PersistenceService {
-  constructor($cookies) {
-    this.$cookies = $cookies;
-  }
-  
-  getSessionItem(key) {
-    if ('sessionStorage' in window)
-      return sessionStorage.getItem(key);
-    else
-      return this.$cookies.get(key);
-  }
-  
-  setSessionItem(key, val) {
-    if (typeof key !== 'string' || typeof val === 'object') {
-      throw new TypeError('Params must not be complex structures');
-    }
+(function () {
+  angular
+    .module('app')
+    .service('PersistenceService', PersistenceService);
 
-    if ('sessionStorage' in window)
-      return sessionStorage.setItem(key, val);
-    else
-      return this.$cookies.put(key, val, { expires: new Date(2021, 11, 31) });
-  }
+  PersistenceService.$inject = [
+    '$cookies'
+  ];
 
-  clearSessionItems() {
-    if ('sessionStorage' in window)
-      return sessionStorage.clear();
-    else
-      return false;
-  }
-
-  getPreference(key) {
-    if ('localStorage' in window)
-      return localStorage.getItem(key);
-    else
-      return this.$cookies.get(key);
-  }
-
-  setPreference(key, val) {
-    if (typeof key !== 'string' || typeof val !== 'object') {
-      throw new TypeError('Params must not be complex structures');
+  function PersistenceService($cookies) {
+    this.getSessionItem = function (key) {
+      if ('sessionStorage' in window)
+        return sessionStorage.getItem(key);
+      else
+        return $cookies.get(key);
     }
     
-    if ('localStorage' in window)
-      return localStorage.setItem(key, val);
-    else
-      return this.$cookies.put(key, val, { expires: new Date(2021, 11, 31) });
+    this.setSessionItem = function (key, val) {
+      if (typeof key !== 'string' || typeof val === 'object') {
+        throw new TypeError('Params must not be complex structures');
+      }
+
+      if ('sessionStorage' in window)
+        return sessionStorage.setItem(key, val);
+      else
+        return $cookies.put(key, val, { expires: new Date(2021, 11, 31) });
+    }
+
+    this.clearSessionItems = function () {
+      if ('sessionStorage' in window)
+        return sessionStorage.clear();
+      else
+        return false;
+    }
+
+    this.getPreference = function (key) {
+      if ('localStorage' in window)
+        return localStorage.getItem(key);
+      else
+        return $cookies.get(key);
+    }
+
+    this.setPreference = function (key, val) {
+      if (typeof key !== 'string' || typeof val !== 'object') {
+        throw new TypeError('Params must not be complex structures');
+      }
+      
+      if ('localStorage' in window)
+        return localStorage.setItem(key, val);
+      else
+        return $cookies.put(key, val, { expires: new Date(2021, 11, 31) });
+    }
   }
-}
-
-PersistenceService.$inject = [
-  '$cookies'
-];
-
-module.exports = PersistenceService;
+})();

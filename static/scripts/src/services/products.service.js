@@ -1,11 +1,14 @@
-ProductsService.$inject = [
-  '$http'
-];
+(function () {
+  angular
+    .module('app')
+    .service('ProductsService', ProductsService);
 
-function ProductsService($http) {
-  this.getAll = function () {
-    return $http.get('/products');
-  };
-}
-
-module.exports = ProductsService;
+  ProductsService.$inject = [
+    '$http'
+  ];
+  function ProductsService($http) {
+    this.getAll = function () {
+      return $http.get('/products');
+    };
+  }
+})();

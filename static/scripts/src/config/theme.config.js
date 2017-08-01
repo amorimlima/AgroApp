@@ -1,13 +1,17 @@
-themeConfig.$inject = [
-  '$mdThemingProvider'
-];
+(function () {
+  angular
+    .module('app')
+    .config(themeConfig);
 
-function themeConfig($mdThemingProvider) {
-  $mdThemingProvider.theme('agro')
-    .primaryPalette('green')
-    .accentPalette('lime');
+  themeConfig.$inject = [
+    '$mdThemingProvider'
+  ];
 
-  $mdThemingProvider.setDefaultTheme('agro');
-}
+  function themeConfig($mdThemingProvider) {
+    $mdThemingProvider.theme('agro')
+      .primaryPalette('green')
+      .accentPalette('lime');
 
-module.exports = themeConfig;
+    $mdThemingProvider.setDefaultTheme('agro');
+  }
+})();

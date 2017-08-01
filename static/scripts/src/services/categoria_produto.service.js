@@ -1,13 +1,17 @@
-class CategoriaProdutoService {
-  constructor($http) {
-    this.request = $http;
-  }
+(function () {
+  angular
+    .module('app')
+    .service('CategoriaProdutoService', CategoriaProdutoService);
 
-  getAll() {
-    return this.request
-      .get('/categoria')
-      .then(response => response.data);
+  CategoriaProdutoService.$inject = [
+    '$http'
+  ];
+  
+  function CategoriaProdutoService($http) {
+    this.getAll = () => {
+      return $http
+        .get('/categoria')
+        .then(response => response.data);
+    }
   }
-}
-
-module.exports = CategoriaProdutoService;
+})();

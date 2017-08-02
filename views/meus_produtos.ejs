@@ -1,0 +1,94 @@
+<md-toolbar
+  layout="row" 
+  class="md-toolbar-tools">
+
+  <md-button 
+    aria-label="button-label" 
+    class="md-icon-button"
+    ng-click="sidenav.toggle()">
+    
+    <md-icon md-font-set="material-icons">menu</md-icon>
+  </md-button>
+    
+  <h1
+    class="md-title"
+    flex
+    md-truncate>Meus produtos</h1>
+</md-toolbar>
+
+<md-content 
+  layout="column"
+  layout-fill
+  class="md-no-flicker md-no-momentum">
+
+  <div layout-padding="true">
+    <h2 class="md-title">Produtos</h2>
+  </div>
+
+  <md-list>
+    <md-list-item ng-if="!mensagemStatus.produtos.length">
+      <div class="md-list-item-text">
+        <p
+          class="md-subhead"
+          ng-bind="meusProdutosCtrl.mensagemStatus"></p>
+      </div>
+    </md-list-item>
+
+    <md-list-item
+      class="md-3-line"
+      ng-repeat="oferta in meusProdutosCtrl.produtos">
+
+      <div
+        class="md-list-item-text"
+        layout="column">
+
+        <h3 ng-bind="oferta.produto.nome"></h3>
+        <p>
+          <span ng-bind="oferta.quantidade"></span>
+          <span ng-bind="oferta.unidade"></span>
+        </p>
+        <p>
+          <span ng-bind="meusProdutosCtrl.getFormatedDate(oferta.data_inicio)"></span> |
+          <span ng-bind="meusProdutosCtrl.getFormatedDate(oferta.data_fim)"></span>
+        </p>
+      </div>
+    </md-list-item>
+  </md-list>
+
+  <md-button
+    class="md-fab md-primary md-raised fixed-fab"
+    aria-label="Cadastrar produto"
+    ng-click="meusProdutosCtrl.showDialog()">
+
+    <md-icon md-font-set="material-icons">add</md-icon>
+  </md-button>
+</md-content>
+
+<div>
+  <div class="md-dialog-container" id="produto_form">
+    <md-dialog layout-padding>
+      <md-dialog-content>
+        <form name="produto_form">
+          <md-input-container>
+            <label for="categoria">Categoria</label>
+
+            <md-select ng-model="meusProdutosCtrl.produto.Categoria">
+              <md-option ng-value="1">
+                Legumes e Verduras
+              </md-option>
+              <md-option ng-value="2">
+                Ervas Frescas
+              </md-option>
+              <md-option ng-value="3">
+                Frutas
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </form>
+      </md-dialog-content>
+
+      <md-dialog-actions>
+      </md-dialog-actions>
+    </md-dialog>
+  </div>
+</div>

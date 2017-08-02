@@ -24,10 +24,6 @@ module.exports = (sequelize, DataType) => {
   };
   const configs = { tableName: 'pessoa_juridica' };
   const Model = sequelize.define('PessoaJuridica', constructor, configs);
-  
-  Model.associate = (models) => {
-    Model.belongsTo(models.Usuario);
-  };
 
   return Model;
 };

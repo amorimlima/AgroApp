@@ -33,10 +33,5 @@ module.exports = (sequelize, DataType) => {
   const configs = { tableName: 'usuario_produto' };
   const Model = sequelize.define('UsuarioProduto', constructor, configs);
 
-  Model.associate = (models) => {
-    Model.belongsTo(models.Produto);
-    Model.belongsTo(models.Usuario);
-  };
-
   return Model;
 };

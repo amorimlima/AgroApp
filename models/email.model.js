@@ -16,10 +16,5 @@ module.exports = (sequelize, DataType) => {
   const configs = { tableName: 'email' };
   const Model = sequelize.define('Email', constructor, configs);
 
-  Model.associate = (models) => {
-    Model.hasOne(models.Credencial);
-    Model.belongsTo(models.Usuario);
-  };
-
   return Model;
 }

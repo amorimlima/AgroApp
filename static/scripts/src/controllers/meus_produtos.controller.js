@@ -1,21 +1,31 @@
-function MyProductsController($rootScope, CategoriaProdutoService) { 
-  this.$rootScope = $rootScope;
+(function() {
+  angular
+    .module('app')
+    .controller('MeusProdutosController', MeusProdutosController);
 
-  this.createOffer = () => {
-    return this.OfferService
-      .createOffer(this.offer)
-      .then(offer => Promise.resolve(this.produtos.unshift(offer)));
-  }
+  MeusProdutosController.$inject = [
+    '$rootScope',
+    '$mdDialog',
+    'CategoriaProdutoService'
+  ];
 
-  this.getFormatedDate = (date) => {
-    const newDate = date.split('-');
-    return `${newDate[2]}/${newDate[1]}/${newDate[0]}`;
-  }
-};
+  function MeusProdutosController($rootScope, $mdDialog, CategoriaProdutoService) {
+    // Models
+    this.produto = {};
+    this.produtos = [];
+    this.mensagemStatus = 'Nenhum produto encontrado.';
 
-MyProductsController.$inject = [
-  '$rootScope',
-  'CategoriaProdutoService'
-];
+    // Métodos
+    this.showDialog = function (id) {
+      if (!id) {
+        this.produto = {};
+      }
+    }
 
-module.exports = MyProductsController;
+
+    $mdDialog.show({
+      contentElement: document.getElementById('produto_form'),
+      parent: document.getElementsByTagName('body')[0]
+    });
+  };
+})();

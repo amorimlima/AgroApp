@@ -5,7 +5,7 @@
   <md-button 
     aria-label="button-label" 
     class="md-icon-button"
-    ng-click="registerCtrl.goBack()">
+    ng-click="cadastroCtrl.voltar()">
     
     <md-icon md-font-set="material-icons">arrow_back</md-icon>
   </md-button>
@@ -30,11 +30,10 @@
       <label for="cpf">CPF</label>
       <input
         id="cpf" 
-        type="number"
+        type="text"
         maxlength="11"
-        max="99999999999"
-        ng-model="registerCtrl.cpf"
-        ng-pattern="registerCtrl.cpfPattern"
+        ng-model="cadastroCtrl.pessoa_fisica.cpf"
+        ng-pattern="cadastroCtrl.cpfPattern"
         ng-required="true" />
     </md-input-container>
 
@@ -43,10 +42,10 @@
       <input
         id="rg" 
         type="text"
-        maxlength="9"
-        ng-model="registerCtrl.rg"
-        ng-pattern="registerCtrl.rgPattern"
+        maxlength="20"
+        ng-model="cadastroCtrl.pessoa_fisica.rg"
         ng-required="true" />
+
     </md-input-container>
 
     <md-input-container>
@@ -55,7 +54,7 @@
         id="nome"
         type="text"
         maxlength="100"
-        ng-model="registerCtrl.nome"
+        ng-model="cadastroCtrl.pessoa_fisica.nome"
         ng-required="true" />
 
     </md-input-container>
@@ -66,17 +65,16 @@
         id="sobrenome" 
         type="text"
         maxlength="100"
-        ng-model="registerCtrl.sobrenome"
+        ng-model="cadastroCtrl.pessoa_fisica.sobrenome"
         ng-required="true" />
     </md-input-container>
 
     <md-input-container>
       <label for="data_nascimento">Data de nascimento</label>
       <input
-        id="data_nascimento" 
+        id="data_nascimento"
         type="date"
-        ng-model="registerCtrl.data_nascimento"
-        ng-required="true" />
+        ng-model="cadastroCtrl.data_nascimento"></md-datepicker>
     </md-input-container>
   </form>
 
@@ -84,7 +82,7 @@
     class="md-primary md-raised"
     md-ripple-size="full"
     ng-disabled="dados_pessoais_form.$invalid"
-    ng-click="registerCtrl.goToContact()">
+    ng-click="cadastroCtrl.avancar()">
 
     Continuar
   </md-button>

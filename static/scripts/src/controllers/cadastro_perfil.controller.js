@@ -16,9 +16,7 @@
   ) {
     // Models
     this.usuario = JSON.parse(PersistenceService
-      .getSessionItem('usuario')) || { tipo: '' };
-    this.credencial = JSON.parse(PersistenceService
-      .getSessionItem('usuario')) || { perfil: null, senha: '' };
+      .getSessionItem('usuario')) || { tipo: '', senha: '', Perfil: null };
     
     // Métodos
     this.voltar = function () {
@@ -28,8 +26,6 @@
 
     this.avancar = function () {
       PersistenceService.setSessionItem('usuario', JSON.stringify(this.usuario));
-      PersistenceService.setSessionItem('credencial', JSON.stringify(this.credencial));
-
       return $location.url('/registro/credencial');
     };
   }

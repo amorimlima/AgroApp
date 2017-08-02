@@ -19,10 +19,5 @@ module.exports = (sequelize, DataType) => {
   const configs = { tableName: 'telefone' };
   const Model = sequelize.define('Telefone', constructor, configs);
 
-  Model.associate = (models) => {
-    Model.belongsTo(models.Usuario);
-    Model.belongsTo(models.TipoTelefone, { as: 'Tipo' });
-  };
-
   return Model;
 };

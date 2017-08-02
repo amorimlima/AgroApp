@@ -13,7 +13,7 @@
         return sessionStorage.getItem(key);
       else
         return $cookies.get(key);
-    }
+    };
     
     this.setSessionItem = function (key, val) {
       if (typeof key !== 'string' || typeof val === 'object') {
@@ -23,25 +23,32 @@
       if ('sessionStorage' in window)
         return sessionStorage.setItem(key, val);
       else
-        return $cookies.put(key, val, { expires: new Date(2021, 11, 31) });
-    }
+        return $cookies.put(key, val);
+    };
+
+    this.removeSessionItem = function (key) {
+      if ('sessionStorage' in window)
+        return sessionStorage.removeItem(key);
+      else
+        return $cookies.remove(key);
+    } 
 
     this.clearSessionItems = function () {
       if ('sessionStorage' in window)
         return sessionStorage.clear();
       else
         return false;
-    }
+    };
 
     this.getPreference = function (key) {
       if ('localStorage' in window)
         return localStorage.getItem(key);
       else
         return $cookies.get(key);
-    }
+    };
 
     this.setPreference = function (key, val) {
-      if (typeof key !== 'string' || typeof val !== 'object') {
+      if (typeof key !== 'string' || typeof val === 'object') {
         throw new TypeError('Params must not be complex structures');
       }
       
@@ -49,6 +56,13 @@
         return localStorage.setItem(key, val);
       else
         return $cookies.put(key, val, { expires: new Date(2021, 11, 31) });
-    }
+    };
+
+    this.removePreference = function (key) {
+      if ('localStorage' in window)
+        return localStorage.removeItem(key);
+      else
+        return $cookies.remove(key);
+    };
   }
 })();

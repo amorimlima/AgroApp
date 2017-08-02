@@ -19,7 +19,7 @@ module.exports = (sequelize, DataType) => {
     },
     complemento: {
       type: DataType.STRING(30),
-      validate: { notEmpty: true }
+      allowNull: false
     },
     bairro: {
       type: DataType.STRING(45),
@@ -38,10 +38,6 @@ module.exports = (sequelize, DataType) => {
   };
   const configs = { tableName: 'endereco' };
   const Model = sequelize.define('Endereco', constructor, configs);
-
-  Model.associate = (models) => {
-    Model.belongsTo(models.Usuario);
-  };
 
   return Model
 }

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataType) => {
       validate: { is: /\d{11}/ } 
     },
     rg: {
-      type: DataType.STRING(9),
+      type: DataType.STRING(20),
       allowNull: false,
       validate: { notEmpty: true }
     },
@@ -30,10 +30,6 @@ module.exports = (sequelize, DataType) => {
   };
   const configs = { tableName: 'pessoa_fisica' };
   const Model = sequelize.define('PessoaFisica', constructor, configs);
-
-  Model.associate = (models) => {
-    Model.belongsTo(models.Usuario);
-  };
 
   return Model;
 };

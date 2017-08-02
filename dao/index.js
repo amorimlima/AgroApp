@@ -1,6 +1,6 @@
 const GenericDAO = require('./generic.dao');
 const UsuarioDAO = require('./usuario.dao');
-const CredencialDAO = require('./credencial.dao');
+// const CredencialDAO = require('./credencial.dao');
 const PessoaJuridicaDAO = require('./pessoa_juridica.dao');
 const PessoaFisicaDAO = require('./pessoa_fisica.dao');
 const PerfilDAO = require('./perfil.dao');
@@ -14,7 +14,7 @@ const UsuarioProdutoDAO = require('./usuario_produto.dao');
 module.exports = {
   GenericDAO,
   UsuarioDAO,
-  CredencialDAO,
+  // CredencialDAO,
   PessoaJuridicaDAO,
   PessoaFisicaDAO,
   PerfilDAO,

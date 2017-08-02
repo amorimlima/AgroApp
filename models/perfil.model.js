@@ -16,7 +16,7 @@ module.exports = (sequelize, DataType) => {
   const Model = sequelize.define('Perfil', constructor, configs);
 
   Model.associate = (models) => {
-    Model.hasMany(models.Credencial, { as: 'Credenciais' });
+    Model.hasMany(models.Usuario, { foreignKey: 'Perfil', as: 'Usuarios' });
   };
 
   return Model;

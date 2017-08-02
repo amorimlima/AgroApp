@@ -10,20 +10,27 @@
     'PersistenceService'
   ];
 
-  function InicioController($rootScope, $location, AutenticacaoService, PersistenceService) {
+  function InicioController(
+    $rootScope, 
+    $location, 
+    AutenticacaoService, 
+    PersistenceService
+  ) {
+    // Models
     this.email = '';
     this.senha = '';
 
+    // Métodos
     this.login = function () {
-      this.auth
-        .authenticate(this.email, this.senha)
+      AutenticacaoService
+        .autenticar(this.email, this.senha)
         .then(function (token) {
-          this.storage.setPreference('token', token);
-          return this.$location.url('/meus-produtos');
+          PersistenceService.setPreference('token', token.token);
+          return $location.url('/meus-produtos');
         })
-        .catch(function () {
-          console.log('Erro ao logar');
+        .catch(function (erro) {
+          console.log(erro);
         });
-    }
+    };
   }
 })();

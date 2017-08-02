@@ -5,7 +5,7 @@
   <md-button 
     aria-label="button-label" 
     class="md-icon-button"
-    ng-click="registerCtrl.goBack()">
+    ng-click="cadastroCtrl.voltar()">
     
     <md-icon md-font-set="material-icons">arrow_back</md-icon>
   </md-button>
@@ -31,12 +31,12 @@
       <label for="estado">UF</label>
       <md-select
         id="estado"
-        ng-model="registerCtrl.estado"
+        ng-model="cadastroCtrl.endereco.estado"
         ng-required="true"
-        ng-disabled="registerCtrl.step === 3">
+        ng-disabled="cadastroCtrl.step === 3">
 
         <md-option
-          ng-repeat="estado in registerCtrl.estados"
+          ng-repeat="estado in cadastroCtrl.estados"
           ng-value="estado.sigla"
           ng-bind="estado.nome"></md-option>
       </md-select>
@@ -48,9 +48,9 @@
         id="cidade" 
         type="text"
         maxlength="45"
-        ng-model="registerCtrl.cidade"
+        ng-model="cadastroCtrl.endereco.cidade"
         ng-required="true"
-        ng-disabled="registerCtrl.step === 3" />
+        ng-disabled="cadastroCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -59,9 +59,9 @@
         id="bairro" 
         type="text"
         maxlength="45"
-        ng-model="registerCtrl.bairro"
+        ng-model="cadastroCtrl.endereco.bairro"
         ng-required="true"
-        ng-disabled="registerCtrl.step === 3" />
+        ng-disabled="cadastroCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -70,9 +70,9 @@
         id="street" 
         type="text"
         maxlength="45"
-        ng-model="registerCtrl.logradouro"
+        ng-model="cadastroCtrl.endereco.logradouro"
         ng-required="true"
-        ng-disabled="registerCtrl.step === 3" />
+        ng-disabled="cadastroCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -80,9 +80,9 @@
       <input
         id="addr_num" 
         type="number"
-        ng-model="registerCtrl.numero"
+        ng-model="cadastroCtrl.endereco.numero"
         ng-required="true"
-        ng-disabled="registerCtrl.step === 3" />
+        ng-disabled="cadastroCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -91,8 +91,8 @@
         id="complement" 
         type="text"
         maxlength="45"
-        ng-model="registerCtrl.complemento"
-        ng-disabled="registerCtrl.step === 3" />
+        ng-model="cadastroCtrl.endereco.complemento"
+        ng-disabled="cadastroCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -101,10 +101,10 @@
         id="cep" 
         type="text"
         maxlength="8"
-        ng-model="registerCtrl.cep"
-        ng-pattern="registerCtrl.cepPattern"
+        ng-model="cadastroCtrl.endereco.cep"
+        ng-pattern="cadastroCtrl.cepPattern"
         ng-required="true"
-        ng-disabled="registerCtrl.step === 3" />
+        ng-disabled="cadastroCtrl.step === 3" />
     </md-input-container>
   </form>
 
@@ -117,9 +117,9 @@
       <label for="type">Tipo</label>
       <md-select
         id="type"
-        ng-model="registerCtrl.tipo_telefone"
+        ng-model="cadastroCtrl.telefone.Tipo"
         ng-required="true"
-        ng-disabled="registerCtrl.step === 3">
+        ng-disabled="cadastroCtrl.step === 3">
 
         <md-option ng-value="1">Fixo</md-option>
         <md-option ng-value="2">Celular</md-option>
@@ -133,10 +133,10 @@
         type="number"
         maxlength="2"
         max="99"
-        ng-model="registerCtrl.ddd"
-        ng-pattern="registerCtrl.dddPattern"
+        ng-model="cadastroCtrl.telefone.ddd"
+        ng-pattern="cadastroCtrl.dddPattern"
         ng-required="true"
-        ng-disabled="registerCtrl.step === 3" />
+        ng-disabled="cadastroCtrl.step === 3" />
     </md-input-container>
 
     <md-input-container>
@@ -146,10 +146,10 @@
         type="number"
         maxlength="9"
         max="999999999"
-        ng-model="registerCtrl.numero_telefone"
-        ng-pattern="registerCtrl.telPattern"
+        ng-model="cadastroCtrl.telefone.numero"
+        ng-pattern="cadastroCtrl.telPattern"
         ng-required="true"
-        ng-disabled="registerCtrl.step === 3" />
+        ng-disabled="cadastroCtrl.step === 3" />
     </md-input-container>
   </form>
 
@@ -157,7 +157,7 @@
     class="md-primary md-raised"
     md-ripple-size="full"
     ng-disabled="address_form.$invalid || telephone_form.$invalid"
-    ng-click="registerCtrl.goToTermsOfUse()">
+    ng-click="cadastroCtrl.avancar()">
 
     Continuar
   </md-button>

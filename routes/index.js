@@ -1,4 +1,4 @@
-const authRoute = require('./auth.route');
+const autenticacaoRoute = require('./autenticacao.route');
 const viewsRoute = require('./views.route');
 const usuarioRoute = require('./usuario.route');
 const perfilRoute = require('./perfil.route');
@@ -8,7 +8,7 @@ const produtoRoute = require('./produto.route');
 const testsRoute = require('./tests.route');
 
 module.exports = {
-  authRoute,
+  autenticacaoRoute,
   viewsRoute,
   usuarioRoute,
   perfilRoute,

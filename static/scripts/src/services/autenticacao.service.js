@@ -9,10 +9,15 @@
     ];
 
   function AutenticacaoService($http, $cookies) {
-    this.authenticate = function (email, senha) {
+    this.cadastrar = function (payload) {
       return $http
-        .post('/email/autenticacao', { email, senha })
-        .then(response => response.data);
-    }
+        .post('/autenticacao/cadastrar', payload)
+        .then(function (response) { return Promise.resolve(response.data) });
+    };
+    this.autenticar = function (email, senha) {
+      return $http
+        .post('/autenticacao', { email, senha })
+        .then(function (response) { return Promise.resolve(response.data) });
+    };
   }
 })();

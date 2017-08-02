@@ -18,11 +18,13 @@ const modelsConfig = (app) => {
       models[model.name] = model;
     })
   
-  Object.keys(models).forEach((modelName) => {
-    if ('associate' in models[modelName]) {
-      models[modelName].associate(models);
-    }
-  });
+  Object
+    .keys(models)
+    .forEach((modelName) => {
+      if ('associate' in models[modelName]) {
+        models[modelName].associate(models);
+      }
+    });
 
   if (process.env.NODE_ENV === 'dev') {
     //fillDatabase = utils.fillDatabase(models);

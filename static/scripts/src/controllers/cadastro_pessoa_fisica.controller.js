@@ -1,37 +1,40 @@
-class PersonalDataRegisterController {
-  constructor($rootScope, $location, LocalPersistanceService) {
-    this.$rootScope = $rootScope;
-    this.$location = $location;
-    this.storage = LocalPersistanceService;
+(function() {
+  angular
+    .module('app')
+    .controller('CadastroPessoaFisicaController', CadastroPessoaFisicaController);
 
-    this.cpf = parseInt(this.storage.getSessionItem('cpf')) || null;
-    this.rg = this.storage.getSessionItem('rg') || '';
-    this.nome = this.storage.getSessionItem('nome') || '';
-    this.sobrenome = this.storage.getSessionItem('sobrenome') || '';
-    this.data_nascimento = new Date(this.storage.getSessionItem('data_nascimento')) || new Date();
+  CadastroPessoaFisicaController.$inject = [
+    '$rootScope',
+    '$location',
+    'PersistenceService'
+  ];
+
+  function CadastroPessoaFisicaController($rootScope, $location, PersistenceService) {
+
+    this.usuario = JSON.parse(PersistenceService.getSessionItem('usuario')) 
+                    || $location.url('/registro/perfil');
+
+    this.pessoa_fisica = JSON.parse(PersistenceService.getSessionItem('pessoa_fisica')) || {
+      cpf: '',
+      rg: '',
+      nome: '',
+      sobrenome: '',
+      data_nascimento: new Date('1988-00-01')
+    };
+
+    this.data_nascimento = new Date(this.pessoa_fisica.data_nascimento);
 
     this.cpfPattern = /\d{11}/;
-    this.rgPattern = /\d{9}/;
+
+    this.voltar = function () {
+      return $location.url('/registro/credencial');
+    };
+
+    this.avancar = function () {
+      this.pessoa_fisica.data_nascimento = this.data_nascimento.toISOString();
+      PersistenceService.removeSessionItem('pessoa_juridica');
+      PersistenceService.setSessionItem('pessoa_fisica', JSON.stringify(this.pessoa_fisica));
+      return $location.url('/registro/contato');
+    };
   }
-
-  goBack() {
-    return this.$location.url('/registro/credencial');
-  }
-
-  goToContact() {
-    this.storage.setSessionItem('cpf', this.cpf)
-    this.storage.setSessionItem('rg', this.rg)
-    this.storage.setSessionItem('nome', this.nome)
-    this.storage.setSessionItem('sobrenome', this.sobrenome)
-    this.storage.setSessionItem('data_nascimento', this.data_nascimento.toUTCString())
-    return this.$location.url('/registro/contato')
-  }
-}
-
-PersonalDataRegisterController.$inject = [
-  '$rootScope',
-  '$location',
-  'LocalPersistanceService'
-];
-
-module.exports = PersonalDataRegisterController;
+})();

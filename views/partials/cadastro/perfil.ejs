@@ -29,14 +29,14 @@
       md-gutter="10px"
       md-row-height="1:1">
       
-      <md-grid-tile ng-click="cadastroCtrl.credencial.perfil = 2">
+      <md-grid-tile ng-click="cadastroCtrl.usuario.Perfil = 2">
         <img 
           ng-src="/assets/images/produtor.png"
-          ng-show="cadastroCtrl.credencial.perfil !== 2" />
+          ng-show="cadastroCtrl.usuario.Perfil !== 2" />
 
         <img 
           ng-src="/assets/images/produtor_active.png"
-          ng-show="cadastroCtrl.credencial.perfil === 2" />
+          ng-show="cadastroCtrl.usuario.Perfil === 2" />
 
         <md-grid-tile-footer
           layout-align="center center">
@@ -45,14 +45,14 @@
         </md-grid-tile-footer>
       </md-grid-tile>
 
-      <md-grid-tile ng-click="cadastroCtrl.credencial.perfil = 3">
+      <md-grid-tile ng-click="cadastroCtrl.usuario.Perfil = 3">
         <img
           ng-src="/assets/images/comprador.png"
-          ng-show="cadastroCtrl.credencial.perfil !== 3" />
+          ng-show="cadastroCtrl.usuario.Perfil !== 3" />
 
         <img
           ng-src="/assets/images/comprador_active.png"
-          ng-show="cadastroCtrl.credencial.perfil === 3" />
+          ng-show="cadastroCtrl.usuario.Perfil === 3" />
 
         <md-grid-tile-footer
           layout-align="center center">
@@ -63,7 +63,7 @@
     </md-grid-list>
   </div>
 
-  <div ng-show="cadastroCtrl.credencial.perfil">
+  <div ng-show="cadastroCtrl.usuario.Perfil">
     <md-grid-list
       md-cols="2"
       md-gutter="10px"

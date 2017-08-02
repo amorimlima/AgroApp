@@ -18,12 +18,7 @@ module.exports = (sequelize, DataType) => {
     }
   };
   const configs = { tableName: 'documento_cadastro' };
-
   const Model = sequelize.define('DocumentoCadastro', constructor, configs);
-
-  Model.associate = (models) => {
-    Model.belongsTo(models.Usuario);
-  }
 
   return Model;
 }

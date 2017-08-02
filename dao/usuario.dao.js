@@ -7,6 +7,19 @@ class UsuarioDAO extends GenericDAO {
     this.models = models;
   }
 
+  createNew(payload) {
+    return this.model
+      .create(payload, {
+        include: [
+          { model: this.models.PessoaFisica, as: 'PessoaFisica' },
+          { model: this.models.PessoaJuridica, as: 'PessoaJuridica' },
+          { model: this.models.Email, as: 'Emails' },
+          { model: this.models.Endereco, as: 'Enderecos' },
+          { model: this.models.Telefone, as: 'Telefones' }
+        ]
+      })
+      .then(response => responses.generic(response));
+  }
   getCreated(id) {
     return this.model
       .findOne({

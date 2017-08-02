@@ -11,8 +11,8 @@ const viewsRoute = (router, app) => {
     res.render('cadastro', { strings: app.get('strings'), step: req.params.step });
   });
 
-  router.get('/my-products', function(req, res) {
-    res.render('my-products', { strings: app.get('strings') });
+  router.get('/meus-produtos', function(req, res) {
+    res.render('meus_produtos', { strings: app.get('strings') });
   });
 
   return router;

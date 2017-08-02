@@ -15,10 +15,10 @@
     PersistenceService
   ) {
     // Models
-    this.usuario = PersistenceService
-      .getSessionItem('usuario') || { tipo: '' };
-    this.credencial = PersistenceService
-      .getSessionItem('usuario') || { perfil: null, senha: '' };
+    this.usuario = JSON.parse(PersistenceService
+      .getSessionItem('usuario')) || { tipo: '' };
+    this.credencial = JSON.parse(PersistenceService
+      .getSessionItem('usuario')) || { perfil: null, senha: '' };
     
     // Métodos
     this.voltar = function () {

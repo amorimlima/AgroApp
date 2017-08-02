@@ -5,7 +5,7 @@
   <md-button 
     aria-label="button-label" 
     class="md-icon-button"
-    ng-click="registerCtrl.goBack()">
+    ng-click="cadastroCtrl.voltar()">
     
     <md-icon md-font-set="material-icons">arrow_back</md-icon>
   </md-button>
@@ -33,7 +33,7 @@
       <input 
         id="email_input"
         type="email"
-        ng-model="registerCtrl.email"
+        ng-model="cadastroCtrl.email.email"
         ng-required="true" />
     </md-input-container>
 
@@ -45,7 +45,7 @@
       <input 
         id="password_input"
         type="password"
-        ng-model="registerCtrl.senha"
+        ng-model="cadastroCtrl.credencial.senha"
         ng-required="true" />
     </md-input-container>
   </form>
@@ -53,9 +53,9 @@
   <md-button
     class="md-primary md-raised"
     md-ripple-size="full"
-    ng-if="registerCtrl.tipo == 'PF'"
+    ng-if="cadastroCtrl.usuario.tipo == 'PF'"
     ng-disabled="email_password_form.$invalid"
-    ng-click="registerCtrl.goToPersonData('dados-pessoais')">
+    ng-click="cadastroCtrl.avancar('pessoa-fisica')">
 
     Continuar
   </md-button>
@@ -63,9 +63,9 @@
   <md-button
     class="md-primary md-raised"
     md-ripple-size="full"
-    ng-if="registerCtrl.tipo == 'PJ'"
+    ng-if="cadastroCtrl.usuario.tipo == 'PJ'"
     ng-disabled="email_password_form.$invalid"
-    ng-click="registerCtrl.goToPersonData('dados-empresariais')">
+    ng-click="cadastroCtrl.avancar('pessoa-juridica')">
 
     Continuar
   </md-button>

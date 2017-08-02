@@ -1,6 +1,6 @@
 const viewsRoute = (router, app) => {
   router.get('/inicio', function(req, res) {
-    res.render('login', { strings: app.get('strings') });
+    res.render('inicio', { strings: app.get('strings') });
   });
 
   router.get('/busca', function(req, res) {

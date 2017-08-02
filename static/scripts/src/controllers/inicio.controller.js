@@ -1,16 +1,16 @@
 (function() {
   angular
     .module('app')
-    .controller('LoginController', LoginController);
+    .controller('InicioController', InicioController);
 
-  LoginController.$inject = [
+  InicioController.$inject = [
     '$rootScope',
     '$location',
     'AutenticacaoService',
     'PersistenceService'
   ];
 
-  function LoginController($rootScope, $location, AutenticacaoService, PersistenceService) {
+  function InicioController($rootScope, $location, AutenticacaoService, PersistenceService) {
     this.email = '';
     this.senha = '';
 

@@ -1,36 +1,32 @@
-class CredentialRegisterController {
-  constructor(
-    $rootScope,
-    $location,
-    Storage,
-    usuario,
-    credencial,
-    email) {
+(function() {
+  angular
+    .module('app')
+    .controller('CadastroCredencialController', CadastroCredencialController);
 
-    this.tipo = storage.getSessionItem('tipo');
-    this.email = storage.getSessionItem('email') || '';
-    this.senha = storage.getSessionItem('senha') || '';
+  CadastroCredencialController.$inject = [
+    '$rootScope',
+    '$location',
+    'PersistenceService'
+  ];
 
-    this.usuario = usuario || $location.url('/registro/perfil');
-    this.credencial = credencial || $location.url('/registro/perfil');
-    this.email = email || { email: '' };
+  function CadastroCredencialController($rootScope, $location, PersistenceService) {
+    // Models
+    this.usuario = JSON.parse(PersistenceService
+      .getSessionItem('usuario')) || $location.url('/registro/perfil');
+    this.credencial = JSON.parse(PersistenceService
+      .getSessionItem('credencial')) || $location.url('/registro/perfil');
+    this.email = JSON.parse(PersistenceService
+      .getSessionItem('email'))  || { email: '' };
+
+    // Métodos
+    this.voltar = function () {
+      return $location.url('/registro/perfil');
+    }
+
+    this.avancar = function (type) {
+      PersistenceService.setSessionItem('credencial', JSON.stringify(this.credencial));
+      PersistenceService.setSessionItem('email', JSON.stringify(this.email));
+      return $location.url('/registro/' + type);
+    }
   }
-
-  goBack() {
-    return $location.url('/registro/perfil');
-  }
-
-  goToPersonData(type) {
-    storage.setSessionItem('email', this.email);
-    storage.setSessionItem('senha', this.senha);
-    return $location.url(`/registro/${type}`);
-  }
-}
-
-CredentialRegisterController.$inject = [
-  '$rootScope',
-  '$location',
-  'PersistenceService'
-];
-
-module.exports = CredentialRegisterController;
+})();

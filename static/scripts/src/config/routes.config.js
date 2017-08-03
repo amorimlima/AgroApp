@@ -37,7 +37,15 @@
       .when('/meus-produtos', {
         controller: 'MeusProdutosController',
         controllerAs: 'meusProdutosCtrl',
-        templateUrl: '/views/meus-produtos'
+        templateUrl: '/views/meus-produtos',
+        resolve: {
+          produtos: function (ProdutoService) {
+            return ProdutoService.listarTodos();
+          },
+          ofertas: function (UsuarioProdutoService) {
+            return UsuarioProdutoService.listarMeusProdutos();
+          }
+        }
       })
       .otherwise({ redirectTo: '/' });
   };

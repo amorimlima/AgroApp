@@ -17,6 +17,19 @@ const produtoRoute = (router, app) => {
           res.json(response.data);
         });
     });
+  
+  router
+    .route('/')
+    .get((req, res) => {
+      const produtoDAO = new ProdutoDAO(app.get('models'));
+
+      produtoDAO
+        .getAll()
+        .then((response) => {
+          res.status(response.statusCode);
+          res.json(response.data);
+        });
+    })
 
   return router;
 };

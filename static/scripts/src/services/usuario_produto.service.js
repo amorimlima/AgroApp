@@ -1,14 +1,25 @@
 (function() {
-  function UsuarioProdutoService($http) {
-    this.createOffer = (offer) => {
+  function UsuarioProdutoService($http, PersistenceService) {
+    this.listarMeusProdutos = function () {
       return $http
-        .post('/produto/oferta', offer)
-        .then(response => response.data);
+        .get('/oferta/meus-produtos', {
+          headers: { 'Authorization': PersistenceService.getPreference('token') }
+        })
+        .then(function (response) { return Promise.resolve(response.data) });
+    };
+
+    this.cadastrarOferta = function (oferta) {
+      return $http
+        .post('/oferta', oferta, {
+          headers: { 'Authorization': PersistenceService.getPreference('token') }
+        })
+        .then(function (response) { return Promise.resolve(response.data) });
     }
   }
 
   UsuarioProdutoService.$inject = [
-    '$http'
+    '$http',
+    'PersistenceService'
   ];
 
   angular

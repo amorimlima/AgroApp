@@ -33,5 +33,10 @@ module.exports = (sequelize, DataType) => {
   const configs = { tableName: 'usuario_produto' };
   const Model = sequelize.define('UsuarioProduto', constructor, configs);
 
+  Model.associate = (models) => {
+    Model.belongsTo(models.Usuario, { as: 'Anunciante', foreignKey: 'Usuario' });
+    Model.belongsTo(models.Produto, { as: 'Anuncio', foreignKey: 'Produto' });
+  }
+
   return Model;
 };

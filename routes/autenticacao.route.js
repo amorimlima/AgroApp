@@ -35,7 +35,7 @@ const autenticacaoRoute = (router, app) => {
           const payload = instance.get({ plain: true });
           
           res.status(HttpStatus.OK);
-          res.json({ token: jwt.encode(payload, app.get('configs').jwt.secret) });
+          res.json({ token: `JWT ${jwt.encode(payload, app.get('configs').jwt.secret)}` });
         }
         else {
           res.sendStatus(HttpStatus.NOT_FOUND);

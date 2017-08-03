@@ -10,7 +10,8 @@
         md-no-cache="true"
         md-search-text="searchCtrl.searchText"
         md-items="item in searchCtrl.products | filter:searchCtrl.searchText"
-        md-clear-button="true">
+        md-clear-button="true"
+        md-item-text="item.nome">
 
         <md-item-template>
             {{item.name}}

@@ -6,6 +6,7 @@ const categoriaProdutoRoute = require('./categoria_produto.route');
 const emailRoute = require('./email.route');
 const produtoRoute = require('./produto.route');
 const testsRoute = require('./tests.route');
+const usuarioProdutoRoute = require('./usuario_produto.route');
 
 module.exports = {
   autenticacaoRoute,
@@ -15,5 +16,6 @@ module.exports = {
   categoriaProdutoRoute,
   emailRoute,
   produtoRoute,
-  testsRoute
+  testsRoute,
+  usuarioProdutoRoute
 };

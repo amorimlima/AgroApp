@@ -1,0 +1,100 @@
+<div style="visibility: hidden">
+  <div class="md-dialog-container" id="produto_form">
+    <md-dialog layout-padding>
+      <md-dialog-content>
+        <form
+          name="produto_form"
+          layout="column">
+
+          <md-input-container>
+            <label for="categoria">Categoria</label>
+            <md-select
+              id="categoria"
+              ng-model="meusProdutosCtrl.categoria"
+              ng-required="true">
+
+              <md-option ng-value="1">Legumes e Verduras</md-option>
+              <md-option ng-value="2">Ervas Frescas</md-option>
+              <md-option ng-value="3">Frutas</md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-autocomplete
+            md-no-cache="true"
+            md-search-text="meusProdutosCtrl.textoBusca"
+            md-floating-label="Produto"
+            md-selected-item="meusProdutosCtrl.oferta.Produto"
+            md-items="item in meusProdutosCtrl.produtosPorCategoria(meusProdutosCtrl.categoria) | filter:meusProdutosCtrl.textoBusca"
+            md-clear-button="true"
+            md-item-text="item.nome"
+            md-require-match="true">
+            
+            <md-item-template md-highlight-text="meusProdutosCtrl.textoBusca">
+              <span>{{item.nome}}</span>
+            </md-item-template>
+
+            <md-not-found>
+              Nenhum produto encontrado na categoria selecionada.
+            </md-not-found>
+          </md-autocomplete>
+
+          <div 
+            class="md-block"
+            layout="row">
+
+            <md-input-container>
+              <label for="quantidade">Quantidade</label>
+              <input 
+                id="quantidade"
+                type="number"
+                ng-model="meusProdutosCtrl.oferta.quantidade"
+                ng-required="true" />
+            </md-input-container>
+
+            <md-input-container>
+              <label for="unidade">Unidade</label>
+              <md-select
+                id="unidade"
+                ng-model="meusProdutosCtrl.oferta.unidade">
+
+                <md-option ng-value="'kg'">kg</md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+
+          <h3 class="md-subhead">Período de validade</h3>
+          <md-input-container>
+            <label for="data_inicio">Início</label>
+            <input
+              id="data_inicio"
+              type="date"
+              ng-model="meusProdutosCtrl.oferta.data_inicio" />
+          </md-input-container>
+
+          <md-input-container>
+            <label for="data_fim">Fim</label>
+            <input
+              id="data_fim"
+              type="date"
+              ng-model="meusProdutosCtrl.oferta.data_fim" />
+          </md-input-container>
+
+        </form>
+      </md-dialog-content>
+
+      <md-dialog-actions>
+        <md-button ng-click="meusProdutosCtrl.cancelar()">
+          Cancelar
+        </md-button>
+
+        <md-button 
+          class="md-primary"
+          ng-disabled="produto_form.$invalid"
+          ng-click="meusProdutosCtrl.salvar()">
+  
+          Salvar
+        </md-button>
+      </md-dialog-actions>
+    </md-dialog>
+  </div>
+</div>

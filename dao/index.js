@@ -6,6 +6,7 @@ const PessoaFisicaDAO = require('./pessoa_fisica.dao');
 const PerfilDAO = require('./perfil.dao');
 const EnderecoDAO = require('./endereco.dao');
 const EmailDAO = require('./email.dao');
+const ProdutoDAO = require('./produto.dao');
 const TipoTelefoneDAO = require('./tipo_telefone.dao');
 const TelefoneDAO = require('./telefone.dao');
 const CategoriaProdutoDAO = require('./categoria_produto.dao');
@@ -20,6 +21,7 @@ module.exports = {
   PerfilDAO,
   EnderecoDAO,
   EmailDAO,
+  ProdutoDAO,
   TipoTelefoneDAO,
   TelefoneDAO,
   CategoriaProdutoDAO,

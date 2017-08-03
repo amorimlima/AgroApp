@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const jwtSimple = require('jwt-simple');
 
 const appConfig = (app) => {
   const database = {
@@ -17,7 +18,8 @@ const appConfig = (app) => {
   };
   const jwt = {
     secret: '4gr04pp',
-    session: false
+    session: false,
+    decode: jwtSimple.decode.bind(jwtSimple)
   };
 
   return { database, jwt };

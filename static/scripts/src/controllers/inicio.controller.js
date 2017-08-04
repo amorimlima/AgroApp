@@ -6,13 +6,15 @@
   InicioController.$inject = [
     '$rootScope',
     '$location',
+    '$cookies',
     'AutenticacaoService',
     'PersistenceService'
   ];
 
   function InicioController(
     $rootScope, 
-    $location, 
+    $location,
+    $cookies,
     AutenticacaoService, 
     PersistenceService
   ) {
@@ -25,7 +27,7 @@
       AutenticacaoService
         .autenticar(this.email, this.senha)
         .then(function (token) {
-          PersistenceService.setPreference('token', token.token);
+          $cookies.put('session', token.token);
           return $location.url('/meus-produtos');
         })
         .catch(function (erro) {

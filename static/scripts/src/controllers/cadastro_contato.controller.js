@@ -6,6 +6,7 @@
   CadastroContatoController.$inject = [
     '$rootScope',
     '$location',
+    '$cookies',
     '$mdDialog',
     'PersistenceService',
     'AutenticacaoService'
@@ -14,6 +15,7 @@
   function CadastroContatoController(
     $rootScope,
     $location,
+    $cookies,
     $mdDialog,
     PersistenceService,
     AutenticacaoService
@@ -93,7 +95,7 @@
           return AutenticacaoService.autenticar(Email.email, payload.senha)
         })
         .then(function (token) {
-          PersistenceService.setPreference('token', token.token);
+          $cookies.put('session', token.token);
           return $location.url('/meus-produtos');
         });
     };

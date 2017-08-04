@@ -15,7 +15,12 @@
   <meta name="msapplication-TileImage" content="images/icon-128x128.png" />
   <meta name="msapplication-TileColor" content="#e74c3c" />
 
-  <link rel="stylesheet" href="/assets/styles/style.css" />
+  <% if (environment === 'dev') { %>
+    <link rel="stylesheet" href="/assets/styles/style.css" />
+  <% } else { %>
+    <link rel="stylesheet" href="/assets/styles/bin/style.css" />
+  <% } %>
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet" />
   <style>
@@ -36,16 +41,17 @@
     <ng-view layout-fill></ng-view>
   </div>
 
-  <% if (environment === '') { %>
-    <script src="/assets/scripts/bundle.js"></script>
+  <%# Angular %>
+  <script src="/assets/scripts/lib/angular.min.js"></script>
+  <script src="/assets/scripts/lib/angular-animate.min.js"></script>
+  <script src="/assets/scripts/lib/angular-aria.min.js"></script>
+  <script src="/assets/scripts/lib/angular-cookies.min.js"></script>
+  <script src="/assets/scripts/lib/angular-material.min.js"></script>
+  <script src="/assets/scripts/lib/angular-route.min.js"></script>
+
+  <% if (environment !== 'dev') { %>
+    <script src="/assets/scripts/bin/bundle.js"></script>
   <% } else { %>
-    <%# Angular %>
-    <script src="/assets/scripts/lib/angular.min.js"></script>
-    <script src="/assets/scripts/lib/angular-animate.min.js"></script>
-    <script src="/assets/scripts/lib/angular-aria.min.js"></script>
-    <script src="/assets/scripts/lib/angular-cookies.min.js"></script>
-    <script src="/assets/scripts/lib/angular-material.min.js"></script>
-    <script src="/assets/scripts/lib/angular-route.min.js"></script>
 
     <%# App %>
     <script src="/assets/scripts/src/app.js"></script>
@@ -72,6 +78,9 @@
     <script src="/assets/scripts/src/config/location.config.js"></script>
     <script src="/assets/scripts/src/config/theme.config.js"></script>
     <script src="/assets/scripts/src/config/routes.config.js"></script>
+
+    <%# Run %>
+    <script src="/assets/scripts/src/run/app.run.js"></script>
   <% } %>
 </body>
 </html>

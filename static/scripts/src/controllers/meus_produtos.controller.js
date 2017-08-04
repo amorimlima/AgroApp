@@ -13,6 +13,8 @@
     'ofertas'
   ];
 
+  var self = null;
+
   function MeusProdutosController(
     $rootScope,
     $mdDialog,
@@ -31,7 +33,18 @@
     this.mensagemStatus = 'Nenhum produto encontrado.';
 
     // Métodos
-    this.showDialog = function () {
+    this.abrirFormulario = function (oferta) {
+      if (!oferta) {
+        this.oferta = {};
+        this.categoria = null;
+      }
+      else {
+        this.oferta = angular.copy(oferta);
+        this.categoria = oferta.Anuncio.Categoria;
+        this.oferta.data_inicio = new Date(this.oferta.data_inicio);
+        this.oferta.data_fim = new Date(this.oferta.data_fim);
+      }
+
       $mdDialog.show({
         contentElement: document.getElementById('produto_form'),
         parent: document.getElementsByTagName('body')[0]
@@ -54,13 +67,13 @@
 
     this.salvar = function () {
       var self = this;
+      this.ofertas = [];
 
       return UsuarioProdutoService
         .cadastrarOferta(this.oferta)
         .then(function (oferta) {
-          self.oferta.id = oferta.id;
-          self.ofertas.unshift(oferta);
           $mdDialog.hide();
+          self.listarMeusProdutos();
         });
     };
 
@@ -72,10 +85,45 @@
     };
 
     this.getFormatedDate = function (data) {
-      return data
-        .split('-')
-        .reverse()
-        .join('/');
+      var date = new Date(data);
+      var formated = '';
+      formated += date.getDate() < 10 ? '0' + date.getDate() + '/' : date.getDate() + '/';
+      formated += (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) + '/' : (date.getMonth() + 1) + '/';
+      formated += date.getFullYear();
+
+      return formated;
+    };
+
+    this.abrirConfirmacaoExclusaoDe = function (oferta) {
+      var self = this;
+      var dialog = $mdDialog.confirm()
+        .title('Excluir oferta?')
+        .textContent('Essa ação não pode ser desfeita.')
+        .ok('Excluir')
+        .cancel('Cancelar');
+      this.oferta = angular.copy(oferta);
+
+      $mdDialog.show(dialog)
+        .then(function() { self.confirmarExclusao(oferta.id) })
+        .catch(function() { });
+    };
+
+    this.listarMeusProdutos = function () {
+      var self = this;
+
+      return UsuarioProdutoService
+        .listarMeusProdutos()
+        .then(function (ofertas) {
+          self.ofertas = ofertas;
+        });
+    };
+
+    this.confirmarExclusao = function (id) {
+      var self = this;
+
+      return UsuarioProdutoService
+        .deletarOferta(id)
+        .then(function () { self.listarMeusProdutos() });
     }
   };
 })();

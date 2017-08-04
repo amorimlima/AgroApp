@@ -5,17 +5,31 @@
 
   appRun.$inject = [
     '$rootScope',
+    '$location',
+    '$http',
+    '$cookies',
     '$mdSidenav',
-    '$mdToast',
-    'strings'
+    '$mdToast'
   ];
 
-  function appRun($rootScope, $mdSidenav, $mdToast, $mdDialog, strings) {
-    $rootScope.strings = strings;
-    $rootScope.view = {
-      name: 'Home',
-      fullscreen: false
-    };
+  function appRun(
+    $rootScope, 
+    $location,
+    $http,
+    $cookies, 
+    $mdSidenav, 
+    $mdToast
+  ) {
+
+    $rootScope.$on('$routeChangeStart', function (ngEvent, next, current) {
+      if (next.requireAuth && !$cookies.get('session')) {
+        $location.url('/');
+        ngEvent.preventDefault();
+      }
+      else {
+        $http.defaults.headers.common['Authorization'] = $cookies.get('session');
+      }
+    });
 
     $rootScope.sidenav = {
       visible: false,
@@ -27,8 +41,6 @@
       ]
     };
 
-    $rootScope.toolbar = {};
-
     $rootScope.showToast = function (message) {
       return $mdToast
         .show({
@@ -37,5 +49,6 @@
           parent: document.getElementsByTagName('body')[0]
         });
     };
+
   }
 })();

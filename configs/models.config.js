@@ -26,9 +26,7 @@ const modelsConfig = (app) => {
       }
     });
 
-  if (process.env.NODE_ENV === 'dev') {
-    //fillDatabase = utils.fillDatabase(models);
-  }
+    // fillDatabase = utils.fillDatabase(models);
 
   return models;
 }

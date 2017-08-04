@@ -24,41 +24,40 @@
   <div layout-padding="true">
     <h2 class="md-title">Produtos</h2>
   </div>
+  
+  <div>
+    <md-card ng-if="!meusProdutosCtrl.ofertas.length">
+      <md-card-title>
+        <md-card-text>
+          <span class="md-subhead">Nenhum produto cadastrado.</span>
+        </md-card-text>
+      </md-card-title>
+    </md-card>
 
-  <md-list>
-    <md-list-item ng-if="!meusProdutosCtrl.ofertas.length">
-      <div class="md-list-item-text">
-        <p
-          class="md-subhead"
-          ng-bind="meusProdutosCtrl.mensagemStatus"></p>
-      </div>
-    </md-list-item>
+    <md-card ng-repeat="oferta in meusProdutosCtrl.ofertas">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-title">{{oferta.Anuncio.nome}}</span>
+          <span class="md-subhead">{{oferta.quantidade}} {{oferta.unidade}}</span>
+        </md-card-title-text>
+      </md-card-title>
+        
+      <md-card-content>
+        <span ng-bind="meusProdutosCtrl.getFormatedDate(oferta.data_inicio)"></span> |
+        <span ng-bind="meusProdutosCtrl.getFormatedDate(oferta.data_fim)"></span>
+      </md-card-content>
 
-    <md-list-item
-      class="md-3-line"
-      ng-repeat="oferta in meusProdutosCtrl.ofertas">
-
-      <div
-        class="md-list-item-text"
-        layout="column">
-
-        <h3 ng-bind="oferta.Anuncio.nome"></h3>
-        <p>
-          <span ng-bind="oferta.quantidade"></span>
-          <span ng-bind="oferta.unidade"></span>
-        </p>
-        <p>
-          <span ng-bind="meusProdutosCtrl.getFormatedDate(oferta.data_inicio)"></span> |
-          <span ng-bind="meusProdutosCtrl.getFormatedDate(oferta.data_fim)"></span>
-        </p>
-      </div>
-    </md-list-item>
-  </md-list>
+      <md-card-actions>
+        <md-button ng-click="meusProdutosCtrl.abrirConfirmacaoExclusaoDe(oferta)">Excluir</md-button>
+        <md-button ng-click="meusProdutosCtrl.abrirFormulario(oferta)">Editar</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
 
   <md-button
     class="md-fab md-primary md-raised fixed-fab"
     aria-label="Cadastrar produto"
-    ng-click="meusProdutosCtrl.showDialog()">
+    ng-click="meusProdutosCtrl.abrirFormulario()">
 
     <md-icon md-font-set="material-icons">add</md-icon>
   </md-button>

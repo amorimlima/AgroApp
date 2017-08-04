@@ -8,10 +8,10 @@
   ];
   
   function CategoriaProdutoService($http) {
-    this.getAll = () => {
+    this.getAll = function () {
       return $http
         .get('/categoria')
-        .then(response => response.data);
+        .then(function (response) { return response.data; });
     }
   }
 })();

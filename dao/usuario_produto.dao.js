@@ -8,6 +8,21 @@ class UsuarioProdutoDAO extends GenericDAO {
     this.models = models;
   }
 
+  createOrUpdate(usuarioProduto) {
+    if (usuarioProduto.id) {
+      return this.model
+        .update(usuarioProduto, { where: { id: usuarioProduto.id } })
+        .then(row => responses.generic(row))
+        .catch(err => responses.error(err));
+    }
+    else {
+      return this.model
+        .create(usuarioProduto)
+        .then(instance => responses.generic(instance))
+        .catch(err => responses.error(err));
+    }
+  }
+
   getByUser(id) {
     return this.model
       .findAll({

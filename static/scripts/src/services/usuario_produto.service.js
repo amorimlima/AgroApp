@@ -2,17 +2,19 @@
   function UsuarioProdutoService($http, PersistenceService) {
     this.listarMeusProdutos = function () {
       return $http
-        .get('/oferta/meus-produtos', {
-          headers: { 'Authorization': PersistenceService.getPreference('token') }
-        })
+        .get('/oferta/meus-produtos')
         .then(function (response) { return Promise.resolve(response.data) });
     };
 
     this.cadastrarOferta = function (oferta) {
       return $http
-        .post('/oferta', oferta, {
-          headers: { 'Authorization': PersistenceService.getPreference('token') }
-        })
+        .post('/oferta', oferta)
+        .then(function (response) { return Promise.resolve(response.data) });
+    };
+
+    this.deletarOferta = function (id) {
+      return $http
+        .delete('/oferta/' + id)
         .then(function (response) { return Promise.resolve(response.data) });
     }
   }

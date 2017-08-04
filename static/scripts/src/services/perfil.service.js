@@ -11,7 +11,7 @@
     this.getAvailable = function () {
       return $http
         .get('/perfil/disponivel')
-        .then(response => response.data);
+        .then(function (response) { return response.data; });
     }
   }
 })();

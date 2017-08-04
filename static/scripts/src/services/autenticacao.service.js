@@ -16,7 +16,7 @@
     };
     this.autenticar = function (email, senha) {
       return $http
-        .post('/autenticacao', { email, senha })
+        .post('/autenticacao', { email: email, senha: senha })
         .then(function (response) { return Promise.resolve(response.data) });
     };
   }

@@ -11,7 +11,7 @@
     this.register = function (payload) {
       return $http
         .post('/usuario/novo', payload)
-        .then(response => response.data);
+        .then(function (response) { return response.data; });
     }
   }
 

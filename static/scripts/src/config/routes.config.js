@@ -34,17 +34,23 @@
         controllerAs: 'cadastroCtrl',
         templateUrl: '/views/cadastro/pessoa-juridica',
       })
+      .when('/registro/contato', {
+        controller: 'CadastroContatoController',
+        controllerAs: 'cadastroCtrl',
+        templateUrl: '/views/cadastro/contato',
+      })
       .when('/meus-produtos', {
         controller: 'MeusProdutosController',
         controllerAs: 'meusProdutosCtrl',
         templateUrl: '/views/meus-produtos',
+        requireAuth: true,
         resolve: {
-          produtos: function (ProdutoService) {
+          produtos: ['ProdutoService', function (ProdutoService) {
             return ProdutoService.listarTodos();
-          },
-          ofertas: function (UsuarioProdutoService) {
+          }],
+          ofertas: ['UsuarioProdutoService', function (UsuarioProdutoService) {
             return UsuarioProdutoService.listarMeusProdutos();
-          }
+          }]
         }
       })
       .otherwise({ redirectTo: '/' });

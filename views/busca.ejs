@@ -1,4 +1,22 @@
 <md-toolbar
+  layout="row" 
+  class="md-toolbar-tools">
+
+  <md-button 
+    aria-label="button-label" 
+    class="md-icon-button"
+    ng-click="sidenav.toggle()">
+    
+    <md-icon md-font-set="material-icons">menu</md-icon>
+  </md-button>
+    
+  <h1
+    class="md-title"
+    flex
+    md-truncate>Busca</h1>
+</md-toolbar>
+
+<md-toolbar
     class="md-toolbar-tools"
     layout="row"
     md-ripple-size="full"
@@ -8,8 +26,8 @@
         placeholder="<%= strings.WHAT_ARE_YOU_LOOKING_FOR %>"
         flex="grow"
         md-no-cache="true"
-        md-search-text="searchCtrl.searchText"
-        md-items="item in searchCtrl.products | filter:searchCtrl.searchText"
+        md-search-text="buscaCtrl.searchText"
+        md-items="item in buscaCtrl.products | filter:buscaCtrl.searchText"
         md-clear-button="true"
         md-item-text="item.nome">
 
@@ -25,13 +43,13 @@
     <md-button
         aria-label="Open filters button"
         class="md-icon-button"
-        ng-show="searchCtrl.viewState === 'result'"
-        ng-click="searchCtrl.setViewState('filter')">
+        ng-show="buscaCtrl.viewState === 'result'"
+        ng-click="buscaCtrl.setViewState('filter')">
 
         <md-icon>filter_list</md-icon>
     </md-button>
 </md-toolbar>
 
-<%- include('./partials/search_filters.ejs'); %>
+<%- include('partials/search/search_filters.ejs'); %>
 
-<%- include('./partials/search_results.ejs'); %>
+<%- include('partials/search/search_results.ejs'); %>

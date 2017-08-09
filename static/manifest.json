@@ -1,0 +1,12 @@
+{
+  "name": "AgroApp",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Marketplace para conectar produtores rurais e compradores",
+  "start_url": "../",
+  "icons": [{
+    "src": "images/touch/icon-192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }]
+}

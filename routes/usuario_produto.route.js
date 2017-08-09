@@ -69,6 +69,17 @@ module.exports = (router, app) => {
       }
     })
 
+  router
+    .route('/busca')
+    .get((req, res) => {
+      const usuarioProdutoDAO = new UsuarioProdutoDAO(app.get('models'));
+      const { produto, cidade, estado } = req.query;
+
+      usuarioProdutoDAO
+        .listarParaBusca(produto, estado, cidade)
+        .then(response => res.json(response.data));
+    });
+
   return router;
 
 };

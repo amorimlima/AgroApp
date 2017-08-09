@@ -53,6 +53,20 @@
           }]
         }
       })
+      .when('/busca', {
+        controller: 'BuscaController',
+        controllerAs: 'buscaCtrl',
+        templateUrl: '/views/busca',
+        requireAuth: true,
+        resolve: {
+          categorias: ['CategoriaProdutoService', function (CategoriaProdutoService) {
+            return CategoriaProdutoService.getAll();
+          }],
+          estados: ['EnderecoService', function (EnderecoService) {
+            return EnderecoService.listarEstados();
+          }]
+        }
+      })
       .otherwise({ redirectTo: '/' });
   };
 })();

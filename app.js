@@ -43,6 +43,7 @@ app.use('/email', routes.emailRoute(express.Router(), app));
 app.use('/produto', routes.produtoRoute(express.Router(), app));
 app.use('/tests', routes.testsRoute(express.Router(), app));
 app.use('/oferta', routes.usuarioProdutoRoute(express.Router(), app));
+app.use('/endereco', routes.enderecoRoute(express.Router(), app));
 
 // Views
 app.set('views', 'views');
@@ -56,6 +57,10 @@ app.get('/', (req, res) => {
     environment,
     strings: app.get('strings')
   });
+});
+
+app.get('/sw.js', (req, res) => {
+  res.sendFile(path.join(__dirname, './sw.js'));
 });
 
 module.exports = app;

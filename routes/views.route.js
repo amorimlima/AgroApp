@@ -4,7 +4,7 @@ const viewsRoute = (router, app) => {
   });
 
   router.get('/busca', function(req, res) {
-    res.render('search', { strings: app.get('strings') });
+    res.render('busca', { strings: app.get('strings') });
   });
 
   router.get('/cadastro/:step', function(req, res) {

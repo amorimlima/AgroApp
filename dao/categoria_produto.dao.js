@@ -1,8 +1,8 @@
 const GenericDAO = require('./generic.dao');
 
 class CategoriaProdutoDAO extends GenericDAO {
-  constructor(CategoriaProduto) {
-    super(CategoriaProduto);
+  constructor(models) {
+    super(models.CategoriaProduto);
   }
 }
 

@@ -33,6 +33,32 @@ class UsuarioProdutoDAO extends GenericDAO {
       .then(produtos => responses.generic(produtos))
       .catch(error => responses.error(error));
   }
+
+  listarParaBusca(produto = { $not: null }, estado, cidade) {
+    if (estado)
+      estado = { $like: `%${estado}%` };
+    else
+      estado = { $not: null };
+
+    if (cidade)
+      cidade = { $like: `%${cidade}%` };
+    else
+      cidade = { $not: null };
+
+    return this.model
+      .findAll({
+        include: [
+          { model: this.models.Produto, as: 'Anuncio', required: true, where: { id: produto } },
+          { model: this.models.Usuario, as: 'Anunciante', required: true, include: [
+            { model: this.models.Endereco, as: 'Enderecos', required: true, where: { cidade, estado } },
+            { model: this.models.PessoaFisica, as: 'PessoaFisica' },
+            { model: this.models.PessoaJuridica, as: 'PessoaJuridica' }
+          ]}
+        ]
+      })
+      .then(produtos => responses.generic(produtos))
+      .catch(error => responses.error(error));
+  }
 }
 
 module.exports = UsuarioProdutoDAO;

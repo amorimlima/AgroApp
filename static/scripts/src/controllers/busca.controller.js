@@ -1,23 +1,21 @@
 (function () {
   angular
     .module('app')
-    .controller('SearchController', SearchController);
+    .controller('BuscaController', BuscaController);
 
-  SearchController.$inject = [
+  BuscaController.$inject = [
     '$rootScope',
-    'categories',
-    'handlings',
-    'products'
+    'categorias',
+    'estados'
   ];
 
-  function SearchController($rootScope, categories, handlings, products) {
-    $rootScope.view.name = 'Busca';
-
-    this.categories = categories.data;
-    this.handlings = handlings.data;
-    this.products = products.data;
+  function BuscaController($rootScope, categorias, estados) {
     this.viewState = 'filter';
     this.resultViewState = 'list';
+    this.categorias = categorias || [];
+    this.estados = estados || [];
+    this.filtros = { categoria: {} };
+    this.listaResultados = [];
 
     this.setViewState = function (state) {
       this.viewState = state;

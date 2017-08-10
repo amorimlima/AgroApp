@@ -46,6 +46,7 @@
       }
 
       $mdDialog.show({
+        clickOutsideToClose: true,
         contentElement: document.getElementById('produto_form'),
         parent: document.getElementsByTagName('body')[0]
       });

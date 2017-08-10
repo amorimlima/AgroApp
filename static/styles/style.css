@@ -13689,3 +13689,9 @@ md-toolbar {
 
 h2.md-title {
   margin: 8px 0; }
+
+md-toolbar ~ md-content {
+  height: calc(100vh - 56px) !important;
+  min-height: auto !important; }
+  md-toolbar ~ md-content > * {
+    flex: none !important; }

@@ -35,8 +35,7 @@
       visible: false,
       toggle: function () { $mdSidenav('main_menu').toggle(); },
       items: [
-        { name: 'Produtos', icon: 'shopping_basket', href: '#/meus-produtos' },
-        { name: 'Busca', icon: 'search', href:'#/busca' }
+        { name: 'Produtos', icon: 'shopping_basket', href: '#/meus-produtos' }
       ]
     };
 

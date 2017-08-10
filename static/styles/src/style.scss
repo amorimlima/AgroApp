@@ -11,3 +11,15 @@
 h2.md-title {
   margin: 8px 0;
 }
+
+md-toolbar {
+  ~ md-content {
+    height: calc(100vh - 56px) !important;
+    min-height: calc(100vh - 56px) !important;
+
+    > * {
+      flex: none !important;
+    }
+  }
+
+}

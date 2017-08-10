@@ -21,23 +21,28 @@
       })
       .when('/registro/credencial', {
         controller: 'CadastroCredencialController',
-        controllerAs: 'cadastroCtrl',
+        controllerAs: 'ctrl',
         templateUrl: '/views/cadastro/credencial'
       })
       .when('/registro/pessoa-fisica', {
         controller: 'CadastroPessoaFisicaController',
-        controllerAs: 'cadastroCtrl',
+        controllerAs: 'ctrl',
         templateUrl: '/views/cadastro/pessoa-fisica'
       })
       .when('/registro/pessoa-juridica', {
         controller: 'CadastroPessoaJuridicaController',
-        controllerAs: 'cadastroCtrl',
+        controllerAs: 'ctrl',
         templateUrl: '/views/cadastro/pessoa-juridica',
       })
       .when('/registro/contato', {
         controller: 'CadastroContatoController',
-        controllerAs: 'cadastroCtrl',
+        controllerAs: 'ctrl',
         templateUrl: '/views/cadastro/contato',
+        resolve: {
+          estados: ['EnderecoService', function (EnderecoService) {
+            return EnderecoService.listarEstados();
+          }]
+        }
       })
       .when('/meus-produtos', {
         controller: 'MeusProdutosController',

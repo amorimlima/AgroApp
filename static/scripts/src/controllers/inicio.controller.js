@@ -26,13 +26,11 @@
     this.login = function () {
       AutenticacaoService
         .autenticar(this.email, this.senha)
-        .then(function (token) {
-          $cookies.put('session', token.token);
+        .then(function (response) {
+          $cookies.put('session', response.token);
           return $location.url('/meus-produtos');
         })
-        .catch(function (erro) {
-          console.log(erro);
-        });
+        .catch(function () { $rootScope.showToast('Usuário ou senha inválidos'); });
     };
   }
 })();

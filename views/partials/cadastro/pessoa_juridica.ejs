@@ -5,7 +5,7 @@
   <md-button 
     aria-label="button-label" 
     class="md-icon-button"
-    ng-click="cadastroCtrl.voltar()">
+    ng-click="ctrl.voltar()">
     
     <md-icon md-font-set="material-icons">arrow_back</md-icon>
   </md-button>
@@ -18,66 +18,76 @@
 
 <md-content
   layout="column" 
-  class="md-no-flicker md-no-momentum"
-  layout-padding="true">
+  class="md-no-flicker md-no-momentum">
 
-  <p class="md-title">Dados empresariais</p>
+  <md-subheader>Dados empresariais</md-subheader>
 
-  <form 
-    name="dados_empresariais_form"
-    layout="column">
-    <md-input-container class="md-block">
-      <label for="cnpj">CNPJ</label>
-      <input
-        id="cnpj" 
-        type="number"
-        maxlength="16"
-        max="9999999999999999"
-        ng-model="cadastroCtrl.pessoa_juridica.cnpj"
-        ng-pattern="cadastroCtrl.cnpjPattern"
-        ng-required="true" />
+  <div
+    layout="column"
+    layout-padding>
+    
+    <form 
+      name="form"
+      layout="column">
+      
+      <md-input-container class="md-block">
+        <label for="cnpj">CNPJ</label>
+        <input
+          id="cnpj"
+          name="cnpj"
+          type="number"
+          maxlength="16"
+          max="9999999999999999"
+          ng-model="ctrl.pessoa_juridica.cnpj"
+          ng-blur="ctrl.verificarCnpj(form.cnpj)"
+          ng-pattern="ctrl.cnpjPattern"
+          ng-required="true" />
 
-    </md-input-container>
+        <ng-messages for="form.cnpj.$error" ng-show="!form.cnpj.$empty">
+          <ng-message when="em_uso">CNPJ já cadastrado</ng-message>
+        </ng-messages>
+      </md-input-container>
 
-    <md-input-container>
-      <label for="razao_social">Razão Social</label>
-      <input
-        id="razao_social"
-        type="text"
-        maxlength="200"
-        ng-model="cadastroCtrl.pessoa_juridica.razao_social"
-        ng-required="true" />
+      <md-input-container>
+        <label for="razao_social">Razão Social</label>
+        <input
+          id="razao_social"
+          type="text"
+          maxlength="200"
+          ng-model="ctrl.pessoa_juridica.razao_social"
+          ng-required="true" />
 
-    </md-input-container>
+      </md-input-container>
 
-    <md-input-container>
-      <label for="responsavel">Responsável</label>
-      <input
-        id="responsavel" 
-        type="text"
-        maxlength="200"
-        ng-model="cadastroCtrl.pessoa_juridica.responsavel"
-        ng-required="true" />
+      <md-input-container>
+        <label for="responsavel">Responsável</label>
+        <input
+          id="responsavel" 
+          type="text"
+          maxlength="200"
+          ng-model="ctrl.pessoa_juridica.responsavel"
+          ng-required="true" />
 
-    </md-input-container>
+      </md-input-container>
 
-    <md-input-container>
-      <label for="responsavel">Data de fundação</label>
-      <input
-        id="responsavel" 
-        type="date"
-        ng-model="cadastroCtrl.data_fundacao"
-        ng-required="true" />
-        
-    </md-input-container>
-  </form>
+      <md-input-container>
+        <label for="responsavel">Data de fundação</label>
+        <input
+          id="responsavel" 
+          type="date"
+          ng-model="ctrl.data_fundacao"
+          ng-required="true" />
+          
+      </md-input-container>
+    </form>
 
-  <md-button
-    class="md-primary md-raised"
-    md-ripple-size="full"
-    ng-disabled="dados_empresariais_form.$invalid"
-    ng-click="cadastroCtrl.avancar()">
+    <md-button
+      class="md-primary md-raised"
+      md-ripple-size="full"
+      ng-disabled="form.cnpj.$error.em_uso || form.$invalid"
+      ng-click="ctrl.avancar()">
 
-    Continuar
-  </md-button>
+      Continuar
+    </md-button>
+  </div>
 </md-content>

@@ -40,11 +40,11 @@
       ]
     };
 
-    $rootScope.showToast = function (message) {
+    $rootScope.showToast = function (message, duration) {
       return $mdToast
         .show({
           template: '<md-toast><div class="md-toast-content">' + message + '</div></md-toast>',
-          hideDelay: 3000,
+          hideDelay: duration || 1500,
           parent: document.getElementsByTagName('body')[0]
         });
     };

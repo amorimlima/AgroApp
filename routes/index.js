@@ -8,6 +8,8 @@ const produtoRoute = require('./produto.route');
 const testsRoute = require('./tests.route');
 const usuarioProdutoRoute = require('./usuario_produto.route');
 const enderecoRoute = require('./endereco.route');
+const pessoaFisicaRoute = require('./pessoa_fisica.route');
+const pessoaJuridicaRoute = require('./pessoa_juridica.route');
 
 module.exports = {
   autenticacaoRoute,
@@ -19,5 +21,7 @@ module.exports = {
   produtoRoute,
   testsRoute,
   usuarioProdutoRoute,
-  enderecoRoute
+  enderecoRoute,
+  pessoaFisicaRoute,
+  pessoaJuridicaRoute
 };

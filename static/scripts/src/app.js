@@ -4,7 +4,8 @@
     'ngAria',
     'ngCookies',
     'ngMaterial',
-    'ngRoute'
+    'ngRoute',
+    'ngMessages'
   ];
 
   angular

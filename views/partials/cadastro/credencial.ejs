@@ -5,7 +5,7 @@
   <md-button 
     aria-label="button-label" 
     class="md-icon-button"
-    ng-click="cadastroCtrl.voltar()">
+    ng-click="ctrl.voltar()">
     
     <md-icon md-font-set="material-icons">arrow_back</md-icon>
   </md-button>
@@ -18,55 +18,65 @@
   
 <md-content
   layout="column" 
-  class="md-no-flicker md-no-momentum"
-  layout-padding="true">
+  class="md-no-flicker md-no-momentum">
 
-  <form 
-    name="email_password_form"
-    layout="column">
-    
-    <md-input-container>
-      <label for="email_input">
-        <%= strings.EMAIL %>
-      </label>
+  <md-subheader>Credenciais</md-subheader>
+  
+  <div layout="column" layout-padding>
+    <form 
+      name="form"
+      layout="column"
+      ng-init="ctrl.setForm(this)">
+      
+      <md-input-container>
+        <label for="email_input">
+          <%= strings.EMAIL %>
+        </label>
 
-      <input 
-        id="email_input"
-        type="email"
-        ng-model="cadastroCtrl.email.email"
-        ng-required="true" />
-    </md-input-container>
+        <input 
+          id="email_input"
+          name="email"
+          type="email"
+          ng-blur="ctrl.verificarEmail(form.email)"
+          ng-model="ctrl.email.email"
+          ng-required="true" />
 
-    <md-input-container>
-      <label for="password_input">
-        <%= strings.PASSWORD %>
-      </label>
+        <ng-messages for="form.email.$error" ng-show="form.email.$dirty">
+          <ng-message when="em_uso">Esse email já está em uso</ng-message>
+        </ng-messages>
+      </md-input-container>
+      <md-input-container>
+        <label for="password_input">
+          <%= strings.PASSWORD %>
+        </label>
 
-      <input 
-        id="password_input"
-        type="password"
-        ng-model="cadastroCtrl.usuario.senha"
-        ng-required="true" />
-    </md-input-container>
-  </form>
+        <input 
+          id="password_input"
+          name="senha"
+          type="password"
+          ng-model="ctrl.usuario.senha"
+          ng-required="true" />
+      </md-input-container>
+    </form>
 
-  <md-button
-    class="md-primary md-raised"
-    md-ripple-size="full"
-    ng-if="cadastroCtrl.usuario.tipo == 'PF'"
-    ng-disabled="email_password_form.$invalid"
-    ng-click="cadastroCtrl.avancar('pessoa-fisica')">
+    <md-button
+      class="md-primary md-raised"
+      md-ripple-size="full"
+      ng-if="ctrl.usuario.tipo == 'PF'"
+      ng-disabled="form.email.$error.em_uso || form.$invalid || form.$pristine"
+      ng-click="ctrl.avancar('pessoa-fisica')">
 
-    Continuar
-  </md-button>
+      Continuar
+    </md-button>
 
-  <md-button
-    class="md-primary md-raised"
-    md-ripple-size="full"
-    ng-if="cadastroCtrl.usuario.tipo == 'PJ'"
-    ng-disabled="email_password_form.$invalid"
-    ng-click="cadastroCtrl.avancar('pessoa-juridica')">
+    <md-button
+      class="md-primary md-raised"
+      md-ripple-size="full"
+      ng-if="ctrl.usuario.tipo == 'PJ'"
+      ng-disabled="form.email.$error.em_uso || form.senha.$invalid || form.$pristine"
+      ng-click="ctrl.avancar('pessoa-juridica')">
 
-    Continuar
-  </md-button>
+      Continuar
+    </md-button>
+  </div>
 </md-content>

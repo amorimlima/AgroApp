@@ -9,7 +9,8 @@
     '$cookies',
     '$mdDialog',
     'PersistenceService',
-    'AutenticacaoService'
+    'AutenticacaoService',
+    'estados'
   ];
 
   function CadastroContatoController(
@@ -18,13 +19,15 @@
     $cookies,
     $mdDialog,
     PersistenceService,
-    AutenticacaoService
+    AutenticacaoService,
+    estados
   ) {
+    var vm = this;
     // Models
-    this.estados = [{nome:"Acre",sigla:"AC"},{nome:"Alagoas",sigla:"AL"},{nome:"Amapá",sigla:"AP"},{nome:"Amazonas",sigla:"AM"},{nome:"Bahia ",sigla:"BA"},{nome:"Ceará",sigla:"CE"},{nome:"Distrito Federal ",sigla:"DF"},{nome:"Espírito Santo",sigla:"ES"},{nome:"Goiás",sigla:"GO"},{nome:"Maranhão",sigla:"MA"},{nome:"Mato Grosso",sigla:"MT"},{nome:"Mato Grosso do Sul",sigla:"MS"},{nome:"Minas Gerais",sigla:"MG"},{nome:"Pará",sigla:"PA"},{nome:"Paraíba",sigla:"PB"},{nome:"Paraná",sigla:"PR"},{nome:"Pernambuco",sigla:"PE"},{nome:"Piauí",sigla:"PI"},{nome:"Rio de Janeiro",sigla:"RJ"},{nome:"Rio Grande do Norte",sigla:"RN"},{nome:"Rio Grande do Sul",sigla:"RS"},{nome:"Rondônia",sigla:"RO"},{nome:"Roraima",sigla:"RR"},{nome:"Santa Catarina",sigla:"SC"},{nome:"São Paulo",sigla:"SP"},{nome:"Sergipe",sigla:"SE"},{nome:"Tocantins",sigla:"TO"}];
-    this.usuario = JSON.parse(PersistenceService.getSessionItem('usuario')) 
-                    || this.$location.url('/registro/perfil');
-    this.endereco = JSON.parse(PersistenceService.getSessionItem('endereco')) || {
+    vm.estados = estados;
+    vm.usuario = JSON.parse(PersistenceService.getSessionItem('usuario')) 
+                    || $location.url('/registro/perfil');
+    vm.endereco = JSON.parse(PersistenceService.getSessionItem('endereco')) || {
       cep: '',
       logradouro: '',
       numero: null,
@@ -33,27 +36,28 @@
       cidade: '',
       estado: ''
     };
-    this.telefone = JSON.parse(PersistenceService.getSessionItem('telefone')) || {
+    vm.telefone = JSON.parse(PersistenceService.getSessionItem('telefone')) || {
       Tipo: null,
       ddd: null,
       numero: null
     };
+    vm.loading = false;
 
-    this.cepPattern = /\d{8}/;
-    this.dddPattern = /\d{2}/;
-    this.telPattern = /(\d{8}|\d{9})/;
+    vm.cepPattern = /\d{8}/;
+    vm.dddPattern = /\d{2}/;
+    vm.telPattern = /(\d{8}|\d{9})/;
 
     // Métodos
-    this.voltar = function () {
-      if (this.usuario.tipo === 'PF')
+    vm.voltar = function () {
+      if (vm.usuario.tipo === 'PF')
         return $location.url('/registro/pessoa-fisica');
       else
         return $location.url('/registro/pessoa-juridica');
     };
 
-    this.avancar = function () {
-      PersistenceService.setSessionItem('endereco', JSON.stringify(this.endereco));
-      PersistenceService.setSessionItem('telefone', JSON.stringify(this.telefone));
+    vm.avancar = function () {
+      PersistenceService.setSessionItem('endereco', JSON.stringify(vm.endereco));
+      PersistenceService.setSessionItem('telefone', JSON.stringify(vm.telefone));
 
       return $mdDialog.show({
         contentElement: document.getElementById('terms_of_use_dialog'),
@@ -61,20 +65,23 @@
       });
     };
 
-    this.cadastrar = function () {
+    vm.cadastrar = function () {
       var Credencial = JSON.parse(PersistenceService.getSessionItem('credencial'));
       var PessoaFisica = JSON.parse(PersistenceService.getSessionItem('pessoa_fisica'));
       var PessoaJuridica = JSON.parse(PersistenceService.getSessionItem('pessoa_juridica'));
       var Email = JSON.parse(PersistenceService.getSessionItem('email'));
-      var Endereco = this.endereco;
-      var Telefone = this.telefone;
-      var payload = this.usuario;
+      var Endereco = vm.endereco;
+      var Telefone = vm.telefone;
+      var payload = vm.usuario;
+      
+      $mdDialog.hide();
+      vm.loading = true;
 
       payload.Emails    = [ Email ];
       payload.Enderecos = [ Endereco ];
       payload.Telefones = [ Telefone ];
       
-      if (this.usuario.tipo === 'PF') {
+      if (vm.usuario.tipo === 'PF') {
         PessoaFisica.data_nascimento = new Date(PessoaFisica.data_nascimento)
           .toISOString()
           .split('T')[0];
@@ -100,7 +107,7 @@
         });
     };
 
-    this.cancelar = function () {
+    vm.cancelar = function () {
       return $mdDialog.hide();
     };
   }

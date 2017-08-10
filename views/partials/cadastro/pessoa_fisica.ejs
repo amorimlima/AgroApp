@@ -5,7 +5,7 @@
   <md-button 
     aria-label="button-label" 
     class="md-icon-button"
-    ng-click="cadastroCtrl.voltar()">
+    ng-click="ctrl.voltar()">
     
     <md-icon md-font-set="material-icons">arrow_back</md-icon>
   </md-button>
@@ -18,73 +18,83 @@
   
 <md-content
   layout="column" 
-  class="md-no-flicker md-no-momentum"
-  layout-padding="true">
+  class="md-no-flicker md-no-momentum">
 
-  <p class="md-title">Dados pessoais</p>
+  <md-subheader>Dados pessoais</md-subheader>
 
-  <form 
-    name="dados_pessoais_form"
-    layout="column">
+  <div
+    layout="column" 
+    layout-padding>
     
-    <md-input-container class="md-block">
-      <label for="cpf">CPF</label>
-      <input
-        id="cpf" 
-        type="text"
-        maxlength="11"
-        ng-model="cadastroCtrl.pessoa_fisica.cpf"
-        ng-pattern="cadastroCtrl.cpfPattern"
-        ng-required="true" />
-    </md-input-container>
+    <form 
+      name="form"
+      layout="column">
 
-    <md-input-container>
-      <label for="rg">RG</label>
-      <input
-        id="rg" 
-        type="text"
-        maxlength="20"
-        ng-model="cadastroCtrl.pessoa_fisica.rg"
-        ng-required="true" />
+      <md-input-container class="md-block">
+        <label for="cpf">CPF</label>
+        <input
+          id="cpf"
+          name="cpf"
+          type="text"
+          maxlength="11"
+          ng-blur="ctrl.verificarCpf(form.cpf)"
+          ng-model="ctrl.pessoa_fisica.cpf"
+          ng-pattern="ctrl.cpfPattern"
+          ng-required="true" />
+        
+        <ng-messages for="form.cpf.$error" ng-show="!form.cpf.$empty">
+          <ng-message when="em_uso">CPF já cadastrado</ng-message>
+        </ng-messages>
+      </md-input-container>
 
-    </md-input-container>
+      <md-input-container>
+        <label for="rg">RG</label>
+        <input
+          id="rg" 
+          type="text"
+          maxlength="20"
+          ng-model="ctrl.pessoa_fisica.rg"
+          ng-required="true" />
 
-    <md-input-container>
-      <label for="nome">Nome</label>
-      <input
-        id="nome"
-        type="text"
-        maxlength="100"
-        ng-model="cadastroCtrl.pessoa_fisica.nome"
-        ng-required="true" />
+      </md-input-container>
 
-    </md-input-container>
+      <md-input-container>
+        <label for="nome">Nome</label>
+        <input
+          id="nome"
+          type="text"
+          maxlength="100"
+          ng-model="ctrl.pessoa_fisica.nome"
+          ng-required="true" />
 
-    <md-input-container>
-      <label for="sobrenome">Sobrenome</label>
-      <input
-        id="sobrenome" 
-        type="text"
-        maxlength="100"
-        ng-model="cadastroCtrl.pessoa_fisica.sobrenome"
-        ng-required="true" />
-    </md-input-container>
+      </md-input-container>
 
-    <md-input-container>
-      <label for="data_nascimento">Data de nascimento</label>
-      <input
-        id="data_nascimento"
-        type="date"
-        ng-model="cadastroCtrl.data_nascimento" />
-    </md-input-container>
-  </form>
+      <md-input-container>
+        <label for="sobrenome">Sobrenome</label>
+        <input
+          id="sobrenome" 
+          type="text"
+          maxlength="100"
+          ng-model="ctrl.pessoa_fisica.sobrenome"
+          ng-required="true" />
+      </md-input-container>
 
-  <md-button
-    class="md-primary md-raised"
-    md-ripple-size="full"
-    ng-disabled="dados_pessoais_form.$invalid"
-    ng-click="cadastroCtrl.avancar()">
+      <md-input-container>
+        <label for="data_nascimento">Data de nascimento</label>
+        <input
+          id="data_nascimento"
+          type="date"
+          ng-model="ctrl.data_nascimento" />
+      </md-input-container>
+    </form>
 
-    Continuar
-  </md-button>
+    <md-button
+      class="md-primary md-raised"
+      md-ripple-size="full"
+      ng-disabled="form.cpf.$error.em_uso || form.$invalid"
+      ng-click="ctrl.avancar()">
+
+      Continuar
+    </md-button>
+  </div>
 </md-content>

@@ -6,15 +6,22 @@
   CadastroPessoaFisicaController.$inject = [
     '$rootScope',
     '$location',
-    'PersistenceService'
+    'PersistenceService',
+    'PessoaFisicaService'
   ];
 
-  function CadastroPessoaFisicaController($rootScope, $location, PersistenceService) {
+  function CadastroPessoaFisicaController(
+    $rootScope,
+    $location,
+    PersistenceService,
+    PessoaFisicaService
+  ) {
+    var vm = this;
 
-    this.usuario = JSON.parse(PersistenceService.getSessionItem('usuario')) 
+    vm.usuario = JSON.parse(PersistenceService.getSessionItem('usuario')) 
                     || $location.url('/registro/perfil');
 
-    this.pessoa_fisica = JSON.parse(PersistenceService.getSessionItem('pessoa_fisica')) || {
+    vm.pessoa_fisica = JSON.parse(PersistenceService.getSessionItem('pessoa_fisica')) || {
       cpf: '',
       rg: '',
       nome: '',
@@ -22,19 +29,36 @@
       data_nascimento: new Date('1988-00-01')
     };
 
-    this.data_nascimento = new Date(this.pessoa_fisica.data_nascimento);
+    vm.data_nascimento = new Date(vm.pessoa_fisica.data_nascimento);
 
-    this.cpfPattern = /\d{11}/;
+    vm.cpfPattern = /\d{11}/;
 
-    this.voltar = function () {
+    vm.voltar = function () {
       return $location.url('/registro/credencial');
     };
 
-    this.avancar = function () {
-      this.pessoa_fisica.data_nascimento = this.data_nascimento.toISOString();
+    vm.avancar = function () {
+      vm.pessoa_fisica.data_nascimento = vm.data_nascimento.toISOString();
       PersistenceService.removeSessionItem('pessoa_juridica');
-      PersistenceService.setSessionItem('pessoa_fisica', JSON.stringify(this.pessoa_fisica));
+      PersistenceService.setSessionItem('pessoa_fisica', JSON.stringify(vm.pessoa_fisica));
       return $location.url('/registro/contato');
+    };
+
+    vm.verificarCpf = function (cpf) {
+      return PessoaFisicaService
+        .listarPorCpf(cpf.$modelValue)
+        .then(function (response) {
+          if (response) {
+            cpf.$error.em_uso = true;
+            cpf.$valid = false;
+            cpf.$invalid = true;
+          }
+          else {
+            cpf.$error.em_uso = false;
+            cpf.$valid = true;
+            cpf.$invalid = false;
+          }
+        });
     };
   }
 })();

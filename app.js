@@ -44,6 +44,8 @@ app.use('/produto', routes.produtoRoute(express.Router(), app));
 app.use('/tests', routes.testsRoute(express.Router(), app));
 app.use('/oferta', routes.usuarioProdutoRoute(express.Router(), app));
 app.use('/endereco', routes.enderecoRoute(express.Router(), app));
+app.use('/pessoa-fisica', routes.pessoaFisicaRoute(express.Router(), app));
+app.use('/pessoa-juridica', routes.pessoaJuridicaRoute(express.Router(), app));
 
 // Views
 app.set('views', 'views');

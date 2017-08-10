@@ -5,7 +5,7 @@
   <md-button 
     aria-label="button-label" 
     class="md-icon-button"
-    ng-click="cadastroCtrl.voltar()">
+    ng-click="ctrl.voltar()">
     
     <md-icon md-font-set="material-icons">arrow_back</md-icon>
   </md-button>
@@ -15,151 +15,166 @@
     flex
     md-truncate>Cadastro</h1>
 </md-toolbar>
+<md-progress-linear md-mode="indeterminate" ng-show="ctrl.loading"></md-progress-linear>
 
 <md-content 
   layout="column" 
-  class="md-no-flicker md-no-momentum"
-  layout-padding="true">
+  class="md-no-flicker md-no-momentum">
 
-  <p class="md-title">Endereço</p>
+  <md-subheader>Endereço</md-subheader>
 
-  <form
-    name="address_form"
-    layout="column">
+  <div
+    layout="column"
+    layout-padding>
 
-    <md-input-container>
-      <label for="estado">UF</label>
-      <md-select
-        id="estado"
-        ng-model="cadastroCtrl.endereco.estado"
-        ng-required="true"
-        ng-disabled="cadastroCtrl.step === 3">
+    <form
+      name="address_form"
+      layout="column">
 
-        <md-option
-          ng-repeat="estado in cadastroCtrl.estados"
-          ng-value="estado.sigla"
-          ng-bind="estado.nome"></md-option>
-      </md-select>
-    </md-input-container>
+      <div layout="row">
+        <md-input-container>
+          <label for="estado">UF</label>
+          <md-select
+            id="estado"
+            ng-model="ctrl.endereco.estado"
+            ng-required="true"
+            ng-disabled="ctrl.loading">
 
-    <md-input-container>
-      <label for="cidade">Cidade</label>
-      <input
-        id="cidade" 
-        type="text"
-        maxlength="45"
-        ng-model="cadastroCtrl.endereco.cidade"
-        ng-required="true"
-        ng-disabled="cadastroCtrl.step === 3" />
-    </md-input-container>
+            <md-option
+              ng-repeat="estado in ctrl.estados"
+              ng-value="estado.sigla"
+              ng-bind="estado.sigla"></md-option>
+          </md-select>
+        </md-input-container>
 
-    <md-input-container>
-      <label for="bairro">Bairro</label>
-      <input
-        id="bairro" 
-        type="text"
-        maxlength="45"
-        ng-model="cadastroCtrl.endereco.bairro"
-        ng-required="true"
-        ng-disabled="cadastroCtrl.step === 3" />
-    </md-input-container>
+        <md-input-container>
+          <label for="cidade">Cidade</label>
+          <input
+            id="cidade" 
+            type="text"
+            maxlength="45"
+            ng-model="ctrl.endereco.cidade"
+            ng-required="true"
+            ng-disabled="ctrl.loading" />
+        </md-input-container>
+      </div>
 
-    <md-input-container>
-      <label for="street">Logradouro</label>
-      <input
-        id="street" 
-        type="text"
-        maxlength="45"
-        ng-model="cadastroCtrl.endereco.logradouro"
-        ng-required="true"
-        ng-disabled="cadastroCtrl.step === 3" />
-    </md-input-container>
+      <md-input-container>
+        <label for="bairro">Bairro</label>
+        <input
+          id="bairro" 
+          type="text"
+          maxlength="45"
+          ng-model="ctrl.endereco.bairro"
+          ng-required="true"
+          ng-disabled="ctrl.loading" />
+      </md-input-container>
 
-    <md-input-container>
-      <label for="addr_num">Número</label>
-      <input
-        id="addr_num" 
-        type="number"
-        ng-model="cadastroCtrl.endereco.numero"
-        ng-required="true"
-        ng-disabled="cadastroCtrl.step === 3" />
-    </md-input-container>
+      <md-input-container>
+        <label for="street">Logradouro</label>
+        <input
+          id="street" 
+          type="text"
+          maxlength="45"
+          ng-model="ctrl.endereco.logradouro"
+          ng-required="true"
+          ng-disabled="ctrl.loading" />
+      </md-input-container>
 
-    <md-input-container>
-      <label for="complement">Complemento</label>
-      <input
-        id="complement" 
-        type="text"
-        maxlength="45"
-        ng-model="cadastroCtrl.endereco.complemento"
-        ng-disabled="cadastroCtrl.step === 3" />
-    </md-input-container>
+      <md-input-container>
+        <label for="addr_num">Número</label>
+        <input
+          id="addr_num" 
+          type="number"
+          ng-model="ctrl.endereco.numero"
+          ng-required="true"
+          ng-disabled="ctrl.loading" />
+      </md-input-container>
 
-    <md-input-container>
-      <label for="cep">CEP</label>
-      <input
-        id="cep" 
-        type="text"
-        maxlength="8"
-        ng-model="cadastroCtrl.endereco.cep"
-        ng-pattern="cadastroCtrl.cepPattern"
-        ng-required="true"
-        ng-disabled="cadastroCtrl.step === 3" />
-    </md-input-container>
-  </form>
+      <md-input-container>
+        <label for="complement">Complemento</label>
+        <input
+          id="complement" 
+          type="text"
+          maxlength="45"
+          ng-model="ctrl.endereco.complemento"
+          ng-disabled="ctrl.loading" />
+      </md-input-container>
 
-  <p class="md-title">Telefone</p>
-  <form
-    name="telephone_form"
-    layout="column">
+      <md-input-container>
+        <label for="cep">CEP</label>
+        <input
+          id="cep" 
+          type="text"
+          maxlength="8"
+          ng-model="ctrl.endereco.cep"
+          ng-pattern="ctrl.cepPattern"
+          ng-required="true"
+          ng-disabled="ctrl.loading" />
+      </md-input-container>
+    </form>
+  </div>
 
-    <md-input-container>
-      <label for="type">Tipo</label>
-      <md-select
-        id="type"
-        ng-model="cadastroCtrl.telefone.Tipo"
-        ng-required="true"
-        ng-disabled="cadastroCtrl.step === 3">
+  <md-subheader>Telefone</md-subheader>
 
-        <md-option ng-value="1">Fixo</md-option>
-        <md-option ng-value="2">Celular</md-option>
-      </md-select>
-    </md-input-container>
+  <div
+    layout="column"
+    layout-padding>
 
-    <md-input-container>
-      <label for="ddd">DDD</label>
-      <input
-        id="ddd" 
-        type="number"
-        maxlength="2"
-        max="99"
-        ng-model="cadastroCtrl.telefone.ddd"
-        ng-pattern="cadastroCtrl.dddPattern"
-        ng-required="true"
-        ng-disabled="cadastroCtrl.step === 3" />
-    </md-input-container>
+    <form
+      name="telephone_form"
+      layout="column">
 
-    <md-input-container>
-      <label for="number">Número</label>
-      <input
-        id="number" 
-        type="number"
-        maxlength="9"
-        max="999999999"
-        ng-model="cadastroCtrl.telefone.numero"
-        ng-pattern="cadastroCtrl.telPattern"
-        ng-required="true"
-        ng-disabled="cadastroCtrl.step === 3" />
-    </md-input-container>
-  </form>
+      <md-input-container>
+        <label for="type">Tipo</label>
+        <md-select
+          id="type"
+          ng-model="ctrl.telefone.Tipo"
+          ng-required="true"
+          ng-disabled="ctrl.loading">
 
-  <md-button
-    class="md-primary md-raised"
-    md-ripple-size="full"
-    ng-disabled="address_form.$invalid || telephone_form.$invalid"
-    ng-click="cadastroCtrl.avancar()">
+          <md-option ng-value="1">Fixo</md-option>
+          <md-option ng-value="2">Celular</md-option>
+        </md-select>
+      </md-input-container>
 
-    Continuar
-  </md-button>
+      <div layout="row">
+        <md-input-container flex="20">
+          <label for="ddd">DDD</label>
+          <input
+            id="ddd" 
+            type="number"
+            min="10"
+            max="99"
+            ng-model="ctrl.telefone.ddd"
+            ng-pattern="ctrl.dddPattern"
+            ng-required="true"
+            ng-disabled="ctrl.loading" />
+        </md-input-container>
+
+        <md-input-container flex="80">
+          <label for="number">Número</label>
+          <input
+            id="number" 
+            type="number"
+            maxlength="9"
+            max="999999999"
+            ng-model="ctrl.telefone.numero"
+            ng-pattern="ctrl.telPattern"
+            ng-required="true"
+            ng-disabled="ctrl.loading" />
+        </md-input-container>
+      </div>
+    </form>
+
+    <md-button
+      class="md-primary md-raised"
+      md-ripple-size="full"
+      ng-disabled="address_form.$invalid || telephone_form.$invalid"
+      ng-click="ctrl.avancar()">
+
+      Continuar
+    </md-button>
+  </div>
 
 </md-content>

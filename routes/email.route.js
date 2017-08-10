@@ -2,14 +2,24 @@ const HttpStatus = require('http-status');
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jwt-simple');
 
-const authRoute = (router, app) => {
+module.exports = (router, app) => {
   const EmailDAO = app.get('dao').EmailDAO;
+
+  router.get('/:endereco', (req, res) => {
+    const emailDAO = new EmailDAO(app.get('models'));
+
+    emailDAO
+      .getByEndereco(req.params.endereco)
+      .then(response => res.json(response.data))
+      .catch(() => res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY));
+  });
 
   router.post('/autenticacao', (req, res) => {
     const emailDAO = new EmailDAO(app.get('models'));
     const dadosLogin = req.body;
     
-    emailDAO.getCredenciais(dadosLogin)
+    emailDAO
+      .getCredenciais(dadosLogin)
       .then((resp) => {
         if (resp.statusCode == HttpStatus.UNAUTHORIZED) {
           res.sendStatus(resp.statusCode);
@@ -19,7 +29,7 @@ const authRoute = (router, app) => {
             usuario: resp.data.usuario.id,
             tipo: resp.data.usuario.tipo,
             perfil: resp.data.perfil.id
-          } , app.get('configs').jwt.secret);
+          }, app.get('configs').jwt.secret);
           
           res.status(HttpStatus.OK);
           res.json({ token });
@@ -32,5 +42,3 @@ const authRoute = (router, app) => {
 
   return router;
 };
-
-module.exports = authRoute;

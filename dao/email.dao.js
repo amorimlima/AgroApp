@@ -11,6 +11,13 @@ class EmailDAO extends GenericDAO {
     this.Perfil = models.Perfil;
   }
 
+  getByEndereco(endereco) {
+    return this.model
+      .findOne({ where: { email: endereco } })
+      .then(instance => responses.generic(instance))
+      .catch(error => responses.error(error));
+  }
+
   getCredenciais(dadosLogin) {
     let emailInstance = null;
     let usuarioInstance = null;

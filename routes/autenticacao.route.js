@@ -2,7 +2,7 @@ const HttpStatus = require('http-status');
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jwt-simple');
 
-const autenticacaoRoute = (router, app) => {
+module.exports = (router, app) => {
   const UsuarioDAO = app.get('dao').UsuarioDAO;
 
   router.post('/cadastrar', (req, res) => {
@@ -11,11 +11,11 @@ const autenticacaoRoute = (router, app) => {
     
     usuarioDAO
       .createNew(payload)
-      .then((response) => {
+      .then(response => {
         res.status(response.statusCode);
         res.json(response.data);
       })
-      .catch((error) => {
+      .catch(error => {
         res.status(error.statusCode);
         res.json(error.data);
       });
@@ -24,12 +24,7 @@ const autenticacaoRoute = (router, app) => {
   router.post('/', (req, res) => {
     app.get('models').Email
       .findOne({ where: { email: req.body.email } })
-      .then(instance => {
-        if (!instance)
-          res.sendStatus(HttpStatus.NOT_FOUND);
-        else
-          return app.get('models').Usuario.findById(instance.Usuario)
-      })
+      .then(instance => app.get('models').Usuario.findById(instance.Usuario))
       .then(instance => {
         if (bcrypt.compareSync(req.body.senha, instance.senha)) {
           const payload = instance.get({ plain: true });
@@ -38,16 +33,11 @@ const autenticacaoRoute = (router, app) => {
           res.json({ token: `JWT ${jwt.encode(payload, app.get('configs').jwt.secret)}` });
         }
         else {
-          res.sendStatus(HttpStatus.NOT_FOUND);
+          res.sendStatus(HttpStatus.UNAUTHORIZED);
         }
       })
-      .catch(error => {
-        res.sendStatus(HttpStatus.NOT_FOUND);
-      });
-      
+      .catch(error => res.sendStatus(HttpStatus.UNAUTHORIZED));
   });
 
   return router;
-}
-
-module.exports = autenticacaoRoute;
+};

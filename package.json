@@ -6,10 +6,8 @@
   "scripts": {
     "start": "node bin/www.js",
     "start:dev": "nodemon -r dotenv/config bin/www dotenv_config_path=env/dev.env || true",
-    "build:scripts": "npm run build:scripts:pretty",
-    "build:scripts:pretty": "browserify --debug static/scripts/src/index.js -o static/scripts/bundle_dev.js -t [ babelify --presets [ env ] ] || true",
-    "build:scripts:ugly": "uglifyjs2 static/scripts/bundle_dev.js -c -m -o static/scripts/bundle_prod.js",
     "build:styles": "npm-sass static/styles/src/style.scss > static/styles/style.css",
+    "build:scripts": "node ./scripts",
     "build:client": "npm run build:scripts && npm run build:styles",
     "test:unit": "mocha --require test/unit/options.js test/unit/**/*.spec.js || true",
     "test:integration": "mocha --require test/integration/options.js test/integration/*.spec.js || true",

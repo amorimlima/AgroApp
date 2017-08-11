@@ -67,14 +67,13 @@
     };
 
     vm.salvar = function () {
-      var self = vm;
       vm.ofertas = [];
 
       return UsuarioProdutoService
         .cadastrarOferta(vm.oferta)
         .then(function (oferta) {
           $mdDialog.hide();
-          self.listarMeusProdutos();
+          vm.listarMeusProdutos();
         });
     };
 
@@ -96,7 +95,6 @@
     };
 
     vm.abrirConfirmacaoExclusaoDe = function (oferta) {
-      var self = vm;
       var dialog = $mdDialog.confirm()
         .title('Excluir oferta?')
         .textContent('Essa ação não pode ser desfeita.')
@@ -105,26 +103,24 @@
       vm.oferta = angular.copy(oferta);
 
       $mdDialog.show(dialog)
-        .then(function() { self.confirmarExclusao(oferta.id) })
+        .then(function() { vm.confirmarExclusao(oferta.id) })
         .catch(function() { });
     };
 
     vm.listarMeusProdutos = function () {
-      var self = vm;
 
       return UsuarioProdutoService
         .listarMeusProdutos()
         .then(function (ofertas) {
-          self.ofertas = ofertas;
+          vm.ofertas = ofertas;
         });
     };
 
     vm.confirmarExclusao = function (id) {
-      var self = vm;
 
       return UsuarioProdutoService
         .deletarOferta(id)
-        .then(function () { self.listarMeusProdutos() });
+        .then(function () { vm.listarMeusProdutos() });
     }
   };
 })();

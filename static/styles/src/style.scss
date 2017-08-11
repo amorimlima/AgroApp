@@ -12,14 +12,18 @@ h2.md-title {
   margin: 8px 0;
 }
 
-md-toolbar {
-  ~ md-content {
-    height: calc(100vh - 56px) !important;
-    min-height: calc(100vh - 56px) !important;
+ng-view {
+  
+  > md-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
 
-    > * {
-      flex: none !important;
+    ~ md-content {
+      padding-top: 56px !important;
+      min-height: 100vh !important;
+
+      > * { flex: none !important; }
     }
   }
-
 }

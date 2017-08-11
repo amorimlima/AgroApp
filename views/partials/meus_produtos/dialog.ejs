@@ -76,9 +76,10 @@
             <input
               id="data_fim"
               type="date"
-              ng-model="meusProdutosCtrl.oferta.data_fim" />
+              ng-disabled="!meusProdutosCtrl.oferta.data_inicio"
+              ng-model="meusProdutosCtrl.oferta.data_fim"
+              ng-min="meusProdutosCtrl.oferta.data_inicio" />
           </md-input-container>
-
         </form>
       </md-dialog-content>
 

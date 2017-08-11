@@ -26,7 +26,7 @@ const modelsConfig = (app) => {
       }
     });
 
-    // fillDatabase = utils.fillDatabase(models);
+    //  fillDatabase = utils.fillDatabase(models);
 
   return models;
 }

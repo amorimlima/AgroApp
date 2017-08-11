@@ -13,8 +13,6 @@
     'ofertas'
   ];
 
-  var self = null;
-
   function MeusProdutosController(
     $rootScope,
     $mdDialog,
@@ -24,25 +22,27 @@
     produtos,
     ofertas
   ) {
+    var vm = this;
+    
     // Models
-    this.oferta = {};
-    this.ofertas = ofertas;
-    this.produtosDisponiveis = produtos;
-    this.categoria = null;
-    this.textoBusca = '';
-    this.mensagemStatus = 'Nenhum produto encontrado.';
+    vm.oferta = {};
+    vm.ofertas = ofertas;
+    vm.produtosDisponiveis = produtos;
+    vm.categoria = null;
+    vm.textoBusca = '';
+    vm.mensagemStatus = 'Nenhum produto encontrado.';
 
     // Métodos
-    this.abrirFormulario = function (oferta) {
+    vm.abrirFormulario = function (oferta) {
       if (!oferta) {
-        this.oferta = {};
-        this.categoria = null;
+        vm.oferta = {};
+        vm.categoria = null;
       }
       else {
-        this.oferta = angular.copy(oferta);
-        this.categoria = oferta.Anuncio.Categoria;
-        this.oferta.data_inicio = new Date(this.oferta.data_inicio);
-        this.oferta.data_fim = new Date(this.oferta.data_fim);
+        vm.oferta = angular.copy(oferta);
+        vm.categoria = oferta.Anuncio.Categoria;
+        vm.oferta.data_inicio = new Date(vm.oferta.data_inicio);
+        vm.oferta.data_fim = new Date(vm.oferta.data_fim);
       }
 
       $mdDialog.show({
@@ -52,40 +52,40 @@
       });
     };
 
-    this.produtosFiltrados = function (categoria) {
+    vm.produtosFiltrados = function (categoria) {
       if (!categoria) {
         return [ { id: null, nome: 'Selecione uma categoria' } ];
       }
 
-      return this.produtosDisponiveis
+      return vm.produtosDisponiveis
         .filter(function (produto) { return produto.Categoria === categoria });
     }
 
-    this.cancelar = function () {
-      this.produto = {};
+    vm.cancelar = function () {
+      vm.produto = {};
       return $mdDialog.hide();
     };
 
-    this.salvar = function () {
-      var self = this;
-      this.ofertas = [];
+    vm.salvar = function () {
+      var self = vm;
+      vm.ofertas = [];
 
       return UsuarioProdutoService
-        .cadastrarOferta(this.oferta)
+        .cadastrarOferta(vm.oferta)
         .then(function (oferta) {
           $mdDialog.hide();
           self.listarMeusProdutos();
         });
     };
 
-    this.produtosPorCategoria = function (categoria) {
-      return this.produtosDisponiveis
+    vm.produtosPorCategoria = function (categoria) {
+      return vm.produtosDisponiveis
         .filter(function (produto) {
           return produto.Categoria === categoria;
         });
     };
 
-    this.getFormatedDate = function (data) {
+    vm.getFormatedDate = function (data) {
       var date = new Date(data);
       var formated = '';
       formated += date.getDate() < 10 ? '0' + date.getDate() + '/' : date.getDate() + '/';
@@ -95,22 +95,22 @@
       return formated;
     };
 
-    this.abrirConfirmacaoExclusaoDe = function (oferta) {
-      var self = this;
+    vm.abrirConfirmacaoExclusaoDe = function (oferta) {
+      var self = vm;
       var dialog = $mdDialog.confirm()
         .title('Excluir oferta?')
         .textContent('Essa ação não pode ser desfeita.')
         .ok('Excluir')
         .cancel('Cancelar');
-      this.oferta = angular.copy(oferta);
+      vm.oferta = angular.copy(oferta);
 
       $mdDialog.show(dialog)
         .then(function() { self.confirmarExclusao(oferta.id) })
         .catch(function() { });
     };
 
-    this.listarMeusProdutos = function () {
-      var self = this;
+    vm.listarMeusProdutos = function () {
+      var self = vm;
 
       return UsuarioProdutoService
         .listarMeusProdutos()
@@ -119,8 +119,8 @@
         });
     };
 
-    this.confirmarExclusao = function (id) {
-      var self = this;
+    vm.confirmarExclusao = function (id) {
+      var self = vm;
 
       return UsuarioProdutoService
         .deletarOferta(id)

@@ -18,12 +18,15 @@
   
 <md-content
   layout="column" 
-  class="md-no-flicker md-no-momentum"
-  layout-padding="true">
+  class="md-no-flicker md-no-momentum">
 
 
-  <p class="md-title">Eu sou</p>
-  <div>
+  <md-subheader>Eu sou</md-subheader>
+
+  <div
+    layout="column"
+    layout-padding="true">
+    
     <md-grid-list
       md-cols="2"
       md-gutter="10px"
@@ -63,7 +66,11 @@
     </md-grid-list>
   </div>
 
-  <div ng-show="cadastroCtrl.usuario.Perfil">
+  <div
+    ng-show="cadastroCtrl.usuario.Perfil"
+    layout="column"
+    layout-padding="true">
+    
     <md-grid-list
       md-cols="2"
       md-gutter="10px"

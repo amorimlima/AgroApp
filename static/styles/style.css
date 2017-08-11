@@ -13692,6 +13692,6 @@ h2.md-title {
 
 md-toolbar ~ md-content {
   height: calc(100vh - 56px) !important;
-  min-height: auto !important; }
+  min-height: calc(100vh - 56px) !important; }
   md-toolbar ~ md-content > * {
     flex: none !important; }

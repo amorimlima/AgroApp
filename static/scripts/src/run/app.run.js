@@ -26,6 +26,11 @@
         $location.url('/');
         ngEvent.preventDefault();
       }
+      else if (!next.requireAuth && $cookies.get('session')) {
+        $http.defaults.headers.common['Authorization'] = $cookies.get('session');
+        $location.url('/meus-produtos');
+        ngEvent.preventDefault();
+      }
       else {
         $http.defaults.headers.common['Authorization'] = $cookies.get('session');
       }
@@ -46,6 +51,12 @@
           hideDelay: duration || 1500,
           parent: document.getElementsByTagName('body')[0]
         });
+    };
+
+    $rootScope.sair = function () {
+      $rootScope.sidenav.toggle();
+      $cookies.remove('session');
+      $location.url('/');
     };
 
   }

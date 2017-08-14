@@ -1,13 +1,11 @@
 const passport = require('passport');
-const passportJWT= require('passport-jwt');
+const { Strategy, ExtractJwt } = require('passport-jwt');
 
 const authConfig = (app) => {
   const Credencial = app.get('models').Usuario;
-  const Strategy = passportJWT.Strategy;
-  const ExtractJWT = passportJWT.ExtractJwt;
   const options = {
     secretOrKey: app.get('configs').jwt.secret,
-    jwtFromRequest: ExtractJWT.fromAuthHeader
+    jwtFromRequest: ExtractJwt.fromAuthHeader
   };
   const verify = (payload, done) => {
     Credencial

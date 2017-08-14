@@ -1,11 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-
 const Sequelize = require('sequelize');
-
 let database = null;
 
-const datasourceConfig = (app) => {
+module.exports = (app) => {
   if (database) {
     return database;
   }
@@ -31,6 +27,4 @@ const datasourceConfig = (app) => {
   });
 
   return database;
-}
-
-module.exports = datasourceConfig;
+};

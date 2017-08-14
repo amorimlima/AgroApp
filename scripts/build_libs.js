@@ -12,4 +12,4 @@ const libs = Object
 
 if (!fs.existsSync(libDir)) fs.mkdirSync(libDir);
 
-fs.writeFileSync(path.join(libDir, 'libs.js'), libs.toString());
+fs.writeFileSync(path.join(libDir, 'libs.js'), libs.join(''));

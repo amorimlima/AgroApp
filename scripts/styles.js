@@ -12,7 +12,4 @@ const binDir = fullPath('../static/styles/bin');
 if (!fs.existsSync(binDir)) fs.mkdirSync(binDir);
 
 sassAsync(path.join(__dirname, '../static/styles/src/style.scss'))
-  .then(compiled => {
-    const minified = cssmin(compiled.css.toString());
-    fs.writeFile(`${binDir}/styles.css`, minified);
-  });
+  .then(compiled => fs.writeFile(`${binDir}/style.css`, cssmin(compiled.css.toString())));

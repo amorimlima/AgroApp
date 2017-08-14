@@ -1,5 +1,6 @@
 node_modules
-static/**/dist
+static/**/bin
+static/**/lib
 npm-debug.log
 static/scripts/bundle_dev.js
 .idea

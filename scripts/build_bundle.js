@@ -1,35 +1,18 @@
 const fs = require('fs');
 const path = require('path');
-const uglifyJs = require('uglify-js');
-const concat = require('concat-files');
+const { minify } = require('uglify-js');
+const { fullPath } = require('./utils');
 
-module.exports = () => {
-  const services = fs.readdirSync('./static/scripts/src/services');
-  const controllers = fs.readdirSync('./static/scripts/src/controllers');
-  const run = fs.readdirSync('./static/scripts/src/run');
-  const config = fs.readdirSync('./static/scripts/src/config');
-  let file = '';
-  let minified = '';
+const srcDir = fullPath('../static/scripts/src');
+const binDir = fullPath('../static/scripts/bin');
+const files = ['services', 'controllers', 'config', 'run'] // Layers
+  .map(layer => [ layer, fs.readdirSync(`${srcDir}/${layer}`) ])
+  .reduce((files, layer) => files.concat(layer[1].map(file => `${srcDir}/${layer[0]}/${file}`)), [])
+  .map(file => fs.readFileSync(file))
+  .map(file => file.toString());
 
-  file += fs.readFileSync('./static/scripts/src/app.js');
+files.push(fs.readFileSync(`${srcDir}/app.js`).toString());
 
-  services.forEach(fileName => {
-    file += fs.readFileSync(`./static/scripts/src/services/${fileName}`) + '\n';
-  });
+if (!fs.existsSync(binDir)) fs.mkdirSync(binDir);
 
-  controllers.forEach(fileName => {
-    file += fs.readFileSync(`./static/scripts/src/controllers/${fileName}`) + '\n';
-  });
-
-  run.forEach(fileName => {
-    file += fs.readFileSync(`./static/scripts/src/run/${fileName}`) + '\n';
-  });
-
-  config.forEach(fileName => {
-    file += fs.readFileSync(`./static/scripts/src/config/${fileName}`) + '\n';
-  });
-
-  minified = uglifyJs.minify(file);
-
-  fs.writeFileSync('./static/scripts/bin/bundle.js', minified.code);
-};
+fs.writeFileSync(path.join(binDir, 'bundle.js'), minify(files).code);

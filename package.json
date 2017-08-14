@@ -4,11 +4,12 @@
   "description": "AgroApp's application.",
   "main": "scripts/main.js",
   "scripts": {
-    "start": "node bin/www.js",
-    "start:dev": "nodemon -r dotenv/config bin/www dotenv_config_path=env/dev.env || true",
-    "build:styles": "npm-sass static/styles/src/style.scss > static/styles/style.css",
-    "build:scripts": "node ./scripts",
-    "build:client": "npm run build:scripts && npm run build:styles",
+    "start": "npm run build:client && node bin/www.js",
+    "start:dev": "npm run build:client && nodemon -r dotenv/config bin/www dotenv_config_path=env/dev.env || true",
+    "build:styles": "node scripts/styles",
+    "build:bundle": "node scripts/build_bundle",
+    "build:libs": "node scripts/build_libs",
+    "build:client": "npm run build:libs && npm run build:bundle && npm run build:styles",
     "test:unit": "mocha --require test/unit/options.js test/unit/**/*.spec.js || true",
     "test:integration": "mocha --require test/integration/options.js test/integration/*.spec.js || true",
     "test": "npm run test:unit && npm run test:integration"

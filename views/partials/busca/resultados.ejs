@@ -1,0 +1,37 @@
+<md-content
+    layout="column"
+    class="md-no-flicker md-no-momentum"
+    ng-show="buscaCtrl.viewState === 'resultados'">
+
+
+    <section>
+        <md-subheader>Resultados</md-subheader>
+
+        <md-card ng-show="buscaCtrl.isBuscandoDados">
+            <md-card-content class="md-subhead">Buscando...</md-card-content>
+        </md-card>
+
+        <md-card ng-show="!buscaCtrl.listaResultados.length && !buscaCtrl.isBuscandoDados">
+            <md-card-content class="md-subhead">Nenhum resultado encontrado</md-card-content>
+        </md-card>
+
+        <md-card ng-repeat="oferta in buscaCtrl.listaResultados">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-title">{{oferta.Anuncio.nome}}</span>
+                    <span class="md-subhead">{{oferta.quantidade}} {{oferta.unidade}}</span>
+                </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content>
+                <p>
+                    <span ng-bind="buscaCtrl.getFormatedDate(oferta.data_inicio)"></span> |
+                    <span ng-bind="buscaCtrl.getFormatedDate(oferta.data_fim)"></span>
+                </p>
+                <p>
+                    <span ng-bind="buscaCtrl.getNomeDaPessoa(oferta.Anunciante)"></span>
+                </p>
+            </md-card-content>
+        </md-card>
+    </section>
+</md-content>

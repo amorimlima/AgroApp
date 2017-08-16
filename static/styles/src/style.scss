@@ -14,13 +14,29 @@ h2.md-title {
 
 ng-view {
   
-  > md-toolbar {
+  md-toolbar {
     position: fixed;
-    top: 0;
     left: 0;
 
-    ~ md-content {
-      padding-top: 56px !important;
+    &:first-child {
+      top: 0;
+
+      ~ md-content {
+        padding-top: 56px !important;
+      }
+    }
+
+    &:nth-child(2) {
+      top: 56px;
+
+      ~ md-content,
+      ~ div md-content {
+        padding-top: 112px !important;
+      }
+    }
+
+    ~ md-content,
+    ~ div md-content{
       min-height: 100vh !important;
 
       > * { flex: none !important; }

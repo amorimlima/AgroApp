@@ -1,8 +1,7 @@
 <md-content
   class="md-no-flicker md-no-momentum"
   layout="column"
-  layout-fill="true"
-  ng-show="buscaCtrl.viewState === 'filter'">
+  layout-fill="true">
 
   <div>
     <md-subheader>
@@ -11,7 +10,7 @@
 
     <div layout-padding>
       <div>
-        <md-radio-group ng-model="buscaCtrl.filtros.categoria">
+        <md-radio-group ng-model="buscaCtrl.filtros.Categoria">
           <md-radio-button
             ng-repeat="categoria in buscaCtrl.categorias"
             ng-value="categoria.id">
@@ -22,8 +21,6 @@
       </div>
     </div>
   </div>
-
-  <md-divider></md-divider>
 
   <div>
     <md-subheader>
@@ -42,7 +39,7 @@
         <md-select
           id="uf_select"
           ng-change="buscaCtrl.setSearched()"
-          ng-model="buscaCtrl.filtros.uf">
+          ng-model="buscaCtrl.filtros.estado">
         
           <md-option
             ng-repeat="estado in buscaCtrl.estados"
@@ -58,17 +55,19 @@
 
         <input
           id="cidade"
-          ng-model="buscaCtrl.filtros.cidade"></input>
+          ng-model="buscaCtrl.filtros.cidade" />
       </md-input-container>
     </div>
   </div>
-  <md-button
-    class="md-primary md-raised"
-    aria-label="<%= strings.DO_SEARCH %>"
-    md-ripple-size="full"
-    ng-click="buscaCtrl.setViewState('result')">
 
-    <%= strings.DO_SEARCH %>
-  </md-button>
-  {{buscaCtrl.filtros}}
+  <div layout="column" layout-padding="true">
+    <md-button
+      class="md-primary md-raised"
+      aria-label="<%= strings.DO_SEARCH %>"
+      md-ripple-size="full"
+      ng-click="buscaCtrl.carregarOfertas(buscaCtrl.filtros)">
+
+      <%= strings.DO_SEARCH %>
+    </md-button>
+  </div>
 </md-content>

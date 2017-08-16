@@ -65,7 +65,7 @@
         requireAuth: true,
         resolve: {
           categorias: ['CategoriaProdutoService', function (CategoriaProdutoService) {
-            return CategoriaProdutoService.getAll();
+            return CategoriaProdutoService.getComProdutos();
           }],
           estados: ['EnderecoService', function (EnderecoService) {
             return EnderecoService.listarEstados();

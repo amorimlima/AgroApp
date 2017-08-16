@@ -1,15 +1,15 @@
 <md-toolbar
-  layout="row" 
+  layout="row"
   class="md-toolbar-tools">
 
-  <md-button 
-    aria-label="button-label" 
+  <md-button
+    aria-label="button-label"
     class="md-icon-button"
     ng-click="sidenav.toggle()">
-    
+
     <md-icon md-font-set="material-icons">menu</md-icon>
   </md-button>
-    
+
   <h1
     class="md-title"
     flex
@@ -27,29 +27,39 @@
         flex="grow"
         md-no-cache="true"
         md-search-text="buscaCtrl.searchText"
-        md-items="item in buscaCtrl.products | filter:buscaCtrl.searchText"
+        md-items="produto in buscaCtrl.categorias[buscaCtrl.filtros.Categoria - 1].Produtos | filter:buscaCtrl.searchText"
         md-clear-button="true"
-        md-item-text="item.nome">
+        md-item-text="produto.nome"
+        md-selected-item="buscaCtrl.filtros.Produto">
 
-        <md-item-template>
-            {{item.name}}
-        </md-item-template>
+        <md-item-template>{{produto.nome}}</md-item-template>
 
-        <md-not-found>
-            <%= strings.RESULT_NOT_FOUND %>
-        </md-not-found>
+        <md-not-found><%= strings.RESULT_NOT_FOUND %></md-not-found>
     </md-autocomplete>
 
     <md-button
         aria-label="Open filters button"
         class="md-icon-button"
-        ng-show="buscaCtrl.viewState === 'result'"
-        ng-click="buscaCtrl.setViewState('filter')">
+        ng-show="buscaCtrl.viewState === 'resultados'"
+        ng-click="buscaCtrl.setViewState('filtros')">
 
         <md-icon>filter_list</md-icon>
     </md-button>
 </md-toolbar>
 
-<%- include('partials/search/search_filters.ejs'); %>
 
-<%- include('partials/search/search_results.ejs'); %>
+<div
+  layout="column"
+  layout-fill
+  ng-show="buscaCtrl.viewState === 'filtros'">
+
+  <%- include('partials/busca/filtros.ejs'); %>
+</div>
+
+<div
+  layout="column"
+  layout-fill
+  ng-show="buscaCtrl.viewState === 'resultados'">
+
+  <%- include('partials/busca/resultados.ejs'); %>
+</div>

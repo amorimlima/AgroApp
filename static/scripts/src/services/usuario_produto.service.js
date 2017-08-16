@@ -1,5 +1,5 @@
 (function() {
-  function UsuarioProdutoService($http, PersistenceService) {
+  function UsuarioProdutoService($http) {
     this.listarMeusProdutos = function () {
       return $http
         .get('/oferta/meus-produtos')
@@ -16,12 +16,21 @@
       return $http
         .delete('/oferta/' + id)
         .then(function (response) { return Promise.resolve(response.data) });
-    }
+    };
+
+    this.buscarOfertas = function (Produto, estado, cidade) {
+      Produto = Produto || { id: '' };
+      estado = estado || '';
+      cidade = cidade || '';
+
+      return $http
+        .get('/oferta/busca?produto=' + Produto.id + '&estado=' + estado + '&cidade=' + cidade)
+        .then(function (response) { return Promise.resolve(response.data) });
+    };
   }
 
   UsuarioProdutoService.$inject = [
-    '$http',
-    'PersistenceService'
+    '$http'
   ];
 
   angular

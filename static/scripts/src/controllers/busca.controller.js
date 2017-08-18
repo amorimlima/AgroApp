@@ -15,7 +15,7 @@
     // Models
     vm.viewState  = 'filtros';
     vm.categorias = categorias || [];
-    vm.estados    = estados || [];
+    vm.estados    = estados    || [];
     vm.filtros    = { Categoria: 1, estado: '', cidade: '' };
     vm.listaResultados = [];
     vm.isBuscandoDados = false;
@@ -34,8 +34,8 @@
         .buscarOfertas(filtros.Produto, filtros.estado, filtros.cidade)
         .then(function (ofertas) {
           vm.isBuscandoDados = false;
-          return vm.listaResultados = angular.copy(ofertas);
-        })
+          vm.listaResultados = angular.copy(ofertas);
+        });
     };
 
     vm.getFormatedDate = function (data) {

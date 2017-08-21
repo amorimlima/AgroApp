@@ -9,7 +9,8 @@
     '$http',
     '$cookies',
     '$mdSidenav',
-    '$mdToast'
+    '$mdToast',
+    'DateHelper'
   ];
 
   function appRun(
@@ -18,7 +19,8 @@
     $http,
     $cookies, 
     $mdSidenav, 
-    $mdToast
+    $mdToast,
+    DateHelper
   ) {
 
     $rootScope.$on('$routeChangeStart', function (ngEvent, next, current) {
@@ -60,5 +62,6 @@
       $location.url('/');
     };
 
+    $rootScope.DateHelper = DateHelper;
   }
 })();

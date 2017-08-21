@@ -4,12 +4,19 @@
     .controller('BuscaController', BuscaController);
 
   BuscaController.$inject = [
+    '$location',
     'UsuarioProdutoService',
     'categorias',
     'estados'
   ];
 
-  function BuscaController(UsuarioProdutoService, categorias, estados) {
+  function BuscaController(
+    $location,
+    UsuarioProdutoService,
+    categorias,
+    estados
+  ) {
+
     var vm = this;
 
     // Models
@@ -38,14 +45,8 @@
         });
     };
 
-    vm.getFormatedDate = function (data) {
-      var date = new Date(data);
-      var formated = '';
-      formated += date.getDate() < 10 ? '0' + date.getDate() + '/' : date.getDate() + '/';
-      formated += (date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) + '/' : (date.getMonth() + 1) + '/';
-      formated += date.getFullYear();
-
-      return formated;
+    vm.abrirOferta = function (oferta) {
+      return $location.url('/oferta/' + oferta);
     };
 
     vm.getNomeDaPessoa = function (Pessoa) {

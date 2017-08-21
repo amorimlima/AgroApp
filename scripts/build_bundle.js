@@ -5,7 +5,7 @@ const { fullPath } = require('./utils');
 
 const srcDir = fullPath('../static/scripts/src');
 const binDir = fullPath('../static/scripts/bin');
-const files = ['services', 'controllers', 'config', 'run'] // Layers
+const files = [ 'services', 'controllers', 'config', 'run', 'helpers' ] // Layers
   .map(layer => [ layer, fs.readdirSync(`${srcDir}/${layer}`) ])
   .reduce((files, layer) => files.concat(layer[1].map(file => `${srcDir}/${layer[0]}/${file}`)), [])
   .map(file => fs.readFileSync(file))

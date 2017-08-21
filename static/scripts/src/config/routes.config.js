@@ -72,6 +72,21 @@
           }]
         }
       })
+      .when('/oferta/:id', {
+        controller: 'OfertaController',
+        controllerAs: 'ctrl',
+        templateUrl: '/views/oferta',
+        requireAuth: true,
+        resolve: {
+          oferta: [
+            'UsuarioProdutoService', 
+            '$stateProvider',
+            function (UsuarioProdutoService, $route) {
+              return UsuarioProdutoService.getOferta($route.current.params.id);
+            }
+          ]
+        }
+      })
       .otherwise({ redirectTo: '/' });
   };
 })();

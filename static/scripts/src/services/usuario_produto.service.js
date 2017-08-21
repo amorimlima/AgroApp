@@ -20,11 +20,17 @@
 
     this.buscarOfertas = function (Produto, estado, cidade) {
       Produto = Produto || { id: '' };
-      estado = estado || '';
-      cidade = cidade || '';
+      estado  = estado  || '';
+      cidade  = cidade  || '';
 
       return $http
         .get('/oferta/busca?produto=' + Produto.id + '&estado=' + estado + '&cidade=' + cidade)
+        .then(function (response) { return Promise.resolve(response.data) });
+    };
+
+    this.getOferta = function (id) {
+      return $http
+        .get('/oferta/' + id)
         .then(function (response) { return Promise.resolve(response.data) });
     };
   }

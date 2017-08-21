@@ -17,10 +17,7 @@ module.exports = (router, app) => {
 
         usuarioProdutoDAO
           .createOrUpdate(oferta)
-          .then(response => {
-            res.status(response.statusCode);
-            res.json(response.data);
-          })
+          .then(response => res.status(response.statusCode).json(response.data))
           .catch(err => res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY));
       }
       catch (e) {
@@ -38,10 +35,7 @@ module.exports = (router, app) => {
 
         usuarioProdutoDAO
           .getByUser(Usuario.id)
-          .then(response => {
-            res.status(response.statusCode);
-            res.json(response.data);
-          })
+          .then(response => res.status(response.statusCode).json(response.data))
           .catch(error => res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY));
       }
       catch (e) {
@@ -51,6 +45,20 @@ module.exports = (router, app) => {
 
   router
     .route('/:id')
+    .get((req, res) => {
+      try {
+        const usuarioProdutoDAO = new UsuarioProdutoDAO(app.get('models'));
+        const id = parseInt(req.params.id);
+
+        usuarioProdutoDAO
+          .getById(id)
+          .then(response => res.status(response.statusCode).json(response.data))
+          .catch(error => res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY));
+      }
+      catch (e) {
+        res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+      }
+    })
     .delete((req, res) => {
       try {
         const usuarioProdutoDAO = new UsuarioProdutoDAO(app.get('models'));
@@ -58,10 +66,7 @@ module.exports = (router, app) => {
 
         usuarioProdutoDAO
           .delete(id)
-          .then(response => {
-            res.status(response.statusCode);
-            res.json(response.data);
-          })
+          .then(response => res.status(response.statusCode).json(response.data))
           .catch(error => res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY));
       }
       catch (e) {
@@ -77,9 +82,9 @@ module.exports = (router, app) => {
 
       usuarioProdutoDAO
         .listarParaBusca(produto, estado, cidade)
-        .then(response => res.json(response.data));
+        .then(response => res.json(response.data))
+        .catch(error => console.log(error));
     });
 
   return router;
-
 };

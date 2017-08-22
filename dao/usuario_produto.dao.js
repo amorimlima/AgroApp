@@ -1,5 +1,5 @@
 const GenericDAO = require('./generic.dao');
-const responses = require('../utils/responses');
+const responses  = require('../utils/responses');
 
 class UsuarioProdutoDAO extends GenericDAO {
   constructor(models) {

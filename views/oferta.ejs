@@ -13,13 +13,60 @@
   <h1
     class="md-title"
     flex
-    md-truncate>Cadastro</h1>
+    md-truncate>Oferta</h1>
 </md-toolbar>
   
 <md-content
   style="height: calc(100vh - 56px); min-height: auto;"
-  layout-fill
-  layout="column" 
-  class="md-no-flicker md-no-momentum">
+  class="md-no-flicker md-no-momentum"
+  layout-fill>
 
+  <md-subheader>Oferta</md-subheader>
+
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-title">{{ctrl.oferta.Anuncio.nome}}</span>
+        <span class="md-subhead">{{ctrl.oferta.quantidade}} {{ctrl.oferta.unidade}}</span>
+      </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+      <p>
+        <span ng-bind="DateHelper.format(ctrl.oferta.data_inicio)"></span> |
+        <span ng-bind="DateHelper.format(ctrl.oferta.data_fim)"></span>
+      </p>
+    </md-card-content>
+  </md-card>
+
+  <md-subheader>Anunciante</md-subheader>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-title">{{PessoaHelper.getNomeDaPessoa(ctrl.oferta.Anunciante)}}</span>
+        <span class="md-subhead">
+          <span ng-bind="PessoaHelper.getTipoPessoa(ctrl.oferta.Anunciante)"></span>
+        </span>
+      </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+      <p>
+        <md-icon md-font-set="material-icons">location_on</md-icon>
+        <span ng-bind="PessoaHelper.getCidadeEstado(ctrl.oferta.Anunciante)"></span>
+      </p>
+      <p>
+        <md-icon md-font-set="material-icons">email</md-icon>
+        <a href="mailto:{{ctrl.oferta.Anunciante.Emails[0].email}}">
+        <span ng-bind="ctrl.oferta.Anunciante.Emails[0].email"></span>
+        </a>
+      </p>
+      <p>
+        <md-icon md-font-set="material-icons">phone</md-icon>
+        <a href="tel:+55{{ctrl.oferta.Anunciante.Telefones[0].ddd}}{{ctrl.oferta.Anunciante.Telefones[0].numero}}">
+        <span ng-bind="PessoaHelper.getNumeroTelefone(ctrl.oferta.Anunciante)"></span>
+        </a>
+      </p>
+    </md-card-content>
+  </md-card>
 </md-content>

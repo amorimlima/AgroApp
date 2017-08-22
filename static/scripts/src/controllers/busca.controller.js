@@ -17,43 +17,36 @@
     estados
   ) {
 
-    var vm = this;
+    var self = this;
 
     // Models
-    vm.viewState  = 'filtros';
-    vm.categorias = categorias || [];
-    vm.estados    = estados    || [];
-    vm.filtros    = { Categoria: 1, estado: '', cidade: '' };
-    vm.listaResultados = [];
-    vm.isBuscandoDados = false;
+    self.viewState  = 'filtros';
+    self.categorias = categorias || [];
+    self.estados    = estados    || [];
+    self.filtros    = { Categoria: 1, estado: '', cidade: '' };
+    self.listaResultados = [];
+    self.isBuscandoDados = false;
 
     // Métodos
-    vm.setViewState = function (state) {
-      vm.viewState = state;
+    self.setViewState = function (state) {
+      self.viewState = state;
     };
 
-    vm.carregarOfertas = function (filtros) {
-      vm.isBuscandoDados = true;
-      vm.listaResultados = [];
-      vm.viewState = 'resultados';
+    self.carregarOfertas = function (filtros) {
+      self.isBuscandoDados = true;
+      self.listaResultados = [];
+      self.viewState = 'resultados';
 
       UsuarioProdutoService
         .buscarOfertas(filtros.Produto, filtros.estado, filtros.cidade)
         .then(function (ofertas) {
-          vm.isBuscandoDados = false;
-          vm.listaResultados = angular.copy(ofertas);
+          self.isBuscandoDados = false;
+          self.listaResultados = angular.copy(ofertas);
         });
     };
 
-    vm.abrirOferta = function (oferta) {
+    self.abrirOferta = function (oferta) {
       return $location.url('/oferta/' + oferta);
-    };
-
-    vm.getNomeDaPessoa = function (Pessoa) {
-      if (Pessoa.tipo === 'PF')
-        return Pessoa.PessoaFisica.nome + ' ' + Pessoa.PessoaFisica.sobrenome;
-      else
-        return Pessoa.PessoaJuridica.razao_social;
     };
   }
 })();

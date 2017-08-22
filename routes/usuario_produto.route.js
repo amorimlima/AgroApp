@@ -63,9 +63,12 @@ module.exports = (router, app) => {
         const id = parseInt(req.params.id);
 
         usuarioProdutoDAO
-          .getById(id)
+          .getOferta(id)
           .then(response => res.status(response.statusCode).json(response.data))
-          .catch(error => res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY));
+          .catch(error => {
+            console.log(error)
+            res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+          });
       }
       catch (e) {
         res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY)

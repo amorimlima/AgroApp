@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+const { extractToken } = require('./utils');
 const configs = require('./configs');
 const dao = require('./dao');
 const routes = require('./routes');

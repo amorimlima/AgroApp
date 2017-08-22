@@ -7,6 +7,60 @@ class UsuarioProdutoDAO extends GenericDAO {
     this.models = models;
   }
 
+  getOferta(oferta) {
+    return this.model
+      .findOne({
+        attributes: [ 'id', 'unidade', 'quantidade', 'data_inicio', 'data_fim' ],
+        where: { id: oferta },
+        include: [
+          {
+            model: this.models.Produto,
+            as: 'Anuncio',
+            attributes: [ 'id', 'Categoria', 'nome' ],
+            required: true
+          },
+          {
+            model: this.models.Usuario,
+            as: 'Anunciante',
+            attributes: [ 'id', 'tipo' ],
+            required: true,
+            include: [
+              {
+                model: this.models.Endereco,
+                as: 'Enderecos',
+                attributes: [ 'logradouro', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'cep' ],
+                required: true
+              },
+              {
+                model: this.models.Email,
+                as: 'Emails',
+                attributes: [ 'email' ],
+                required: true
+              },
+              {
+                model: this.models.Telefone,
+                as: 'Telefones',
+                attributes: [ 'ddd', 'numero' ],
+                required: true
+              },
+              {
+                model: this.models.PessoaFisica,
+                as: 'PessoaFisica',
+                attributes: [ 'cpf', 'nome', 'sobrenome' ]
+              },
+              {
+                model: this.models.PessoaJuridica,
+                as: 'PessoaJuridica',
+                attributes: [ 'cnpj', 'razao_social', 'responsavel' ]
+              }
+            ]
+          }
+        ]
+      })
+      .then(instance => responses.generic(instance))
+      .catch(error => Promise.reject(responses.error(error)));
+  }
+
   createOrUpdate(usuarioProduto) {
     if (usuarioProduto.id) {
       return this.model

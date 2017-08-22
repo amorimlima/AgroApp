@@ -26,11 +26,11 @@
         placeholder="<%= strings.WHAT_ARE_YOU_LOOKING_FOR %>"
         flex="grow"
         md-no-cache="true"
-        md-search-text="buscaCtrl.searchText"
-        md-items="produto in buscaCtrl.categorias[buscaCtrl.filtros.Categoria - 1].Produtos | filter:buscaCtrl.searchText"
+        md-search-text="ctrl.searchText"
+        md-items="produto in ctrl.categorias[ctrl.filtros.Categoria - 1].Produtos | filter:ctrl.searchText"
         md-clear-button="true"
         md-item-text="produto.nome"
-        md-selected-item="buscaCtrl.filtros.Produto">
+        md-selected-item="ctrl.filtros.Produto">
 
         <md-item-template>{{produto.nome}}</md-item-template>
 
@@ -40,8 +40,8 @@
     <md-button
         aria-label="Open filters button"
         class="md-icon-button"
-        ng-show="buscaCtrl.viewState === 'resultados'"
-        ng-click="buscaCtrl.setViewState('filtros')">
+        ng-show="ctrl.viewState === 'resultados'"
+        ng-click="ctrl.setViewState('filtros')">
 
         <md-icon>filter_list</md-icon>
     </md-button>
@@ -51,7 +51,7 @@
 <div
   layout="column"
   layout-fill
-  ng-show="buscaCtrl.viewState === 'filtros'">
+  ng-show="ctrl.viewState === 'filtros'">
 
   <%- include('partials/busca/filtros.ejs'); %>
 </div>
@@ -59,7 +59,7 @@
 <div
   layout="column"
   layout-fill
-  ng-show="buscaCtrl.viewState === 'resultados'">
+  ng-show="ctrl.viewState === 'resultados'">
 
   <%- include('partials/busca/resultados.ejs'); %>
 </div>

@@ -10,7 +10,8 @@
     '$cookies',
     '$mdSidenav',
     '$mdToast',
-    'DateHelper'
+    'DateHelper',
+    'PessoaHelper'
   ];
 
   function appRun(
@@ -20,7 +21,8 @@
     $cookies, 
     $mdSidenav, 
     $mdToast,
-    DateHelper
+    DateHelper,
+    PessoaHelper
   ) {
 
     $rootScope.$on('$routeChangeStart', function (ngEvent, next, current) {
@@ -63,5 +65,6 @@
     };
 
     $rootScope.DateHelper = DateHelper;
+    $rootScope.PessoaHelper = PessoaHelper;
   }
 })();

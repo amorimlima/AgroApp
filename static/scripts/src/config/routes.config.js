@@ -60,7 +60,7 @@
       })
       .when('/busca', {
         controller: 'BuscaController',
-        controllerAs: 'buscaCtrl',
+        controllerAs: 'ctrl',
         templateUrl: '/views/busca',
         requireAuth: true,
         resolve: {
@@ -78,13 +78,9 @@
         templateUrl: '/views/oferta',
         requireAuth: true,
         resolve: {
-          oferta: [
-            'UsuarioProdutoService', 
-            '$stateProvider',
-            function (UsuarioProdutoService, $route) {
-              return UsuarioProdutoService.getOferta($route.current.params.id);
-            }
-          ]
+          oferta: ['UsuarioProdutoService', '$route', function (OfertaService, $route) {
+              return OfertaService.getOferta($route.current.params.id);
+          }]
         }
       })
       .otherwise({ redirectTo: '/' });

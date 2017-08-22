@@ -8,6 +8,9 @@
   ];
 
   function OfertaController(oferta) {
-    var vm = this;
+    var self = this;
+    
+    // Models
+    self.oferta = oferta;
   }
 })();

@@ -10,9 +10,9 @@
 
     <div layout-padding>
       <div>
-        <md-radio-group ng-model="buscaCtrl.filtros.Categoria">
+        <md-radio-group ng-model="ctrl.filtros.Categoria">
           <md-radio-button
-            ng-repeat="categoria in buscaCtrl.categorias"
+            ng-repeat="categoria in ctrl.categorias"
             ng-value="categoria.id">
 
             <label ng-bind="categoria.nome"></label>
@@ -38,11 +38,11 @@
 
         <md-select
           id="uf_select"
-          ng-change="buscaCtrl.setSearched()"
-          ng-model="buscaCtrl.filtros.estado">
+          ng-change="ctrl.setSearched()"
+          ng-model="ctrl.filtros.estado">
         
           <md-option
-            ng-repeat="estado in buscaCtrl.estados"
+            ng-repeat="estado in ctrl.estados"
             ng-value="estado.sigla"
             ng-bind="estado.nome"></md-option>
         </md-select>
@@ -55,7 +55,7 @@
 
         <input
           id="cidade"
-          ng-model="buscaCtrl.filtros.cidade" />
+          ng-model="ctrl.filtros.cidade" />
       </md-input-container>
     </div>
   </div>
@@ -65,7 +65,7 @@
       class="md-primary md-raised"
       aria-label="<%= strings.DO_SEARCH %>"
       md-ripple-size="full"
-      ng-click="buscaCtrl.carregarOfertas(buscaCtrl.filtros)">
+      ng-click="ctrl.carregarOfertas(ctrl.filtros)">
 
       <%= strings.DO_SEARCH %>
     </md-button>

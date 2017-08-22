@@ -1,4 +1,12 @@
 (function() {
+  angular
+    .module('app')
+    .service('UsuarioProdutoService', UsuarioProdutoService);
+
+  UsuarioProdutoService.$inject = [
+    '$http'
+  ];
+
   function UsuarioProdutoService($http) {
     this.listarMeusProdutos = function () {
       return $http
@@ -34,12 +42,4 @@
         .then(function (response) { return Promise.resolve(response.data) });
     };
   }
-
-  UsuarioProdutoService.$inject = [
-    '$http'
-  ];
-
-  angular
-    .module('app')
-    .service('UsuarioProdutoService', UsuarioProdutoService);
 })();

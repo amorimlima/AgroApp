@@ -15,6 +15,7 @@
     flex
     md-truncate>Oferta</h1>
 </md-toolbar>
+<md-progress-linear md-mode="indeterminate" ng-show="ctrl.loading"></md-progress-linear>
   
 <md-content
   style="height: calc(100vh - 56px); min-height: auto;"
@@ -68,5 +69,13 @@
         </a>
       </p>
     </md-card-content>
+
+    <md-card-actions>
+      <md-card-icon-actions ng-init="ctrl.checarFavorito(ctrl.oferta.Anunciante.id)">
+        <md-button class="md-icon-button" aria-label="icon">
+          <md-icon md-font-set="material-icons">{{ctrl.getFavoritoIcon(ctrl.isFavorito)}}</md-icon>
+        </md-button>
+      </md-card-icon-actions>
+    </md-card-actions>
   </md-card>
 </md-content>

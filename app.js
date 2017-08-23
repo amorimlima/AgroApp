@@ -20,6 +20,7 @@ const strings = JSON.parse(fs.readFileSync(path.join(__dirname, './commons/strin
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(extractToken(app));
 app.use('/assets', express.static(path.join(__dirname, './static')));
 
 // configs
@@ -47,6 +48,7 @@ app.use('/oferta', routes.usuarioProdutoRoute(express.Router(), app));
 app.use('/endereco', routes.enderecoRoute(express.Router(), app));
 app.use('/pessoa-fisica', routes.pessoaFisicaRoute(express.Router(), app));
 app.use('/pessoa-juridica', routes.pessoaJuridicaRoute(express.Router(), app));
+app.use('/favorito', routes.favoritoRoute(express.Router(), app));
 
 // Views
 app.set('views', 'views');

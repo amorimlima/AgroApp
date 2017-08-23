@@ -15,7 +15,13 @@
     }
     this.favoritar = function (usuario) {
       return $http
-        .post('/favorito', usuario)
+        .post('/favorito', { usuario: usuario })
+        .then(function (response) { return Promise.resolve(response.data) });
+    };
+
+    this.desfavoritar = function (usuario) {
+      return $http
+        .delete('/favorito/' + usuario)
         .then(function (response) { return Promise.resolve(response.data) });
     };
   }

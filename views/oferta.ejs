@@ -19,8 +19,7 @@
   
 <md-content
   style="height: calc(100vh - 56px); min-height: auto;"
-  class="md-no-flicker md-no-momentum"
-  layout-fill>
+  class="md-no-flicker md-no-momentum">
 
   <md-subheader>Oferta</md-subheader>
 
@@ -72,7 +71,11 @@
 
     <md-card-actions>
       <md-card-icon-actions ng-init="ctrl.checarFavorito(ctrl.oferta.Anunciante.id)">
-        <md-button class="md-icon-button" aria-label="icon">
+        <md-button
+          class="md-icon-button"
+          aria-label="icon"
+          ng-click="ctrl.toggleFavorito(ctrl.oferta.Anunciante.id, ctrl.isFavorito)">
+
           <md-icon md-font-set="material-icons">{{ctrl.getFavoritoIcon(ctrl.isFavorito)}}</md-icon>
         </md-button>
       </md-card-icon-actions>

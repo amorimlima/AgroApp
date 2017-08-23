@@ -4,11 +4,12 @@
     .controller('OfertaController', OfertaController);
 
   OfertaController.$inject = [
+    '$rootScope',
     'FavoritoService',
     'oferta'
   ];
 
-  function OfertaController(FavoritoService, oferta) {
+  function OfertaController($rootScope, FavoritoService, oferta) {
     var self = this;
     
     // Models
@@ -21,8 +22,27 @@
       return isFavorito ? 'favorite' : 'favorite_border';
     };
 
-    self.toggleFavorito = function (usuario) {
-      return console.log('Toggle favorito');
+    self.toggleFavorito = function (usuario, isFavorito) {
+      self.loading = true;
+
+      if (isFavorito) {
+        FavoritoService
+          .desfavoritar(usuario)
+          .then(function (res) { 
+            self.loading = false;
+            self.isFavorito = false;
+          })
+          .catch(function () { self.loading = false; });
+      }
+      else {
+        FavoritoService
+          .favoritar(usuario)
+          .then(function (favorito) {
+            self.loading = false;
+            self.isFavorito = true;
+          })
+          .catch(function () { self.loading = false; })
+      }
     };
 
     self.checarFavorito = function (usuario) {
@@ -32,7 +52,7 @@
         .checarFavorito(usuario)
         .then(function (isFavorito) {
           self.isFavorito = isFavorito;
-          // self.loading = false;
+          self.loading = false;
         })
         .catch(function (err) {
           self.loading = false;

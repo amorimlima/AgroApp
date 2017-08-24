@@ -74,7 +74,8 @@
         <md-button
           class="md-icon-button"
           aria-label="icon"
-          ng-click="ctrl.toggleFavorito(ctrl.oferta.Anunciante.id, ctrl.isFavorito)">
+          ng-click="ctrl.toggleFavorito(ctrl.oferta.Anunciante.id, ctrl.isFavorito)"
+          ng-disabled="ctrl.loading">
 
           <md-icon md-font-set="material-icons">{{ctrl.getFavoritoIcon(ctrl.isFavorito)}}</md-icon>
         </md-button>

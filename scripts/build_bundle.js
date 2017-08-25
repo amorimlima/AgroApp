@@ -11,7 +11,7 @@ const files = [ 'services', 'controllers', 'config', 'run', 'helpers' ] // Layer
   .map(file => fs.readFileSync(file))
   .map(file => file.toString());
 
-files.push(fs.readFileSync(`${srcDir}/app.js`).toString());
+files.unshift(fs.readFileSync(`${srcDir}/app.js`).toString());
 
 if (!fs.existsSync(binDir)) fs.mkdirSync(binDir);
 

@@ -35,7 +35,7 @@ module.exports = (router, app) => {
     .delete((req, res) => {
       const favoritoDAO = new FavoritoDAO(app.get('models'));
       const Usuario = req.session.id;
-      const Favorito = req.body.id;
+      const Favorito = req.params.id;
       const payload = { Usuario, Favorito };
 
       favoritoDAO

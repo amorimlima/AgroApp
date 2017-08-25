@@ -15,7 +15,7 @@
     }
     this.favoritar = function (usuario) {
       return $http
-        .post('/favorito', { usuario: usuario })
+        .post('/favorito', { favorito: usuario })
         .then(function (response) { return Promise.resolve(response.data) });
     };
 

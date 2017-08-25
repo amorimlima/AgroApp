@@ -9,6 +9,8 @@ module.exports = (router, app) => {
       const Favorito = req.body.favorito;
       const payload  = { Usuario, Favorito };
 
+      console.log(payload);
+
       favoritoDAO
         .create(payload)
         .then(response => res.status(response.statusCode).json(response.data))
@@ -20,8 +22,10 @@ module.exports = (router, app) => {
     .get((req, res) => {
       const favoritoDAO = new FavoritoDAO(app.get('models'));
       const Usuario  = req.session.id;
-      const Favorito = req.body.id;
+      const Favorito = req.params.id;
       const payload  = { Usuario, Favorito };
+
+      console.log(payload)
 
       favoritoDAO
         .getFavorito(Usuario, Favorito)

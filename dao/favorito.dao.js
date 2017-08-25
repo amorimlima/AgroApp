@@ -1,6 +1,6 @@
 const HttpStatus = require('http-status');
 const GenericDAO = require('./generic.dao');
-const responses = require('../utils/responses');
+const responses  = require('../utils/responses');
 
 class FavoritoDAO extends GenericDAO {
   constructor(models) {

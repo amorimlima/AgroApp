@@ -1,0 +1,17 @@
+ng-view {
+  md-content {
+  
+    // margin-top offset and min-heignt
+    // based on sibiling toolbar's nth-of-type index
+    @for $i from 0 through 2 {
+      md-toolbar:nth-of-type(#{$i + 1}) ~ &,
+      md-toolbar:nth-of-type(#{$i + 1}) ~ div & {
+        margin-top: ($i + 1) * 56px !important;
+        min-height: calc(100vh - #{($i - 1) * 56px});
+      }
+    }
+  
+    // All children must not be flex
+    > * { flex: none !important; }
+  }
+}

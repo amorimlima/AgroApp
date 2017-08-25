@@ -5,7 +5,7 @@
   <md-button 
     aria-label="button-label" 
     class="md-icon-button"
-    ng-click="ctrl.voltar()">
+    ng-href="#/busca">
     
     <md-icon md-font-set="material-icons">arrow_back</md-icon>
   </md-button>
@@ -18,7 +18,6 @@
 <md-progress-linear md-mode="indeterminate" ng-show="ctrl.loading"></md-progress-linear>
   
 <md-content
-  style="height: calc(100vh - 56px); min-height: auto;"
   class="md-no-flicker md-no-momentum">
 
   <md-subheader>Oferta</md-subheader>
@@ -70,7 +69,10 @@
     </md-card-content>
 
     <md-card-actions>
-      <md-card-icon-actions ng-init="ctrl.checarFavorito(ctrl.oferta.Anunciante.id)">
+      <md-card-icon-actions 
+        layout-align="end center"
+        ng-init="ctrl.checarFavorito(ctrl.oferta.Anunciante.id)">
+
         <md-button
           class="md-icon-button"
           aria-label="icon"

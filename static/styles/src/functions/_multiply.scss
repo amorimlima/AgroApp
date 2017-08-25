@@ -1,0 +1,3 @@
+@function multiply($factor, $value) {
+  @return $factor * $value;
+}

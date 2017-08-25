@@ -1,6 +1,6 @@
 const HttpStatus = require('http-status');
 const bcrypt = require('bcrypt-nodejs');
-const jwt = require('jwt-simple');
+const { encode } = require('jwt-simple');
 
 module.exports = (router, app) => {
   const UsuarioDAO = app.get('dao').UsuarioDAO;
@@ -30,7 +30,7 @@ module.exports = (router, app) => {
           const payload = instance.get({ plain: true });
           
           res.status(HttpStatus.OK);
-          res.json({ token: `JWT ${jwt.encode(payload, app.get('configs').jwt.secret)}` });
+          res.json({ token: `JWT ${encode(payload, app.get('configs').jwt.secret)}` });
         }
         else {
           res.sendStatus(HttpStatus.UNAUTHORIZED);

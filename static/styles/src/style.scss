@@ -1,7 +1,9 @@
 @import '../../../node_modules/angular-material/angular-material.scss';
+@import 'components/_toolbar.scss';
+@import 'components/_content.scss';
 
 .fixed-fab {
-  top: auto;
+  top: auto;  
   right: 20px;
   bottom: 20px;
   left: auto;
@@ -10,36 +12,4 @@
 
 h2.md-title {
   margin: 8px 0;
-}
-
-ng-view {
-  
-  md-toolbar {
-    position: fixed;
-    left: 0;
-
-    &:first-child {
-      top: 0;
-
-      ~ md-content {
-        padding-top: 56px !important;
-      }
-    }
-
-    &:nth-child(2) {
-      top: 56px;
-
-      ~ md-content,
-      ~ div md-content {
-        padding-top: 112px !important;
-      }
-    }
-
-    ~ md-content,
-    ~ div md-content{
-      min-height: 100vh !important;
-
-      > * { flex: none !important; }
-    }
-  }
 }

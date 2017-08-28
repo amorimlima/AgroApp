@@ -83,6 +83,17 @@
           }]
         }
       })
+      .when('/favoritos', {
+        controller: 'FavoritosController',
+        controllerAs: 'ctrl',
+        templateUrl: '/views/favoritos',
+        requireAuth: true,
+        resolve: {
+          favoritos: ['FavoritoService', function(FavoritoService) {
+            return FavoritoService.listarMeusFavoritos();
+          }]
+        }
+      })
       .otherwise({ redirectTo: '/' });
   };
 })();

@@ -24,5 +24,11 @@
         .delete('/favorito/' + usuario)
         .then(function (response) { return Promise.resolve(response.data) });
     };
+
+    this.listarMeusFavoritos = function () {
+      return $http
+        .get('/favorito/meus')
+        .then(function (response) { return Promise.resolve(response.data) });
+    }
   }
 })();

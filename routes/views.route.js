@@ -1,4 +1,4 @@
-const viewsRoute = (router, app) => {
+module.exports = (router, app) => {
   router.get('/inicio', (req, res) => {
     res.render('inicio', { strings: app.get('strings') });
   });
@@ -17,9 +17,11 @@ const viewsRoute = (router, app) => {
 
   router.get('/oferta', (req, res) => {
     res.render('oferta');
-  })
+  });
+
+  router.get('/favoritos', (req, res) => {
+    res.render('favoritos', { strings: app.get('strings') });
+  });
 
   return router;
-}
-
-module.exports = viewsRoute;
+};

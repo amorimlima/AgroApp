@@ -7,6 +7,29 @@ class FavoritoDAO extends GenericDAO {
     super(models.Favorito);
     this.models = models;
   }
+  
+  getFavoritosDe(Usuario) {
+    return this.model
+      .findAll({ 
+        attributes: [ 'Usuario' ],
+        where: { Usuario },
+        include: [
+          { 
+            model: this.models.Usuario,
+            attributes: [ 'id', 'tipo' ],
+            as: 'Favoritado',
+            include: [
+              { model: this.models.PessoaJuridica, as: 'PessoaJuridica' },
+              { model: this.models.PessoaFisica, as: 'PessoaFisica' },
+              { model: this.models.Endereco, as: 'Enderecos' }
+            ],
+            required: true
+          }
+        ]
+      })
+      .then(instance => responses.generic(instance))
+      .catch(error => responses.error(error));
+  }
 
   getFavorito(Usuario, Favorito) {
     return this.model

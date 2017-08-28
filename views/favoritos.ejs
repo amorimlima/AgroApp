@@ -1,0 +1,33 @@
+<md-toolbar
+  layout="row"
+  class="md-toolbar-tools">
+
+  <md-button
+    aria-label="button-label"
+    class="md-icon-button"
+    ng-click="sidenav.toggle()">
+
+    <md-icon md-font-set="material-icons">menu</md-icon>
+  </md-button>
+
+  <h1
+    class="md-title"
+    flex
+    md-truncate>Meus Favoritos</h1>
+</md-toolbar>
+
+<md-content class="md-no-flicker md-no-momentum">
+  <md-subheader>Favoritos</md-subheader>
+
+  <md-card ng-repeat="favorito in ctrl.favoritos">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-title">{{PessoaHelper.getNomeDaPessoa(favorito.Favoritado)}}</span>
+        <span class="md-subhead">
+          <md-icon md-font-set="material-icons">location_on</md-icon>
+          <span ng-bind="PessoaHelper.getCidadeEstado(favorito.Favoritado)"></span>
+        </span>
+      </md-card-title-text>
+    </md-card-title>
+  </md-card>
+</md-content>

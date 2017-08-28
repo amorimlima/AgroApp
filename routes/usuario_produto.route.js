@@ -47,10 +47,11 @@ module.exports = (router, app) => {
     .route('/busca')
     .get((req, res) => {
       const usuarioProdutoDAO = new UsuarioProdutoDAO(app.get('models'));
+      const Usuario = req.session.id;
       const { produto, cidade, estado } = req.query;
 
       usuarioProdutoDAO
-        .listarParaBusca(produto, estado, cidade)
+        .listarParaBusca(Usuario, produto, estado, cidade)
         .then(response => res.status(response.statusCode).json(response.data))
         .catch(error => res.sendStatus(error.statusCode));
     });

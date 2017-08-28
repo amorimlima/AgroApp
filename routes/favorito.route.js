@@ -9,10 +9,20 @@ module.exports = (router, app) => {
       const Favorito = req.body.favorito;
       const payload  = { Usuario, Favorito };
 
-      console.log(payload);
-
       favoritoDAO
         .create(payload)
+        .then(response => res.status(response.statusCode).json(response.data))
+        .catch(error => res.sendStatus(error.statusCode));
+    });
+
+  router
+    .route('/meus')
+    .get((req, res) => {
+      const favoritoDAO = new FavoritoDAO(app.get('models'));
+      const Usuario = req.session.id;
+
+      favoritoDAO
+        .getFavoritosDe(Usuario)
         .then(response => res.status(response.statusCode).json(response.data))
         .catch(error => res.sendStatus(error.statusCode));
     });
@@ -24,8 +34,6 @@ module.exports = (router, app) => {
       const Usuario  = req.session.id;
       const Favorito = req.params.id;
       const payload  = { Usuario, Favorito };
-
-      console.log(payload)
 
       favoritoDAO
         .getFavorito(Usuario, Favorito)

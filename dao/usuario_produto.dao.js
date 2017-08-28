@@ -87,7 +87,7 @@ class UsuarioProdutoDAO extends GenericDAO {
       .catch(error => responses.error(error));
   }
 
-  listarParaBusca(produto, estado = '', cidade = '') {
+  listarParaBusca(Usuario, produto, estado = '', cidade = '') {
     if (!produto) produto = { $not: null };
     estado = { $like: `%${estado}%` };
     cidade = { $like: `%${cidade}%` };
@@ -108,6 +108,7 @@ class UsuarioProdutoDAO extends GenericDAO {
             as: 'Anunciante',
             attributes: [ 'id', 'tipo' ],
             required: true,
+            where: { id: { $not: Usuario } },
             include: [
               {
                 model: this.models.Endereco,

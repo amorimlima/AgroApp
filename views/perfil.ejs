@@ -1,0 +1,121 @@
+<md-toolbar
+  layout="row" 
+  class="md-toolbar-tools">
+
+  <md-button 
+    aria-label="button-label" 
+    class="md-icon-button"
+    ng-href="#/busca">
+    
+    <md-icon md-font-set="material-icons">arrow_back</md-icon>
+  </md-button>
+    
+  <h1
+    class="md-title"
+    flex
+    md-truncate>Oferta</h1>
+</md-toolbar>
+<md-progress-linear md-mode="indeterminate" ng-show="ctrl.loading"></md-progress-linear>
+  
+<md-content class="md-no-flicker md-no-momentum">
+
+  <div
+    ng-show="ctrl.oferta"
+    ng-init="ctrl.carregarOferta()">
+
+    <md-subheader>Visualizada</md-subheader>
+    <md-card ng-if="ctrl.oferta">
+
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-title">{{ctrl.oferta.Anuncio.nome}}</span>
+          <span class="md-subhead">{{ctrl.oferta.quantidade}} {{ctrl.oferta.unidade}}</span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content>
+        <p>
+          <span ng-bind="DateHelper.format(ctrl.oferta.data_inicio)"></span> |
+          <span ng-bind="DateHelper.format(ctrl.oferta.data_fim)"></span>
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <md-subheader>Anunciante</md-subheader>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-title">{{PessoaHelper.getNomeDaPessoa(ctrl.usuario)}}</span>
+        <span class="md-subhead">
+          <span ng-bind="PessoaHelper.getTipoPessoa(ctrl.usuario)"></span>
+        </span>
+      </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+      <p>
+        <md-icon md-font-set="material-icons">location_on</md-icon>
+        <span ng-bind="PessoaHelper.getCidadeEstado(ctrl.usuario)"></span>
+      </p>
+      <p>
+        <md-icon md-font-set="material-icons">email</md-icon>
+        <a href="mailto:{{ctrl.usuario.Emails[0].email}}">
+        <span ng-bind="ctrl.usuario.Emails[0].email"></span>
+        </a>
+      </p>
+      <p>
+        <md-icon md-font-set="material-icons">phone</md-icon>
+        <a href="tel:+55{{ctrl.usuario.Telefones[0].ddd}}{{ctrl.usuario.Telefones[0].numero}}">
+        <span ng-bind="PessoaHelper.getNumeroTelefone(ctrl.usuario)"></span>
+        </a>
+      </p>
+    </md-card-content>
+
+    <md-card-actions>
+      <md-card-icon-actions 
+        layout-align="end center"
+        ng-init="ctrl.checarFavorito(ctrl.usuario.id)">
+
+        <md-button
+          class="md-icon-button"
+          aria-label="icon"
+          ng-click="ctrl.toggleFavorito(ctrl.usuario.id, ctrl.isFavorito)"
+          ng-disabled="ctrl.loading">
+
+          <md-icon md-font-set="material-icons">{{ctrl.getFavoritoIcon(ctrl.isFavorito)}}</md-icon>
+        </md-button>
+      </md-card-icon-actions>
+    </md-card-actions>
+  </md-card>
+
+  <div ng-init="ctrl.carregarOfertasDe(ctrl.usuario.id)">
+
+    <md-subheader>Ofertas</md-subheader>
+    <md-card ng-if="!ctrl.ofertas.length">
+      <md-card-content>
+        <span class="md-subhead">Nenhuma oferta cadastrada.</span>
+      </md-card-content>
+    </md-card>
+    
+    <md-card
+      ng-if="ctrl.ofertas.length"
+      ng-repeat="oferta in ctrl.ofertas">
+      
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-title">{{oferta.Anuncio.nome}}</span>
+          <span class="md-subhead">{{oferta.quantidade}} {{oferta.unidade}}</span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content>
+        <p>
+          <span ng-bind="DateHelper.format(oferta.data_inicio)"></span> |
+          <span ng-bind="DateHelper.format(oferta.data_fim)"></span>
+        </p>
+      </md-card-content>
+    </md-card>
+    
+  </div>
+</md-content>

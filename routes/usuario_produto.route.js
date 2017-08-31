@@ -42,6 +42,23 @@ module.exports = (router, app) => {
         res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY);
       }
     });
+
+  router
+    .route('/por-usuario/:id')
+    .get((req, res) => {
+      try {
+        const usuarioProdutoDAO = new UsuarioProdutoDAO(app.get('models'));
+        const Usuario = req.params.id;
+
+        usuarioProdutoDAO
+          .getByUser(Usuario)
+          .then(response => res.status(response.statusCode).json(response.data))
+          .catch(error => res.sendStatus(error.statusCode));
+      }
+      catch (e) {
+        res.sendStatus(HttpStatus.BAD_REQUEST);
+      }
+    })
     
   router
     .route('/busca')
@@ -66,10 +83,7 @@ module.exports = (router, app) => {
         usuarioProdutoDAO
           .getOferta(id)
           .then(response => res.status(response.statusCode).json(response.data))
-          .catch(error => {
-            console.log(error)
-            res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-          });
+          .catch(error => res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY));
       }
       catch (e) {
         res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY)

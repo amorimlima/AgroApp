@@ -81,7 +81,11 @@ class UsuarioProdutoDAO extends GenericDAO {
       .findAll({
         attributes: [ 'id', 'unidade', 'quantidade', 'data_inicio', 'data_fim', 'Usuario' ],
         where: { Usuario: id },
-        include: [ { model: this.models.Produto, as: 'Anuncio' } ]
+        include: [ {
+          model: this.models.Produto,
+          attributes: [ 'id', 'nome', 'Categoria' ],
+          as: 'Anuncio'
+        }]
       })
       .then(produtos => responses.generic(produtos))
       .catch(error => responses.error(error));

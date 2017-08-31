@@ -33,13 +33,19 @@
 
       return $http
         .get('/oferta/busca?produto=' + Produto.id + '&estado=' + estado + '&cidade=' + cidade)
-        .then(function (response) { return Promise.resolve(response.data) });
+        .then(function (response) { return Promise.resolve(response.data); });
     };
 
     this.getOferta = function (id) {
       return $http
         .get('/oferta/' + id)
-        .then(function (response) { return Promise.resolve(response.data) });
+        .then(function (response) { return Promise.resolve(response.data); });
     };
+
+    this.listarProdutosDe = function (id) {
+      return $http
+        .get('/oferta/por-usuario/' + id)
+        .then(function (response) { return Promise.resolve(response.data); });
+    } 
   }
 })();

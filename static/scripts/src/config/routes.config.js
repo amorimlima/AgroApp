@@ -72,17 +72,14 @@
           }]
         }
       })
-      .when('/perfil/:usuario/oferta?/:id?', {
+      .when('/perfil/:usuario', {
         controller: 'PerfilController',
         controllerAs: 'ctrl',
-        templateUrl: '/views/oferta',
+        templateUrl: '/views/perfil',
         requireAuth: true,
         resolve: {
           usuario: ['UsuarioService', '$route', function (UsuarioService, $route) {
             return UsuarioService.getDadosDe($route.current.params.usuario);
-          }],
-          oferta: ['UsuarioProdutoService', '$route', function (OfertaService, $route) {
-              return OfertaService.getOferta($route.current.params.id);
           }]
         }
       })

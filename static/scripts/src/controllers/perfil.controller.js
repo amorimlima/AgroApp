@@ -5,23 +5,26 @@
 
   PerfilController.$inject = [
     '$rootScope',
+    '$location',
+    'UsuarioProdutoService',
     'FavoritoService',
-    'usuario',
-    'oferta'
+    'usuario'
   ];
 
   function PerfilController(
     $rootScope,
+    $location,
+    UsuarioProdutoService,
     FavoritoService,
-    usuario,
-    oferta
+    usuario
   ) {
     var self = this;
     
     // Models
     self.usuario = usuario;
-    self.oferta  = oferta;
     self.loading = true;
+    self.oferta  = null; 
+    self.ofertas = [];
     self.isFavorito = false;
 
     // Métodos
@@ -62,6 +65,40 @@
           self.loading = false;
         })
         .catch(function () { self.loading = false; });
+    };
+
+    self.carregarOferta = function () {
+      var id_oferta = $location.search().oferta;
+      self.loading = true;
+
+      if (id_oferta) {
+        UsuarioProdutoService
+          .getOferta(id_oferta)
+          .then(function (oferta) {
+            self.loading = false;
+            self.oferta  = oferta;
+          })
+          .catch(function () { self.loading = false; });
+      }
+      else {
+        self.loading = false;
+      }
+    };
+
+    self.carregarOfertasDe = function (usuario) {
+      self.loading = true;
+
+      UsuarioProdutoService
+      .listarProdutosDe(usuario)
+      .then(function (ofertas) {
+        console.log(ofertas)
+        self.ofertas = self.oferta
+          ? ofertas.filter(function (oferta) { return oferta.id !== self.oferta.id })
+          : ofertas;
+
+        self.loading = false;
+      })
+      .catch(function () { self.loading = false; });
     };
   }
 })();

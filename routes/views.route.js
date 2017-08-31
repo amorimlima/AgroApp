@@ -15,8 +15,8 @@ module.exports = (router, app) => {
     res.render('meus_produtos', { strings: app.get('strings') });
   });
 
-  router.get('/oferta', (req, res) => {
-    res.render('oferta');
+  router.get('/perfil', (req, res) => {
+    res.render('perfil');
   });
 
   router.get('/favoritos', (req, res) => {

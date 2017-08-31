@@ -20,28 +20,42 @@ class UsuarioDAO extends GenericDAO {
       })
       .then(response => responses.generic(response));
   }
+
   getCreated(id) {
     return this.model
       .findOne({
+        attributes: [ 'id', 'tipo', 'Perfil' ],
         where: { id },
         include: [
-          { model: this.models.PessoaFisica, as: 'pessoa_fisica' },
-          { model: this.models.PessoaJuridica, as: 'pessoa_juridica' },
-          { model: this.models.Credencial, as: 'credencial', include: [
-            { model: this.models.Email },
-            { model: this.models.Perfil }
-          ] },
-          { model: this.models.Endereco, as: 'enderecos' },
-          { model: this.models.Telefone, as: 'telefones', include: [
-            { model: this.models.TipoTelefone, as: 'tipo' },
-          ] }
+          {
+            model: this.models.PessoaFisica,
+            attributes: [ 'cpf', 'rg', 'nome', 'sobrenome', 'data_nascimento' ],
+            as: 'PessoaFisica'
+          },
+          {
+            model: this.models.PessoaJuridica,
+            attributes: [ 'cnpj', 'razao_social', 'responsavel', 'data_fundacao' ],
+            as: 'PessoaJuridica'
+          },
+          {
+            model: this.models.Email,
+            attributes: [ 'email' ],
+            as: 'Emails'
+          },
+          { 
+            model: this.models.Endereco,
+            attributes: [ 'logradouro', 'numero', 'complemento', 'cep', 'bairro', 'cidade', 'estado' ],
+            as: 'Enderecos'
+          },
+          {
+            model: this.models.Telefone,
+            attributes: [ 'ddd', 'numero', 'Tipo' ],
+            as: 'Telefones'
+          }
         ]
       })
       .then(instance => responses.generic(instance))
-      .catch(error => {
-        console.log(error)
-        return responses.error(error)
-      });
+      .catch(error => responses.error(error));
   }
 };
 

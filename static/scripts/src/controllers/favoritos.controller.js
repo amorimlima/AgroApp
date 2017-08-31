@@ -20,7 +20,7 @@
         .then(function () { return self.removerDaLista(Favorito); });
     };
 
-    self.removerDaLista = function(Favorito) {
+    self.removerDaLista = function (Favorito) {
       self.favoritos = self.favoritos
         .filter(function (favorito) { return favorito.id !== Favorito; });
     };

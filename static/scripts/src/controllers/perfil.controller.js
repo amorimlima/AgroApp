@@ -1,18 +1,25 @@
 (function() {
   angular
     .module('app')
-    .controller('OfertaController', OfertaController);
+    .controller('PerfilController', PerfilController);
 
-  OfertaController.$inject = [
+  PerfilController.$inject = [
     '$rootScope',
     'FavoritoService',
+    'usuario',
     'oferta'
   ];
 
-  function OfertaController($rootScope, FavoritoService, oferta) {
+  function PerfilController(
+    $rootScope,
+    FavoritoService,
+    usuario,
+    oferta
+  ) {
     var self = this;
     
     // Models
+    self.usuario = usuario;
     self.oferta  = oferta;
     self.loading = true;
     self.isFavorito = false;
@@ -41,7 +48,7 @@
             self.loading = false;
             self.isFavorito = true;
           })
-          .catch(function () { self.loading = false; })
+          .catch(function () { self.loading = false; });
       }
     };
 
@@ -54,9 +61,7 @@
           self.isFavorito = isFavorito;
           self.loading = false;
         })
-        .catch(function (err) {
-          self.loading = false;
-        });
+        .catch(function () { self.loading = false; });
     };
   }
 })();

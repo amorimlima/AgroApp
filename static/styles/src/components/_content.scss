@@ -6,7 +6,7 @@
       md-toolbar:nth-of-type(#{$i + 1}) ~ &,
       md-toolbar:nth-of-type(#{$i + 1}) ~ div & {
         margin-top: ($i + 1) * 56px !important;
-        min-height: calc(100vh - #{($i + 1) * 56px});
+        min-height: calc(100vh - #{($i + 1) * 56px}) !important;
       }
     }
   

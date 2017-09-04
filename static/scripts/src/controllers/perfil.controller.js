@@ -38,20 +38,16 @@
       if (isFavorito) {
         FavoritoService
           .desfavoritar(usuario)
-          .then(function (res) { 
-            self.loading = false;
-            self.isFavorito = false;
-          })
-          .catch(function () { self.loading = false; });
+          .then(function (res) { self.isFavorito = false; })
+          .catch(function () { // TODO: Toast exibindo feedback });
       }
       else {
         FavoritoService
           .favoritar(usuario)
           .then(function (favorito) {
-            self.loading = false;
             self.isFavorito = true;
           })
-          .catch(function () { self.loading = false; });
+          .catch(function () { // TODO: Toast exibindo feedback });
       }
     };
 
@@ -60,45 +56,30 @@
 
       FavoritoService
         .checarFavorito(usuario)
-        .then(function (isFavorito) {
-          self.isFavorito = isFavorito;
-          self.loading = false;
-        })
-        .catch(function () { self.loading = false; });
+        .then(function (isFavorito) { self.isFavorito = isFavorito; })
+        .catch(function () { // TODO: Toast exibindo feedback });
     };
 
     self.carregarOferta = function () {
       var id_oferta = $location.search().oferta;
-      self.loading = true;
 
       if (id_oferta) {
         UsuarioProdutoService
           .getOferta(id_oferta)
-          .then(function (oferta) {
-            self.loading = false;
-            self.oferta  = oferta;
-          })
-          .catch(function () { self.loading = false; });
-      }
-      else {
-        self.loading = false;
+          .then(function (oferta) { self.oferta = oferta; })
+          .catch(function () { // TODO: Toast exibindo feedback });
       }
     };
 
     self.carregarOfertasDe = function (usuario) {
-      self.loading = true;
-
       UsuarioProdutoService
-      .listarProdutosDe(usuario)
-      .then(function (ofertas) {
-        console.log(ofertas)
-        self.ofertas = self.oferta
-          ? ofertas.filter(function (oferta) { return oferta.id !== self.oferta.id })
-          : ofertas;
-
-        self.loading = false;
-      })
-      .catch(function () { self.loading = false; });
+        .listarProdutosDe(usuario)
+        .then(function (ofertas) {
+          self.ofertas = self.oferta
+            ? ofertas.filter(function (oferta) { return oferta.id !== self.oferta.id })
+            : ofertas;
+        })
+        .catch(function () { // TODO: Toast exibindo feedback });
     };
   }
 })();

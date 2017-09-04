@@ -40,6 +40,14 @@
       }
     });
 
+    $rootScope.$on('loading:progress', function() {
+      $rootScope.loading = true;
+    });
+
+    $rootScope.$on('loading:finish', function() {
+      $rootScope.loading = false;
+    });
+
     $rootScope.sidenav = {
       visible: false,
       toggle: function () { $mdSidenav('main_menu').toggle(); },

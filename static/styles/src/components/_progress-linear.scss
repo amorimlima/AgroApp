@@ -1,0 +1,10 @@
+md-progress-linear {
+  z-index: 8;
+  
+  @for $i from 0 through 2 {
+    md-toolbar:nth-of-type(#{$i + 1}) ~ &,
+    md-toolbar:nth-of-type(#{$i + 1}) ~ div & {
+      top: ($i + 1) * 56px !important;
+    }
+  }
+}

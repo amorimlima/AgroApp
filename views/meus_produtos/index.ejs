@@ -15,11 +15,13 @@
     flex
     md-truncate>Meus produtos</h1>
 </md-toolbar>
+<md-progress-linear 
+  ng-show="loading"
+  md-mode="indeterminate"></md-progress-linear>
 
 <md-content 
   layout="column"
   class="md-no-flicker md-no-momentum">
-
   <md-subheader>Produtos</md-subheader>
   
   <div>

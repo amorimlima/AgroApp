@@ -18,14 +18,16 @@
     AutenticacaoService, 
     PersistenceService
   ) {
+    var self = this;
+    
     // Models
-    this.email = '';
-    this.senha = '';
+    self.email = '';
+    self.senha = '';
 
     // Métodos
-    this.login = function () {
+    self.login = function () {
       AutenticacaoService
-        .autenticar(this.email, this.senha)
+        .autenticar(self.email, self.senha)
         .then(function (response) {
           $cookies.put('session', response.token);
           return $location.url('/meus-produtos');

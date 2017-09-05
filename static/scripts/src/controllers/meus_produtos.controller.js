@@ -22,27 +22,27 @@
     produtos,
     ofertas
   ) {
-    var vm = this;
+    var self = this;
     
     // Models
-    vm.oferta = {};
-    vm.ofertas = ofertas;
-    vm.produtosDisponiveis = produtos;
-    vm.categoria = null;
-    vm.textoBusca = '';
-    vm.mensagemStatus = 'Nenhum produto encontrado.';
+    self.oferta = {};
+    self.ofertas = ofertas;
+    self.produtosDisponiveis = produtos;
+    self.categoria = null;
+    self.textoBusca = '';
+    self.mensagemStatus = 'Nenhum produto encontrado.';
 
     // Métodos
-    vm.abrirFormulario = function (oferta) {
+    self.abrirFormulario = function (oferta) {
       if (!oferta) {
-        vm.oferta = {};
-        vm.categoria = null;
+        self.oferta = {};
+        self.categoria = null;
       }
       else {
-        vm.oferta = angular.copy(oferta);
-        vm.categoria = oferta.Anuncio.Categoria;
-        vm.oferta.data_inicio = new Date(vm.oferta.data_inicio);
-        vm.oferta.data_fim = new Date(vm.oferta.data_fim);
+        self.oferta = angular.copy(oferta);
+        self.categoria = oferta.Anuncio.Categoria;
+        self.oferta.data_inicio = new Date(self.oferta.data_inicio);
+        self.oferta.data_fim = new Date(self.oferta.data_fim);
       }
 
       $mdDialog.show({
@@ -52,39 +52,39 @@
       });
     };
 
-    vm.produtosFiltrados = function (categoria) {
+    self.produtosFiltrados = function (categoria) {
       if (!categoria) {
         return [ { id: null, nome: 'Selecione uma categoria' } ];
       }
 
-      return vm.produtosDisponiveis
+      return self.produtosDisponiveis
         .filter(function (produto) { return produto.Categoria === categoria });
     }
 
-    vm.cancelar = function () {
-      vm.produto = {};
+    self.cancelar = function () {
+      self.produto = {};
       return $mdDialog.hide();
     };
 
-    vm.salvar = function () {
-      vm.ofertas = [];
+    self.salvar = function () {
+      self.ofertas = [];
 
       return UsuarioProdutoService
-        .cadastrarOferta(vm.oferta)
+        .cadastrarOferta(self.oferta)
         .then(function (oferta) {
           $mdDialog.hide();
-          vm.listarMeusProdutos();
+          self.listarMeusProdutos();
         });
     };
 
-    vm.produtosPorCategoria = function (categoria) {
-      return vm.produtosDisponiveis
+    self.produtosPorCategoria = function (categoria) {
+      return self.produtosDisponiveis
         .filter(function (produto) {
           return produto.Categoria === categoria;
         });
     };
 
-    vm.getFormatedDate = function (data) {
+    self.getFormatedDate = function (data) {
       var date = new Date(data);
       var formated = '';
       formated += date.getDate() < 10 ? '0' + date.getDate() + '/' : date.getDate() + '/';
@@ -94,33 +94,33 @@
       return formated;
     };
 
-    vm.abrirConfirmacaoExclusaoDe = function (oferta) {
+    self.abrirConfirmacaoExclusaoDe = function (oferta) {
       var dialog = $mdDialog.confirm()
         .title('Excluir oferta?')
         .textContent('Essa ação não pode ser desfeita.')
         .ok('Excluir')
         .cancel('Cancelar');
-      vm.oferta = angular.copy(oferta);
+      self.oferta = angular.copy(oferta);
 
       $mdDialog.show(dialog)
-        .then(function() { vm.confirmarExclusao(oferta.id) })
+        .then(function() { self.confirmarExclusao(oferta.id) })
         .catch(function() { });
     };
 
-    vm.listarMeusProdutos = function () {
+    self.listarMeusProdutos = function () {
 
       return UsuarioProdutoService
         .listarMeusProdutos()
         .then(function (ofertas) {
-          vm.ofertas = ofertas;
+          self.ofertas = ofertas;
         });
     };
 
-    vm.confirmarExclusao = function (id) {
+    self.confirmarExclusao = function (id) {
 
       return UsuarioProdutoService
         .deletarOferta(id)
-        .then(function () { vm.listarMeusProdutos() });
+        .then(function () { self.listarMeusProdutos() });
     }
   };
 })();

@@ -1,3 +1,7 @@
+<md-progress-linear 
+  md-mode="indeterminate" 
+  ng-show="loading"></md-progress-linear>
+
 <md-content 
   class="md-no-flicker md-no-momentum"
   layout="column"
@@ -22,7 +26,8 @@
         id="username_field"
         type="email"
         ng-model="loginCtrl.email"
-        ng-required="true" />
+        ng-required="true"
+        ng-disabled="loading" />
     </md-input-container>
 
     <md-input-container>
@@ -34,14 +39,15 @@
         id="password_field"
         type="password"
         ng-model="loginCtrl.senha"
-        ng-required="true" />
+        ng-required="true"
+        ng-disabled="loading" />
     </md-input-container>
   </form>
 
   <md-button 
     class="md-primary md-raised"
     md-ripple-size="full"
-    ng-disabled="loginForm.$invalid"
+    ng-disabled="loginForm.$invalid || loading"
     ng-click="loginCtrl.login()">
 
     <%= strings.ACCESS %>
@@ -50,6 +56,7 @@
   <md-button
     class="md-primary"
     href="#/registro/perfil"
+    ng-disabled="loading"
     md-ripple-size="full">
 
     Cadastre-se

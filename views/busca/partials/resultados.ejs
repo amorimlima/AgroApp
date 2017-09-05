@@ -6,11 +6,11 @@
   <section>
     <md-subheader>Resultados</md-subheader>
 
-    <md-card ng-show="ctrl.isBuscandoDados">
+    <md-card ng-show="loading">
       <md-card-content class="md-subhead">Buscando...</md-card-content>
     </md-card>
 
-    <md-card ng-show="!ctrl.listaResultados.length && !ctrl.isBuscandoDados">
+    <md-card ng-show="!ctrl.listaResultados.length && !loading">
       <md-card-content class="md-subhead">Nenhum resultado encontrado</md-card-content>
     </md-card>
 

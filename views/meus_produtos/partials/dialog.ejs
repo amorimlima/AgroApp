@@ -11,6 +11,7 @@
             <md-select
               id="categoria"
               ng-model="meusProdutosCtrl.categoria"
+              ng-disabled="loading"
               ng-required="true">
 
               <md-option ng-value="1">Legumes e Verduras</md-option>
@@ -20,6 +21,7 @@
           </md-input-container>
 
           <md-autocomplete
+            ng-disabled="loading"
             md-no-cache="true"
             md-search-text="meusProdutosCtrl.textoBusca"
             md-floating-label="Produto"
@@ -48,6 +50,7 @@
                 id="quantidade"
                 type="number"
                 ng-model="meusProdutosCtrl.oferta.quantidade"
+                ng-disabled="loading"
                 ng-required="true" />
             </md-input-container>
 
@@ -55,6 +58,7 @@
               <label for="unidade">Unidade</label>
               <md-select
                 id="unidade"
+                ng-disabled="loading"
                 ng-model="meusProdutosCtrl.oferta.unidade">
 
                 <md-option ng-value="'kg'">kg</md-option>
@@ -68,6 +72,7 @@
             <input
               id="data_inicio"
               type="date"
+              ng-disabled="loading"
               ng-model="meusProdutosCtrl.oferta.data_inicio" />
           </md-input-container>
 
@@ -76,7 +81,7 @@
             <input
               id="data_fim"
               type="date"
-              ng-disabled="!meusProdutosCtrl.oferta.data_inicio"
+              ng-disabled="!meusProdutosCtrl.oferta.data_inicio || loading"
               ng-model="meusProdutosCtrl.oferta.data_fim"
               ng-min="meusProdutosCtrl.oferta.data_inicio" />
           </md-input-container>
@@ -90,7 +95,7 @@
 
         <md-button 
           class="md-primary"
-          ng-disabled="produto_form.$invalid"
+          ng-disabled="produto_form.$invalid || loading"
           ng-click="meusProdutosCtrl.salvar()">
   
           Salvar

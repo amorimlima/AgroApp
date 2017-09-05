@@ -19,10 +19,9 @@
     usuario
   ) {
     var self = this;
-    
+      
     // Models
     self.usuario = usuario;
-    self.loading = true;
     self.oferta  = null; 
     self.ofertas = [];
     self.isFavorito = false;
@@ -33,31 +32,25 @@
     };
 
     self.toggleFavorito = function (usuario, isFavorito) {
-      self.loading = true;
-
       if (isFavorito) {
         FavoritoService
           .desfavoritar(usuario)
           .then(function (res) { self.isFavorito = false; })
-          .catch(function () { // TODO: Toast exibindo feedback });
+          .catch(function () { $rootScope.showToast('Não foi possível desfavoritar o usuário'); });
       }
       else {
         FavoritoService
           .favoritar(usuario)
-          .then(function (favorito) {
-            self.isFavorito = true;
-          })
-          .catch(function () { // TODO: Toast exibindo feedback });
+          .then(function (favorito) { self.isFavorito = true; })
+          .catch(function () { $rootScope.showToast('Não foi possível favoritar o usuário'); });
       }
     };
 
     self.checarFavorito = function (usuario) {
-      self.loading = true;
-
       FavoritoService
         .checarFavorito(usuario)
         .then(function (isFavorito) { self.isFavorito = isFavorito; })
-        .catch(function () { // TODO: Toast exibindo feedback });
+        .catch(function () { /* TODO: Desabilitar o botão de favorito */ });
     };
 
     self.carregarOferta = function () {
@@ -67,7 +60,7 @@
         UsuarioProdutoService
           .getOferta(id_oferta)
           .then(function (oferta) { self.oferta = oferta; })
-          .catch(function () { // TODO: Toast exibindo feedback });
+          .catch(function () { $rootScope.showToast('Não foi possível carregar a oferta'); });
       }
     };
 
@@ -79,7 +72,9 @@
             ? ofertas.filter(function (oferta) { return oferta.id !== self.oferta.id })
             : ofertas;
         })
-        .catch(function () { // TODO: Toast exibindo feedback });
+        .catch(function () {
+          $rootScope.showToast('Não foi possível carregar as ofertas do usuário');
+        });
     };
   }
 })();

@@ -23,7 +23,10 @@
 <md-content class="md-no-flicker md-no-momentum">
   <md-subheader>Favoritos</md-subheader>
 
-  <md-card ng-repeat="favorito in ctrl.favoritos">
+  <md-card 
+    ng-repeat="favorito in ctrl.favoritos"
+    ng-click="ctrl.acessarPerfilDe(favorito.Favoritado.id)">
+
     <md-card-title>
       <md-card-title-text>
         <span class="md-title">{{PessoaHelper.getNomeDaPessoa(favorito.Favoritado)}}</span>

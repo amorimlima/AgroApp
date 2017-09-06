@@ -76,5 +76,9 @@
           $rootScope.showToast('Não foi possível carregar as ofertas do usuário');
         });
     };
+
+    self.voltar = function () {
+      window.history.back();
+    };
   }
 })();

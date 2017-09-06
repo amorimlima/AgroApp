@@ -16,8 +16,8 @@
 
     <md-card
       ng-repeat="oferta in ctrl.listaResultados"
-      ng-click="ctrl.abrirOferta(oferta.id)">
-
+      ng-click="ctrl.abrirPerfilComOferta(oferta.Anunciante.id, oferta.id)">
+      
       <md-card-title>
         <md-card-title-text>
           <span class="md-title">{{oferta.Anuncio.nome}}</span>

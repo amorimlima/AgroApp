@@ -41,8 +41,8 @@
         });
     };
 
-    self.abrirOferta = function (oferta) {
-      return $location.url('/oferta/' + oferta);
+    self.abrirPerfilComOferta = function (perfil, oferta) {
+      return $location.url('/perfil/' + perfil + '?oferta=' + oferta);
     };
   }
 })();

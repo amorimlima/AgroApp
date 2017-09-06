@@ -1,12 +1,12 @@
 <% if (step === 'perfil') { %>
-  <%- include('partials/cadastro/perfil.ejs'); %>
+  <%- include('partials/perfil.ejs'); %>
 <% } else if (step === 'credencial') { %>
-  <%- include('partials/cadastro/credencial.ejs'); %>
+  <%- include('partials/credencial.ejs'); %>
 <% } else if (step === 'pessoa-fisica') { %>
-  <%- include('partials/cadastro/pessoa_fisica.ejs'); %>
+  <%- include('partials/pessoa_fisica.ejs'); %>
 <% } else if (step === 'pessoa-juridica') { %>
-  <%- include('partials/cadastro/pessoa_juridica.ejs'); %>
+  <%- include('partials/pessoa_juridica.ejs'); %>
 <% } else if (step === 'contato') { %>
-  <%- include('partials/cadastro/contato.ejs'); %>
-  <%- include('partials/cadastro/termos_de_uso.ejs'); %>
+  <%- include('partials/contato.ejs'); %>
+  <%- include('partials/termos_de_uso.ejs'); %>
 <% } %>

@@ -4,12 +4,20 @@
     .controller('FavoritosController', FavoritosController);
 
   FavoritosController.$inject = [
+    '$rootScope',
+    '$location',
     'FavoritoService',
     'favoritos'
   ];
 
-  function FavoritosController(FavoritoService, favoritos) {
+  function FavoritosController(
+    $rootScope,
+    $location,
+    FavoritoService,
+    favoritos
+  ) {
     var self = this;
+
     // Models
     self.favoritos = favoritos;
 
@@ -23,6 +31,10 @@
     self.removerDaLista = function (Favorito) {
       self.favoritos = self.favoritos
         .filter(function (favorito) { return favorito.id !== Favorito; });
+    };
+
+    self.acessarPerfilDe = function (Favorito) {
+      $location.url('/perfil/' + Favorito)
     };
   }
 })();

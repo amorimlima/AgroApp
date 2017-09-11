@@ -32,7 +32,7 @@ app.set('auth', configs.auth(app));
 // DAO
 app.set('dao', dao);
 
-// Authenticatoin
+// Authentication
 app.use(app.get('auth').initialize());
 
 // Routes

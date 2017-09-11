@@ -1,5 +1,7 @@
 <md-sidenav 
   layout="column"
+  ng-if="logado"
+  ng-init="buscarDadosDoLogado()"
   md-is-open="sidenav.visible"
   md-component-id="main_menu">
 

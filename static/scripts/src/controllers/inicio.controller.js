@@ -30,7 +30,8 @@
         .autenticar(self.email, self.senha)
         .then(function (response) {
           $cookies.put('session', response.token);
-          return $location.url('/meus-produtos');
+          $location.url('/meus-produtos');
+          return $rootScope.$broadcast('login');
         })
         .catch(function () { $rootScope.showToast('Usuário ou senha inválidos'); });
     };

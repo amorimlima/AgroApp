@@ -103,7 +103,8 @@
         })
         .then(function (token) {
           $cookies.put('session', token.token);
-          return $location.url('/meus-produtos');
+          $location.url('/meus-produtos');
+          return $rootScope.$broadcast('login');
         });
     };
 

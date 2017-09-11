@@ -36,6 +36,22 @@
       return '(' + ddd + ') ' + numero.substring(0, slice) + '-' + numero.substring(slice);
     }
 
+    function getDocumentoPrincipal(Pessoa) {
+      var doc = '';
+      
+      if (Pessoa.tipo === 'PF') {
+        doc = Pessoa.PessoaFisica.cpf;
+        doc = [ doc.slice(0, 3), doc.slice(3, 6), doc.slice(6, 9) ].join('.') + '-' + doc.slice(9);
+      }
+      else {
+        doc = Pessoa.PessoaJuridica.cnpj;
+        doc = [ doc.slice(0,2), doc.slice(2, 5), doc.slice(5, 8) ].join('.') + 
+              '/' + doc.slice(8, 12) + '-' + doc.slice(12)
+      }
+
+      return doc;
+    }
+
     return {
       getNomeDaPessoa: getNomeDaPessoa,
       getCidadeEstado: getCidadeEstado,

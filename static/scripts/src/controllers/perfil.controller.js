@@ -25,6 +25,7 @@
     self.oferta  = null; 
     self.ofertas = [];
     self.isFavorito = false;
+    self.favoritoIndisponivel = false;
 
     // Métodos
     self.getFavoritoIcon = function (isFavorito) {
@@ -50,7 +51,7 @@
       FavoritoService
         .checarFavorito(usuario)
         .then(function (isFavorito) { self.isFavorito = isFavorito; })
-        .catch(function () { /* TODO: Desabilitar o botão de favorito */ });
+        .catch(function () { self.favoritoIndisponivel = true; });
     };
 
     self.carregarOferta = function () {

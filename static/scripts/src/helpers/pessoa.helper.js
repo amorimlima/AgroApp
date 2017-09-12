@@ -56,7 +56,8 @@
       getNomeDaPessoa: getNomeDaPessoa,
       getCidadeEstado: getCidadeEstado,
       getTipoPessoa: getTipoPessoa,
-      getNumeroTelefone: getNumeroTelefone
+      getNumeroTelefone: getNumeroTelefone,
+      getDocumentoPrincipal: getDocumentoPrincipal
     };
   }
 })();

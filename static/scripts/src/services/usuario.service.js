@@ -14,9 +14,9 @@
         .then(function (response) { return response.data; });
     };
 
-    this.buscarDadosDoLogado = function () {
+    this.buscarDadosDoLogado = function (token) {
       return $http
-        .get('/usuario/logado')
+        .get('/usuario/logado?token=' + token)
         .then(function (response) { return response.data; });
     };
   }

@@ -1,14 +1,22 @@
 <md-sidenav 
   layout="column"
-  ng-if="logado"
-  ng-init="buscarDadosDoLogado()"
+  ng-init="carregarDadosDoUsuario()"
   md-is-open="sidenav.visible"
   md-component-id="main_menu">
 
   <md-toolbar
+    class="md-toolbar-tools"
     flex="15"
     layout="column"
-    layout-align="end center">
+    layout-align="center left">
+
+    <h2 
+      class="md-title" 
+      ng-bind="sidenav.usuario.nome"></h2>
+
+    <span
+      class="md-caption"
+      ng-bind="sidenav.usuario.documento"></span>
   </md-toolbar>
 
   <md-list flex="75">

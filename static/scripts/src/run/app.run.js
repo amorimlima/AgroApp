@@ -29,7 +29,7 @@
     PersistenceService
   ) {
     $rootScope.logado = false;
-    $rootScope.DateHelper = DateHelper;
+    $rootScope.DateHelper   = DateHelper;
     $rootScope.PessoaHelper = PessoaHelper;
 
     /**
@@ -42,7 +42,6 @@
         ngEvent.preventDefault();
       }
       else if (!next.requireAuth && $cookies.get('session')) {
-        $rootScope.logado = true;
         $http.defaults.headers.common['Authorization'] = $cookies.get('session');
         $location.url('/meus-produtos');
         ngEvent.preventDefault();
@@ -69,13 +68,20 @@
      * e exibir no sidenav ou removê-los.
      */
     $rootScope.$on('login', function () {
-      $rootScope.logado = true;
+      $rootScope.buscarDadosDoLogado();
     });
 
-    $rootScope.$on('logoff', function () {
-      $rootScope.sidenav.usuario = { nome: '', documento: '', tipo: '' };
-      $rootScope.logado = false;
-      return PersistenceService.removePreference('usuario');
+    $rootScope.$on('logout', function () {
+      $rootScope.limparDadosDoLogado()
+        .then(function () {
+          $rootScope.sidenav.usuario = { nome: '', documento: '', tipo: '' };
+          $rootScope.logado = false;
+        })
+        .catch(function () { })
+    });
+
+    $rootScope.$on('logged-in-data-loaded', function () {
+      $rootScope.carregarDadosDoUsuario();
     });
 
     /**
@@ -87,8 +93,8 @@
       toggle: function () { $mdSidenav('main_menu').toggle(); },
       items: [
         { name: 'Produtos',  icon: 'shopping_basket', href: '#/meus-produtos' },
-        { name: 'Busca',     icon: 'search',          href: '#/busca' },
-        { name: 'Favoritos', icon: 'favorite',        href: '#/favoritos' }
+        { name: 'Busca',     icon: 'search',          href: '#/busca'         },
+        { name: 'Favoritos', icon: 'favorite',        href: '#/favoritos'     }
       ]
     };
 
@@ -106,25 +112,59 @@
 
     $rootScope.buscarDadosDoLogado = function () {
       UsuarioService
-        .buscarDadosDoLogado()
+        .buscarDadosDoLogado($cookies.get('session'))
         .then(function (dados) {
-          $rootScope.logado = true;
-          $rootScope.sidenav.usuario.nome = PessoaHelper.getNomeDaPessoa(dados);
-          $rootScope.sidenav.usuario.documento = PessoaHelper.getDocumentoPrincipal(dados);
-          $rootScope.sidenav.usuario.tipo = PessoaHelper.getTipoPessoa(dados);
-          return PersistenceService.setPreference('usuario', JSON.stringify(dados));
+          var Usuario = JSON.stringify({ id: dados.id, tipo: dados.tipo, Perfil: dados.Perfil });
+
+          PersistenceService.setPreference('Usuario', Usuario);
+          PersistenceService.setPreference('PessoaJuridica', JSON.stringify(dados.PessoaJuridica));
+          PersistenceService.setPreference('PessoaFisica', JSON.stringify(dados.PessoaFisica));
+          PersistenceService.setPreference('Telefones', JSON.stringify(dados.Telefones));
+          PersistenceService.setPreference('Enderecos', JSON.stringify(dados.Enderecos));
+          PersistenceService.setPreference('Emails', JSON.stringify(dados.Emails));
+
+          return $rootScope.$broadcast('logged-in-data-loaded');
+
         })
         .catch(function (err) { $rootScope.showToast('Ocorreu um erro ao buscar seus dados'); });
+    };
+
+    $rootScope.limparDadosDoLogado = function () {
+      return new Promise(function(resolve, reject) {
+        try {
+          PersistenceService.removePreference('Usuario');
+          PersistenceService.removePreference('PessoaJuridica');
+          PersistenceService.removePreference('PessoaFisica');
+          PersistenceService.removePreference('Telefones');
+          PersistenceService.removePreference('Enderecos');
+          PersistenceService.removePreference('Emails');
+          resolve($rootScope.$broadcast('logged-in-data-removed'));
+        }
+        catch (e) {
+          reject(e);
+        }
+      });
     }
+
+    $rootScope.carregarDadosDoUsuario = function () {
+      var Usuario = JSON.parse(PersistenceService.getPreference('Usuario'));
+
+      Usuario.PessoaJuridica = JSON.parse(PersistenceService.getPreference('PessoaJuridica'));
+      Usuario.PessoaFisica = JSON.parse(PersistenceService.getPreference('PessoaFisica'));;
+
+      $rootScope.sidenav.usuario.nome = PessoaHelper.getNomeDaPessoa(Usuario);
+      $rootScope.sidenav.usuario.documento = PessoaHelper.getDocumentoPrincipal(Usuario);
+      $rootScope.sidenav.usuario.tipo = PessoaHelper.getTipoPessoa(Usuario);
+    };
 
     /**
      * Limpa os dados do usuário e encerra a sessão.
      */
     $rootScope.sair = function () {
       $rootScope.sidenav.toggle();
-      $rootScope.$broadcast('logout');
       $cookies.remove('session');
       $location.url('/');
+      $rootScope.$broadcast('logout');
     };
   }
 })();

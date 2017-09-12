@@ -1,3 +1,5 @@
+const { decode } = require('jwt-simple');
+
 module.exports = (router, app) => {
   const UsuarioDAO = app.get('dao').UsuarioDAO;
 
@@ -5,7 +7,7 @@ module.exports = (router, app) => {
     .route('/logado')
     .get((req, res) => {
       const usuarioDAO = new UsuarioDAO(app.get('models'));
-      const id = req.session.id;
+      const { id } = decode(req.query.token.replace('JWT ', ''), app.get('configs').jwt.secret);
 
       usuarioDAO
         .getCreated(id)
@@ -17,7 +19,7 @@ module.exports = (router, app) => {
     .route('/:id')
     .get((req, res) => {
       const usuarioDAO = new UsuarioDAO(app.get('models'));
-      const id = req.params.id;
+      const { id } = req.params;
 
       usuarioDAO
         .getCreated(id)

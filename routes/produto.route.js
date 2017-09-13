@@ -1,21 +1,16 @@
-const HttpStatus = require('http-status');
-
-const produtoRoute = (router, app) => {
+module.exports = (router, app) => {
   const ProdutoDAO = app.get('dao').ProdutoDAO;
   const UsuarioProdutoDAO = app.get('dao').UsuarioProdutoDAO;
 
   router
     .route('/oferta')
-    //.all(app.get('auth').authenticate())
     .post((req, res) => {
       const usuarioProdutoDAO = new UsuarioProdutoDAO(app.get('models'));
 
       usuarioProdutoDAO
         .create(req.body)
-        .then((response) => {
-          res.status(response.statusCode);
-          res.json(response.data);
-        });
+        .then(response => res.status(response.statusCode).json(response.data))
+        .catch(err => res.sendStatus(err.satusCode));
     });
   
   router
@@ -25,13 +20,9 @@ const produtoRoute = (router, app) => {
 
       produtoDAO
         .getAll()
-        .then((response) => {
-          res.status(response.statusCode);
-          res.json(response.data);
-        });
+        .then(response => res.status(response.statusCode).json(response.data))
+        .catch(err => res.sendStatus(err.satusCode));
     })
 
   return router;
 };
-
-module.exports = produtoRoute;

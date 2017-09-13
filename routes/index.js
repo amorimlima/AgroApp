@@ -1,29 +1,13 @@
-const autenticacaoRoute = require('./autenticacao.route');
-const viewsRoute = require('./views.route');
-const usuarioRoute = require('./usuario.route');
-const perfilRoute = require('./perfil.route');
-const categoriaProdutoRoute = require('./categoria_produto.route');
-const emailRoute = require('./email.route');
-const produtoRoute = require('./produto.route');
-const testsRoute = require('./tests.route');
-const usuarioProdutoRoute = require('./usuario_produto.route');
-const enderecoRoute = require('./endereco.route');
-const pessoaFisicaRoute = require('./pessoa_fisica.route');
-const pessoaJuridicaRoute = require('./pessoa_juridica.route');
-const favoritoRoute = require('./favorito.route');
-
-module.exports = {
-  autenticacaoRoute,
-  viewsRoute,
-  usuarioRoute,
-  perfilRoute,
-  categoriaProdutoRoute,
-  emailRoute,
-  produtoRoute,
-  testsRoute,
-  usuarioProdutoRoute,
-  enderecoRoute,
-  pessoaFisicaRoute,
-  pessoaJuridicaRoute,
-  favoritoRoute
-};
+exports.autenticacao = require('./autenticacao.route');
+exports.views = require('./views.route');
+exports.usuario = require('./usuario.route');
+exports.perfil = require('./perfil.route');
+exports.categoriaProduto = require('./categoria_produto.route');
+exports.email = require('./email.route');
+exports.produto = require('./produto.route');
+exports.tests = require('./tests.route');
+exports.usuarioProduto = require('./usuario_produto.route');
+exports.endereco = require('./endereco.route');
+exports.pessoaFisica = require('./pessoa_fisica.route');
+exports.pessoaJuridica = require('./pessoa_juridica.route');
+exports.favorito = require('./favorito.route');

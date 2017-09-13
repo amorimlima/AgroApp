@@ -42,7 +42,7 @@ function fillTipoTelefone() {
   });
 }
 
-module.exports = (models) => {
+module.exports = models => {
   modelList = models;
   fillCategoria();
 };

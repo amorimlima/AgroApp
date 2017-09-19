@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { join } = require('path');
+const pathTo = destiny => join(__dirname, destiny);
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -22,11 +23,11 @@ app.use(cookieParser());
 app.use(extractToken(app));
 
 // Static Files
-app.use('/assets/styles', noCache(), static(join(__dirname, './static/styles')));
-app.use('/assets/images', maxAge('30d'), static(join(__dirname, './static/images')));
-app.use('/assets/scripts/lib', maxAge('30d'), static(join(__dirname, './static/scripts/lib')));
-app.use('/assets/scripts/bin', noCache(), static(join(__dirname, './static/scripts/bin')));
-app.use('/assets/scripts/src', noCache(), static(join(__dirname, './static/scripts/src')));
+app.use('/assets/styles', noCache(), static(pathTo('./static/styles')));
+app.use('/assets/images', maxAge('30d'), static(pathTo('./static/images')));
+app.use('/assets/scripts/lib', maxAge('30d'), static(pathTo('./static/scripts/lib')));
+app.use('/assets/scripts/bin', noCache(), static(pathTo('./static/scripts/bin')));
+app.use('/assets/scripts/src', noCache(), static(pathTo('./static/scripts/src')));
 
 // Common
 app.set('strings', strings);
@@ -64,9 +65,9 @@ app.get('/', noCache(), (req, res) =>
   res.render('index', { environment, strings }));
 
 app.get('/sw.js', noCache(), (req, res) => 
-  res.sendFile(join(__dirname, './sw.js')));
+  res.sendFile(pathTo('./sw.js')));
 
 app.get('/manifest.json', noCache(), (req, res) =>
-  res.sendFile(join(__dirname, './manifest.json')));
+  res.sendFile(pathTo('./manifest.json')));
 
 module.exports = app;

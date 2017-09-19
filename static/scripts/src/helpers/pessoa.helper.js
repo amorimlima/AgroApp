@@ -1,11 +1,16 @@
 (function() {
+  'use strict';
+
   angular
     .module('app')
     .factory('PessoaHelper', PessoaHelper);
 
-  PessoaHelper.$inject = [];
+  PessoaHelper.$inject = [
+    'PessoaFisicaHelper',
+    'EnderecoHelper'
+  ];
 
-  function PessoaHelper() {
+  function PessoaHelper(PessoaFisicaHelper, EnderecoHelper) {
 
     function getNomeDaPessoa(Pessoa) {
       if (Pessoa.tipo === 'PF')
@@ -22,7 +27,12 @@
 
     function getCidadeEstado(Pessoa, Endereco) {
       if (!Endereco) Endereco = Pessoa.Enderecos[0];
-      return Endereco.cidade + ' - ' + Endereco.estado;
+      return EnderecoHelper.getCidadeEstado(Endereco);
+    }
+
+    function getEnderecoCompleto(Pessoa, Endereco) {
+      if (!Endereco) Endereco = Pessoa.Enderecos[0];
+      return EnderecoHelper.getFormatado(Endereco);
     }
 
     function getNumeroTelefone(Pessoa, Telefone) {
@@ -52,12 +62,18 @@
       return doc;
     }
 
+    function getRgFormatadoDe(Pessoa) {
+      return PessoaFisicaHelper.getRgFormatadoDe(Pessoa);
+    }
+
     return {
       getNomeDaPessoa: getNomeDaPessoa,
       getCidadeEstado: getCidadeEstado,
+      getEnderecoCompleto: getEnderecoCompleto,
       getTipoPessoa: getTipoPessoa,
       getNumeroTelefone: getNumeroTelefone,
-      getDocumentoPrincipal: getDocumentoPrincipal
+      getDocumentoPrincipal: getDocumentoPrincipal,
+      getRgFormatadoDe: getRgFormatadoDe
     };
   }
 })();

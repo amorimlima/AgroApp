@@ -8,15 +8,13 @@ const modelsConfig = (app) => {
   const Sequelize = app.get('datasource').Sequelize;
   const modelsDir = path.join(__dirname, '../models');
   const models = [];
-  let count = 0;
-  let fillDatabase = null;
 
   fs.readdirSync(modelsDir)
     .filter(file => (file.indexOf('.') !== 0))
     .forEach((file) => {
       const model = sequelize.import(path.join(modelsDir, file));
       models[model.name] = model;
-    })
+    });
   
   Object
     .keys(models)
@@ -29,6 +27,6 @@ const modelsConfig = (app) => {
     //  fillDatabase = utils.fillDatabase(models);
 
   return models;
-}
+};
 
 module.exports = modelsConfig;

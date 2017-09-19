@@ -23,7 +23,7 @@ module.exports = (router, app) => {
       catch (e) {
         res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY);
       }
-    })
+    });
 
   router
     .route('/meus-produtos')

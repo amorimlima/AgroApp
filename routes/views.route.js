@@ -1,5 +1,3 @@
-const { maxAge } = require('../middlewares');
-
 module.exports = (router, app) => {
   const strings = app.get('strings');
 
@@ -20,6 +18,9 @@ module.exports = (router, app) => {
 
   router.get('/favoritos', (req, res) =>
     res.render('favoritos', { strings }));
+
+  router.get('/dados-cadastrais', (req, res) =>
+    res.render('dados_cadastrais', { strings }));
 
   return router;
 };

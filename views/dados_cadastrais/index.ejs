@@ -1,0 +1,64 @@
+<md-toolbar
+  layout="row"
+  class="md-toolbar-tools">
+
+  <md-button
+    aria-label="button-label"
+    class="md-icon-button"
+    ng-click="sidenav.toggle()">
+
+    <md-icon md-font-set="material-icons">menu</md-icon>
+  </md-button>
+
+  <h1
+    class="md-title"
+    flex
+    md-truncate>Dados Cadastrais</h1>
+</md-toolbar>
+<md-progress-linear
+  ng-show="loading"
+  md-mode="indeterminate"></md-progress-linear>
+
+<md-content
+  layout="column"
+  class="md-no-flicker md-no-momentum">
+
+  <md-subheader>Dados Pessoais</md-subheader>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <div class="md-title">{{ PessoaHelper.getNomeDaPessoa(ctrl.usuario) }}</div>
+        <div class="md-subhead">{{ PessoaHelper.getDocumentoPrincipal(ctrl.usuario) }}</div>
+      </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+      <p ng-if="ctrl.usuario.tipo === 'PF'">RG: {{ PessoaHelper.getRgFormatadoDe(ctrl.usuario) }}</p>
+      <p ng-if="ctrl.usuario.tipo === 'PF'">Nascimento: {{ DateHelper.format(ctrl.usuario.PessoaFisica.data_nascimento)}}</p>
+      <p ng-if="ctrl.usuario.tipo === 'PJ'">Responsável: {{ ctrl.usuario.PessoaJuridica.responsavel }}</p>
+      <p ng-if="ctrl.usuario.tipo === 'PJ'">Fundação: {{ DateHelper.format(ctrl.usuario.PessoaJuridica.data_fundacao)}}</p>
+    </md-card-content>
+  </md-card>
+
+  <md-subheader>Email</md-subheader>
+  <md-card ng-repeat="email in ctrl.usuario.Emails">
+    <md-card-content>
+      <p>{{ email.email }}</p>
+    </md-card-content>
+  </md-card>
+
+  <md-subheader>Telefone</md-subheader>
+  <md-card ng-repeat="telefone in ctrl.usuario.Telefones">
+    <md-card-content>
+      <p>{{ PessoaHelper.getNumeroTelefone(ctrl.usuario, telefone) }}</p>
+    </md-card-content>
+  </md-card>
+
+  <md-subheader>Endereço</md-subheader>
+  <md-card ng-repeat="endereco in ctrl.usuario.Enderecos">
+    <md-card-content>
+      <p>{{ PessoaHelper.getEnderecoCompleto(ctrl.usuario, endereco) }}</p>
+    </md-card-content>
+  </md-card>
+
+</md-content>

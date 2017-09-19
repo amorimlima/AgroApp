@@ -72,6 +72,17 @@
           }]
         }
       })
+      .when('/dados-cadastrais', {
+        controller: 'MeusDadosController',
+        controllerAs: 'ctrl',
+        templateUrl: '/views/dados-cadastrais',
+        requireAuth: true,
+        resolve: {
+          usuario: ['UsuarioService', '$cookies', function (UsuarioService, $cookies) {
+            return UsuarioService.buscarDadosDoLogado($cookies.get('session'));
+          }]
+        }
+      })
       .when('/perfil/:usuario', {
         controller: 'PerfilController',
         controllerAs: 'ctrl',
@@ -95,5 +106,5 @@
         }
       })
       .otherwise({ redirectTo: '/' });
-  };
+  }
 })();

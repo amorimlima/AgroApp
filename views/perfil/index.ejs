@@ -31,8 +31,8 @@
 
       <md-card-title>
         <md-card-title-text>
-          <span class="md-title">{{ctrl.oferta.Anuncio.nome}}</span>
-          <span class="md-subhead">{{ctrl.oferta.quantidade}} {{ctrl.oferta.unidade}}</span>
+          <span class="md-title">{{ ctrl.oferta.Anuncio.nome }}</span>
+          <span class="md-subhead">{{ ctrl.oferta.quantidade }} {{ ctrl.oferta.unidade }}</span>
         </md-card-title-text>
       </md-card-title>
 
@@ -49,7 +49,7 @@
   <md-card>
     <md-card-title>
       <md-card-title-text>
-        <span class="md-title">{{PessoaHelper.getNomeDaPessoa(ctrl.usuario)}}</span>
+        <span class="md-title">{{ PessoaHelper.getNomeDaPessoa(ctrl.usuario) }}</span>
         <span class="md-subhead">
           <span ng-bind="PessoaHelper.getTipoPessoa(ctrl.usuario)"></span>
         </span>
@@ -63,13 +63,13 @@
       </p>
       <p>
         <md-icon md-font-set="material-icons">email</md-icon>
-        <a href="mailto:{{ctrl.usuario.Emails[0].email}}">
+        <a href="mailto:{{ ctrl.usuario.Emails[0].email }}">
         <span ng-bind="ctrl.usuario.Emails[0].email"></span>
         </a>
       </p>
       <p>
         <md-icon md-font-set="material-icons">phone</md-icon>
-        <a href="tel:+55{{ctrl.usuario.Telefones[0].ddd}}{{ctrl.usuario.Telefones[0].numero}}">
+        <a href="tel:+55{{ ctrl.usuario.Telefones[0].ddd }}{{ ctrl.usuario.Telefones[0].numero }}">
         <span ng-bind="PessoaHelper.getNumeroTelefone(ctrl.usuario)"></span>
         </a>
       </p>
@@ -86,7 +86,7 @@
           ng-click="ctrl.toggleFavorito(ctrl.usuario.id, ctrl.isFavorito)"
           ng-disabled="ctrl.loading || ctrl.favoritoIndisponivel">
 
-          <md-icon md-font-set="material-icons">{{ctrl.getFavoritoIcon(ctrl.isFavorito)}}</md-icon>
+          <md-icon md-font-set="material-icons">{{ ctrl.getFavoritoIcon(ctrl.isFavorito) }}</md-icon>
         </md-button>
       </md-card-icon-actions>
     </md-card-actions>
@@ -107,8 +107,8 @@
       
       <md-card-title>
         <md-card-title-text>
-          <span class="md-title">{{oferta.Anuncio.nome}}</span>
-          <span class="md-subhead">{{oferta.quantidade}} {{oferta.unidade}}</span>
+          <span class="md-title">{{ oferta.Anuncio.nome }}</span>
+          <span class="md-subhead">{{ oferta.quantidade }} {{ oferta.unidade }}</span>
         </md-card-title-text>
       </md-card-title>
 

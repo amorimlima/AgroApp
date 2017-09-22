@@ -20,12 +20,18 @@
   ],
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-minify": "^0.2.0",
+    "babel-preset-env": "^1.6.0",
     "chai": "^4.0.2",
     "concat-files": "^0.1.1",
+    "gulp-babel": "^7.0.0",
     "mocha": "^3.4.2",
     "nodemon": "^1.11.0",
     "supertest": "^3.0.0",
-    "testdouble": "^3.2.2"
+    "testdouble": "^3.2.2",
+    "webpack": "^3.6.0"
   },
   "dependencies": {
     "Base64": "^1.0.1",
@@ -36,6 +42,7 @@
     "angular-material": "^1.1.4",
     "angular-messages": "^1.6.5",
     "angular-route": "^1.6.4",
+    "babel-polyfill": "^6.26.0",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
@@ -53,7 +60,6 @@
     "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
     "pm2": "^2.5.0",
-    "sequelize": "^4.2.1",
-    "uglify-js": "^3.0.27"
+    "sequelize": "^4.2.1"
   }
 }

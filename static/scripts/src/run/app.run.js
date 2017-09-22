@@ -17,11 +17,11 @@
   ];
 
   function appRun(
-    $rootScope, 
+    $rootScope,
     $location,
     $http,
-    $cookies, 
-    $mdSidenav, 
+    $cookies,
+    $mdSidenav,
     $mdToast,
     DateHelper,
     PessoaHelper,
@@ -92,9 +92,10 @@
       visible: false,
       toggle: function () { $mdSidenav('main_menu').toggle(); },
       items: [
-        { name: 'Produtos',  icon: 'shopping_basket', href: '#/meus-produtos' },
-        { name: 'Busca',     icon: 'search',          href: '#/busca'         },
-        { name: 'Favoritos', icon: 'favorite',        href: '#/favoritos'     }
+        { name: 'Produtos',         icon: 'shopping_basket', href: '#/meus-produtos' },
+        { name: 'Busca',            icon: 'search',          href: '#/busca'         },
+        { name: 'Favoritos',        icon: 'favorite',        href: '#/favoritos'     },
+        { name: 'Dados Cadastrais', icon: 'account_box',     href: '#/dados-cadastrais'    }
       ]
     };
 
@@ -144,7 +145,7 @@
           reject(e);
         }
       });
-    }
+    };
 
     $rootScope.carregarDadosDoUsuario = function () {
       var Usuario = JSON.parse(PersistenceService.getPreference('Usuario'));

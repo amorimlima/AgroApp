@@ -12,30 +12,30 @@
 
   function PessoaHelper(PessoaFisicaHelper, EnderecoHelper) {
 
-    function getNomeDaPessoa(Pessoa) {
+    var getNomeDaPessoa = function (Pessoa) {
       if (Pessoa.tipo === 'PF')
         return Pessoa.PessoaFisica.nome + ' ' + Pessoa.PessoaFisica.sobrenome;
       else
         return Pessoa.PessoaJuridica.razao_social;
     }
 
-    function getTipoPessoa(Pessoa) {
+    var getTipoPessoa = function (Pessoa) {
       return Pessoa.tipo === 'PF'
               ? 'Pessoa Física'
               : 'Pessoa Jurídica';
-    }
+    };
 
-    function getCidadeEstado(Pessoa, Endereco) {
+    var getCidadeEstado = function (Pessoa, Endereco) {
       if (!Endereco) Endereco = Pessoa.Enderecos[0];
       return EnderecoHelper.getCidadeEstado(Endereco);
-    }
+    };
 
-    function getEnderecoCompleto(Pessoa, Endereco) {
+    var getEnderecoCompleto = function (Pessoa, Endereco) {
       if (!Endereco) Endereco = Pessoa.Enderecos[0];
       return EnderecoHelper.getFormatado(Endereco);
-    }
+    };
 
-    function getNumeroTelefone(Pessoa, Telefone) {
+    var getNumeroTelefone = function (Pessoa, Telefone) {
       if (!Telefone) Telefone = Pessoa.Telefones[0];
       var slice = 4;
       var ddd = Telefone.ddd.toString();
@@ -44,9 +44,9 @@
       if (Telefone.toString().length === 9) slice = 5
 
       return '(' + ddd + ') ' + numero.substring(0, slice) + '-' + numero.substring(slice);
-    }
+    };
 
-    function getDocumentoPrincipal(Pessoa) {
+    var getDocumentoPrincipal = function (Pessoa) {
       var doc = '';
       
       if (Pessoa.tipo === 'PF') {
@@ -60,11 +60,11 @@
       }
 
       return doc;
-    }
+    };
 
-    function getRgFormatadoDe(Pessoa) {
+    var getRgFormatadoDe = function (Pessoa) {
       return PessoaFisicaHelper.getRgFormatadoDe(Pessoa);
-    }
+    };
 
     return {
       getNomeDaPessoa: getNomeDaPessoa,

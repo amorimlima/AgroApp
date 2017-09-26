@@ -1,4 +1,6 @@
 (function () {
+  'use strict';
+
   angular
     .module('app')
     .controller('BuscaController', BuscaController);
@@ -22,6 +24,7 @@
     self.viewState  = 'filtros';
     self.categorias = categorias || [];
     self.estados    = estados    || [];
+    self.categoria  = 1;
     self.filtros    = { Categoria: 1, estado: '', cidade: '' };
     self.listaResultados = [];
 
@@ -43,6 +46,12 @@
 
     self.abrirPerfilComOferta = function (perfil, oferta) {
       return $location.url('/perfil/' + perfil + '?oferta=' + oferta);
+    };
+
+    self.setCategoriaSelecionada = function (categoria) {
+      if (categoria > 0 || categoria <= self.categorias.length + 1) {
+        self.categoria = categoria;
+      }
     };
   }
 })();

@@ -60,7 +60,14 @@
 
 <div
   layout="column"
-  ng-show="ctrl.viewState === 'resultados'">
+  ng-show="ctrl.viewState === 's'">
 
   <%- include('partials/resultados.ejs'); %>
+</div>
+
+<div
+  layout="column"
+  ng-show="ctrl.viewState === 'resultados'">
+
+  <%- include('partials/mapa.ejs'); %>
 </div>

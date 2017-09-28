@@ -34,6 +34,12 @@ module.exports = (sequelize, DataType) => {
       type: DataType.STRING(2),
       allowNull: false,
       validate: { notEmpty: true }
+    },
+    latitude: {
+      type: DataType.DOUBLE
+    },
+    longitude: {
+      type: DataType.DOUBLE
     }
   };
   const configs = { tableName: 'endereco' };

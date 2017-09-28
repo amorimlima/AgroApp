@@ -44,7 +44,7 @@ class UsuarioDAO extends GenericDAO {
           },
           { 
             model: this.models.Endereco,
-            attributes: [ 'logradouro', 'numero', 'complemento', 'cep', 'bairro', 'cidade', 'estado' ],
+            attributes: [ 'logradouro', 'numero', 'complemento', 'cep', 'bairro', 'cidade', 'estado', 'latitude', 'longitude'],
             as: 'Enderecos'
           },
           {

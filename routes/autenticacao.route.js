@@ -14,7 +14,7 @@ const getCoordenadasDe = Endereco => {
     .then(response => ({ 
       latitude: response.data.results[0].geometry.location.lat,
       longitude: response.data.results[0].geometry.location.lng
-    }))
+    }));
 }
 
 module.exports = (router, app) => {

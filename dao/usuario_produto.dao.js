@@ -130,6 +130,16 @@ class UsuarioProdutoDAO extends GenericDAO {
                 model: this.models.PessoaJuridica,
                 as: 'PessoaJuridica',
                 attributes: [ 'cnpj', 'razao_social', 'responsavel' ]
+              },
+              {
+                model: this.models.Telefone,
+                as: 'Telefones',
+                attributes: [ 'ddd', 'numero' ]
+              },
+              {
+                model: this.models.Email,
+                as: 'Emails',
+                attributes: [ 'email' ]
               }
             ]
           }

@@ -47,6 +47,21 @@
     </md-button>
 </md-toolbar>
 
+<md-tabs
+    class="md-primary"
+    ng-show="ctrl.viewState === 'resultados'"
+    md-no-ink="true"
+    md-stretch-tabs="always">
+
+    <md-tab
+        label="Lista"
+        ng-click="ctrl.setResultViewState('lista')"></md-tab>
+
+    <md-tab
+        label="Mapa"
+        ng-click="ctrl.setResultViewState('mapa')"></md-tab>
+</md-tabs>
+
 <md-progress-linear
   ng-show="loading"
   md-mode="inderterminate"></md-progress-linear>
@@ -60,14 +75,15 @@
 
 <div
   layout="column"
-  ng-show="ctrl.viewState === 's'">
+  ng-show="ctrl.resultViewState === 'lista'">
 
   <%- include('partials/resultados.ejs'); %>
 </div>
 
 <div
   layout="column"
-  ng-show="ctrl.viewState === 'resultados'">
+  ng-show="ctrl.resultViewState === 'mapa'"
+  ng-init="ctrl.resetarMapa()">
 
   <%- include('partials/mapa.ejs'); %>
 </div>

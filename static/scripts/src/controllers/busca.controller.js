@@ -23,7 +23,7 @@
     var self = this;
     var mapaStyles = [{ featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] }];
     var optionsMapa = {
-      zoom: 13,
+      zoom: 12,
       mapTypeId: 'roadmap',
       disableDefaultUI: true,
       zoomControl: true,
@@ -32,6 +32,7 @@
 
     // Models
     self.viewState  = 'filtros';
+    self.resultViewState = 'lista';
     self.categorias = categorias || [];
     self.estados    = estados    || [];
     self.categoria  = 1;
@@ -45,6 +46,14 @@
       self.viewState = state;
     };
 
+    self.setResultViewState = function (state) {
+      self.resultViewState = state;
+
+      if (state === 'mapa') {
+        self.iniciarMapa();
+      }
+    }
+
     self.carregarOfertas = function (filtros) {
       self.listaResultados = [];
       self.viewState = 'resultados';
@@ -57,8 +66,6 @@
           for (var i = 0; i < self.listaResultados.length; i++) {
             self.anunciantes[self.listaResultados[i].Anunciante.id] = angular.copy(self.listaResultados[i].Anunciante);
           }
-
-          self.iniciarMapa();
         });
     };
 
@@ -80,6 +87,15 @@
       for (var i in self.anunciantes) {
         self.setMarker(angular.copy(self.anunciantes[i]));
       }
+
+      window.setTimeout(function () {
+        google.maps.event.trigger(self.mapa,'resize');
+
+        for (var i in self.anunciantes) {
+          self.mapa.setCenter(self.anunciantes[i].marker.getPosition());
+          break;
+        }
+      }, 50);
     };
 
     self.setMarker = function (anunciante) {
@@ -94,18 +110,43 @@
 
       marker.addListener('click', function () {
         self.mapa.setZoom(15);
-        self.mapa.panTo(marker.getPosition());
         self.mostrarDetalhesMarker(marker, anunciante);
+        self.mapa.panTo(marker.getPosition());
+        self.mapa.panBy(0, -70);
       });
+
+      anunciante.marker = marker;
     };
 
     self.mostrarDetalhesMarker = function (marker, anunciante) {
-      var content = '<h4>' + $rootScope.PessoaHelper.getNomeDaPessoa(anunciante) + '</h4>';
       var infoWindow = new google.maps.InfoWindow({
-        content: content
+        content: self.templateInfoWindow(anunciante),
+        disableAutoPan: true
+      });
+
+      infoWindow.addListener('closeclick', function () {
+        self.mapa.setZoom(12);
       });
 
       infoWindow.open(self.mapa, marker);
-    }
+    };
+
+    self.templateInfoWindow = function (anunciante) {
+      var PessoaHelper = $rootScope.PessoaHelper;
+
+      return (
+        '<h4>' + PessoaHelper.getNomeDaPessoa(anunciante) + '</h4>' +
+        '<p>' + PessoaHelper.getEnderecoCompleto(anunciante, anunciante.Enderecos[0], false) + '</p>' +
+        '<p>' +
+          '<a href="tel:+55' + anunciante.Telefones[0].ddd.toString() + anunciante.Telefones[0].numero.toString()+ '">' +
+            PessoaHelper.getNumeroTelefone(anunciante) +
+          '</a><br/>' +
+          '<a href="mailto:' + anunciante.Emails[0].email + '">' +
+            anunciante.Emails[0].email +
+          '</a>' +
+        '</p>' +
+        '<p><a href="#/perfil/' + anunciante.id + '">Ver ofertas</a></p>'
+      );
+    };
   }
 })();

@@ -1,10 +1,9 @@
 ng-view {
-  md-toolbar {
-    position: fixed;
+  md-tabs {
+    position: absolute;
+    width: 100%;
     left: 0;
-    will-change: transform;
 
-  // Offset from top based on nth-of-type index
     @for $i from 0 through 2 {
       &:nth-child(#{$i + 1}) {
         top: $i * 56px !important;

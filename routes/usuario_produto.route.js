@@ -21,6 +21,7 @@ module.exports = (router, app) => {
           .catch(err => res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY));
       }
       catch (e) {
+        console.log(e);
         res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY);
       }
     });

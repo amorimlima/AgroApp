@@ -11,12 +11,15 @@
       return Endereco.cidade + ' - ' + Endereco.estado;
     };
 
-    var getFormatado = function (Endereco) {
+    var getFormatado = function (Endereco, cidadeEstado) {
+      if (cidadeEstado === null) cidadeEstado = true;
       var formatado = Endereco.logradouro +  ', '  + Endereco.numero;
       if (Endereco.complemento) formatado += ', ' + Endereco.complemento;
       formatado += ' - ' + Endereco.bairro;
-      formatado += ', '  + Endereco.cidade;
-      formatado += ' - ' + Endereco.estado;
+      if (cidadeEstado) {
+        formatado += ', '  + Endereco.cidade;
+        formatado += ' - ' + Endereco.estado;
+      }
       formatado += ', '  + Endereco.cep.slice(0,5) + '-' + Endereco.cep.slice(5);
 
       return formatado;

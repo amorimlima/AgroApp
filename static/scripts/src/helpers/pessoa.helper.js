@@ -30,9 +30,9 @@
       return EnderecoHelper.getCidadeEstado(Endereco);
     };
 
-    var getEnderecoCompleto = function (Pessoa, Endereco) {
+    var getEnderecoCompleto = function (Pessoa, Endereco, cidadeEstado) {
       if (!Endereco) Endereco = Pessoa.Enderecos[0];
-      return EnderecoHelper.getFormatado(Endereco);
+      return EnderecoHelper.getFormatado(Endereco, cidadeEstado);
     };
 
     var getNumeroTelefone = function (Pessoa, Telefone) {

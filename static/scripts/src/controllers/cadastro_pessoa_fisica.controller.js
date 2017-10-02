@@ -61,7 +61,7 @@ class CadastroPFController {
           cpf.$invalid = false
         }
       })
-      .catch(error => this.root.showDialog('Não foi possível validar o cpf'))
+      .catch(error => this.root.showToast('Não foi possível validar o cpf'))
   }
 }
 

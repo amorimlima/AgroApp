@@ -24,8 +24,8 @@ app.use(extractToken(app));
 
 // Static Files
 app.use('/assets/styles', noCache(), express.static(pathTo('./static/styles')));
-app.use('/assets/images', maxAge('30d'), express.static(pathTo('./static/images')));
-app.use('/assets/scripts/lib', maxAge('30d'), express.static(pathTo('./static/scripts/lib')));
+app.use('/assets/images', noCache(), express.static(pathTo('./static/images')));
+app.use('/assets/scripts/lib', noCache(), express.static(pathTo('./static/scripts/lib')));
 app.use('/assets/scripts/bin', noCache(), express.static(pathTo('./static/scripts/bin')));
 app.use('/assets/scripts/src', noCache(), express.static(pathTo('./static/scripts/src')));
 

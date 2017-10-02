@@ -50,12 +50,19 @@ class CadastroContatoController {
   }
 
   avancar() {
-    this.persistence.setSessionItem('usuario', JSON.stringify(this.usuario))
+    const bodyEl = document.getElementsByTagName('body')[0]
+    const dialogEl = document.getElementById('terms_of_use_dialog')
 
-    return this.dialog.show({
-      contentElement: document.getElementById('terms_of_use_dialog'),
-      parent: document.getElementsByTagName('body')[0]
+    this.persistence.setSessionItem('usuario', JSON.stringify(this.usuario))
+    this.dialog.show({
+      contentElement: dialogEl,
+      parent: bodyEl
     })
+
+    window.setTimeout(() => {
+      bodyEl.style.top = '0'
+      dialogEl.style.top = '0'
+    }, 100)
   }
 
   cancelar() {

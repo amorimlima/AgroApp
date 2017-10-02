@@ -37,55 +37,7 @@
     <ng-view layout-fill></ng-view>
   </div>
 
-  <% if (environment === 'dev') { %>
-    <script src="/assets/scripts/bin/bundle.js"></script>
-  <% } else { %>
-
-    <%# App %>
-    <script src="/assets/scripts/src/app.js"></script>
-
-    <%# Services %>
-    <script src="/assets/scripts/src/services/autenticacao.service.js"></script>
-    <script src="/assets/scripts/src/services/categoria_produto.service.js"></script>
-    <script src="/assets/scripts/src/services/perfil.service.js"></script>
-    <script src="/assets/scripts/src/services/persistence.service.js"></script>
-    <script src="/assets/scripts/src/services/produto.service.js"></script>
-    <script src="/assets/scripts/src/services/usuario_produto.service.js"></script>
-    <script src="/assets/scripts/src/services/usuario.service.js"></script>
-    <script src="/assets/scripts/src/services/endereco.service.js"></script>
-    <script src="/assets/scripts/src/services/email.service.js"></script>
-    <script src="/assets/scripts/src/services/pessoa_fisica.service.js"></script>
-    <script src="/assets/scripts/src/services/pessoa_juridica.service.js"></script>
-    <script src="/assets/scripts/src/services/favorito.service.js"></script>
-
-    <%# Helpers %>
-    <script src="/assets/scripts/src/helpers/date.helper.js"></script>
-    <script src="/assets/scripts/src/helpers/endereco.helper.js"></script>
-    <script src="/assets/scripts/src/helpers/pessoa_fisica.helper.js"></script>
-    <script src="/assets/scripts/src/helpers/pessoa.helper.js"></script>
-
-    <%# Controllers %>
-    <script src="/assets/scripts/src/controllers/inicio.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/cadastro_perfil.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/cadastro_credencial.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/cadastro_pessoa_fisica.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/cadastro_pessoa_juridica.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/cadastro_contato.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/meus_produtos.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/busca.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/perfil.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/meus_dados.controller.js"></script>
-    <script src="/assets/scripts/src/controllers/favoritos.controller.js"></script>
-
-    <%# Configs %>
-    <script src="/assets/scripts/src/config/theme.config.js"></script>    
-    <script src="/assets/scripts/src/config/location.config.js"></script>
-    <script src="/assets/scripts/src/config/routes.config.js"></script>
-    <script src="/assets/scripts/src/config/http_interceptor.config.js"></script>
-
-    <%# Run %>
-    <script src="/assets/scripts/src/run/app.run.js"></script>
-  <% } %>
+  <script src="/assets/scripts/bin/bundle.js"></script>
 
   <script>
     if ('serviceWorker' in navigator) {

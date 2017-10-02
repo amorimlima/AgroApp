@@ -44,12 +44,6 @@
         <img 
           ng-src="/assets/images/produtor_active.png"
           ng-show="cadastroCtrl.usuario.Perfil === 2" />
-
-        <md-grid-tile-footer
-          layout-align="center center">
-
-          <p class="md-subhead">Produtor</p>
-        </md-grid-tile-footer>
       </md-grid-tile>
 
       <md-grid-tile ng-click="cadastroCtrl.usuario.Perfil = 3">
@@ -60,12 +54,6 @@
         <img
           ng-src="/assets/images/comprador_active.png"
           ng-show="cadastroCtrl.usuario.Perfil === 3" />
-
-        <md-grid-tile-footer
-          layout-align="center center">
-
-          <p class="md-subhead">Comprador</p>
-        </md-grid-tile-footer>
       </md-grid-tile>
     </md-grid-list>
   </div>
@@ -88,12 +76,6 @@
         <img
           ng-src="/assets/images/pessoa_fisica_active.png"
           ng-show="cadastroCtrl.usuario.tipo === 'PF'" />
-
-        <md-grid-tile-footer
-          layout-align="center center">
-
-          <p class="md-subhead">Pessoa Física</p>
-        </md-grid-tile-footer>
       </md-grid-tile>
 
       <md-grid-tile ng-click="cadastroCtrl.usuario.tipo = 'PJ'">
@@ -104,12 +86,6 @@
         <img
           ng-src="/assets/images/pessoa_juridica_active.png"
           ng-show="cadastroCtrl.usuario.tipo === 'PJ'" />
-
-        <md-grid-tile-footer
-          layout-align="center center">
-
-          <p class="md-subhead">Pessoa Jurídica</p>
-        </md-grid-tile-footer>
       </md-grid-tile>
     </md-grid-list>
   </div>

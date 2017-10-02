@@ -1,27 +1,28 @@
-(function() {
-  angular
-    .module('app')
-    .service('AutenticacaoService', AutenticacaoService);
+'use strict'
 
-    AutenticacaoService.$inject = [
-      '$http',
-      '$cookies'
-    ];
+import angular from 'angular'
 
-  function AutenticacaoService($http, $cookies) {
-    this.cadastrar = function (payload) {
-      return $http
-        .post('/autenticacao/cadastrar', payload)
-        .then(function (response) { return Promise.resolve(response.data) });
-    };
-    this.autenticar = function (email, senha) {
-      return $http
-        .post('/autenticacao', { email: email, senha: senha })
-        .then(function (response) { return Promise.resolve({
-            token: response.data.token,
-            status: response.status
-          })
-        });
-    };
+class AutenticacaoService {
+  constructor($http, $cookies) {
+    this.request = $http
+    this.cookies = $cookies
   }
-})();
+
+  cadastrar(payload) {
+    return this.request
+      .post('/autenticacao/cadastrar', payload)
+      .then(response => response.data)
+  }
+
+  autenticar(email, senha) {
+    return this.request
+      .post('/autenticacao', { email, senha })
+      .then(response => ({ token: response.data.token, status: response.status }))
+  }
+}
+
+AutenticacaoService.$inject = ['$http', '$cookies']
+
+angular
+  .module('app')
+  .service('AutenticacaoService', AutenticacaoService)

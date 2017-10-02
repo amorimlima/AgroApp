@@ -1,39 +1,35 @@
-(function() {
-  angular
-    .module('app')
-    .controller('InicioController', InicioController);
+'use strict'
 
-  InicioController.$inject = [
-    '$rootScope',
-    '$location',
-    '$cookies',
-    'AutenticacaoService',
-    'PersistenceService'
-  ];
+import angular from 'angular'
 
-  function InicioController(
-    $rootScope, 
-    $location,
-    $cookies,
-    AutenticacaoService, 
-    PersistenceService
-  ) {
-    var self = this;
-    
-    // Models
-    self.email = '';
-    self.senha = '';
+class InicioController {
+  constructor($rootScope, $location, $cookies, AutenticacaoService, PersistenceService) {
+    this.root = $rootScope
+    this.location = $location
+    this.cookies = $cookies
+    this.authService = AutenticacaoService
+    this.persistence = PersistenceService
 
-    // Métodos
-    self.login = function () {
-      AutenticacaoService
-        .autenticar(self.email, self.senha)
-        .then(function (response) {
-          $cookies.put('session', response.token);
-          $location.url('/meus-produtos');
-          return $rootScope.$broadcast('login');
-        })
-        .catch(function () { $rootScope.showToast('Usuário ou senha inválidos'); });
-    };
+    this.email = '';
+    this.senha = '';
   }
-})();
+
+  static get $inject() {
+    return ['$rootScope', '$location', '$cookies', 'AutenticacaoService', 'PersistenceService']
+  }
+
+  login() {
+    return this.authService
+      .autenticar(this.email, this.senha)
+      .then(response => {
+        this.cookies.put('session', response.token, { expires: new Date(2020, 0, 1) });
+        this.location.url('/meus-produtos');
+        return this.root.$broadcast('login');
+      })
+      .catch(err => this.root.showToast('Usuário ou senha inválidos'))
+  }
+}
+
+angular
+  .module('app')
+  .controller('InicioController', InicioController);

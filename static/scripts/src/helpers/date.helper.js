@@ -1,30 +1,35 @@
-(function() {
-  angular
-    .module('app')
-    .factory('DateHelper', DateHelper);
+import angular from 'angular'
 
-  function DateHelper() {
-    var format = function (date) {
-      var fmt = new Date(date);
-      var day   = fmt.getDate()  < 10 ? '0' + fmt.getDate()        : fmt.getDate();
-      var month = fmt.getMonth() < 9  ? '0' + (fmt.getMonth() + 1) : (fmt.getMonth() + 1);
-      var year  = fmt.getFullYear(); 
-
-      return day + '/' + month + '/' + year;
-    };
-
-    var toIsoStandard = function (date) {
-      var fmt = new Date(date);
-      var day   = fmt.getDate()  < 10 ? '0' + fmt.getDate()        : fmt.getDate();
-      var month = fmt.getMonth() < 9  ? '0' + (fmt.getMonth() + 1) : (fmt.getMonth() + 1);
-      var year  = fmt.getFullYear(); 
-
-      return year + '-' + month + '-' + day;
-    };
-    
-    return {
-      format: format,
-      toIsoStandard: toIsoStandard
-    };
+class DateHelper {
+  constructor() {
+    throw new Error('Absctract classes cannot be instantiated')
   }
-})();
+
+  static format(date) {
+    const fmt = new Date(date)
+    const day   = fmt.getDate()  < 10 ? '0' + fmt.getDate()        : fmt.getDate()
+    const month = fmt.getMonth() < 9  ? '0' + (fmt.getMonth() + 1) : (fmt.getMonth() + 1)
+    const year  = fmt.getFullYear()
+
+    return `${day}/${month}/${year}`
+  }
+
+  static toIsoStandard(date) {
+    const fmt = new Date(date)
+    const day   = fmt.getDate()  < 10 ? '0' + fmt.getDate()        : fmt.getDate()
+    const month = fmt.getMonth() < 9  ? '0' + (fmt.getMonth() + 1) : (fmt.getMonth() + 1)
+    const year  = fmt.getFullYear()
+
+    return `${year}-${month}-${day}`
+  }
+}
+
+class DateHelperFactory {
+  static create() {
+    return DateHelper
+  }
+}
+
+angular
+  .module('app')
+  .factory('DateHelper', DateHelperFactory.create)

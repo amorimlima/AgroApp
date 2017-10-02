@@ -6,4 +6,5 @@ var app = require('../app.js');
 
 var server = http.createServer(app);
 
-server.listen(process.env.PORT || 3000, () => console.log(`Listening: ${process.env.PORT || 3000}`));
+server.listen(process.env.PORT || 3000, () =>
+  console.log(`Listening: ${process.env.PORT || 3000} on ${process.env.NODE_ENV} mode`));

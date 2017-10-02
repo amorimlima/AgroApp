@@ -10,14 +10,22 @@
     <div layout-padding>
       <div>
         <md-grid-list md-cols="3" md-gutter="1px" md-row-height="2:1">
-          <md-grid-tile ng-click="ctrl.setCategoriaSelecionada(1)">
-            <img ng-src="assets/images/icones_busca/legumes.png" style="width: 100%" alt="Legumes e Verduras">
+          <md-grid-tile>
+            <div ng-click="ctrl.alternarCategoriaSelecionada(1)" ng-style="ctrl.getEstiloTilePorCategoria(1)">
+              <img ng-src="assets/images/icones_busca/legumes.png" style="width: 100%" alt="Legumes e Verduras">
+            </div>
           </md-grid-tile>
-          <md-grid-tile ng-click="ctrl.setCategoriaSelecionada(2)">
-            <img ng-src="assets/images/icones_busca/temperos.png" style="width: 100%" alt="Ervas">
+
+          <md-grid-tile>
+            <div ng-click="ctrl.alternarCategoriaSelecionada(2)" ng-style="ctrl.getEstiloTilePorCategoria(2)">
+              <img ng-src="assets/images/icones_busca/temperos.png" style="width: 100%" alt="Ervas">
+            </div>
           </md-grid-tile>
-          <md-grid-tile ng-click="ctrl.setCategoriaSelecionada(3)">
-            <img ng-src="assets/images/icones_busca/frutas.png" style="width: 100%" alt="Frutas">
+
+          <md-grid-tile>
+            <div ng-click="ctrl.alternarCategoriaSelecionada(3)" ng-style="ctrl.getEstiloTilePorCategoria(3)">
+              <img ng-src="assets/images/icones_busca/frutas.png" style="width: 100%" alt="Frutas">
+            </div>
           </md-grid-tile>
         </md-grid-list>
       </div>
@@ -40,29 +48,42 @@
 
         <md-select
           id="uf_select"
-          ng-change="ctrl.setSearched()"
+          ng-change="ctrl.buscarCidades(ctrl.filtros.estado)"
           ng-model="ctrl.filtros.estado">
-        
+
           <md-option
             ng-repeat="estado in ctrl.estados"
             ng-value="estado.sigla"
-            ng-bind="estado.nome"></md-option>
+            ng-bind="estado.sigla"></md-option>
         </md-select>
       </md-input-container>
 
-      <md-input-container>
-        <label for="cidade">
+      <md-input-container flex="grow">
+        <label for="cidade_select">
           <%= strings.CITY %>
         </label>
 
-        <input
-          id="cidade"
-          ng-model="ctrl.filtros.cidade" />
+        <md-select
+          id="cidade_select"
+          ng-disabled="!ctrl.cidades.length"
+          ng-model="ctrl.filtros.cidade">
+
+          <md-option ng-hide="ctrl.cidades.length">Nenhuma cidade encontrada</md-option>
+
+          <md-option
+            ng-if="ctrl.cidades.length"
+            ng-value="''">Todas</md-option>
+
+          <md-option
+            ng-repeat="cidade in ctrl.cidades"
+            ng-value="cidade"
+            ng-bind="cidade"></md-option>
+        </md-select>
       </md-input-container>
     </div>
   </div>
 
-  <div 
+  <div
     layout="column"
     layout-padding="true">
 

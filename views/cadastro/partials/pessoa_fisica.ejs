@@ -42,9 +42,11 @@
           id="cpf"
           name="cpf"
           type="text"
-          maxlength="11"
+          maxlength="14"
+          mask="999.999.999-99"
+          mask-clean="true"
           ng-blur="ctrl.verificarCpf(form.cpf)"
-          ng-model="ctrl.pessoa_fisica.cpf"
+          ng-model="ctrl.usuario.PessoaFisica.cpf"
           ng-pattern="ctrl.cpfPattern"
           ng-required="true" />
         
@@ -59,7 +61,7 @@
           id="rg" 
           type="text"
           maxlength="20"
-          ng-model="ctrl.pessoa_fisica.rg"
+          ng-model="ctrl.usuario.PessoaFisica.rg"
           ng-required="true" />
 
       </md-input-container>
@@ -70,7 +72,7 @@
           id="nome"
           type="text"
           maxlength="100"
-          ng-model="ctrl.pessoa_fisica.nome"
+          ng-model="ctrl.usuario.PessoaFisica.nome"
           ng-required="true" />
 
       </md-input-container>
@@ -81,7 +83,7 @@
           id="sobrenome" 
           type="text"
           maxlength="100"
-          ng-model="ctrl.pessoa_fisica.sobrenome"
+          ng-model="ctrl.usuario.PessoaFisica.sobrenome"
           ng-required="true" />
       </md-input-container>
 

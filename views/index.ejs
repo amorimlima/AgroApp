@@ -2,7 +2,7 @@
 <html lang="pt" ng-app="app">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="manifest" href="assets/manifest.json">
   <title><%= strings.APP_NAME %></title>
@@ -37,10 +37,7 @@
     <ng-view layout-fill></ng-view>
   </div>
 
-  <%# Libs %>
-  <script src="/assets/scripts/lib/libs.js"></script>
-
-  <% if (environment !== 'dev') { %>
+  <% if (environment === 'dev') { %>
     <script src="/assets/scripts/bin/bundle.js"></script>
   <% } else { %>
 

@@ -11,9 +11,9 @@ const dao = require('./dao');
 const routes = require('./routes');
 const configs = require('./configs');
 
-const { static, Router } = express;
+const { Router } = express;
 const app = express();
-const environment = process.env.NODE_ENV === 'dev' ? 'dev' : 'prod';
+const environment = process.env.NODE_ENV === 'prod' ? 'prod' : 'dev';
 const strings = JSON.parse(fs.readFileSync(join(__dirname, './commons/strings.json')));
 
 // Middlewares
@@ -23,11 +23,11 @@ app.use(cookieParser());
 app.use(extractToken(app));
 
 // Static Files
-app.use('/assets/styles', noCache(), static(pathTo('./static/styles')));
-app.use('/assets/images', maxAge('30d'), static(pathTo('./static/images')));
-app.use('/assets/scripts/lib', maxAge('30d'), static(pathTo('./static/scripts/lib')));
-app.use('/assets/scripts/bin', noCache(), static(pathTo('./static/scripts/bin')));
-app.use('/assets/scripts/src', noCache(), static(pathTo('./static/scripts/src')));
+app.use('/assets/styles', noCache(), express.static(pathTo('./static/styles')));
+app.use('/assets/images', maxAge('30d'), express.static(pathTo('./static/images')));
+app.use('/assets/scripts/lib', maxAge('30d'), express.static(pathTo('./static/scripts/lib')));
+app.use('/assets/scripts/bin', noCache(), express.static(pathTo('./static/scripts/bin')));
+app.use('/assets/scripts/src', noCache(), express.static(pathTo('./static/scripts/src')));
 
 // Common
 app.set('strings', strings);

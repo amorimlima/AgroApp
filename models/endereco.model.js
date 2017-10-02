@@ -15,7 +15,7 @@ module.exports = (sequelize, DataType) => {
       validate: { notEmpty: true }
     },
     numero: {
-      type: DataType.INTEGER
+      type: DataType.STRING
     },
     complemento: {
       type: DataType.STRING(30),

@@ -1,23 +1,27 @@
-(function () {
-  angular
-    .module('app')
-    .service('CategoriaProdutoService', CategoriaProdutoService);
+'use strict'
 
-  CategoriaProdutoService.$inject = [
-    '$http'
-  ];
-  
-  function CategoriaProdutoService($http) {
-    this.getAll = function () {
-      return $http
-        .get('/categoria')
-        .then(function (response) { return response.data; });
-    };
+import angular from 'angular'
 
-    this.getComProdutos = function () {
-      return $http
-        .get('/categoria/produtos')
-        .then(function (response) { return response.data });
-    };
+class CategoriaProdutoService {
+  constructor($http) {
+    this.request = $http
   }
-})();
+
+  getAll() {
+    return this.request
+      .get('/categoria')
+      .then(response => response.data)
+  }
+
+  getComProdutos() {
+    return this.request
+      .get('/categoria/produtos')
+      .then(response => response.data)
+  }
+}
+
+CategoriaProdutoService.$inject = ['$http']
+
+angular
+  .module('app')
+  .service('CategoriaProdutoService', CategoriaProdutoService)

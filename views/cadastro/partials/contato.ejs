@@ -34,14 +34,30 @@
       name="address_form"
       layout="column">
 
+      <md-input-container>
+        <label for="cep">CEP</label>
+        <input
+          id="cep"
+          type="tel"
+          maxlength="9"
+          mask="99999-999"
+          mask-clean="true"
+          ng-model="ctrl.usuario.Enderecos[0].cep"
+          ng-blur="ctrl.buscarEnderecoPorCep()"
+          ng-pattern="ctrl.cepPattern"
+          ng-required="true"
+          ng-disabled="ctrl.loading" />
+      </md-input-container>
+
       <div layout="row">
         <md-input-container>
           <label for="estado">UF</label>
           <md-select
             id="estado"
-            ng-model="ctrl.endereco.estado"
+            ng-model="ctrl.usuario.Enderecos[0].estado"
             ng-required="true"
-            ng-disabled="ctrl.loading">
+            ng-disabled="ctrl.loading"
+            ng-readonly="true">
 
             <md-option
               ng-repeat="estado in ctrl.estados"
@@ -56,9 +72,10 @@
             id="cidade" 
             type="text"
             maxlength="45"
-            ng-model="ctrl.endereco.cidade"
+            ng-model="ctrl.usuario.Enderecos[0].cidade"
             ng-required="true"
-            ng-disabled="ctrl.loading" />
+            ng-disabled="ctrl.loading"
+            ng-readonly="true" />
         </md-input-container>
       </div>
 
@@ -68,9 +85,10 @@
           id="bairro" 
           type="text"
           maxlength="45"
-          ng-model="ctrl.endereco.bairro"
+          ng-model="ctrl.usuario.Enderecos[0].bairro"
           ng-required="true"
-          ng-disabled="ctrl.loading" />
+          ng-disabled="ctrl.loading"
+          ng-readonly="true" />
       </md-input-container>
 
       <md-input-container>
@@ -79,17 +97,18 @@
           id="street" 
           type="text"
           maxlength="45"
-          ng-model="ctrl.endereco.logradouro"
+          ng-model="ctrl.usuario.Enderecos[0].logradouro"
           ng-required="true"
-          ng-disabled="ctrl.loading" />
+          ng-disabled="ctrl.loading"
+          ng-readonly="true" />
       </md-input-container>
 
       <md-input-container>
         <label for="addr_num">Número</label>
         <input
           id="addr_num" 
-          type="number"
-          ng-model="ctrl.endereco.numero"
+          type="tel"
+          ng-model="ctrl.usuario.Enderecos[0].numero"
           ng-required="true"
           ng-disabled="ctrl.loading" />
       </md-input-container>
@@ -100,19 +119,7 @@
           id="complement" 
           type="text"
           maxlength="45"
-          ng-model="ctrl.endereco.complemento"
-          ng-disabled="ctrl.loading" />
-      </md-input-container>
-
-      <md-input-container>
-        <label for="cep">CEP</label>
-        <input
-          id="cep" 
-          type="text"
-          maxlength="8"
-          ng-model="ctrl.endereco.cep"
-          ng-pattern="ctrl.cepPattern"
-          ng-required="true"
+          ng-model="ctrl.usuario.Enderecos[0].complemento"
           ng-disabled="ctrl.loading" />
       </md-input-container>
     </form>
@@ -132,7 +139,7 @@
         <label for="type">Tipo</label>
         <md-select
           id="type"
-          ng-model="ctrl.telefone.Tipo"
+          ng-model="ctrl.usuario.Telefones[0].Tipo"
           ng-required="true"
           ng-disabled="ctrl.loading">
 
@@ -146,10 +153,9 @@
           <label for="ddd">DDD</label>
           <input
             id="ddd" 
-            type="number"
-            min="10"
-            max="99"
-            ng-model="ctrl.telefone.ddd"
+            type="tel"
+            maxlength="2"
+            ng-model="ctrl.usuario.Telefones[0].ddd"
             ng-pattern="ctrl.dddPattern"
             ng-required="true"
             ng-disabled="ctrl.loading" />
@@ -159,10 +165,12 @@
           <label for="number">Número</label>
           <input
             id="number" 
-            type="number"
-            maxlength="9"
-            max="999999999"
-            ng-model="ctrl.telefone.numero"
+            type="tel"
+            maxlength="10"
+            mask="9?9999-9999"
+            mask-clean="true"
+            mask-validate="false"
+            ng-model="ctrl.usuario.Telefones[0].numero"
             ng-pattern="ctrl.telPattern"
             ng-required="true"
             ng-disabled="ctrl.loading" />

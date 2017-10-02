@@ -1,18 +1,21 @@
-(function() {
-  angular
-    .module('app')
-    .service('EmailService', EmailService);
+'use strict'
 
-  EmailService.$inject = [
-    '$http'
-  ];
+import angular from 'angular'
 
-  function EmailService($http) {
-    this.listarPorEndereco = function (endereco) {
-      return $http
-        .get('/email/' + endereco)
-        .then(function (response) { return Promise.resolve(response.data) })
-        .catch(function (error) { return Promise.reject({ mensagem: 'Erro inesperado' }) });
-    };
+class EmailService {
+  constructor($http){
+    this.request = $http
   }
-})();
+
+  listarPorEndereco(endereco) {
+    return this.request
+      .get(`/email/${endereco}`)
+      .then(response => response.data)
+  }
+}
+
+EmailService.$inject = ['$http']
+
+angular
+  .module('app')
+  .service('EmailService', EmailService)

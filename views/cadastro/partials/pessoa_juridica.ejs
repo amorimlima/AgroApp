@@ -39,10 +39,11 @@
         <input
           id="cnpj"
           name="cnpj"
-          type="number"
-          maxlength="16"
-          max="9999999999999999"
-          ng-model="ctrl.pessoa_juridica.cnpj"
+          type="tel"
+          maxlength="18"
+          mask="99.999.999/9999-99"
+          mask-clean="true"
+          ng-model="ctrl.usuario.PessoaJuridica.cnpj"
           ng-blur="ctrl.verificarCnpj(form.cnpj)"
           ng-pattern="ctrl.cnpjPattern"
           ng-required="true" />
@@ -58,7 +59,7 @@
           id="razao_social"
           type="text"
           maxlength="200"
-          ng-model="ctrl.pessoa_juridica.razao_social"
+          ng-model="ctrl.usuario.PessoaJuridica.razao_social"
           ng-required="true" />
 
       </md-input-container>
@@ -69,7 +70,7 @@
           id="responsavel" 
           type="text"
           maxlength="200"
-          ng-model="ctrl.pessoa_juridica.responsavel"
+          ng-model="ctrl.usuario.PessoaJuridica.responsavel"
           ng-required="true" />
 
       </md-input-container>

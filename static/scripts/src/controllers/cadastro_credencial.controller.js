@@ -1,55 +1,63 @@
-(function() {
-  angular
-    .module('app')
-    .controller('CadastroCredencialController', CadastroCredencialController);
+'use strict'
 
-  CadastroCredencialController.$inject = [
-    '$rootScope',
-    '$location',
-    'PersistenceService',
-    'EmailService'
-  ];
+import angular from 'angular'
 
-  function CadastroCredencialController($rootScope, $location, PersistenceService, EmailService) {
-    var vm = this;
-    // Models
-    vm.usuario = JSON.parse(PersistenceService
-      .getSessionItem('usuario')) || $location.url('/registro/perfil');
-    vm.email = JSON.parse(PersistenceService
-      .getSessionItem('email'))  || { email: '' };
+class CadastroCredencialController {
+  constructor($rootScope, $location, PersistenceService, EmailService) {
+    this.root = $rootScope
+    this.location = $location
+    this.persistence = PersistenceService
+    this.emailService = EmailService
 
-    vm.emailEmUso = false;
-
-    // Métodos
-    vm.voltar = function () {
-      return $location.url('/registro/perfil');
-    };
-
-    vm.setForm = function (form) {
-      vm.form = form;
-    };
-
-    vm.verificarEmail = function (email) {
-      EmailService
-        .listarPorEndereco(email.$modelValue)
-        .then(function (response) {
-          if (response) {
-            email.$error.em_uso = true;
-            email.$valid = false;
-            email.$invalid = true;
-          }
-          else {
-            email.$error.em_uso = false;
-            email.$valid = true;
-            email.$invalid = false;
-          }
-        });
+    if (!this.persistence.getSessionItem('usuario')) {
+      this.location.url('/registro/perfil')
     }
 
-    vm.avancar = function (type) {
-      PersistenceService.setSessionItem('usuario', JSON.stringify(this.usuario));
-      PersistenceService.setSessionItem('email', JSON.stringify(this.email));
-      return $location.url('/registro/' + type);
-    };
+    this.usuario = JSON.parse(this.persistence.getSessionItem('usuario'))
+
+    if (!this.usuario.Emails || !this.usuario.Emails[0]) {
+      Object.assign(this.usuario, { Emails: [{ email: '' }] })
+    }
+
+    this.emailEmUso = false
   }
-})();
+
+  static get $inject() {
+    return ['$rootScope', '$location', 'PersistenceService', 'EmailService']
+  }
+
+  voltar() {
+    return this.location.url('/registro/perfil')
+  }
+
+  setForm(form) {
+    this.form = form
+  }
+
+  verificarEmail(email) {
+    this.emailService
+      .listarPorEndereco(email.$modelValue)
+      .then(response => {
+        if (response) {
+          email.$error.em_uso = true;
+          email.$valid = false;
+          email.$invalid = true;
+        }
+        else {
+          email.$error.em_uso = false;
+          email.$valid = true;
+          email.$invalid = false;
+        }
+      })
+      .catch(error => console.log('Erro ao validar email'))
+  }
+
+  avancar(tipo) {
+    this.persistence.setSessionItem('usuario', JSON.stringify(this.usuario))
+    return this.location.url(`/registro/${tipo}`)
+  }
+}
+
+angular
+  .module('app')
+  .controller('CadastroCredencialController', CadastroCredencialController)

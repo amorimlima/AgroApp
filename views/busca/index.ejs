@@ -26,8 +26,10 @@
         placeholder="<%= strings.WHAT_ARE_YOU_LOOKING_FOR %>"
         flex="grow"
         md-no-cache="true"
-        md-search-text="ctrl.searchText"
-        md-items="produto in ctrl.categorias[ctrl.filtros.Categoria - 1].Produtos | filter:ctrl.searchText"
+        md-search-text="ctrl.filtros.searchText"
+        md-search-text-change="ctrl.atualizarResultados(ctrl.viewState, ctrl.filtros)"
+        md-require-match="false"
+        md-items="produto in ctrl.listarProdutosDaCategoria(ctrl.categoria) | filter:ctrl.filtros.searchText"
         md-clear-button="true"
         md-item-text="produto.nome"
         md-selected-item="ctrl.filtros.Produto">

@@ -1,4 +1,5 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize'
+
 let database = null;
 
 module.exports = (app) => {

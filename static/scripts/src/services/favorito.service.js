@@ -1,34 +1,42 @@
-(function() {
-  angular
-    .module('app')
-    .service('FavoritoService', FavoritoService);
-  
-  FavoritoService.$inject = [
-    '$http'
-  ];
+'use strict'
 
-  function FavoritoService($http) {
-    this.checarFavorito = function (usuario) {
-      return $http
-        .get('/favorito/' + usuario)
-        .then(function (response) { return Promise.resolve(response.data ? true : false) });
-    }
-    this.favoritar = function (usuario) {
-      return $http
-        .post('/favorito', { favorito: usuario })
-        .then(function (response) { return Promise.resolve(response.data) });
-    };
+import angular from 'angular'
 
-    this.desfavoritar = function (usuario) {
-      return $http
-        .delete('/favorito/' + usuario)
-        .then(function (response) { return Promise.resolve(response.data) });
-    };
-
-    this.listarMeusFavoritos = function () {
-      return $http
-        .get('/favorito/meus')
-        .then(function (response) { return Promise.resolve(response.data) });
-    }
+class FavoritoService {
+  constructor($http) {
+    this.request = $http
   }
-})();
+
+  static get $inject() {
+    return ['$http']
+  }
+
+  checarFavorito(usuario) {
+    return this.request
+      .get(`/favorito/${usuario}`)
+      .then(response => !!response.data);
+  }
+
+  favoritar(usuario) {
+    return this.request
+      .post('/favorito', { favorito: usuario })
+      .then(response => response.data);
+  };
+
+  desfavoritar(usuario) {
+    return this.request
+      .delete('/favorito/' + usuario)
+      .then(response => response.data);
+  };
+
+  listarMeusFavoritos() {
+    return this.request
+      .get('/favorito/meus')
+      .then(response => response.data);
+  }
+}
+
+angular
+  .module('app')
+  .service('FavoritoService', FavoritoService)
+

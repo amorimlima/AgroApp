@@ -1,64 +1,70 @@
-(function() {
-  angular
-    .module('app')
-    .controller('CadastroPessoaFisicaController', CadastroPessoaFisicaController);
+'use strict'
 
-  CadastroPessoaFisicaController.$inject = [
-    '$rootScope',
-    '$location',
-    'PersistenceService',
-    'PessoaFisicaService'
-  ];
+import angular from 'angular'
 
-  function CadastroPessoaFisicaController(
-    $rootScope,
-    $location,
-    PersistenceService,
-    PessoaFisicaService
-  ) {
-    var vm = this;
+class CadastroPFController {
+  constructor($rootScope, $location, PersistenceService, PessoaFisicaService) {
+    this.root = $rootScope
+    this.location = $location
+    this.persistence = PersistenceService
+    this.pfService = PessoaFisicaService
 
-    vm.usuario = JSON.parse(PersistenceService.getSessionItem('usuario')) 
-                    || $location.url('/registro/perfil');
+    if (!JSON.parse(this.persistence.getSessionItem('usuario'))) {
+      this.location.url('/registro/perfil')
+    }
 
-    vm.pessoa_fisica = JSON.parse(PersistenceService.getSessionItem('pessoa_fisica')) || {
-      cpf: '',
-      rg: '',
-      nome: '',
-      sobrenome: '',
-      data_nascimento: new Date('1988-00-01')
-    };
+    this.usuario = JSON.parse(this.persistence.getSessionItem('usuario'))
 
-    vm.data_nascimento = new Date(vm.pessoa_fisica.data_nascimento);
+    if (!this.usuario.PessoaFisica) {
+      Object.assign(this.usuario, {
+        PessoaFisica: {
+          cpf: '',
+          rg: '',
+          nome: '',
+          sobrenome: '',
+          data_nascimento: new Date('1988-00-01')
+        }
+      })
+    }
 
-    vm.cpfPattern = /\d{11}/;
-
-    vm.voltar = function () {
-      return $location.url('/registro/credencial');
-    };
-
-    vm.avancar = function () {
-      vm.pessoa_fisica.data_nascimento = vm.data_nascimento.toISOString();
-      PersistenceService.removeSessionItem('pessoa_juridica');
-      PersistenceService.setSessionItem('pessoa_fisica', JSON.stringify(vm.pessoa_fisica));
-      return $location.url('/registro/contato');
-    };
-
-    vm.verificarCpf = function (cpf) {
-      return PessoaFisicaService
-        .listarPorCpf(cpf.$modelValue)
-        .then(function (response) {
-          if (response) {
-            cpf.$error.em_uso = true;
-            cpf.$valid = false;
-            cpf.$invalid = true;
-          }
-          else {
-            cpf.$error.em_uso = false;
-            cpf.$valid = true;
-            cpf.$invalid = false;
-          }
-        });
-    };
+    this.data_nascimento = new Date(this.usuario.PessoaFisica.data_nascimento)
+    this.cpfPattern = /\d{3}\.\d{3}\.\d{3}\-\d{2}/
   }
-})();
+
+  static get $inject() {
+    return ['$rootScope', '$location', 'PersistenceService', 'PessoaFisicaService']
+  }
+
+  voltar() {
+    return this.location.url('/registro/credencial')
+  }
+
+  avancar() {
+    this.usuario.PessoaJuridica = null
+    this.usuario.PessoaFisica.data_nascimento = this.data_nascimento.toISOString()
+    this.persistence.setSessionItem('usuario', JSON.stringify(this.usuario))
+    return this.location.url('/registro/contato')
+  }
+
+  verificarCpf(cpf) {
+    return this.pfService
+      .listarPorCpf(cpf.$modelValue)
+      .then(response => {
+        if (response) {
+          cpf.$error.em_uso = true
+          cpf.$valid = false
+          cpf.$invalid = true
+        }
+        else {
+          cpf.$error.em_uso = false
+          cpf.$valid = true
+          cpf.$invalid = false
+        }
+      })
+      .catch(error => this.root.showDialog('Não foi possível validar o cpf'))
+  }
+}
+
+angular
+  .module('app')
+  .controller('CadastroPessoaFisicaController', CadastroPFController)

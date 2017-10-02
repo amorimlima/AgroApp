@@ -1,3 +1,5 @@
+import angular from 'angular'
+
 (function() {
   angular
     .module('app')
@@ -26,13 +28,13 @@
         .then(function (response) { return Promise.resolve(response.data) });
     };
 
-    this.buscarOfertas = function (Produto, estado, cidade) {
-      Produto = Produto || { id: '' };
+    this.buscarOfertas = function (produto, estado, cidade) {
+      produto = produto || '';
       estado  = estado  || '';
       cidade  = cidade  || '';
 
       return $http
-        .get('/oferta/busca?produto=' + Produto.id + '&estado=' + estado + '&cidade=' + cidade)
+        .get('/oferta/busca?produto=' + produto + '&estado=' + estado + '&cidade=' + cidade)
         .then(function (response) { return Promise.resolve(response.data); });
     };
 

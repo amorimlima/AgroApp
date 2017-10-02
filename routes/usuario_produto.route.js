@@ -1,4 +1,5 @@
-const HttpStatus = require('http-status');
+import HttpStatus from 'http-status'
+import jwt from 'jwt-simple'
 
 module.exports = (router, app) => {
   const UsuarioProdutoDAO = app.get('dao').UsuarioProdutoDAO;
@@ -9,7 +10,7 @@ module.exports = (router, app) => {
       try {
         const usuarioProdutoDAO = new UsuarioProdutoDAO(app.get('models'));
         const token = req.get('Authorization').replace('JWT', '').trim();
-        const Usuario = app.get('configs').jwt.decode(token, app.get('configs').jwt.secret);
+        const Usuario = jwt.decode(token, app.get('configs').jwt.secret);
         const oferta = Object.assign({}, req.body);
 
         oferta.Produto = oferta.Anuncio.id;
@@ -32,7 +33,7 @@ module.exports = (router, app) => {
       try {
         const usuarioProdutoDAO = new UsuarioProdutoDAO(app.get('models'));
         const token = req.get('Authorization').replace('JWT', '').trim();
-        const Usuario = app.get('configs').jwt.decode(token, app.get('configs').jwt.secret);
+        const Usuario = jwt.decode(token, app.get('configs').jwt.secret);
 
         usuarioProdutoDAO
           .getByUser(Usuario.id)
@@ -40,6 +41,7 @@ module.exports = (router, app) => {
           .catch(error => res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY));
       }
       catch (e) {
+        console.log()
         res.sendStatus(HttpStatus.UNPROCESSABLE_ENTITY);
       }
     });

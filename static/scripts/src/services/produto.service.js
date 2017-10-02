@@ -1,11 +1,14 @@
+import angular from 'angular'
+
 (function () {
   angular
     .module('app')
-    .service('ProdutoService', ProdutoService);
+    .service('ProdutoService', ProdutoService)
 
   ProdutoService.$inject = [
     '$http'
   ];
+
   function ProdutoService($http) {
     this.listarTodos = function () {
       return $http

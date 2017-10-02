@@ -1,115 +1,112 @@
-(function () {
-  angular
-    .module('app')
-    .controller('CadastroContatoController', CadastroContatoController);
+'use strict'
 
-  CadastroContatoController.$inject = [
-    '$rootScope',
-    '$location',
-    '$cookies',
-    '$mdDialog',
-    'PersistenceService',
-    'AutenticacaoService',
-    'estados'
-  ];
+import angular from 'angular'
 
-  function CadastroContatoController(
-    $rootScope,
-    $location,
-    $cookies,
-    $mdDialog,
-    PersistenceService,
-    AutenticacaoService,
-    estados
-  ) {
-    var vm = this;
-    // Models
-    vm.estados = estados;
-    vm.usuario = JSON.parse(PersistenceService.getSessionItem('usuario')) 
-                    || $location.url('/registro/perfil');
-    vm.endereco = JSON.parse(PersistenceService.getSessionItem('endereco')) || {
+class CadastroContatoController {
+  constructor($rootScope, $location, $cookies, $mdDialog, PersistenceService, AutenticacaoService, EnderecoService, estados) {
+    this.root = $rootScope
+    this.location = $location
+    this.cookies = $cookies
+    this.dialog = $mdDialog
+    this.persistence = PersistenceService
+    this.authService = AutenticacaoService
+    this.enderecoService = EnderecoService
+    this.estados = estados
+
+    if (!this.persistence.getSessionItem('usuario')) {
+      this.location.url('/registro/perfil')
+    }
+
+    this.usuario = JSON.parse(this.persistence.getSessionItem('usuario'))
+
+    if (!this.usuario.Enderecos || !this.usuario.Enderecos[0]) {
+      this.resetarEndereco()
+    }
+
+    if (!this.usuario.Telefones || !this.usuario.Telefones[0]) {
+      Object.assign(this.usuario, { Telefones: [{
+        Tipo: null,
+        ddd: '',
+        numero: ''
+      }] })
+    }
+
+    this.cepPattern = /\d{5}\-\d{3}/
+    this.dddPattern = /\d{2}/
+    this.telPattern = /\d{4}\-\d{4}(\d{1})?/
+    this.loading = false
+  }
+
+  static get $inject() {
+    return ['$rootScope', '$location', '$cookies', '$mdDialog', 'PersistenceService', 'AutenticacaoService',
+      'EnderecoService', 'estados']
+  }
+
+  voltar() {
+    if (this.usuario.tipo === 'PF')
+      return this.location.url('/registro/pessoa-fisica');
+    else
+      return this.location.url('/registro/pessoa-juridica');
+  }
+
+  avancar() {
+    this.persistence.setSessionItem('usuario', JSON.stringify(this.usuario))
+
+    return this.dialog.show({
+      contentElement: document.getElementById('terms_of_use_dialog'),
+      parent: document.getElementsByTagName('body')[0]
+    })
+  }
+
+  cancelar() {
+    return this.dialog.hide()
+  }
+
+  cadastrar() {
+    this.dialog.hide()
+    this.loading = true
+
+    return this.authService
+      .cadastrar(this.usuario)
+      .then(() => this.authService.autenticar(this.usuario.Emails[0].email, this.usuario.senha))
+      .then(token => {
+        this.cookies.put('session', token.token, { expires: new Date(2020, 0, 1) })
+        this.location.url('/meus-produtos')
+
+        return this.root.$broadcast('login')
+      })
+  }
+
+  buscarEnderecoPorCep() {
+    return this.enderecoService
+      .listarEnderecoPorCep(this.usuario.Enderecos[0].cep)
+      .then(endereco => {
+        Object.assign(this.usuario.Enderecos[0], {
+          logradouro: endereco.logradouro,
+          bairro: endereco.bairro,
+          estado: endereco.estado,
+          cidade: endereco.cidade
+        })
+      })
+      .catch(err => {
+        this.root.showToast('CEP não encontrado')
+        this.resetarEndereco()
+      })
+  }
+
+  resetarEndereco() {
+    Object.assign(this.usuario, { Enderecos: [{
       cep: '',
       logradouro: '',
-      numero: null,
+      numero: '',
       complemento: '',
       bairro: '',
       cidade: '',
       estado: ''
-    };
-    vm.telefone = JSON.parse(PersistenceService.getSessionItem('telefone')) || {
-      Tipo: null,
-      ddd: null,
-      numero: null
-    };
-    vm.loading = false;
-
-    vm.cepPattern = /\d{8}/;
-    vm.dddPattern = /\d{2}/;
-    vm.telPattern = /(\d{8}|\d{9})/;
-
-    // Métodos
-    vm.voltar = function () {
-      if (vm.usuario.tipo === 'PF')
-        return $location.url('/registro/pessoa-fisica');
-      else
-        return $location.url('/registro/pessoa-juridica');
-    };
-
-    vm.avancar = function () {
-      PersistenceService.setSessionItem('endereco', JSON.stringify(vm.endereco));
-      PersistenceService.setSessionItem('telefone', JSON.stringify(vm.telefone));
-
-      return $mdDialog.show({
-        contentElement: document.getElementById('terms_of_use_dialog'),
-        parent: document.getElementsByTagName('body')[0]
-      });
-    };
-
-    vm.cadastrar = function () {
-      var Credencial = JSON.parse(PersistenceService.getSessionItem('credencial'));
-      var PessoaFisica = JSON.parse(PersistenceService.getSessionItem('pessoa_fisica'));
-      var PessoaJuridica = JSON.parse(PersistenceService.getSessionItem('pessoa_juridica'));
-      var Email = JSON.parse(PersistenceService.getSessionItem('email'));
-      var Endereco = vm.endereco;
-      var Telefone = vm.telefone;
-      var payload = vm.usuario;
-      
-      $mdDialog.hide();
-      vm.loading = true;
-
-      payload.Emails    = [ Email ];
-      payload.Enderecos = [ Endereco ];
-      payload.Telefones = [ Telefone ];
-      
-      if (vm.usuario.tipo === 'PF') {
-        PessoaFisica.data_nascimento = new Date(PessoaFisica.data_nascimento)
-          .toISOString()
-          .split('T')[0];
-
-        payload.PessoaFisica = PessoaFisica;
-      }
-      else {
-        PessoaJuridica.data_fundacao = new Date(PessoaJuridica.data_fundacao)
-          .toISOString()
-          .split('T')[0];
-
-        payload.PessoaJuridica = PessoaJuridica;
-      }
-
-      return AutenticacaoService
-        .cadastrar(payload)
-        .then(function (user) {
-          return AutenticacaoService.autenticar(Email.email, payload.senha)
-        })
-        .then(function (token) {
-          $cookies.put('session', token.token);
-          $location.url('/meus-produtos');
-          return $rootScope.$broadcast('login');
-        });
-    };
-
-    vm.cancelar = function () {
-      return $mdDialog.hide();
-    };
+    }] })
   }
-})();
+}
+
+angular
+  .module('app')
+  .controller('CadastroContatoController', CadastroContatoController)

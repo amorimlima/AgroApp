@@ -43,7 +43,7 @@
           name="email"
           type="email"
           ng-blur="ctrl.verificarEmail(form.email)"
-          ng-model="ctrl.email.email"
+          ng-model="ctrl.usuario.Emails[0].email"
           ng-required="true" />
 
         <ng-messages for="form.email.$error" ng-show="form.email.$dirty">

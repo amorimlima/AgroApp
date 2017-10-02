@@ -6,12 +6,12 @@ module.exports = (sequelize, DataType) => {
       autoIncrement: true
     },
     ddd: {
-      type: DataType.INTEGER(2),
+      type: DataType.STRING(2),
       allowNull: false,
       validate: { is: /\d{2}/ }
     },
     numero: {
-      type: DataType.INTEGER(9),
+      type: DataType.STRING(9),
       allowNull: false,
       validate: { is: /(\d{8}|\d{9})/ }
     }

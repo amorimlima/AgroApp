@@ -1,10 +1,7 @@
+import angular from 'angular'
+
 (function () {
   "use strict";
-  angular
-    .module('app')
-    .factory('EnderecoHelper', EnderecoHelperFactory);
-
-
 
   function EnderecoHelperFactory() {
     var getCidadeEstado = function getCidadeEstado(Endereco) {
@@ -30,4 +27,8 @@
       getCidadeEstado: getCidadeEstado
     };
   }
+
+  angular
+    .module('app')
+    .factory('EnderecoHelper', EnderecoHelperFactory);
 })();

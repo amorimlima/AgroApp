@@ -1,62 +1,67 @@
-(function() {
-  angular
-    .module('app')
-    .controller('CadastroPessoaJuridicaController', CadastroPessoaJuridicaController)
+'use strict'
 
-  CadastroPessoaJuridicaController.$inject = [
-    '$rootScope',
-    '$location',
-    'PersistenceService',
-    'PessoaJuridicaService'
-  ];
+import angular from 'angular'
 
-  function CadastroPessoaJuridicaController(
-    $rootScope,
-    $location,
-    PersistenceService,
-    PessoaJuridicaService
-  ) {
-    var vm = this;
-    // Models
-    vm.usuario = JSON.parse(PersistenceService.getSessionItem('usuario'))
-                    || $location.url('/registro/perfil');
+class CadastroPJController {
+  constructor($rootScope, $location, PersistenceService, PessoaJuridicaService) {
+    this.root = $rootScope
+    this.location = $location
+    this.persistence = PersistenceService
+    this.pjService = PessoaJuridicaService
 
-    vm.pessoa_juridica = JSON.parse(PersistenceService.getSessionItem('pessoa_juridica')) || {
-      cnpj: '',
-      razao_social: '',
-      responsavel: '',
-      data_fundacao: new Date('1991-00-01')
-    };
-    vm.data_fundacao = new Date(vm.pessoa_juridica.data_fundacao);
-    vm.cnpjPattern = /\d{14}/;
-
-    // Métodos
-    vm.voltar = function () {
-      return $location.url('/registro/credencial');
-    };
-
-    vm.avancar = function () {
-      vm.pessoa_juridica.data_fundacao = vm.data_fundacao.toISOString();
-      PersistenceService.removeSessionItem('pessoa_fisica');
-      PersistenceService.setSessionItem('pessoa_juridica', JSON.stringify(vm.pessoa_juridica));
-      return $location.url('/registro/contato')
-    };
-
-    vm.verificarCnpj = function (cnpj) {
-      return PessoaJuridicaService
-        .listarPorCnpj(cnpj.$modelValue)
-        .then(function (response) {
-          if (response) {
-            cnpj.$error.em_uso = true;
-            cnpj.$valid = false;
-            cnpj.$invalid = true;
-          }
-          else {
-            cnpj.$error.em_uso = false;
-            cnpj.$valid = true;
-            cnpj.$invalid = false;
-          }
-        });
+    if (!this.persistence.getSessionItem('usuario')) {
+      this.location.url('/registro/perfil')
     }
+
+    this.usuario = JSON.parse(this.persistence.getSessionItem('usuario'))
+
+    if (!this.usuario.PessoaJuridica) {
+      Object.assign(this.usuario, { PessoaJuridica: {
+        cnpj: '',
+        razao_social: '',
+        responsavel: '',
+        data_fundacao: new Date('1991-00-01')
+      } })
+    }
+
+    this.data_fundacao = new Date(this.usuario.PessoaJuridica.data_fundacao)
+    this.cnpjPattern = /\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/
   }
-})();
+
+  static get $inject() {
+    return ['$rootScope', '$location', 'PersistenceService', 'PessoaJuridicaService']
+  }
+
+  voltar() {
+    this.location.url('/registro/credencial')
+  }
+
+  avancar() {
+    this.usuario.PessoaFisica = null
+    this.usuario.PessoaJuridica.data_fundacao = this.data_fundacao.toISOString()
+    this.persistence.setSessionItem('usuario', JSON.stringify(this.usuario))
+    return this.location.url('/registro/contato')
+  }
+
+  verificarCnpj(cnpj) {
+    return this.pjService
+      .listarPorCnpj(cnpj.$modelValue)
+      .then(response => {
+        if (response) {
+          cnpj.$error.em_uso = true
+          cnpj.$valid = false
+          cnpj.$invalid = true
+        }
+        else {
+          cnpj.$error.em_uso = false
+          cnpj.$valid = true
+          cnpj.$invalid = false
+        }
+      })
+      .catch(err => this.root.showToast('Não foi possível validar o cnpj'))
+  }
+}
+
+angular
+  .module('app')
+  .controller('CadastroPessoaJuridicaController', CadastroPJController)

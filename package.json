@@ -5,7 +5,7 @@
   "main": "scripts/main.js",
   "scripts": {
     "start": "npm run build:prod && babel-node bin/www.js",
-    "start:dev": "npm run build:dev && nodemon --exec 'babel-node bin/www' || true",
+    "start:dev": "npm run build:dev && nodemon --exec \"babel-node bin/www\" || true",
     "build:styles": "node scripts/styles",
     "build:dev": "npm run build:styles && webpack --config webpack.dev.js",
     "build:prod": "npm run build:styles && webpack --config webpack.prod.js",

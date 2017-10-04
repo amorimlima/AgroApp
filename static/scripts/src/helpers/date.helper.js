@@ -1,3 +1,5 @@
+'use strict'
+
 import angular from 'angular'
 
 class DateHelper {
@@ -24,12 +26,8 @@ class DateHelper {
   }
 }
 
-class DateHelperFactory {
-  static create() {
-    return DateHelper
-  }
-}
+const getDateHelper = () => DateHelper
 
 angular
   .module('app')
-  .factory('DateHelper', DateHelperFactory.create)
+  .factory('DateHelper', getDateHelper)

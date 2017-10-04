@@ -1,34 +1,33 @@
+'use strict'
+
 import angular from 'angular'
 
-(function () {
-  "use strict";
-
-  function EnderecoHelperFactory() {
-    var getCidadeEstado = function getCidadeEstado(Endereco) {
-      return Endereco.cidade + ' - ' + Endereco.estado;
-    };
-
-    var getFormatado = function (Endereco, cidadeEstado) {
-      if (cidadeEstado === null) cidadeEstado = true;
-      var formatado = Endereco.logradouro +  ', '  + Endereco.numero;
-      if (Endereco.complemento) formatado += ', ' + Endereco.complemento;
-      formatado += ' - ' + Endereco.bairro;
-      if (cidadeEstado) {
-        formatado += ', '  + Endereco.cidade;
-        formatado += ' - ' + Endereco.estado;
-      }
-      formatado += ', '  + Endereco.cep.slice(0,5) + '-' + Endereco.cep.slice(5);
-
-      return formatado;
-    };
-
-    return {
-      getFormatado: getFormatado,
-      getCidadeEstado: getCidadeEstado
-    };
+export class EnderecoHelper {
+  static getCidadeEstado(endereco) {
+    return `${endereco.cidade} - ${endereco.estado}`
   }
 
-  angular
-    .module('app')
-    .factory('EnderecoHelper', EnderecoHelperFactory);
-})();
+  static getFormatado(Endereco, cidadeEstado = true) {
+    let formatado = Endereco.logradouro +  ', '  + Endereco.numero
+
+    if (Endereco.complemento) {
+      formatado += ', ' + Endereco.complemento
+    }
+
+    formatado += ' - ' + Endereco.bairro
+
+    if (cidadeEstado) {
+      formatado += ', '  + Endereco.cidade
+      formatado += ' - ' + Endereco.estado
+    }
+    formatado += ', '  + Endereco.cep.slice(0,5) + '-' + Endereco.cep.slice(5)
+
+    return formatado
+  }
+}
+
+const getEnderecoHelper = () => EnderecoHelper
+
+angular
+  .module('app')
+  .factory('EnderecoHelper', getEnderecoHelper)

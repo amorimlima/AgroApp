@@ -1,6 +1,7 @@
 'use strict'
 
 import angular from 'angular'
+import { PessoaHelper } from '../helpers/pessoa.helper'
 
 const mapaStyles = [{ featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] }]
 const optionsMapa = { zoom: 12, mapTypeId: 'roadmap', disableDefaultUI: true, zoomControl: true, styles: mapaStyles }
@@ -22,7 +23,9 @@ class BuscaController {
     this.listaResultados = []
     this.anunciantes = []
     this.mapa = null
+    this.markers = []
   }
+
 
   static get $inject() {
     return ['$rootScope', '$location', 'UsuarioProdutoService', 'EnderecoService', 'categorias', 'estados']
@@ -45,6 +48,14 @@ class BuscaController {
     if (state === 'mapa') {
       this.iniciarMapa()
     }
+    else {
+      this.resetarMapa()
+    }
+  }
+
+  resetarMapa() {
+    this.mapa = null
+    this.markers = []
   }
 
   buscarCidades(estado) {
@@ -95,12 +106,10 @@ class BuscaController {
   }
 
   iniciarMapa() {
-    if (!this.mapa) {
+    window.setTimeout(() => {
       this.mapa = new google.maps.Map(document.getElementById('mapa'), optionsMapa)
-    }
-
-    this.anunciantes.forEach(anunciante => this.setMarker(Object.assign({}, anunciante)))
-    window.setTimeout(() => google.maps.event.trigger(this.mapa, 'resize'), 50)
+      this.anunciantes.forEach(anunciante => this.setMarker(anunciante))
+    }, 300)
   }
 
   setMarker(anunciante) {
@@ -114,13 +123,13 @@ class BuscaController {
     }
 
     marker.addListener('click', () => {
-      this.mapa.setZoom(15);
-      this.mostrarDetalhesMarker(marker, anunciante);
-      this.mapa.panTo(marker.getPosition());
-      this.mapa.panBy(0, -70);
-    });
+      this.mapa.setZoom(15)
+      this.mostrarDetalhesMarker(marker, anunciante)
+      this.mapa.panTo(marker.getPosition())
+      this.mapa.panBy(0, -70)
+    })
 
-    Object.assign(anunciante, { marker })
+    this.markers.push({ marker, anunciante })
   }
 
   mostrarDetalhesMarker(marker, anunciante) {
@@ -134,8 +143,6 @@ class BuscaController {
   }
 
   templateInfoWindow(anunciante) {
-    const { PessoaHelper } = this.root
-
     return `
       <h4>${ PessoaHelper.getNomeDaPessoa(anunciante) }</h4>
       <p>${ PessoaHelper.getEnderecoCompleto(anunciante, anunciante.Enderecos[0], false) }</p>

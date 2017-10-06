@@ -1,6 +1,8 @@
-var GenericDAO = require('./generic.dao');
+'use strict'
 
+const GenericDAO = require('./generic.dao');
 const responses = require('../utils').responses;
+
 class UsuarioDAO extends GenericDAO {
   constructor(models) {
     super(models.Usuario);
@@ -57,6 +59,27 @@ class UsuarioDAO extends GenericDAO {
       .then(instance => responses.generic(instance))
       .catch(error => responses.error(error));
   }
-};
+
+  getPessoaDe(usuario) {
+    return this.model
+      .findOne({
+        attributes: [ 'id', 'tipo' ],
+        where: { id: usuario },
+        include: [
+          {
+            model: this.models.PessoaFisica,
+            attributes: [ 'cpf', 'rg', 'nome', 'sobrenome', 'data_nascimento' ],
+            as: 'PessoaFisica'
+          },
+          {
+            model: this.models.PessoaJuridica,
+            attributes: [ 'cnpj', 'razao_social', 'responsavel', 'data_fundacao' ],
+            as: 'PessoaJuridica'
+          }
+        ]
+      })
+      .then(instance => responses.generic(instance))
+  }
+}
 
 module.exports = UsuarioDAO;

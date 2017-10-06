@@ -36,3 +36,5 @@ import './controllers/inicio.controller'
 import './controllers/meus_dados.controller'
 import './controllers/meus_produtos.controller'
 import './controllers/perfil.controller'
+import './controllers/editar_dados_pessoais.controller'
+

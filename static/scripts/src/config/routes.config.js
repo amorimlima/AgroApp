@@ -107,6 +107,17 @@ import angular from 'angular'
           }]
         }
       })
+      .when('/dados-cadastrais/pessoais', {
+        controller: 'EditarDadosPessoaisController',
+        controllerAs: 'ctrl',
+        templateUrl: '/views/editar-dados-pessoais',
+        requireAuth: true,
+        resolve: {
+          usuario: ['UsuarioService', function(UsuarioService) {
+            return UsuarioService.buscarPessoaDoLogado()
+          }]
+        }
+      })
       .otherwise({ redirectTo: '/' });
   }
 })();

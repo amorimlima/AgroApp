@@ -1,0 +1,51 @@
+<md-subheader>Pessoa Física</md-subheader>
+
+<div
+    flex="none"
+    layout="column"
+    layout-padding>
+
+    <form
+        id="edit_pf_form"
+        name="edit_pf_form"
+        ng-init="ctrl.setForm(this)">
+
+        <md-input-container class="md-block">
+            <label for="cpf">CPF</label>
+            <input
+                type="text"
+                id="cpf"
+                readonly
+                mask="999.999.999-99"
+                mask-clean="true"
+                ng-model="ctrl.usuario.PessoaFisica.cpf">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label for="rg">RG</label>
+            <input
+                type="text"
+                id="rg"
+                maxlength="20"
+                ng-model="ctrl.usuario.PessoaFisica.rg">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label for="nome">Nome</label>
+            <input
+                type="text"
+                id="rg"
+                maxlength="100"
+                ng-model="ctrl.usuario.PessoaFisica.nome">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+            <label for="nome">Sobrenome</label>
+            <input
+                type="text"
+                id="rg"
+                maxlength="100"
+                ng-model="ctrl.usuario.PessoaFisica.sobrenome">
+        </md-input-container>
+    </form>
+</div>

@@ -22,5 +22,8 @@ module.exports = (router, app) => {
   router.get('/dados-cadastrais', (req, res) =>
     res.render('dados_cadastrais', { strings }));
 
+  router.get('/editar-dados-pessoais', (req, res) =>
+    res.render('editar_dados_perfil', { strings }))
+
   return router;
 };

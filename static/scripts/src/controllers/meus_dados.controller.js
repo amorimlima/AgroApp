@@ -1,18 +1,18 @@
+'use strict'
+
 import angular from 'angular'
 
-(function () {
-  angular
-    .module('app')
-    .controller('MeusDadosController', MeusDadosController);
-
-  MeusDadosController.$inject = [
-    '$rootScope',
-    'usuario'
-  ];
-
-  function MeusDadosController($rootScope, usuario) {
-    var self = this;
-
-    self.usuario = usuario;
+class MeusDadosController {
+  constructor($rootScope, usuario) {
+    this.root = $rootScope
+    this.usuario = usuario
   }
-})();
+
+  static get $inject() {
+    return ['$rootScope', 'usuario']
+  }
+}
+
+angular
+  .module('app')
+  .controller('MeusDadosController', MeusDadosController)
